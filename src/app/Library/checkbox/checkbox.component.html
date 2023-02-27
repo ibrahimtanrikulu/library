@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="checkboxHeader">
+    <h4 style="font-weight: 500">{{ checkboxHeader }}</h4>
+    <div>
+      <ng-container *ngIf="!multiCheckbox && !selectedAllChecked">
+        <button (click)="selectedAll()">Hepsini seç</button>
+      </ng-container>
+      <ng-container *ngIf="!multiCheckbox && selectedAllChecked">
+        <button (click)="selectedAllRemoveList()">Hepsini kaldır</button>
+      </ng-container>
+      <ng-container *ngIf="!multiCheckbox">
+        <button
+          (click)="reverse()"
+          style="margin: 4px"
+          [disabled]="this.selectedList ? false : true"
+        >
+          Ters çevir
+        </button>
+      </ng-container>
+    </div>
+  </div>
+  <hr />
+  <div class="checkboxInput">
+    <span class="checkboxSpan" *ngFor="let item of checkboxData">
+      <input
+        id="{{ item.value }}"
+        type="checkbox"
+        (click)="selection(item.value)"
+        [checked]="this.selectedList.indexOf(item.value) >= 0 ? true : false"
+      />
+      <label for="{{ item.value }}">{{ item.text }}</label>
+    </span>
+  </div>
+</div>
