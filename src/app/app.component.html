@@ -1,8 +1,12 @@
-<app-card>
-  <app-checkbox
-    [checkboxData]="value"
-    checkboxHeader="bu deneme datası"
-    [multiCheckbox]="false"
-    (selectedData)="karsila($event)"
-  ></app-checkbox>
-</app-card>
+<div style="margin: 1%">
+  <app-card [cardHeader]="'card başlığı'">
+    <content>
+      <app-checkbox
+        [checkboxData]="value"
+        checkboxHeader="bu deneme datası"
+        [multiCheckbox]="false"
+        (selectedData)="karsila($event)"
+      ></app-checkbox>
+    </content>
+  </app-card>
+</div>

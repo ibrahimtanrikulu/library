@@ -1,3 +1,6 @@
 <div class="container">
-    <ng-content></ng-content>
+  <div class="header">
+    <h3>{{ cardHeader }}</h3>
+  </div>
+  <ng-content select="content"></ng-content>
 </div>

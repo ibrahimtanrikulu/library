@@ -96,12 +96,13 @@ input[type="checkbox"] {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   padding-left: 1.4%;
   padding-right: 1.4%;
   h4 {
     margin: 1px;
     font-size: x-large;
+    font-weight: 500;
   }
   button {
     background-color: #275efe;
@@ -170,7 +171,8 @@ input[type="checkbox"] {
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   }
-  .checkboxInput {
-    justify-content: space-around;
+
+  .checkboxHeader {
+    flex-wrap: wrap;
   }
 }
