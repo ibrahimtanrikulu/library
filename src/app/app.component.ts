@@ -16,8 +16,12 @@ export class AppComponent {
     { text: 'b', value: 6 },
   ];
 
-  karsila(e: any) { 
-    console.log(e,"Data");
-    
+  karsila(e: any) {
+    console.log(e, 'Data');
+  }
+
+  show: boolean = true;
+  tikla() {
+    this.show = true;
   }
 }

@@ -1,12 +1,15 @@
-<div style="margin: 1%">
-  <app-card [cardHeader]="'card başlığı'">
-    <content>
-      <app-checkbox
-        [checkboxData]="value"
-        checkboxHeader="bu deneme datası"
-        [multiCheckbox]="false"
-        (selectedData)="karsila($event)"
-      ></app-checkbox>
-    </content>
-  </app-card>
+<div style="  height: 100vh; padding: 1%">
+  <div>
+    <!-- <app-card [cardHeader]="'card başlığı'">
+      <div content>
+        <app-checkbox
+          [checkboxData]="value"
+          checkboxHeader="bu deneme datası"
+          [multiCheckbox]="false"
+          (selectedData)="karsila($event)"
+        ></app-checkbox>
+      </div>
+    </app-card> -->
+    <app-dialog [dialogShow]="show" dialogHeader="dialog başlığı"></app-dialog>
+  </div>
 </div>

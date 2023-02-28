@@ -1,18 +1,18 @@
+* {
+  color: #eeeeee;
+}
 input[type="checkbox"] {
-  --active: #275efe;
+  --active: #1E2022;
   --active-inner: #fff;
-  --focus: 2px rgba(39, 94, 254, 0.3);
+  --focus: 2px rgba(4, 8, 23, 0.3);
   --border: #bbc1e1;
-  --border-hover: #275efe;
+  --border-hover: #1E2022;
   --background: #fff;
   --disabled: #f6f8ff;
   --disabled-inner: #e1e6f9;
   -webkit-appearance: none;
   -moz-appearance: none;
-  height: 21px;
-  outline: none;
-  display: inline-block;
-  vertical-align: top;
+  height: 22px;   
   position: relative;
   margin: 0;
   cursor: pointer;
@@ -99,20 +99,24 @@ input[type="checkbox"] {
   flex-wrap: wrap;
   padding-left: 1.4%;
   padding-right: 1.4%;
+  align-items: center;
   h4 {
     margin: 1px;
     font-size: x-large;
     font-weight: 500;
   }
   button {
-    background-color: #275efe;
+    background-color: #222831;
     border: none;
     border-radius: 3px;
-    color: white;
+    padding: 8px;
+    color: #eeeeee;
     cursor: pointer;
     font-size: large;
     &:hover {
-      background-color: blue;
+      background-color: black;
+      transition-property: background-color;
+      transition-duration: 0.8s;
     }
     &:active {
       background-color: #275efe;
@@ -133,10 +137,16 @@ input[type="checkbox"] {
   }
 }
 
+.checkboxSpan {
+  align-items: end;
+  display: flex;
+}
+
 @media (min-width: 1025px) {
   .container {
-    border: 1px solid white;
+    border: 1px solid #222831;
     border-radius: 12px;
+    background-color: #393e46;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
@@ -147,6 +157,7 @@ input[type="checkbox"] {
   .container {
     border: 1px solid white;
     border-radius: 12px;
+    background-color: #393e46;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
@@ -157,6 +168,7 @@ input[type="checkbox"] {
   .container {
     border: 1px solid white;
     border-radius: 12px;
+    background-color: #393e46;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
@@ -167,6 +179,7 @@ input[type="checkbox"] {
   .container {
     border: 1px solid white;
     border-radius: 12px;
+    background-color: #393e46;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
