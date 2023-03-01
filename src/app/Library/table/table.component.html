@@ -1,1 +1,29 @@
-<p>table works!</p>
+<div class="container">
+  <table>
+    <tr class="header">
+      <th
+        *ngFor="let item of tableCol"
+        [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
+      >
+        <div *ngIf="item.field != ''">{{ item.header }}</div>
+      </th>
+    </tr>
+    <tr class="header" *ngFor="let item of tableCol">
+      <th *ngIf="item.filter">
+        <input type="text" />
+      </th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let data of tableData">
+        <td *ngFor="let col of tableCol">
+          <div *ngIf="col.field != ''">
+            {{ data[col.field] }}
+          </div>
+          <div *ngIf="col.field == 'button'">
+            <button>deneme</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

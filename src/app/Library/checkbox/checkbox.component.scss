@@ -2,11 +2,11 @@
   color: #eeeeee;
 }
 input[type="checkbox"] {
-  --active: #1E2022;
+  --active: #1e293b;
   --active-inner: #fff;
   --focus: 2px rgba(4, 8, 23, 0.3);
   --border: #bbc1e1;
-  --border-hover: #1E2022;
+  --border-hover: #1e293b;
   --background: #fff;
   --disabled: #f6f8ff;
   --disabled-inner: #e1e6f9;
@@ -106,7 +106,7 @@ input[type="checkbox"] {
     font-weight: 500;
   }
   button {
-    background-color: #222831;
+    background-color: #1e293b;
     border: none;
     border-radius: 3px;
     padding: 8px;
@@ -114,7 +114,7 @@ input[type="checkbox"] {
     cursor: pointer;
     font-size: large;
     &:hover {
-      background-color: black;
+      background-color: #131b2e;
       transition-property: background-color;
       transition-duration: 0.8s;
     }
@@ -144,9 +144,9 @@ input[type="checkbox"] {
 
 @media (min-width: 1025px) {
   .container {
-    border: 1px solid #222831;
+    border: 1px solid #334155;
     border-radius: 12px;
-    background-color: #393e46;
+    background-color: #334155;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
@@ -155,9 +155,9 @@ input[type="checkbox"] {
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .container {
-    border: 1px solid white;
+    border: 1px solid #334155;
     border-radius: 12px;
-    background-color: #393e46;
+    background-color: #334155;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
@@ -166,9 +166,9 @@ input[type="checkbox"] {
 
 @media (max-width: 767px) {
   .container {
-    border: 1px solid white;
+    border: 1px solid #334155;
     border-radius: 12px;
-    background-color: #393e46;
+    background-color: #334155;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
@@ -177,9 +177,9 @@ input[type="checkbox"] {
 
 @media (max-width: 480px) {
   .container {
-    border: 1px solid white;
+    border: 1px solid #334155;
     border-radius: 12px;
-    background-color: #393e46;
+    background-color: #334155;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
       rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
       rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;

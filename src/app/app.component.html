@@ -1,6 +1,6 @@
-<div style="  height: 100vh; padding: 1%">
+<div style="height: 100vh; padding: 1%">
   <div>
-    <!-- <app-card [cardHeader]="'card başlığı'">
+    <app-card [cardHeader]="'card başlığı'">
       <div content>
         <app-checkbox
           [checkboxData]="value"
@@ -8,8 +8,12 @@
           [multiCheckbox]="false"
           (selectedData)="karsila($event)"
         ></app-checkbox>
+
+        <br><br>
+        <app-table [tableCol]="col" [tableData]="data"></app-table>
       </div>
-    </app-card> -->
-    <app-dialog [dialogShow]="show" dialogHeader="dialog başlığı"></app-dialog>
+    </app-card>
+
+    
   </div>
 </div>
