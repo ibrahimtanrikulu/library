@@ -14,7 +14,7 @@ import { TableModule } from './Library/table/table.module';
     CheckboxComponent,
     CardModule,
     DialogModule,
-    TableModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -2,14 +2,23 @@
   <div class="checkboxHeader">
     <h4>{{ checkboxHeader }}</h4>
     <div>
-      <ng-container *ngIf="!multiCheckbox && !selectedAllChecked">
-        <button (click)="selectedAll()">Hepsini seç</button>
-      </ng-container>
-      <ng-container *ngIf="!multiCheckbox && selectedAllChecked">
-        <button (click)="selectedAllRemoveList()">Hepsini kaldır</button>
-      </ng-container>
+      <button
+        *ngIf="!multiCheckbox && !selectedAllChecked"
+        class="button"
+        (click)="selectedAll()"
+      >
+        Hepsini seç
+      </button>
+      <button
+        *ngIf="!multiCheckbox && selectedAllChecked"
+        class="button"
+        (click)="selectedAllRemoveList()"
+      >
+        Hepsini kaldır
+      </button>
       <ng-container *ngIf="!multiCheckbox">
         <button
+          class="button"
           (click)="reverse()"
           style="margin: 4px"
           [disabled]="this.selectedList ? false : true"

@@ -1,1 +1,47 @@
-@import 'app/reset.scss'
+@import "app/reset.scss";
+
+.button {
+  font-weight: 100;
+  font-size: 16px;
+  color: #eeeeee;
+  background-color: #131b2e;
+  padding: 10px 30px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  border-radius: 12px;
+  transition: 555ms;
+  transform: translateY(0);
+
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    transition: 855ms;
+    transform: translateY(-0px);
+    background-color: #eeeeee;
+    color: #1e293b;
+  }
+  &:active {
+    transform: scale(0.8, 0.8);
+  }
+}
+
+.input {
+  border-style: solid;
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 6px;
+  color: #1e293b;
+  background-color: #cccccc;
+  border-color: #1e293b;
+  font-weight: normal;
+  font-style: none;
+  font-family: sans-serif;
+  &:focus {
+    outline: none;
+    background-color: #334155;
+    box-shadow: 0px 0px 5px 0px rgba(51, 65, 85, 0.73);
+    transition: 555ms;
+    color: #eeeeee;
+  }
+}

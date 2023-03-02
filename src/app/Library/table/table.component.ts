@@ -7,6 +7,10 @@ import { TableType } from '../Interface/TableType';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent {
+  @Input() tableHeader: string = '';
   @Input() tableData: any[] = [];
   @Input() tableCol: TableType[] = [];
+  @Input() tableFilterFormStatus: boolean = false;
+  @Input() tableFilterHeaderStatus: boolean = false;
+  @Input() tableScrollStatus: boolean = false;
 }

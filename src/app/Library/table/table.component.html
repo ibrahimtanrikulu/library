@@ -1,26 +1,51 @@
-<div class="container">
+<div
+  class="container"
+  [ngStyle]="
+    tableScrollStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }
+  "
+>
+<div class="header" *ngIf="tableHeader"><h2>{{tableHeader}}</h2></div>
   <table>
-    <tr class="header">
+    
+    <tr class="tableHeader">
       <th
         *ngFor="let item of tableCol"
         [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
       >
-        <div *ngIf="item.field != ''">{{ item.header }}</div>
+        <div *ngIf="item.field != ''" class="iconFilterContainer">
+          <p>{{ item.header }}</p>
+          <button class="button iconButton">X</button>
+        </div>
       </th>
     </tr>
-    <tr class="header" *ngFor="let item of tableCol">
-      <th *ngIf="item.filter">
-        <input type="text" />
+    <tr *ngIf="tableFilterFormStatus" class="tableHeader">
+      <th *ngFor="let item of tableCol">
+        <div
+          *ngIf="
+            item.filter &&
+            item.field != 'edit' &&
+            item.field != 'delete' &&
+            item.field != 'extra'
+          "
+        >
+          <input class="input" type="text" />
+        </div>
       </th>
     </tr>
     <tbody>
       <tr *ngFor="let data of tableData">
         <td *ngFor="let col of tableCol">
           <div *ngIf="col.field != ''">
-            {{ data[col.field] }}
+            <p>{{ data[col.field] }}</p>
           </div>
-          <div *ngIf="col.field == 'button'">
-            <button>deneme</button>
+          <div *ngIf="col.field == 'edit'">
+            <button class="button">Edit</button>
+          </div>
+          <div *ngIf="col.field == 'delete'">
+            <button class="button">deneme</button>
+          </div>
+          <div *ngIf="col.field == 'extra'">
+            <button class="button">deneme</button>
           </div>
         </td>
       </tr>

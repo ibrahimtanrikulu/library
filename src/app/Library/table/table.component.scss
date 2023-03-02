@@ -1,14 +1,12 @@
-* {
-  color: #eeeeee;
-}
 .container {
   background-color: #334155;
   border: 1px solid #334155;
   border-radius: 12px;
-  padding: 0.4%;
+
+  padding: 0.4vw;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
-      rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
-      rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   table {
     border: none;
     width: 100%;
@@ -17,7 +15,8 @@
         cursor: pointer;
         td {
           text-align: left;
-          padding: 1% 2%;
+          padding: 0.6vw 2vw;
+          font-size: large;
           border-bottom: 1px solid #1e293b;
         }
         &:hover {
@@ -31,19 +30,44 @@
       }
     }
 
-    .header {
+    .tableHeader {
       text-align: left;
       background-color: #1e293b;
       th {
-        text-align: left;
-        padding: 0.8% 2%;
+        padding: 0.8vw 2vw;
         font-size: x-large;
         border-bottom: 2px solid #000000;
-        input {
-          width: 100%;
-          border: none;
+        .iconFilterContainer {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: end;
+          .iconButton {
+            padding: 0%;
+            border-radius: 0%;
+            border: none;
+          }
+        }
+        div {
+          input {
+            width: 100%;
+          }
         }
       }
+    }
+  }
+
+  .header {
+    background-color: #1e293b;
+    margin-bottom: 2vh;
+    border-radius: 12px;
+    padding: 0.8vw 2vw;
+    text-align: center;
+    width: auto;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    h2 {
+      font-size: xx-large;
+      font-weight: 500;
     }
   }
 }

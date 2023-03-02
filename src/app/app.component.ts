@@ -24,10 +24,12 @@ export class AppComponent {
   ];
 
   col: TableType[] = [
-    { field: 'id', header: 'numara', width: '10%',filter:false },
-    { field: 'kod', header: 'kod', width: '20%' },
-    { field: 'aciklama', header: 'aciklama', width: '50%' },
-    { field: 'fiyat', header: 'fiyat', width: '20%' },
+    { field: 'id', header: 'numara', width: '10%', filter: true },
+    { field: 'kod', header: 'kod', width: '20%', filter: true },
+    { field: 'aciklama', header: 'aciklama', width: '50%', filter: true },
+    { field: 'fiyat', header: 'fiyat', width: '10%', filter: true },
+    { field: 'edit', header: 'Düzenle', width: '5%' , filter: true},
+    { field: 'delete', header: 'Sil', width: '5%' , filter: true},
   ];
 
   karsila(e: any) {
