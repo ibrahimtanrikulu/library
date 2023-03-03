@@ -1,25 +1,64 @@
 <div
   class="container"
-  [ngStyle]="
-    tableScrollStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }
-  "
+  [ngStyle]="scrollStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }"
 >
-<div class="header" *ngIf="tableHeader"><h2>{{tableHeader}}</h2></div>
+  <!-- Header -->
+  <ng-container *ngIf="globalSearch">
+    <ng-container *ngIf="header"
+      ><div class="headerContainer">
+        <h2 *ngIf="header">{{ header }}</h2>
+        <div><input class="input" type="text" placeholder="deneme" /></div></div
+    ></ng-container>
+    <ng-container *ngIf="!header">
+      <div class="headerContainer" style="justify-content: end;">
+        <h2 *ngIf="header">{{ header }}</h2>
+        <div><input class="input" type="text" placeholder="deneme" /></div>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="!globalSearch">
+    <div class="headerContainer" *ngIf="header" style="justify-content: center;">
+      <h2 >{{ header }}</h2>
+    </div>
+  </ng-container>
+
   <table>
-    
-    <tr class="tableHeader">
+    <tr class="header">
       <th
-      style="border: none;"
-        *ngFor="let item of tableCol"
+        style="border: none"
+        *ngFor="let item of column"
         [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
       >
-        <div  *ngIf="item.field != ''" class="iconFilterContainer">
-          <p>{{ item.header }}</p> 
+        <div *ngIf="item.field != ''" class="iconFilterContainer">
+          <p>{{ item.header }}</p>
+          <button
+            class="iconButton"
+            *ngIf="
+              !(
+                item.field == 'edit' ||
+                item.field == 'delete' ||
+                item.field == 'extra'
+              )
+            "
+            (click)="headerFilter()"
+          >
+            <i
+              [ngClass]="
+                iconStatus
+                  ? item.filterHeaderOneIcon
+                    ? item.filterHeaderOneIcon
+                    : 'fa-solid fa-sort-down'
+                  : item.filterHeaderTwoIcon
+                  ? item.filterHeaderTwoIcon
+                  : 'fa-solid fa-sort-up'
+              "
+            ></i>
+          </button>
         </div>
       </th>
     </tr>
-    <tr *ngIf="tableFilterFormStatus" class="tableHeader">
-      <th *ngFor="let item of tableCol">
+    <tr *ngIf="filterFormStatus" class="header">
+      <th *ngFor="let item of column">
         <div
           *ngIf="
             item.filter &&
@@ -28,13 +67,13 @@
             item.field != 'extra'
           "
         >
-          <input class="input" type="text" />
+          <input class="input" type="text" placeholder="deneme" />
         </div>
       </th>
     </tr>
     <tbody>
-      <tr *ngFor="let data of tableData">
-        <td *ngFor="let col of tableCol">
+      <tr *ngFor="let data of data">
+        <td *ngFor="let col of column">
           <div *ngIf="col.field != ''">
             <p>{{ data[col.field] }}</p>
           </div>
@@ -51,4 +90,32 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- pagination -->
+  <div class="pagination" *ngIf="paginationStatus">
+    <div>
+      <button
+        class="iconButton"
+        style="background-color: #334155; font-size: x-large"
+      >
+        <i class="fa-solid fa-backward"></i>
+      </button>
+    </div>
+    <div>
+      <button
+        class="iconButton"
+        style="background-color: #334155; font-size: x-large"
+      >
+        1
+      </button>
+    </div>
+    <div>
+      <button
+        class="iconButton"
+        style="background-color: #334155; font-size: x-large"
+      >
+        <i class="fa-solid fa-forward"></i>
+      </button>
+    </div>
+  </div>
 </div>

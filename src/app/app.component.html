@@ -8,16 +8,17 @@
           [multiCheckbox]="false"
           (selectedData)="karsila($event)"
         ></app-checkbox>
+        <br /><br /><br />
+        <app-table
+          [column]="col"
+          [data]="data"
+          [filterFormStatus]="true"
+          [scrollStatus]="true"
+          [header]="'Cek tahsilat'"
+          [paginationStatus]="true"
+          [globalSearch]="true"
+        ></app-table>
       </div>
     </app-card>
-
-    <br /><br /><br />
-    <app-table
-      [tableCol]="col"
-      [tableData]="data"
-      [tableFilterFormStatus]="true"
-      [tableScrollStatus]="true" 
-      [tableHeader]="'Cek tahsilat'"
-    ></app-table>
   </div>
 </div>

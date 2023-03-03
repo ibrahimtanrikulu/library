@@ -4,9 +4,8 @@
   border-radius: 12px;
 
   padding: 0.4vw;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
-    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
-    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
   table {
     border: none;
     width: 100%;
@@ -21,32 +20,24 @@
           border-bottom: 1px solid #1e293b;
         }
         &:hover {
-          background-color: #131b2e;
+          background-color: #1e293b;
           transition-duration: 1s;
-        }
-        &:active {
-          background-color: #131b2e;
-          transition-duration: 0.5s;
         }
       }
     }
 
-    .tableHeader {
+    .header {
       text-align: left;
-      background-color: #1e293b;
+      background-color: #131b2e;
       th {
-        padding: 0.4vw 1vw;
+        padding: 0.6% 1vw;
         font-size: x-large;
         border-bottom: 2px solid #000000;
         .iconFilterContainer {
           display: flex;
           flex-wrap: nowrap;
-          align-items: end;
-          .iconButton {
-            padding: 0%;
-            border-radius: 0%;
-            border: none;
-          }
+          justify-content: start;
+          cursor: pointer;
         }
         div {
           input {
@@ -57,18 +48,34 @@
     }
   }
 
-  .header {
-    background-color: #1e293b;
+  .headerContainer {
+    background-color: #131b2e;
     margin-bottom: 2vh;
     border-radius: 12px;
-    padding: 0.4vw;
-    text-align: center;
-    width: auto;
+    padding: 0.4vw 1vw;
+    display: flex;
+    width: auto; 
+    justify-content: space-between;
+    align-items: center;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
       rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     h2 {
-      font-size: xx-large;
+      font-size: x-large;
       font-weight: 500;
     }
+  }
+  .pagination {
+    margin-top: 1vh;
+    border-radius: 12px;
+    padding: 0.2vw;
+    text-align: center;
+    width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    
   }
 }
