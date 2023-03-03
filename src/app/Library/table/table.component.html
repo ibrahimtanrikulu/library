@@ -9,12 +9,12 @@
     
     <tr class="tableHeader">
       <th
+      style="border: none;"
         *ngFor="let item of tableCol"
         [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
       >
-        <div *ngIf="item.field != ''" class="iconFilterContainer">
-          <p>{{ item.header }}</p>
-          <button class="button iconButton">X</button>
+        <div  *ngIf="item.field != ''" class="iconFilterContainer">
+          <p>{{ item.header }}</p> 
         </div>
       </th>
     </tr>
@@ -39,13 +39,13 @@
             <p>{{ data[col.field] }}</p>
           </div>
           <div *ngIf="col.field == 'edit'">
-            <button class="button">Edit</button>
+            <button class="button"><i class="fa-solid fa-pen"></i></button>
           </div>
           <div *ngIf="col.field == 'delete'">
-            <button class="button">deneme</button>
+            <button class="button"><i class="fa-solid fa-trash"></i></button>
           </div>
           <div *ngIf="col.field == 'extra'">
-            <button class="button">deneme</button>
+            <button class="button">ekstra</button>
           </div>
         </td>
       </tr>

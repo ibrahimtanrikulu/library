@@ -13,9 +13,10 @@
     tbody {
       tr {
         cursor: pointer;
+        align-items: center;
         td {
           text-align: left;
-          padding: 0.6vw 2vw;
+          padding: 0.2vw 1vw;
           font-size: large;
           border-bottom: 1px solid #1e293b;
         }
@@ -34,7 +35,7 @@
       text-align: left;
       background-color: #1e293b;
       th {
-        padding: 0.8vw 2vw;
+        padding: 0.4vw 1vw;
         font-size: x-large;
         border-bottom: 2px solid #000000;
         .iconFilterContainer {
@@ -60,7 +61,7 @@
     background-color: #1e293b;
     margin-bottom: 2vh;
     border-radius: 12px;
-    padding: 0.8vw 2vw;
+    padding: 0.4vw;
     text-align: center;
     width: auto;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,

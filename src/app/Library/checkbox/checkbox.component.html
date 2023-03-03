@@ -7,14 +7,14 @@
         class="button"
         (click)="selectedAll()"
       >
-        Hepsini seç
+        <i class="fa-solid fa-check"></i>
       </button>
       <button
         *ngIf="!multiCheckbox && selectedAllChecked"
         class="button"
         (click)="selectedAllRemoveList()"
       >
-        Hepsini kaldır
+        <i class="fa-solid fa-xmark"></i>
       </button>
       <ng-container *ngIf="!multiCheckbox">
         <button
@@ -23,7 +23,7 @@
           style="margin: 4px"
           [disabled]="this.selectedList ? false : true"
         >
-          Ters çevir
+          <i class="fa-brands fa-rev"></i>
         </button>
       </ng-container>
     </div>
