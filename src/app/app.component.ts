@@ -45,7 +45,7 @@ export class AppComponent {
       header: 'aciklama',
       width: '50%',
       filter: true,
-      filterType: 'multiDropdown',
+      filterType: 'dropdown',
       filterData: this.data,
     },
     { field: 'fiyat', header: 'fiyat', width: '10%', filter: true },
