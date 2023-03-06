@@ -24,16 +24,36 @@ export class AppComponent {
   ];
 
   col: TableType[] = [
-    { field: 'id', header: 'numara', width: '10%', filter: true ,filterHeaderOneIcon:'fa-solid fa-sort'},
-    { field: 'kod', header: 'kod', width: '20%', filter: true },
-    { field: 'aciklama', header: 'aciklama', width: '50%', filter: true },
+    {
+      field: 'id',
+      header: 'numara',
+      width: '10%',
+      filter: true,
+      filterType: 'number',
+      filterHeaderOneIcon: 'fa-solid fa-sort',
+    },
+    {
+      field: 'kod',
+      header: 'kod',
+      width: '20%',
+      filter: true,
+      filterType: 'dropdown',
+      filterData: this.data,
+    },
+    {
+      field: 'aciklama',
+      header: 'aciklama',
+      width: '50%',
+      filter: true,
+      filterType: 'multiDropdown',
+      filterData: this.data,
+    },
     { field: 'fiyat', header: 'fiyat', width: '10%', filter: true },
-    { field: 'edit', header: 'Düzenle', width: '5%' , filter: true},
-    { field: 'delete', header: 'Sil', width: '5%' , filter: true},
+    { field: 'edit', header: 'Düzenle', width: '5%', filter: true },
+    { field: 'delete', header: 'Sil', width: '5%', filter: true },
   ];
 
-  karsila(e: any) { 
-  }
+  karsila(e: any) {}
 
   show: boolean = true;
   tikla() {

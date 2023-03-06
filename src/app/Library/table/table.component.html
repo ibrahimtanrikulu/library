@@ -10,15 +10,15 @@
         <div><input class="input" type="text" placeholder="deneme" /></div></div
     ></ng-container>
     <ng-container *ngIf="!header">
-      <div class="headerContainer" style="justify-content: end;">
+      <div class="headerContainer" style="justify-content: end">
         <h2 *ngIf="header">{{ header }}</h2>
         <div><input class="input" type="text" placeholder="deneme" /></div>
       </div>
     </ng-container>
   </ng-container>
   <ng-container *ngIf="!globalSearch">
-    <div class="headerContainer" *ngIf="header" style="justify-content: center;">
-      <h2 >{{ header }}</h2>
+    <div class="headerContainer" *ngIf="header" style="justify-content: center">
+      <h2>{{ header }}</h2>
     </div>
   </ng-container>
 
@@ -67,7 +67,41 @@
             item.field != 'extra'
           "
         >
-          <input class="input" type="text" placeholder="deneme" />
+          <!-- burası header altı filter bölümü -->
+          <ng-container *ngIf="item.filterType == 'text'">
+            <input
+              class="input"
+              type="{{ item.filterType }}"
+              placeholder="deneme"
+            />
+          </ng-container>
+          <ng-container *ngIf="item.filterType == 'number'">
+            <input
+              class="input"
+              type="{{ item.filterType }}"
+              placeholder="deneme"
+            />
+          </ng-container>
+          <ng-container *ngIf="item.filterType == 'dropdown'">
+            <select>
+              <option
+                *ngFor="let dropdownData of item.filterData"
+                value="dropdownData.id"
+              >
+                {{ dropdownData[item.field] }}
+              </option>
+            </select>
+          </ng-container>
+          <ng-container *ngIf="item.filterType == 'multiDropdown'">
+            <select >
+              <option
+                *ngFor="let dropdownData of item.filterData"
+                value="dropdownData.id"
+              >
+                {{ dropdownData[item.field] }}
+              </option>
+            </select>
+          </ng-container>
         </div>
       </th>
     </tr>
