@@ -23,102 +23,115 @@
   </ng-container>
 
   <table>
-    <tr class="header">
-      <th
-        style="border: none"
-        *ngFor="let item of column"
-        [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
-      >
-        <div *ngIf="item.field != ''" class="iconFilterContainer">
-          <p>{{ item.header }}</p>
-          <button
-            class="iconButton"
-            *ngIf="
-              !(
-                item.field == 'edit' ||
-                item.field == 'delete' ||
-                item.field == 'extra'
-              )
-            "
-            (click)="headerFilter()"
-          >
-            <i
-              [ngClass]="
-                iconStatus
-                  ? item.filterHeaderOneIcon
-                    ? item.filterHeaderOneIcon
-                    : 'fa-solid fa-sort-down'
-                  : item.filterHeaderTwoIcon
-                  ? item.filterHeaderTwoIcon
-                  : 'fa-solid fa-sort-up'
-              "
-            ></i>
-          </button>
-        </div>
-      </th>
-    </tr>
-    <tr *ngIf="filterFormStatus" class="header">
-      <th *ngFor="let item of column">
-        <div
-          *ngIf="
-            item.filter &&
-            item.field != 'edit' &&
-            item.field != 'delete' &&
-            item.field != 'extra'
-          "
+    <thead>
+      <tr class="header">
+        <th
+          style="border: none"
+          *ngFor="let item of column"
+          [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
         >
-          <!-- burası header altı filter bölümü -->
-          <ng-container *ngIf="item.filterType == 'text'">
-            <input
-              class="input"
-              type="{{ item.filterType }}"
-              placeholder="deneme"
-            />
-          </ng-container>
-          <ng-container *ngIf="item.filterType == 'number'">
-            <input
-              class="input"
-              type="{{ item.filterType }}"
-              placeholder="deneme"
-            />
-          </ng-container>
-          <ng-container *ngIf="item.filterType == 'dropdown'">
-            <select>
-              <option
-                *ngFor="let dropdownData of item.filterData"
-                value="dropdownData.id"
-              >
-                {{ dropdownData[item.field] }}
-              </option>
-            </select>
-          </ng-container>
-          <ng-container *ngIf="item.filterType == 'multiDropdown'">
-            <select >
-              <option
-                *ngFor="let dropdownData of item.filterData"
-                value="dropdownData.id"
-              >
-                {{ dropdownData[item.field] }}
-              </option>
-            </select>
-          </ng-container>
-        </div>
-      </th>
-    </tr>
+          <div *ngIf="item.field != ''" class="iconFilterContainer">
+            <span>{{ item.header }}</span>
+            <button
+              class="iconButton"
+              *ngIf="
+                !(
+                  item.field == 'edit' ||
+                  item.field == 'delete' ||
+                  item.field == 'extra'
+                )
+              "
+              (click)="headerFilter()"
+            >
+              <i
+                [ngClass]="
+                  iconStatus
+                    ? item.filterHeaderOneIcon
+                      ? item.filterHeaderOneIcon
+                      : 'fa-solid fa-sort-down'
+                    : item.filterHeaderTwoIcon
+                    ? item.filterHeaderTwoIcon
+                    : 'fa-solid fa-sort-up'
+                "
+              ></i>
+            </button>
+          </div>
+        </th>
+      </tr>
+      <tr *ngIf="filterFormStatus" class="header">
+        <th *ngFor="let item of column">
+          <div
+            *ngIf="
+              item.filter &&
+              item.field != 'edit' &&
+              item.field != 'delete' &&
+              item.field != 'extra'
+            "
+          >
+            <!-- burası header altı filter bölümü -->
+            <ng-container *ngIf="item.filterType == 'text'">
+              <input
+                class="input"
+                type="{{ item.filterType }}"
+                placeholder="deneme"
+              />
+            </ng-container>
+            <ng-container *ngIf="item.filterType == 'number'">
+              <input
+                class="input"
+                type="{{ item.filterType }}"
+                placeholder="deneme"
+              />
+            </ng-container>
+            <ng-container *ngIf="item.filterType == 'dropdown'">
+              <li class="dropdown">
+                <p>seciniz</p>
+                <ul class="dropdownList">
+                  <li><a href="#0">Burger King</a></li>
+                  <li><a href="#0">Southwest Airlines</a></li>
+                  <li><a href="#0">Levi Strauss</a></li>
+                </ul>
+              </li>
+            </ng-container>
+            <ng-container *ngIf="item.filterType == 'multiDropdown'">
+              <select>
+                <option
+                  *ngFor="let dropdownData of item.filterData"
+                  value="dropdownData.id"
+                >
+                  {{ dropdownData[item.field] }}
+                </option>
+              </select>
+            </ng-container>
+          </div>
+        </th>
+      </tr>
+    </thead>
     <tbody>
       <tr *ngFor="let data of data">
         <td *ngFor="let col of column">
-          <div *ngIf="col.field != ''">
-            <p>{{ data[col.field] }}</p>
-          </div>
-          <div *ngIf="col.field == 'edit'">
-            <button class="button"><i class="fa-solid fa-pen"></i></button>
-          </div>
-          <div *ngIf="col.field == 'delete'">
-            <button class="button"><i class="fa-solid fa-trash"></i></button>
-          </div>
-          <div *ngIf="col.field == 'extra'">
-            <button class="button">ekstra</button>
+          <span
+            class="responseHeader"
+            *ngIf="
+              col.field != 'edit' &&
+              col.field != 'delete' &&
+              col.field != 'extra'
+            "
+            >{{ col.header }}:</span
+          >
+          <div>
+            <div *ngIf="col.field != ''">
+              <p>{{ data[col.field] }}</p>
+            </div>
+            <div *ngIf="col.field == 'edit'">
+              <button class="button"><i class="fa-solid fa-pen"></i></button>
+            </div>
+            <div *ngIf="col.field == 'delete'">
+              <button class="button"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            <div *ngIf="col.field == 'extra'">
+              <button class="button">ekstra</button>
+            </div>
           </div>
         </td>
       </tr>
@@ -126,30 +139,31 @@
   </table>
 
   <!-- pagination -->
-  <div class="pagination" *ngIf="paginationStatus">
-    <div>
-      <button
-        class="iconButton"
-        style="background-color: #334155; font-size: x-large"
-      >
-        <i class="fa-solid fa-backward"></i>
-      </button>
-    </div>
-    <div>
-      <button
-        class="iconButton"
-        style="background-color: #334155; font-size: x-large"
-      >
-        1
-      </button>
-    </div>
-    <div>
-      <button
-        class="iconButton"
-        style="background-color: #334155; font-size: x-large"
-      >
-        <i class="fa-solid fa-forward"></i>
-      </button>
-    </div>
-  </div>
+  <ng-container *ngIf="paginationStatus"
+    ><div class="pagination">
+      <div>
+        <button
+          class="iconButton"
+          style="background-color: #334155; font-size: large"
+        >
+          <i class="fa-solid fa-backward"></i>
+        </button>
+      </div>
+      <div>
+        <button
+          class="iconButton"
+          style="background-color: #334155; font-size: large"
+        >
+          1
+        </button>
+      </div>
+      <div>
+        <button
+          class="iconButton"
+          style="background-color: #334155; font-size: large"
+        >
+          <i class="fa-solid fa-forward"></i>
+        </button>
+      </div></div
+  ></ng-container>
 </div>

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { CardModule } from './Library/card/card.module';
 import { CheckboxComponent } from './Library/checkbox/checkbox.component';
 import { DialogModule } from './Library/dialog/dialog.module';
-import { TableModule } from './Library/table/table.module';
+import { TableModule } from './Library/table/table.module'; 
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +14,7 @@ import { TableModule } from './Library/table/table.module';
     CheckboxComponent,
     CardModule,
     DialogModule,
-    TableModule
+    TableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
