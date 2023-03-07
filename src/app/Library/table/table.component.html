@@ -3,16 +3,30 @@
   [ngStyle]="scrollStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }"
 >
   <!-- Header -->
-  <ng-container *ngIf="globalSearch">
+  <ng-container *ngIf="globalSearchStatus">
     <ng-container *ngIf="header"
       ><div class="headerContainer">
         <h2 *ngIf="header">{{ header }}</h2>
-        <div><input class="input" type="text" placeholder="deneme" /></div></div
+        <div>
+          <input
+            class="input"
+            type="text"
+            placeholder="Search"
+            (change)="globalSearch($event)"
+          />
+        </div></div
     ></ng-container>
     <ng-container *ngIf="!header">
       <div class="headerContainer" style="justify-content: end">
         <h2 *ngIf="header">{{ header }}</h2>
-        <div><input class="input" type="text" placeholder="deneme" /></div>
+        <div>
+          <input
+            class="input"
+            type="text"
+            placeholder="Search"
+            (change)="globalSearch($event)"
+          />
+        </div>
       </div>
     </ng-container>
   </ng-container>
@@ -61,7 +75,7 @@
           </div>
         </th>
       </tr>
-      <tr *ngIf="filterFormStatus" class="header">
+      <tr *ngIf="filterFormStatus" class="filterHeader">
         <th *ngFor="let item of column">
           <div
             *ngIf="
@@ -77,28 +91,30 @@
                 class="input"
                 type="{{ item.filterType }}"
                 placeholder="deneme"
+                (change)="inputFilter($event, item.field)"
               />
             </ng-container>
             <ng-container *ngIf="item.filterType == 'number'">
               <input
                 class="input"
                 type="{{ item.filterType }}"
-                placeholder="deneme"
+                placeholder="0"
               />
             </ng-container>
             <ng-container *ngIf="item.filterType == 'dropdown'">
-              <!-- <div class="dropdownContainer">
-                <span>deneme</span>
+              <div class="dropdownContainer">
+                <div>
+                  <span>Seçiniz</span>
+                </div>
                 <ul class="dropdownList">
                   <li
                     *ngFor="let dropdownData of item.filterData"
-                    value="dropdownData.id"
+                    (click)="dropdownFilter(dropdownData, item.field)"
                   >
                     {{ dropdownData[item.field] }}
                   </li>
                 </ul>
-              </div> -->
-              
+              </div>
             </ng-container>
             <ng-container *ngIf="item.filterType == 'multiDropdown'">
             </ng-container>
@@ -107,7 +123,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of data">
+      <tr *ngFor="let data of localData">
         <td *ngFor="let col of column">
           <span
             class="responseHeader"
@@ -144,22 +160,25 @@
         <button
           class="iconButton"
           style="background-color: #334155; font-size: large"
+          (click)="paginationBefore()"
         >
           <i class="fa-solid fa-backward"></i>
         </button>
       </div>
-      <div>
+      <div *ngFor="let key of paginationList">
         <button
           class="iconButton"
           style="background-color: #334155; font-size: large"
+          (click)="paginationNumber(key)"
         >
-          1
+          {{ key }}
         </button>
       </div>
       <div>
         <button
           class="iconButton"
           style="background-color: #334155; font-size: large"
+          (click)="paginationAfter()"
         >
           <i class="fa-solid fa-forward"></i>
         </button>

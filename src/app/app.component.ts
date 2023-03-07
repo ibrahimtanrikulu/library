@@ -18,9 +18,18 @@ export class AppComponent {
   ];
 
   data: any[] = [
-    { id: 1, kod: 'urun1', aciklama: 'deneme 1', fiyat: 100 },
-    { id: 2, kod: 'urun2', aciklama: 'deneme 2', fiyat: 200 },
-    { id: 3, kod: 'urun3', aciklama: 'deneme 3', fiyat: 300 },
+    { id: 1, kod: 'urun', aciklama: 'deneme', fiyat: 100 },
+    { id: 2, kod: 'urun2', aciklama: 'araba', fiyat: 200 },
+    { id: 3, kod: 'urun3', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 4, kod: 'urun4', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 5, kod: 'urun5', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 6, kod: 'urun6', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 7, kod: 'urun7', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 8, kod: 'urun8', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
+    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
   ];
 
   col: TableType[] = [
@@ -29,7 +38,7 @@ export class AppComponent {
       header: 'numara',
       width: '5%',
       filter: true,
-      filterType: 'number',
+      filterType: 'text',
       filterHeaderOneIcon: 'fa-solid fa-sort',
     },
     {
