@@ -27,7 +27,7 @@ export class AppComponent {
     {
       field: 'id',
       header: 'numara',
-      width: '10%',
+      width: '5%',
       filter: true,
       filterType: 'number',
       filterHeaderOneIcon: 'fa-solid fa-sort',
@@ -35,7 +35,7 @@ export class AppComponent {
     {
       field: 'kod',
       header: 'kod',
-      width: '20%',
+      width: '25%',
       filter: true,
       filterType: 'dropdown',
       filterData: this.data,
@@ -45,7 +45,7 @@ export class AppComponent {
       header: 'aciklama',
       width: '50%',
       filter: true,
-      filterType: 'dropdown',
+      filterType: 'text',
       filterData: this.data,
     },
     { field: 'fiyat', header: 'fiyat', width: '10%', filter: true },

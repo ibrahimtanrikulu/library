@@ -30,7 +30,11 @@
           *ngFor="let item of column"
           [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
         >
-          <div *ngIf="item.field != ''" class="iconFilterContainer">
+          <div
+            *ngIf="item.field != ''"
+            class="iconFilterContainer"
+            (click)="headerFilter()"
+          >
             <span>{{ item.header }}</span>
             <button
               class="iconButton"
@@ -41,7 +45,6 @@
                   item.field == 'extra'
                 )
               "
-              (click)="headerFilter()"
             >
               <i
                 [ngClass]="
@@ -84,24 +87,20 @@
               />
             </ng-container>
             <ng-container *ngIf="item.filterType == 'dropdown'">
-              <li>
-                <p>seciniz</p>
-                <ul>
-                  <li><p>Burger King</p></li>
-                  <li><p>Southwest Airlines</p></li>
-                  <li><p>Levi Strauss</p></li>
+              <!-- <div class="dropdownContainer">
+                <span>deneme</span>
+                <ul class="dropdownList">
+                  <li
+                    *ngFor="let dropdownData of item.filterData"
+                    value="dropdownData.id"
+                  >
+                    {{ dropdownData[item.field] }}
+                  </li>
                 </ul>
-              </li>
+              </div> -->
+              
             </ng-container>
             <ng-container *ngIf="item.filterType == 'multiDropdown'">
-              <select>
-                <option
-                  *ngFor="let dropdownData of item.filterData"
-                  value="dropdownData.id"
-                >
-                  {{ dropdownData[item.field] }}
-                </option>
-              </select>
             </ng-container>
           </div>
         </th>

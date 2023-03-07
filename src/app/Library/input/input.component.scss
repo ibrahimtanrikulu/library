@@ -1,7 +1,7 @@
 .input {
   border-style: solid;
   font-size: 16px;
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 6px;
   color: #1e293b;
   background-color: #cccccc;
@@ -12,10 +12,7 @@
   -webkit-appearance: none;
   &:focus {
     outline: none;
-    background-color: #0c4a6e;
-    box-shadow: 0px 0px 5px 0px rgba(51, 65, 85, 0.73);
-    transition: 555ms;
-    color: #eeeeee;
+    border: 2px solid #1C64F2;
   }
   &:focus::placeholder {
     color: #eeeeee;
