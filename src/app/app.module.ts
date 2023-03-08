@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { ButtonComponent } from './Library/button/button.component';
 import { CardModule } from './Library/card/card.module';
 import { CheckboxComponent } from './Library/checkbox/checkbox.component';
 import { DialogModule } from './Library/dialog/dialog.module';
-import { InputComponent } from './Library/input/input.component';
-import { TableModule } from './Library/table/table.module'; 
+import { TableModule } from './Library/table/table.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +16,7 @@ import { TableModule } from './Library/table/table.module';
     CardModule,
     DialogModule,
     TableModule,
-    InputComponent
+    ButtonComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -22,7 +22,7 @@
   &:hover {
     transition: 855ms;
     transform: translateY(-0px);
-    background-color: #5D99BB;
+    background-color: #1c64f2;
     color: #1e293b;
   }
   &:active {
@@ -59,17 +59,17 @@
   font-family: sans-serif;
   -webkit-appearance: none;
   &:focus {
-    outline: none; 
+    outline: none;
     border: 2px solid #1c64f2;
     box-shadow: 0px 0px 5px 0px rgba(51, 65, 85, 0.73);
-    transition: 555ms; 
-  } 
+    transition: 555ms;
+  }
 }
 
 $container: #334155;
 $headerContainer: #131b2e;
 $hover: #1e293b;
-$buttonHover:#5D99BB;
+$buttonHover: #5d99bb;
 @mixin containerboxShodow {
   box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
     rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
