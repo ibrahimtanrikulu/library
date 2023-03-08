@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CardModule } from './Library/card/card.module';
 import { CheckboxComponent } from './Library/checkbox/checkbox.component';
 import { DialogModule } from './Library/dialog/dialog.module';
+import { InputComponent } from './Library/input/input.component';
 import { TableModule } from './Library/table/table.module'; 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { TableModule } from './Library/table/table.module';
     CardModule,
     DialogModule,
     TableModule,
+    InputComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

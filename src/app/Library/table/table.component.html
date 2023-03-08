@@ -47,7 +47,7 @@
           <div
             *ngIf="item.field != ''"
             class="iconFilterContainer"
-            (click)="headerFilter()"
+            (click)="alphabeticalOrder(item.field)"
           >
             <span>{{ item.header }}</span>
             <button
@@ -62,7 +62,7 @@
             >
               <i
                 [ngClass]="
-                  iconStatus
+                  filterIconStatus
                     ? item.filterHeaderOneIcon
                       ? item.filterHeaderOneIcon
                       : 'fa-solid fa-sort-down'
@@ -102,7 +102,7 @@
               />
             </ng-container>
             <ng-container *ngIf="item.filterType == 'dropdown'">
-              <div class="dropdownContainer">
+              <!-- <div class="dropdownContainer">
                 <div>
                   <span>Seçiniz</span>
                 </div>
@@ -114,7 +114,7 @@
                     {{ dropdownData[item.field] }}
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </ng-container>
             <ng-container *ngIf="item.filterType == 'multiDropdown'">
             </ng-container>
@@ -154,8 +154,8 @@
   </table>
 
   <!-- pagination -->
-  <ng-container *ngIf="paginationStatus"
-    ><div class="pagination">
+  <ng-container *ngIf="paginationStatus">
+    <div class="pagination">
       <div>
         <button
           class="iconButton"
@@ -182,6 +182,27 @@
         >
           <i class="fa-solid fa-forward"></i>
         </button>
-      </div></div
-  ></ng-container>
+      </div>
+      <div>
+        <div class="paginationContainer">
+          <div>
+            <span>{{paginationNumberText}}</span>
+          </div>
+          <ul class="paginationList">
+            <li (click)="paginationListNumber(5)">5</li>
+            <li (click)="paginationListNumber(10)">10</li>
+            <li (click)="paginationListNumber(20)">20</li>
+            <li (click)="paginationListNumber(30)">30</li>
+            <li (click)="paginationListNumber(40)">40</li>
+            <li (click)="paginationListNumber(50)">50</li>
+            <li (click)="paginationListNumber(60)">60</li>
+            <li (click)="paginationListNumber(70)">70</li>
+            <li (click)="paginationListNumber(80)">80</li>
+            <li (click)="paginationListNumber(90)">90</li>
+            <li (click)="paginationListNumber(100)">100</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>

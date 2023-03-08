@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -11,4 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class InputComponent {
   @Input() placeholder: string = '';
+  @Input() value: any;
+  @Input() formControlName = new FormControl();
+
+  @Output() open: EventEmitter<FormControl> = new EventEmitter();
+
+  
 }

@@ -1,4 +1,10 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { TableType } from '../Interface/TableType';
 
 @Component({
@@ -18,41 +24,21 @@ export class TableComponent implements OnInit {
   @Input() globalSearchStatus: boolean = false;
 
   //local variable
-  iconStatus: boolean = true;
-  localData: any[] = [];
-  filterText: string = '';
-  paginationList: number[] = [];
-  selected: any;
-  constructor() {}
 
+  localData: any[] = [];
+  constructor() {}
   ngOnInit() {
     this.localData = this.data;
-    this.setDefault();
-  }
-
-  setDefault() {
-    let value = 0;
-    let key = 0;
-    this.localData.map((m) => {
-      value++;
-      if (value % 5 == 0) {
-        key++;
-        this.paginationList.push(key);
-      }
-    });
+    this.paginationStatus ? this.paginationListNumber() : '';
   }
 
   //methods
 
   //filter
-  headerFilter() {
-    if (this.iconStatus) {
-      this.iconStatus = false;
-    } else {
-      this.iconStatus = true;
-    }
-  }
+  filterIconStatus: boolean = true;
+  filterText: string = '';
   globalSearch(e: any) {
+    this.paginationStatus ? this.paginationListNumber() : '';
     let value = e.target.value;
     if (value) {
       let result: any[] = [];
@@ -64,32 +50,91 @@ export class TableComponent implements OnInit {
         });
       });
       this.localData = result;
-    } else {
-      this.localData = this.data;
     }
   }
   inputFilter(event: any, filed: any) {
+    this.paginationStatus ? this.paginationListNumber() : '';
     if (event.target.value) {
       let result = this.localData.filter((m) => m[filed] == event.target.value);
       this.localData = result;
-    } else {
-      this.localData = this.data;
     }
   }
 
   dropdownFilter(data: any, field: any) {
+    this.paginationStatus ? this.paginationListNumber() : '';
     if (data) {
       let result = this.localData.filter((m) => m[field] == data[field]);
       this.localData = result;
-    } else {
-      this.localData = this.data;
     }
   }
 
-  //pagination
-  paginationBefore() {}
-  paginationNumber(key: number) {
-    console.log(key);
+  alphabeticalOrder(e: any) {
+    if (this.filterIconStatus) {
+      this.filterIconStatus = false;
+    } else {
+      this.filterIconStatus = true;
+    }
+    let ee: any[] = [];
+    this.localData.map((m) => {
+      ee.push(m[e]);
+    });
+    console.log(ee);
   }
-  paginationAfter() {}
+
+  //pagination
+  paginationList: number[] = [];
+  paginationNumberText: number = 10;
+  paginationKey: number = 1;
+  paginationBefore() {
+    if (this.paginationKey > 1) {
+      this.paginationKey--;
+      this.paginationNumber();
+    }
+  }
+  paginationListNumber(e?: number) {
+    e ? (this.paginationNumberText = e) : 10;
+    let value = 0;
+    let key = 0;
+    this.paginationList = [];
+    this.localData = this.data;
+    this.localData.map((m) => {
+      value++;
+      if (value % this.paginationNumberText == 0) {
+        key++;
+        this.paginationList.push(key);
+      }
+    });
+    if (!this.paginationList.length) {
+      this.paginationList.push(1);
+    }
+
+    this.paginationNumber();
+  }
+  paginationNumber(key: number = this.paginationKey) {
+    this.paginationKey = key;
+    this.localData = [];
+    let value: number = 0;
+    let array: any[] = [];
+    this.data.map((m) => {
+      value++;
+      if (value <= this.paginationNumberText) {
+        this.localData.push(m);
+      } else if (value > this.paginationNumberText) {
+        array.push(this.localData);
+        this.localData = [];
+        value = 0;
+      }
+    });
+
+    this.localData = array[key - 1];
+    if (this.paginationList.length == 1) {
+      this.localData = this.data;
+    }
+  }
+  paginationAfter() {
+    if (this.paginationList.length > this.paginationKey) {
+      this.paginationKey++;
+      this.paginationNumber();
+    }
+  }
 }
