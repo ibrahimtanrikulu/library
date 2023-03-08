@@ -22,6 +22,7 @@ export class TableComponent implements OnInit {
   localData: any[] = [];
   filterText: string = '';
   paginationList: number[] = [];
+  selected: any;
   constructor() {}
 
   ngOnInit() {
@@ -88,7 +89,7 @@ export class TableComponent implements OnInit {
   //pagination
   paginationBefore() {}
   paginationNumber(key: number) {
-    this.data.map()
+    console.log(key);
   }
   paginationAfter() {}
 }
