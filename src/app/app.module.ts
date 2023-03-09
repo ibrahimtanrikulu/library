@@ -7,9 +7,10 @@ import { CardModule } from './Library/card/card.module';
 import { CheckboxComponent } from './Library/checkbox/checkbox.component';
 import { DialogModule } from './Library/dialog/dialog.module';
 import { TableModule } from './Library/table/table.module';
+import { InputDirective } from './Directive/input.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, InputDirective],
   imports: [
     BrowserModule,
     CheckboxComponent,

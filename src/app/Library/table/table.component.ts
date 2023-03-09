@@ -28,8 +28,9 @@ export class TableComponent implements OnInit {
   localData: any[] = [];
   constructor() {}
   ngOnInit() {
-    this.localData = this.data;
-    this.paginationStatus ? this.paginationListNumber() : '';
+    this.paginationStatus
+      ? this.paginationListNumber()
+      : (this.localData = this.data);
   }
 
   //methods
@@ -38,7 +39,9 @@ export class TableComponent implements OnInit {
   filterIconStatus: boolean = true;
   filterText: string = '';
   globalSearch(e: any) {
-    this.paginationStatus ? this.paginationListNumber() : '';
+    this.paginationStatus
+      ? this.paginationListNumber()
+      : (this.localData = this.data);
     let value = e.target.value;
     if (value) {
       let result: any[] = [];
@@ -53,7 +56,9 @@ export class TableComponent implements OnInit {
     }
   }
   inputFilter(event: any, filed: any) {
-    this.paginationStatus ? this.paginationListNumber() : '';
+    this.paginationStatus
+      ? this.paginationListNumber()
+      : (this.localData = this.data);
     if (event.target.value) {
       let result = this.localData.filter((m) => m[filed] == event.target.value);
       this.localData = result;
@@ -61,7 +66,9 @@ export class TableComponent implements OnInit {
   }
 
   dropdownFilter(data: any, field: any) {
-    this.paginationStatus ? this.paginationListNumber() : '';
+    this.paginationStatus
+      ? this.paginationListNumber()
+      : (this.localData = this.data);
     if (data) {
       let result = this.localData.filter((m) => m[field] == data[field]);
       this.localData = result;
