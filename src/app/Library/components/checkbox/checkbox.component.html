@@ -2,29 +2,26 @@
   <div class="checkboxHeader">
     <h4>{{ checkboxHeader }}</h4>
     <div>
-      <button
+      <app-button
         *ngIf="!multiCheckbox && !selectedAllChecked"
-        class="button"
         (click)="selectedAll()"
+        icon="fa-solid fa-check"
       >
-        <i class="fa-solid fa-check"></i>
-      </button>
-      <button
+      </app-button>
+      <app-button
         *ngIf="!multiCheckbox && selectedAllChecked"
-        class="button"
         (click)="selectedAllRemoveList()"
+        icon="fa-solid fa-xmark"
       >
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+      </app-button>
       <ng-container *ngIf="!multiCheckbox">
-        <button
-          class="button"
+        <app-button
           (click)="reverse()"
           style="margin: 4px"
-          [disabled]="this.selectedList ? false : true"
+          [isDisabled]="this.selectedList ? false : true"
+          icon="fa-brands fa-rev"
         >
-          <i class="fa-brands fa-rev"></i>
-        </button>
+        </app-button>
       </ng-container>
     </div>
   </div>

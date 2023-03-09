@@ -1,22 +1,21 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
-import { TableType } from '../Interface/TableType';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CollumType } from '../../Interface/CollumType';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FormsModule, ButtonComponent],
 })
 export class TableComponent implements OnInit {
   //input
   @Input() header: string = '';
   @Input() data: any[] = [];
-  @Input() column: TableType[] = [];
+  @Input() column: CollumType[] = [];
   @Input() filterFormStatus: boolean = false;
   @Input() filterHeaderStatus: boolean = false;
   @Input() scrollStatus: boolean = false;
@@ -24,7 +23,6 @@ export class TableComponent implements OnInit {
   @Input() globalSearchStatus: boolean = false;
 
   //local variable
-
   localData: any[] = [];
   constructor() {}
   ngOnInit() {
@@ -32,8 +30,6 @@ export class TableComponent implements OnInit {
       ? this.paginationListNumber()
       : (this.localData = this.data);
   }
-
-  //methods
 
   //filter
   filterIconStatus: boolean = true;
@@ -85,7 +81,6 @@ export class TableComponent implements OnInit {
     this.localData.map((m) => {
       ee.push(m[e]);
     });
-    console.log(ee);
   }
 
   //pagination

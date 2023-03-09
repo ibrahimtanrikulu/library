@@ -3,9 +3,10 @@
   (click)="onClick()"
   [disabled]="isDisabled"
   [class]="class"
+  [style]="style"
 >
   <ng-container *ngIf="icon">
-    <i [class]="icon" style="margin-right: 6px;"></i>
+    <i [class]="icon" [style]="buttonText ? 'margin-right: 6px;' : ''"></i>
   </ng-container>
   <span>{{ buttonText }}</span>
 </button>

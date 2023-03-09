@@ -12,6 +12,7 @@ export class ButtonComponent {
   public buttonText = '';
   @Input() icon: string = '';
   @Input() type: string = 'button';
+  @Input() style: string = '';
   @Input() class: string = 'button';
   @Input() isDisabled = false;
   @Input()
@@ -22,11 +23,8 @@ export class ButtonComponent {
     return this.buttonText;
   }
   @Output() btnClick = new EventEmitter();
-
   constructor() {}
-
   onClick() {
-    
     this.btnClick.emit();
   }
 }

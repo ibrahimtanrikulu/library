@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="body">
+    <ng-container *ngIf="multiStatus">
+      <input
+        type="text"
+        [value]="list[0]"
+        class="input"
+        (click)="
+          dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
+        "
+      />
+    </ng-container>
+    <ng-container *ngIf="!multiStatus">
+      <input
+        type="text"
+        [value]="selected.text"
+        class="input"
+        (click)="
+          dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
+        "
+      />
+    </ng-container>
+
+    <div>
+      <i class="fa-solid fa-xmark" style="margin-right: 10px"></i>
+      <i
+        [ngClass]="
+          dropdownStatus ? 'fa-solid fa-up-long' : 'fa-solid fa-down-long'
+        "
+      ></i>
+    </div>
+  </div>
+  <ul *ngIf="dropdownStatus">
+    <li *ngFor="let item of data" (click)="change(item)">
+      {{ item.text }}
+    </li>
+  </ul>
+</div>

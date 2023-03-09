@@ -90,7 +90,7 @@ input[type="checkbox"] {
 }
 
 .checkboxHeader {
-  margin-top: 10px;
+  margin-top: 1%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -101,6 +101,11 @@ input[type="checkbox"] {
     margin: 1px;
     font-size: x-large;
     font-weight: 500;
+  }
+  div{
+    display: flex; 
+    align-items: center;
+    flex-direction: row;
   }
 }
 

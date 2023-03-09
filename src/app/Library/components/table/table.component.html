@@ -50,7 +50,7 @@
             (click)="alphabeticalOrder(item.field)"
           >
             <span>{{ item.header }}</span>
-            <button
+            <app-button
               class="iconButton"
               *ngIf="
                 !(
@@ -59,19 +59,17 @@
                   item.field == 'extra'
                 )
               "
-            >
-              <i
-                [ngClass]="
-                  filterIconStatus
+              [icon]="
+                filterIconStatus
+                  ? item.filterHeaderOneIcon
                     ? item.filterHeaderOneIcon
-                      ? item.filterHeaderOneIcon
-                      : 'fa-solid fa-sort-down'
-                    : item.filterHeaderTwoIcon
-                    ? item.filterHeaderTwoIcon
-                    : 'fa-solid fa-sort-up'
-                "
-              ></i>
-            </button>
+                    : 'fa-solid fa-sort-down'
+                  : item.filterHeaderTwoIcon
+                  ? item.filterHeaderTwoIcon
+                  : 'fa-solid fa-sort-up'
+              "
+            >
+            </app-button>
           </div>
         </th>
       </tr>
@@ -101,23 +99,10 @@
                 placeholder="0"
               />
             </ng-container>
-            <ng-container *ngIf="item.filterType == 'dropdown'">
-              <!-- <div class="dropdownContainer">
-                <div>
-                  <span>Seçiniz</span>
-                </div>
-                <ul class="dropdownList">
-                  <li
-                    *ngFor="let dropdownData of item.filterData"
-                    (click)="dropdownFilter(dropdownData, item.field)"
-                  >
-                    {{ dropdownData[item.field] }}
-                  </li>
-                </ul>
-              </div> -->
-            </ng-container>
-            <ng-container *ngIf="item.filterType == 'multiDropdown'">
-            </ng-container>
+            <ng-container *ngIf="item.filterType == 'dropdown'"></ng-container>
+            <ng-container
+              *ngIf="item.filterType == 'multiDropdown'"
+            ></ng-container>
           </div>
         </th>
       </tr>
@@ -139,13 +124,13 @@
               <p>{{ data[col.field] }}</p>
             </div>
             <div *ngIf="col.field == 'edit'">
-              <button class="button"><i class="fa-solid fa-pen"></i></button>
+              <app-button icon="fa-solid fa-pen"></app-button>
             </div>
             <div *ngIf="col.field == 'delete'">
-              <button class="button"><i class="fa-solid fa-trash"></i></button>
+              <app-button icon="fa-solid fa-trash"></app-button>
             </div>
             <div *ngIf="col.field == 'extra'">
-              <button class="button">ekstra</button>
+              <app-button label="Ekstra"></app-button>
             </div>
           </div>
         </td>
@@ -157,36 +142,36 @@
   <ng-container *ngIf="paginationStatus">
     <div class="pagination">
       <div>
-        <button
+        <app-button
           class="iconButton"
           style="background-color: #334155; font-size: large"
-          (click)="paginationBefore()"
+          (btnClick)="paginationBefore()"
+          icon="fa-solid fa-backward"
         >
-          <i class="fa-solid fa-backward"></i>
-        </button>
+        </app-button>
       </div>
       <div *ngFor="let key of paginationList">
-        <button
+        <app-button
           class="iconButton"
           style="background-color: #334155; font-size: large"
-          (click)="paginationNumber(key)"
+          (btnClick)="paginationNumber(key)"
+          label="{{ key }}"
         >
-          {{ key }}
-        </button>
+        </app-button>
       </div>
       <div>
-        <button
+        <app-button
           class="iconButton"
           style="background-color: #334155; font-size: large"
           (click)="paginationAfter()"
+          icon="fa-solid fa-forward"
         >
-          <i class="fa-solid fa-forward"></i>
-        </button>
+        </app-button>
       </div>
       <div>
         <div class="paginationContainer">
           <div>
-            <span>{{paginationNumberText}}</span>
+            <span>{{ paginationNumberText }}</span>
           </div>
           <ul class="paginationList">
             <li (click)="paginationListNumber(5)">5</li>

@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DataType } from '../Interface/DataType';
+import { DataType } from '../../Interface/DataType';
+import { ButtonComponent } from '../button/button.component'; 
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ButtonComponent],
 })
 export class CheckboxComponent implements OnInit {
   @Input() checkboxData: DataType[] = [];
@@ -60,7 +61,6 @@ export class CheckboxComponent implements OnInit {
       if (index == -1) {
         this.selectedList.push(m.value);
       } else if (index >= 0) {
-        
       }
     });
     this.selectedData.emit(this.selectedList);

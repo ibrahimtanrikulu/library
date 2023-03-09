@@ -18,12 +18,10 @@
           [paginationStatus]="true"
           [globalSearchStatus]="true"
         ></app-table>
-        
         <br /><br /><br />
-        <app-button
-          label="kaydet"
-          icon="fa-solid fa-mobile-retro"
-        ></app-button>
+        <div style="width: 50%">
+          <app-dropdown [data]="dropdownCol"></app-dropdown>
+        </div>
       </div>
     </app-card>
   </div>

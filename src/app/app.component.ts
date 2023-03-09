@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { CollumType } from './Library/Interface/CollumType';
 import { DataType } from './Library/Interface/DataType';
-import { TableType } from './Library/Interface/TableType';
 
 @Component({
   selector: 'app-root',
@@ -89,7 +89,7 @@ export class AppComponent {
     { id: 19999, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
   ];
 
-  col: TableType[] = [
+  col: CollumType[] = [
     {
       field: 'id',
       header: 'numara',
@@ -114,20 +114,31 @@ export class AppComponent {
       filterType: 'text',
       filterData: this.data,
     },
-    { field: 'fiyat', header: 'fiyat', width: '10%', filter: true },
+    { field: 'fiyat', header: 'fiyat', width: '10%', filter: false },
     { field: 'edit', header: 'Düzenle', width: '5%', filter: true },
     { field: 'delete', header: 'Sil', width: '5%', filter: true },
   ];
 
-  test = new FormControl('');
+  dropdownCol: DataType[] = [
+    { text: 'deneme', value: 1 },
+    { text: 'test', value: 2 },
+    { text: 'ibrrahim', value: 3 },
+  ];
+
+  constructor(private formBuilder: FormBuilder) {}
+  public PersonelForm!: FormGroup;
+
   inputDeneme(e: any) {
+    this.PersonelForm = this.formBuilder.group({
+      test: new FormControl(0),
+    });
     console.log(e);
   }
 
   karsila(e: any) {}
 
-  show: boolean = true;
+  show: boolean = false;
   tikla() {
-    this.show = true;
+    this.show ? (this.show = false) : (this.show = true);
   }
 }
