@@ -12,18 +12,35 @@ import { DataType } from '../../Interface/DataType';
 export class DropdownComponent {
   @Input() data: DataType[] = [];
   @Input() multiStatus: boolean = false;
-  @Input() SearchStatus: boolean = false;
-  @Output() selectedList: EventEmitter<any[]> = new EventEmitter();
+  @Input() searchStatus: boolean = false;
+  @Input() placeholder: string = '';
+  @Output() selectedList: EventEmitter<any[] | any> = new EventEmitter();
   list: DataType[] = [];
-  selected: DataType = { text: '', value: 0 };
+  selected?: DataType;
   dropdownStatus: boolean = false;
-  change(value: DataType = this.data[0]) {
+
+  change(value: DataType) {
     if (this.multiStatus) {
-      this.dropdownStatus = false;
+      console.log(value);
+      this.list.push(value);
+      console.log(this.list);
+      
+      const index = this.list.indexOf(value, 0);
+      if (index == -1) {
+        this.list.push(value);
+      } else if (index >= 0) {
+        this.list.splice(index, 1);
+      }
+      this.dropdownStatus = true;
+      this.selectedList.emit(this.list);
     } else {
       this.selected = value;
       this.dropdownStatus = false;
+      this.selectedList.emit(this.selected);
     }
-    this.selectedList.emit(this.list);
+  }
+  clear() {
+    this.list = [];
+    this.selected = { text: '', value: 0 };
   }
 }

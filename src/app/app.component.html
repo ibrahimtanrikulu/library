@@ -2,6 +2,14 @@
   <div>
     <app-card [cardHeader]="'card başlığı'">
       <div content>
+        <div style="width: 10%">
+          <app-dropdown
+            [data]="dropdownCol"
+            [multiStatus]="true"
+            placeholder="Seçiniz"
+          ></app-dropdown>
+        </div>
+        <br /><br /><br />
         <app-checkbox
           [checkboxData]="value"
           checkboxHeader="bu deneme datası"
@@ -18,10 +26,6 @@
           [paginationStatus]="true"
           [globalSearchStatus]="true"
         ></app-table>
-        <br /><br /><br />
-        <div style="width: 50%">
-          <app-dropdown [data]="dropdownCol"></app-dropdown>
-        </div>
       </div>
     </app-card>
   </div>

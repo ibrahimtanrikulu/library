@@ -2,8 +2,9 @@
   <div class="body">
     <ng-container *ngIf="multiStatus">
       <input
+        [placeholder]="placeholder"
         type="text"
-        [value]="list[0]"
+        [value]="'Seçiniz'"
         class="input"
         (click)="
           dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
@@ -12,8 +13,9 @@
     </ng-container>
     <ng-container *ngIf="!multiStatus">
       <input
+        [placeholder]="placeholder"
         type="text"
-        [value]="selected.text"
+        [value]="selected?.text"
         class="input"
         (click)="
           dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
@@ -22,8 +24,15 @@
     </ng-container>
 
     <div>
-      <i class="fa-solid fa-xmark" style="margin-right: 10px"></i>
       <i
+        class="fa-solid fa-xmark"
+        style="margin-right: 10px"
+        (click)="clear()"
+      ></i>
+      <i
+        (click)="
+          dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
+        "
         [ngClass]="
           dropdownStatus ? 'fa-solid fa-up-long' : 'fa-solid fa-down-long'
         "
@@ -31,8 +40,20 @@
     </div>
   </div>
   <ul *ngIf="dropdownStatus">
-    <li *ngFor="let item of data" (click)="change(item)">
-      {{ item.text }}
-    </li>
+    <ng-container *ngIf="multiStatus">
+      <div *ngFor="let item of data" (click)="change(item)">
+        <input type="checkbox" [checked]="list.indexOf(item, 0) > 0" />
+        <li>
+          {{ item.text }}
+        </li>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!multiStatus">
+      <div *ngFor="let item of data" (click)="change(item)">
+        <li>
+          {{ item.text }}
+        </li>
+      </div>
+    </ng-container>
   </ul>
 </div>
