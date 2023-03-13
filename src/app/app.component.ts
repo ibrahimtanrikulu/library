@@ -89,6 +89,12 @@ export class AppComponent {
     { id: 19999, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
   ];
 
+  dropdownCol: DataType[] = [
+    { text: 'urun2', value: 1 },
+    { text: 'test', value: 2 },
+    { text: 'ibrrahim', value: 3 },
+  ];
+
   col: CollumType[] = [
     {
       field: 'id',
@@ -104,7 +110,7 @@ export class AppComponent {
       width: '25%',
       filter: true,
       filterType: 'dropdown',
-      filterData: this.data,
+      filterData: this.dropdownCol,
     },
     {
       field: 'aciklama',
@@ -112,17 +118,10 @@ export class AppComponent {
       width: '50%',
       filter: true,
       filterType: 'text',
-      filterData: this.data,
     },
     { field: 'fiyat', header: 'fiyat', width: '10%', filter: false },
     { field: 'edit', header: 'Düzenle', width: '5%', filter: true },
     { field: 'delete', header: 'Sil', width: '5%', filter: true },
-  ];
-
-  dropdownCol: DataType[] = [
-    { text: 'deneme', value: 1 },
-    { text: 'test', value: 2 },
-    { text: 'ibrrahim', value: 3 },
   ];
 
   constructor(private formBuilder: FormBuilder) {}

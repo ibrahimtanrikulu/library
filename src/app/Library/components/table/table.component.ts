@@ -3,13 +3,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CollumType } from '../../Interface/CollumType';
 import { ButtonComponent } from '../button/button.component';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { DataType } from '../../Interface/DataType';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, FormsModule, ButtonComponent, DropdownComponent],
 })
 export class TableComponent implements OnInit {
   //input
@@ -65,8 +67,14 @@ export class TableComponent implements OnInit {
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
+
     if (data) {
-      let result = this.localData.filter((m) => m[field] == data[field]);
+      let result = this.localData.filter((m) => {
+        m[field] == data[0].text;
+        console.log(m[field], data[0].text);
+      });
+      console.log(result);
+
       this.localData = result;
     }
   }

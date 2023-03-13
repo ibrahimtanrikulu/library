@@ -50,26 +50,6 @@
             (click)="alphabeticalOrder(item.field)"
           >
             <span>{{ item.header }}</span>
-            <app-button
-              class="iconButton"
-              *ngIf="
-                !(
-                  item.field == 'edit' ||
-                  item.field == 'delete' ||
-                  item.field == 'extra'
-                )
-              "
-              [icon]="
-                filterIconStatus
-                  ? item.filterHeaderOneIcon
-                    ? item.filterHeaderOneIcon
-                    : 'fa-solid fa-sort-down'
-                  : item.filterHeaderTwoIcon
-                  ? item.filterHeaderTwoIcon
-                  : 'fa-solid fa-sort-up'
-              "
-            >
-            </app-button>
           </div>
         </th>
       </tr>
@@ -88,7 +68,6 @@
               <input
                 class="input"
                 type="{{ item.filterType }}"
-                placeholder="deneme"
                 (change)="inputFilter($event, item.field)"
               />
             </ng-container>
@@ -99,10 +78,15 @@
                 placeholder="0"
               />
             </ng-container>
-            <ng-container *ngIf="item.filterType == 'dropdown'"></ng-container>
-            <ng-container
-              *ngIf="item.filterType == 'multiDropdown'"
-            ></ng-container>
+            <ng-container *ngIf="item.filterType == 'dropdown'">
+              <app-dropdown
+                [data]="item.filterData"
+                [multiStatus]="false"
+                placeholder="Seçiniz"
+                [searchStatus]="true"
+                (selectedList)="dropdownFilter($event, item.field)"
+              ></app-dropdown>
+            </ng-container>
           </div>
         </th>
       </tr>

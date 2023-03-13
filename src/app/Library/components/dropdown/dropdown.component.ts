@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataType } from '../../Interface/DataType';
 
 @Component({
@@ -9,38 +9,61 @@ import { DataType } from '../../Interface/DataType';
   standalone: true,
   imports: [CommonModule],
 })
-export class DropdownComponent {
+export class DropdownComponent implements OnInit {
   @Input() data: DataType[] = [];
   @Input() multiStatus: boolean = false;
   @Input() searchStatus: boolean = false;
   @Input() placeholder: string = '';
-  @Output() selectedList: EventEmitter<any[] | any> = new EventEmitter();
-  list: DataType[] = [];
-  selected?: DataType;
-  dropdownStatus: boolean = false;
+  @Output() selectedList: EventEmitter<any[]> = new EventEmitter();
 
+  list: DataType[] = [];
+  dropdownStatus: boolean = false;
+  localData: DataType[] = [];
+  text: string = '';
+
+  constructor() {}
+  ngOnInit() {
+    this.localData = this.data;
+  }
   change(value: DataType) {
     if (this.multiStatus) {
-      console.log(value);
-      this.list.push(value);
-      console.log(this.list);
-      
       const index = this.list.indexOf(value, 0);
       if (index == -1) {
         this.list.push(value);
       } else if (index >= 0) {
         this.list.splice(index, 1);
       }
-      this.dropdownStatus = true;
       this.selectedList.emit(this.list);
+      this.list.map((m) => {
+        this.text += m.text + ',';
+      });
+      this.localData = this.data;
     } else {
-      this.selected = value;
+      this.list = [];
+      this.list.push(value);
       this.dropdownStatus = false;
-      this.selectedList.emit(this.selected);
+      this.selectedList.emit(this.list);
+      this.localData = this.data;
     }
   }
   clear() {
     this.list = [];
-    this.selected = { text: '', value: 0 };
+    this.localData = this.data;
+    this.text = '';
+  }
+  search(e: any) {
+    let value = e.target.value;
+    if (value) {
+      let result: any[] = [];
+      this.data.filter((f) => {
+        if (f.text == value) {
+          result.push(f);
+        } else {
+        }
+      });
+      this.localData = result;
+    } else {
+      this.localData = this.data;
+    }
   }
 }

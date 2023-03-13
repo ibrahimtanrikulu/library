@@ -2,11 +2,12 @@
   <div>
     <app-card [cardHeader]="'card başlığı'">
       <div content>
-        <div style="width: 10%">
+        <div style="width: 20%">
           <app-dropdown
             [data]="dropdownCol"
             [multiStatus]="true"
             placeholder="Seçiniz"
+            [searchStatus]="true"
           ></app-dropdown>
         </div>
         <br /><br /><br />
