@@ -4,7 +4,7 @@
       [placeholder]="placeholder"
       type="text"
       class="input"
-      [value]="multiStatus ? text : list[0]?.text"
+      [value]="multiStatus ? text : list[0] ? list[0].text : ''"
       (click)="
         dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
       "
@@ -38,7 +38,7 @@
         *ngFor="let item of localData"
         (click)="change(item)"
       >
-        <input type="checkbox" [checked]="list.indexOf(item, 0) > 0" />
+        <input type="checkbox" [checked]="list.indexOf(item, 0) >= 0" />
         <li>
           {{ item.text }}
         </li>

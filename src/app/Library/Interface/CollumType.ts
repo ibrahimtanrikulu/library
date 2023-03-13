@@ -5,6 +5,7 @@ export interface CollumType {
   filter?: boolean;
   filterType?: any;
   filterData?: any | any[];
+  filterPlaceholder?: string;
   filterHeaderOneIcon?: string;
   filterHeaderTwoIcon?: string;
 }

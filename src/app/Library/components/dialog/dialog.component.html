@@ -1,4 +1,9 @@
-<div *ngIf="dialogShow" class="modal">
-    <div class="header"><h3>{{ dialogHeader }}</h3></div>
+<div *ngIf="show" class="modal" [ngStyle]="{ width: width, height: height }">
+  <div class="header">
+    <h3>{{ header }}</h3>
+    <i class="fa-solid fa-xmark" (click)="show = false"></i>
+  </div>
+  <div class="content">
     <ng-content select="[content]"></ng-content>
+  </div>
 </div>

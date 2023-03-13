@@ -67,6 +67,7 @@
             <ng-container *ngIf="item.filterType == 'text'">
               <input
                 class="input"
+                placeholder="{{ item.filterPlaceholder }}"
                 type="{{ item.filterType }}"
                 (change)="inputFilter($event, item.field)"
               />
@@ -74,6 +75,7 @@
             <ng-container *ngIf="item.filterType == 'number'">
               <input
                 class="input"
+                placeholder="{{ item.filterPlaceholder }}"
                 type="{{ item.filterType }}"
                 placeholder="0"
               />
@@ -82,8 +84,17 @@
               <app-dropdown
                 [data]="item.filterData"
                 [multiStatus]="false"
-                placeholder="Seçiniz"
                 [searchStatus]="true"
+                placeholder="{{ item.filterPlaceholder }}"
+                (selectedList)="dropdownFilter($event, item.field)"
+              ></app-dropdown>
+            </ng-container>
+            <ng-container *ngIf="item.filterType == 'multiDropdown'">
+              <app-dropdown
+                [data]="item.filterData"
+                [multiStatus]="true"
+                [searchStatus]="true"
+                placeholder="{{ item.filterPlaceholder }}"
                 (selectedList)="dropdownFilter($event, item.field)"
               ></app-dropdown>
             </ng-container>

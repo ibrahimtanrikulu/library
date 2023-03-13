@@ -63,19 +63,25 @@ export class TableComponent implements OnInit {
     }
   }
 
-  dropdownFilter(data: any, field: any) {
+  dropdownFilter(data: DataType[], field: any) {
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
 
-    if (data) {
-      let result = this.localData.filter((m) => {
-        m[field] == data[0].text;
-        console.log(m[field], data[0].text);
+    if (data.length > 0) {
+      let result: any[] = [];
+      this.localData.map((m) => {
+        data.map((value) => {
+          if (m[field] == value.text) {
+            result.push(m);
+          }
+        });
       });
-      console.log(result);
-
       this.localData = result;
+    } else if (data.length == 0) {
+      this.paginationStatus
+        ? this.paginationListNumber()
+        : (this.localData = this.data);
     }
   }
 

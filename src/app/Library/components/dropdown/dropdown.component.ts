@@ -14,7 +14,7 @@ export class DropdownComponent implements OnInit {
   @Input() multiStatus: boolean = false;
   @Input() searchStatus: boolean = false;
   @Input() placeholder: string = '';
-  @Output() selectedList: EventEmitter<any[]> = new EventEmitter();
+  @Output() selectedList: EventEmitter<DataType[]> = new EventEmitter();
 
   list: DataType[] = [];
   dropdownStatus: boolean = false;
@@ -27,13 +27,16 @@ export class DropdownComponent implements OnInit {
   }
   change(value: DataType) {
     if (this.multiStatus) {
-      const index = this.list.indexOf(value, 0);
+      let index = this.list.indexOf(value, 0);
+      console.log(index);
+      
       if (index == -1) {
         this.list.push(value);
       } else if (index >= 0) {
         this.list.splice(index, 1);
       }
       this.selectedList.emit(this.list);
+      this.text = '';
       this.list.map((m) => {
         this.text += m.text + ',';
       });
@@ -50,6 +53,7 @@ export class DropdownComponent implements OnInit {
     this.list = [];
     this.localData = this.data;
     this.text = '';
+    this.selectedList.emit(this.list);
   }
   search(e: any) {
     let value = e.target.value;

@@ -1,13 +1,13 @@
-<div style="height: 100vh; padding: 1%">
+<!-- <div style="height: 100vh; padding: 1%">
   <div>
     <app-card [cardHeader]="'card başlığı'">
       <div content>
         <div style="width: 20%">
           <app-dropdown
             [data]="dropdownCol"
-            [multiStatus]="true"
-            placeholder="Seçiniz"
+            [multiStatus]="false"
             [searchStatus]="true"
+            (selectedList)="dropdownMethod($event)"
           ></app-dropdown>
         </div>
         <br /><br /><br />
@@ -30,4 +30,11 @@
       </div>
     </app-card>
   </div>
-</div>
+</div> -->
+
+<app-button class="button" (click)="tikla()" label="tikla"></app-button>
+<p style="color: black; font-size: xx-large">{{ show }}</p>
+
+<app-dialog [header]="'Bu deneme Dialogu'" [show]="show"
+  ><div content>deneme</div></app-dialog
+>

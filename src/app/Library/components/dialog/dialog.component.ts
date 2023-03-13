@@ -9,6 +9,8 @@ import { Component, Input } from '@angular/core';
   imports: [CommonModule],
 })
 export class DialogComponent {
-  @Input() dialogHeader: string = '';
-  @Input() dialogShow: boolean = false;
+  @Input() header: string = '';
+  @Input() show: boolean = false;
+  @Input() width: string = '25%';
+  @Input() height: string = '25%';
 }

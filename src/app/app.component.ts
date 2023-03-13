@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FilterTypeEnum } from './Library/Enum/CollumTypeEnum';
 import { CollumType } from './Library/Interface/CollumType';
 import { DataType } from './Library/Interface/DataType';
 
@@ -91,7 +92,7 @@ export class AppComponent {
 
   dropdownCol: DataType[] = [
     { text: 'urun2', value: 1 },
-    { text: 'test', value: 2 },
+    { text: 'urun4', value: 2 },
     { text: 'ibrrahim', value: 3 },
   ];
 
@@ -101,7 +102,7 @@ export class AppComponent {
       header: 'numara',
       width: '5%',
       filter: true,
-      filterType: 'text',
+      filterType: FilterTypeEnum.text,
       filterHeaderOneIcon: 'fa-solid fa-sort',
     },
     {
@@ -109,8 +110,9 @@ export class AppComponent {
       header: 'kod',
       width: '25%',
       filter: true,
-      filterType: 'dropdown',
+      filterType: FilterTypeEnum.multiDropdown,
       filterData: this.dropdownCol,
+      filterPlaceholder: 'seç',
     },
     {
       field: 'aciklama',
@@ -139,5 +141,9 @@ export class AppComponent {
   show: boolean = false;
   tikla() {
     this.show ? (this.show = false) : (this.show = true);
+  }
+
+  dropdownMethod(e: any) {
+    console.log(e);
   }
 }
