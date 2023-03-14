@@ -1,4 +1,11 @@
-<!-- <div style="height: 100vh; padding: 1%">
+<app-button class="button" (click)="tikla()" label="tikla"></app-button>
+<p style="color: black; font-size: xx-large">{{ show }}</p>
+
+<app-dialog [header]="'Bu deneme Dialogu'" width="40%" [show]="show"
+  ><div content>deneme</div></app-dialog
+>
+
+<div style="height: 100vh; padding: 1%">
   <div>
     <app-card [cardHeader]="'card başlığı'">
       <div content>
@@ -25,16 +32,10 @@
           [scrollStatus]="true"
           [header]="'Cek tahsilat'"
           [paginationStatus]="true"
-          [globalSearchStatus]="true"
+          [globalSearchStatus]="true" 
         ></app-table>
       </div>
     </app-card>
   </div>
-</div> -->
+</div>
 
-<app-button class="button" (click)="tikla()" label="tikla"></app-button>
-<p style="color: black; font-size: xx-large">{{ show }}</p>
-
-<app-dialog [header]="'Bu deneme Dialogu'" [show]="show"
-  ><div content>deneme</div></app-dialog
->

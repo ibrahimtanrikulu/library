@@ -1,0 +1,7 @@
+--table--
+1-number filter
+2-global filter 
+3-sayfalama sorunu
+4-alfabetik ve numerik sıralama
+
+--

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { FilterTypeEnum } from './Library/Enum/CollumTypeEnum';
-import { CollumType } from './Library/Interface/CollumType';
 import { DataType } from './Library/Interface/DataType';
+import { IColumnType } from './Library/Interface/CollumType';
+import { FilterTypeEnum } from './Library/Enum/FilterTypeEnum';
 
 @Component({
   selector: 'app-root',
@@ -93,10 +93,10 @@ export class AppComponent {
   dropdownCol: DataType[] = [
     { text: 'urun2', value: 1 },
     { text: 'urun4', value: 2 },
-    { text: 'ibrrahim', value: 3 },
+    { text: 'urun8', value: 3 },
   ];
 
-  col: CollumType[] = [
+  col: IColumnType[] = [
     {
       field: 'id',
       header: 'numara',
@@ -119,9 +119,15 @@ export class AppComponent {
       header: 'aciklama',
       width: '50%',
       filter: true,
-      filterType: 'text',
+      filterType: FilterTypeEnum.text,
     },
-    { field: 'fiyat', header: 'fiyat', width: '10%', filter: false },
+    {
+      field: 'fiyat',
+      header: 'fiyat',
+      width: '10%',
+      filter: true,
+      filterType: FilterTypeEnum.text,
+    },
     { field: 'edit', header: 'Düzenle', width: '5%', filter: true },
     { field: 'delete', header: 'Sil', width: '5%', filter: true },
   ];

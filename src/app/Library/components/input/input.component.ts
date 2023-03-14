@@ -11,10 +11,8 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 })
 export class InputComponent {
   @Input() placeholder: string = '';
-  @Input() value: any;
+  @Input() value: string = '';
   @Input() formControlName = new FormControl();
 
-  @Output() open: EventEmitter<FormControl> = new EventEmitter();
-
-  
+  @Output() formControl: EventEmitter<FormControl> = new EventEmitter();
 }

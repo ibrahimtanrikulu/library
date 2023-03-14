@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CollumType } from '../../Interface/CollumType';
 import { ButtonComponent } from '../button/button.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { DataType } from '../../Interface/DataType';
+import { IColumnType } from '../../Interface/CollumType';
 
 @Component({
   selector: 'app-table',
@@ -17,7 +17,7 @@ export class TableComponent implements OnInit {
   //input
   @Input() header: string = '';
   @Input() data: any[] = [];
-  @Input() column: CollumType[] = [];
+  @Input() column: IColumnType[] = [];
   @Input() filterFormStatus: boolean = false;
   @Input() filterHeaderStatus: boolean = false;
   @Input() scrollStatus: boolean = false;
@@ -54,11 +54,13 @@ export class TableComponent implements OnInit {
     }
   }
   inputFilter(event: any, filed: any) {
+    let value = event.target.value;
+
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
-    if (event.target.value) {
-      let result = this.localData.filter((m) => m[filed] == event.target.value);
+    if (value) {
+      let result = this.localData.filter((m) => m[filed].includes(value));
       this.localData = result;
     }
   }

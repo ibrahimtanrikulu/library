@@ -1,6 +1,6 @@
 export enum FilterTypeEnum {
   text = 'text',
-  number = 'number',
+  // number = 'number',
   dropdown = 'dropdown',
   multiDropdown = 'multiDropdown',
   
