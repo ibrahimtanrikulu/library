@@ -23,9 +23,9 @@ import { DropdownComponent } from './Library/components/dropdown/dropdown.compon
     InputComponent,
     FormsModule,
     ReactiveFormsModule,
-    DropdownComponent,
+    DropdownComponent
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

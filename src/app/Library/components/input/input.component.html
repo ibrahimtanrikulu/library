@@ -1,7 +1,2 @@
-<input
-  class="input"
-  type="text"
-  [value]="value"
-  placeholder="{{ placeholder }}"
-  formControlName="formControlName"
-/>
+<input class="input" type="text" [value]="value" placeholder="{{ placeholder }}" formControlName="control"
+  (change)="change()" />

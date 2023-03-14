@@ -132,17 +132,17 @@ export class AppComponent {
     { field: 'delete', header: 'Sil', width: '5%', filter: true },
   ];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+    this.PersonelForm = this.formBuilder.group({
+      test: new FormControl(""),
+    });
+  }
   public PersonelForm!: FormGroup;
 
   inputDeneme(e: any) {
-    this.PersonelForm = this.formBuilder.group({
-      test: new FormControl(0),
-    });
-    console.log(e);
   }
 
-  karsila(e: any) {}
+  karsila(e: any) { }
 
   show: boolean = false;
   tikla() {
