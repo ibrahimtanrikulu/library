@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataType } from './Library/Interface/DataType';
 import { IColumnType } from './Library/Interface/CollumType';
 import { FilterTypeEnum } from './Library/Enum/FilterTypeEnum';
@@ -134,11 +134,18 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl(""),
+      test: new FormControl("")
     });
   }
+
+
   public PersonelForm!: FormGroup;
 
+  get test() {
+    console.log(this.PersonelForm.get('test'));
+
+    return this.PersonelForm.get('test');
+  }
   inputDeneme(e: any) {
   }
 

@@ -1,2 +1,1 @@
-<input class="input" type="text" [value]="value" placeholder="{{ placeholder }}" formControlName="control"
-  (change)="change()" />
+<input type="text" class="input" [(ngModel)]='test' (blur)="touched($event)" placeholder="Try me">
