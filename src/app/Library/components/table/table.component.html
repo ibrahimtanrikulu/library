@@ -1,6 +1,6 @@
 <div
   class="container"
-  [ngStyle]="scrollStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }"
+  [ngStyle]="scrollWidthStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }"
 >
   <!-- Header -->
   <ng-container *ngIf="globalSearchStatus">
@@ -12,7 +12,7 @@
             class="input"
             type="text"
             placeholder="Search"
-            (change)="globalSearch($event)"
+            (keyup)="globalSearch($event)"
           />
         </div></div
     ></ng-container>
@@ -24,7 +24,7 @@
             class="input"
             type="text"
             placeholder="Search"
-            (change)="globalSearch($event)"
+            (keyup)="globalSearch($event)"
           />
         </div>
       </div>
@@ -38,7 +38,7 @@
   <hr>
   <!-- Header -->
 
-  <table>
+  <table >
     <!-- THead -->
     <thead>
       <tr class="header">

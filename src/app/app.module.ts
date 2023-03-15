@@ -10,6 +10,8 @@ import { DialogComponent } from './Library/components/dialog/dialog.component';
 import { TableComponent } from './Library/components/table/table.component';
 import { InputComponent } from './Library/components/input/input.component';
 import { DropdownComponent } from './Library/components/dropdown/dropdown.component';
+import { ListboxComponent } from './Library/components/listbox/listbox.component';
+import { ToastComponent } from './Library/components/toast/toast.component';
 
 @NgModule({
   declarations: [AppComponent, InputDirective],
@@ -23,7 +25,9 @@ import { DropdownComponent } from './Library/components/dropdown/dropdown.compon
     InputComponent,
     FormsModule,
     ReactiveFormsModule,
-    DropdownComponent
+    DropdownComponent,
+    ListboxComponent,
+    ToastComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

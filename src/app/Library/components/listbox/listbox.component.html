@@ -1,0 +1,15 @@
+<ul [style.height]="ListBoxScrollHeight"
+    [ngStyle]="ListBoxScrollHeightStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }">
+    <ng-container *ngIf="searchStatus">
+        <div class="searchContainer">
+            <input type="text" class="input" (keyup)="search($event)" />
+            <div><i class="fas fa-search"></i></div>
+        </div>
+    </ng-container>
+    <div class="ulContainer" *ngFor="let item of localData" (click)="change(item)">
+        <input type="checkbox" [checked]="list.indexOf(item, 0) >= 0" />
+        <li>
+            {{ item.text }}
+        </li>
+    </div>
+</ul>

@@ -1,31 +1,20 @@
 <div class="container">
   <div class="body">
-    <input
-      [placeholder]="placeholder"
-      type="text"
-      class="input"
-      [value]="multiStatus ? text : list[0] ? list[0].text : ''"
-      (click)="
+    <input [placeholder]="placeholder" type="text" class="input"
+      [value]="multiStatus ? text : list[0] ? list[0].text : ''" (click)="
         dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
-      "
-    />
+      " />
     <div>
-      <i
-        class="fa-solid fa-xmark"
-        style="margin-right: 10px"
-        (click)="clear()"
-      ></i>
-      <i
-        (click)="
+      <i class="fa-solid fa-xmark" style="margin-right: 10px" (click)="clear()"></i>
+      <i (click)="
           dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
-        "
-        [ngClass]="
+        " [ngClass]="
           dropdownStatus ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'
-        "
-      ></i>
+        "></i>
     </div>
   </div>
-  <ul *ngIf="dropdownStatus">
+  <ul *ngIf="dropdownStatus" [style.height]="DropdownScrollHeight" 
+    [ngStyle]="DropdownScrollHeightStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }">
     <ng-container *ngIf="searchStatus">
       <div class="searchContainer">
         <input type="text" class="input" (keyup)="search($event)" />
@@ -33,11 +22,7 @@
       </div>
     </ng-container>
     <ng-container *ngIf="multiStatus">
-      <div
-        class="ulContainer"
-        *ngFor="let item of localData"
-        (click)="change(item)"
-      >
+      <div class="ulContainer" *ngFor="let item of localData" (click)="change(item)">
         <input type="checkbox" [checked]="list.indexOf(item, 0) >= 0" />
         <li>
           {{ item.text }}
@@ -45,11 +30,7 @@
       </div>
     </ng-container>
     <ng-container *ngIf="!multiStatus">
-      <div
-        class="ulContainer"
-        *ngFor="let item of localData"
-        (click)="change(item)"
-      >
+      <div class="ulContainer" *ngFor="let item of localData" (click)="change(item)">
         <li>
           {{ item.text }}
         </li>

@@ -13,6 +13,8 @@ export class DropdownComponent implements OnInit {
   @Input() data: DataType[] = [];
   @Input() multiStatus: boolean = false;
   @Input() searchStatus: boolean = false;
+  @Input() DropdownScrollHeightStatus: boolean = false;
+  @Input() DropdownScrollHeight: string = "100%";
   @Input() placeholder: string = '';
   @Output() selectedList: EventEmitter<DataType[]> = new EventEmitter();
 
@@ -21,7 +23,7 @@ export class DropdownComponent implements OnInit {
   localData: DataType[] = [];
   text: string = '';
 
-  constructor() {}
+  constructor() { }
   ngOnInit() {
     this.localData = this.data;
   }

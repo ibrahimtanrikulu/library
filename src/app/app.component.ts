@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { DataType } from './Library/Interface/DataType';
 import { IColumnType } from './Library/Interface/CollumType';
 import { FilterTypeEnum } from './Library/Enum/FilterTypeEnum';
+import { MessageType } from './Library/Interface/messageType';
+import { MessageEnum } from './Library/Enum/messageEnum';
 
 @Component({
   selector: 'app-root',
@@ -151,8 +153,12 @@ export class AppComponent {
 
   karsila(e: any) { }
 
+  message: MessageType = new MessageType()
   show: boolean = false;
   tikla() {
+    this.message.detail = "dsadsadas";
+    this.message.header = "Deneme";
+    this.message.status = MessageEnum.error;
     this.show ? (this.show = false) : (this.show = true);
   }
 

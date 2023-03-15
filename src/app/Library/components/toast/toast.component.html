@@ -1,0 +1,52 @@
+<ng-container *ngIf="show && message.status == 'success'">
+    <div class="container" style="background-color: #E5F8F0;">
+        <div class="line" style="background-color: green;"></div>
+        <div class="icon">
+            <i class="fa-solid fa-check" style="color: green;"></i>
+        </div>
+        <div class="content">
+            <h3 style="color: green;">{{message.header}}</h3>
+            <p style="color: green;">{{message.detail}}</p>
+        </div>
+        <div class="close"><i class="fa-solid fa-xmark" style="color: green;" (click)="show = false"></i></div>
+    </div>
+</ng-container>
+<ng-container *ngIf="show && message.status == 'info'">
+    <div class="container" style="background-color: #E9EAFE;">
+        <div class="line" style="background-color: #7D80FE;"></div>
+        <div class="icon">
+            <i class="fa-solid fa-info" style="color: #7D80FE;"></i>
+        </div>
+        <div class="content">
+            <h3 style="color: #7D80FE;">{{message.header}}</h3>
+            <p style="color: #7D80FE;">{{message.detail}}</p>
+        </div>
+        <div class="close"><i class="fa-solid fa-xmark" style="color: #7D80FE;" (click)="show = false"></i></div>
+    </div>
+</ng-container>
+<ng-container *ngIf="show && message.status == 'warning'">
+    <div class="container" style="background-color: #FDF2E4;">
+        <div class="line" style="background-color: #F59E0B;"></div>
+        <div class="icon">
+            <i class="fa-solid fa-triangle-exclamation" style="color: #F59E0B;"></i>
+        </div>
+        <div class="content">
+            <h3 style="color: #F59E0B;">{{message.header}}</h3>
+            <p style="color: #F59E0B;">{{message.detail}}</p>
+        </div>
+        <div class="close"><i class="fa-solid fa-xmark" style="color: #F59E0B;" (click)="show = false"></i></div>
+    </div>
+</ng-container>
+<ng-container *ngIf="show && message.status == 'error'">
+    <div class="container" style="background-color: #FDE8E7;">
+        <div class="line" style="background-color: #EF4444;"></div>
+        <div class="icon">
+            <i class="fa-solid fa-xmark" style="color: #EF4444;"></i>
+        </div>
+        <div class="content">
+            <h3 style="color: #EF4444;">{{message.header}}</h3>
+            <p style="color: #EF4444;">{{message.detail}}</p>
+        </div>
+        <div class="close"><i class="fa-solid fa-xmark" style="color: #EF4444;" (click)="show = false"></i></div>
+    </div>
+</ng-container>

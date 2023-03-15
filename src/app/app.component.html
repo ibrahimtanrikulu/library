@@ -1,32 +1,37 @@
-<!-- <div class="grid">
-  <div class="col-6">
-    <app-button class="button" (click)="tikla()" label="tikla"></app-button>
-  </div>
-</div>
-<app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
-</app-dialog> -->
-
 <div style="height: 100vh; padding: 1%">
-  <app-table
+  <!-- <div class="grid">
+    <div class="col-4">
+      <app-listbox [data]="dropdownCol" [searchStatus]="true" (selectedList)="dropdownMethod($event)"></app-listbox>
+    </div>
+  </div> -->
+  <!-- <div class="grid">
+    <div class="col-6">
+      <app-button class="button" (click)="tikla()" label="tikla"></app-button>
+    </div>
+  </div>
+  <app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
+  </app-dialog> -->
+  <!-- <div style="width: 40%">
+    <app-dropdown
+      [data]="dropdownCol"
+      [multiStatus]="false"
+      [searchStatus]="true" 
+      (selectedList)="dropdownMethod($event)"
+    ></app-dropdown>
+  </div> -->
+  <!-- <app-table
     [column]="col"
     [data]="data"
     [filterFormStatus]="true"
-    [scrollStatus]="true"
+    [scrollWidthStatus]="true"
     [header]="'Cek tahsilat'"
     [paginationStatus]="true"
-    [globalSearchStatus]="true"
-  ></app-table>
+    [globalSearchStatus]="true" 
+  ></app-table> -->
 
   <!-- <app-card [header]="'card başlığı'">
     <div content>
-      <div style="width: 20%">
-        <app-dropdown
-          [data]="dropdownCol"
-          [multiStatus]="false"
-          [searchStatus]="true"
-          (selectedList)="dropdownMethod($event)"
-        ></app-dropdown>
-      </div>
+      
       <br /><br /><br />
 
       <br /><br /><br />
@@ -39,4 +44,12 @@
     [multiCheckbox]="false"
     (selectedData)="karsila($event)"
   ></app-checkbox> -->
+
+  <div class="grid">
+    <div class="col-2">
+      <app-button class="button" (click)="tikla()" label="tikla"></app-button>
+    </div>
+  </div>
 </div>
+
+<app-toast [message]="message" [show]="show"></app-toast>

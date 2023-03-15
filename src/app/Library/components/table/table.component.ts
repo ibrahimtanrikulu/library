@@ -20,13 +20,15 @@ export class TableComponent implements OnInit {
   @Input() column: IColumnType[] = [];
   @Input() filterFormStatus: boolean = false;
   @Input() filterHeaderStatus: boolean = false;
-  @Input() scrollStatus: boolean = false;
+  @Input() scrollWidthStatus: boolean = false;
+  @Input() scrollHeightStatus: boolean = false;
+  @Input() scrollHeight: string = "";
   @Input() paginationStatus: boolean = false;
   @Input() globalSearchStatus: boolean = false;
 
   //local variable
   localData: any[] = [];
-  constructor() {}
+  constructor() { }
   ngOnInit() {
     this.paginationStatus
       ? this.paginationListNumber()
@@ -43,13 +45,20 @@ export class TableComponent implements OnInit {
     let value = e.target.value;
     if (value) {
       let result: any[] = [];
-      this.localData.filter((f) => {
-        this.column.map((m) => {
+      this.localData.filter((f: any[]) => {
+        this.column.map((m : any) => {
           if (f[m.field] == value) {
             result.push(f);
           }
         });
       });
+
+      //ÇÖZ
+      // let result: any[] = [];
+      // this.column.map((m: IColumnType) => {
+      //   result.push(this.localData.filter((f) => f[m.field].includes(value)))
+      // })
+      //let result = this.data.filter((m) => m.text.includes(value));
       this.localData = result;
     }
   }
