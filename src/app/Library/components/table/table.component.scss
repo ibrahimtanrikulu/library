@@ -1,37 +1,44 @@
 .container {
   background-color: #334155;
   border: 1px solid #334155;
-  border-radius: 12px;
-  padding: 0.4%;
+  border-radius: 8px;
+  width: 100%;
   box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
     rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
 
   .headerContainer {
-    background-color: #131b2e;
-    margin-bottom: 2vh;
-    border-radius: 12px;
-    padding: 0.4vw 1vw;
-    display: flex;
     flex-wrap: wrap;
-    width: auto;
+    width: 100%;
+    display: flex;
     justify-content: space-between;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 0.8% 1.4%;
+    background-color: #1e293b;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
     h2 {
       font-size: x-large;
       font-weight: 500;
     }
   }
+  hr {
+    display: block;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 0;
+    padding: 0;
+  }
 
   .pagination {
-    margin-top: 1vh;
-    border-radius: 12px;
-    padding: 0.2vw;
+    border-radius: 8px;
+    padding: 0.2%;
     text-align: center;
-    width: auto;
+    width: 100%;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
@@ -46,9 +53,10 @@ table {
   .header {
     text-align: left;
     background-color: #131b2e;
+    border-bottom: 2px solid #000000;
     th {
       text-transform: capitalize;
-      padding: 0.2% 1vw;
+      padding: 0.4% 1%;
       font-size: large;
       border-bottom: 2px solid #000000;
       .iconFilterContainer {
@@ -56,11 +64,6 @@ table {
         flex-wrap: nowrap;
         justify-content: start;
         cursor: pointer;
-      }
-      div {
-        input {
-          width: 100%;
-        }
       }
     }
   }
@@ -70,7 +73,7 @@ table {
     background-color: #131b2e;
     th {
       text-transform: capitalize;
-      padding: 0.2% 1vw;
+      padding: 0.2% 1%;
       font-size: large;
       border-bottom: 2px solid #000000;
       .iconFilterContainer {
@@ -78,11 +81,6 @@ table {
         flex-wrap: nowrap;
         justify-content: start;
         cursor: pointer;
-      }
-      div {
-        input {
-          width: 100%;
-        }
       }
     }
   }
@@ -96,11 +94,11 @@ table {
         text-align: left;
         padding: 0.2vw 1vw;
         font-size: medium;
-        border-bottom: 1px solid #1e293b;
+        border-bottom: 1px solid #131b2e;
       }
       &:hover {
-        background-color: #1e293b;
-        transition-duration: 1s;
+        background-color: #131b2e;
+        transition-duration: 0.8s;
       }
     }
   }
@@ -117,13 +115,14 @@ table {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+  text-align: center;
   border-radius: 4px;
-  margin-left: 5px;
+  padding: 4% 0%;
   div {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-
+    text-align: center;
     span {
       padding: 4px;
       font-size: medium;
@@ -207,15 +206,17 @@ table {
     tbody {
       tr {
         border: 1px solid #131b2e;
+        padding-top: 0.8%;
         td {
           border: none;
-          padding-bottom: 0.8%;
+          padding-bottom: 1.6%;
           display: flex;
           span {
             flex: 1;
+            color: whitesmoke;
           }
           div {
-            flex: 3;
+            flex: 2;
             width: 100%;
             button {
               width: 100%;

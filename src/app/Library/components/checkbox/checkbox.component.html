@@ -26,15 +26,20 @@
     </div>
   </div>
   <hr />
-  <div class="checkboxInput">
-    <span class="checkboxSpan" *ngFor="let item of checkboxData">
-      <input
-        id="{{ item.value }}"
-        type="checkbox"
-        (click)="selection(item.value)"
-        [checked]="this.selectedList.indexOf(item.value) >= 0 ? true : false"
-      />
-      <label for="{{ item.value }}">{{ item.text }}</label>
-    </span>
+  <div class="checkboxInput grid">
+    <div
+      *ngFor="let item of checkboxData"
+      class="col-6 col-sm-4 col-md-3 col-lg-1"
+    >
+      <span class="checkboxSpan">
+        <input
+          id="{{ item.value }}"
+          type="checkbox"
+          (click)="selection(item.value)"
+          [checked]="this.selectedList.indexOf(item.value) >= 0 ? true : false"
+        />
+        <label for="{{ item.value }}">{{ item.text }}</label>
+      </span>
+    </div>
   </div>
 </div>

@@ -2,30 +2,25 @@
   font-size: 16px;
   width: 100%;
   color: #eeeeee;
-  background-color: #131b2e;
+  background-color: #1c64f2;
   padding: 5px 20px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
     rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
     rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-  border-radius: 12px;
+  border-radius: 8px;
   transition: 555ms;
   transform: translateY(0);
-  border: 1px solid #131b2e;
-  text-transform: capitalize;
+  border: 0.5px solid #1e293b;
+  text-transform: capitalize; 
   align-items: center;
   cursor: pointer;
   &:hover {
     transition: 855ms;
     transform: translateY(-0px);
-    background-color: #1c64f2;
+    background-color: #1e293b;
     color: #eeeeee;
   }
   &:active {
     transform: scale(0.8, 0.8);
   }
-  // &:focus {
-  //   transition: 1000ms;
-  //   color: #eeeeee;
-  //   background-color: #1c64f2;
-  // }
 }

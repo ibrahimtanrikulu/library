@@ -1,6 +1,9 @@
 <div class="container">
   <div class="header">
-    <h3>{{ cardHeader }}</h3>
+    <h3>{{ header }}</h3>
   </div>
-  <ng-content select="[content]"></ng-content>
+  <hr />
+  <div class="body">
+    <ng-content></ng-content>
+  </div>
 </div>

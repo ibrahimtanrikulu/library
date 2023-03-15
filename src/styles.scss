@@ -1,7 +1,7 @@
 @import "app/reset.scss";
 @import "app/grid.scss";
 * {
-  color: #eeeeee;
+  color: #EEEEEE;
   box-sizing: border-box;
   font-size: 14px;
   font-family: serif;
@@ -25,14 +25,14 @@
   border-style: solid;
   font-size: 16px;
   border-radius: 4px;
-  padding: 6px;
+  padding: 4px;
   width: 100%;
   color: #1e293b;
   background-color: whitesmoke;
   border-color: #1e293b;
   font-weight: normal;
   font-style: none;
-  font-family: sans-serif;
+  font-family: sans-serif; 
   -webkit-appearance: none;
   &:focus {
     outline: none;

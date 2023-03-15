@@ -28,7 +28,7 @@
   <ul *ngIf="dropdownStatus">
     <ng-container *ngIf="searchStatus">
       <div class="searchContainer">
-        <input type="text" class="input" (change)="search($event)" />
+        <input type="text" class="input" (keyup)="search($event)" />
         <div><i class="fas fa-search"></i></div>
       </div>
     </ng-container>

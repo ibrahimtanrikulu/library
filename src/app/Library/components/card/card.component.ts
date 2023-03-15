@@ -9,5 +9,5 @@ import { Component, Input } from '@angular/core';
   imports: [CommonModule],
 })
 export class CardComponent {
-  @Input() cardHeader: string = '';
+  @Input() header: string = '';
 }

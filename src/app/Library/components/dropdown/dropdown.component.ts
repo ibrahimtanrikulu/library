@@ -29,7 +29,7 @@ export class DropdownComponent implements OnInit {
     if (this.multiStatus) {
       let index = this.list.indexOf(value, 0);
       console.log(index);
-      
+
       if (index == -1) {
         this.list.push(value);
       } else if (index >= 0) {
@@ -58,13 +58,7 @@ export class DropdownComponent implements OnInit {
   search(e: any) {
     let value = e.target.value;
     if (value) {
-      let result: any[] = [];
-      this.data.filter((f) => {
-        if (f.text == value) {
-          result.push(f);
-        } else {
-        }
-      });
+      let result = this.data.filter((m) => m.text.includes(value));
       this.localData = result;
     } else {
       this.localData = this.data;

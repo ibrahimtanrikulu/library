@@ -3,30 +3,40 @@
     <app-button class="button" (click)="tikla()" label="tikla"></app-button>
   </div>
 </div>
-
-<div style="height: 100vh; padding: 1%">
-  <div>
-    <app-card [cardHeader]="'card başlığı'">
-      <div content>
-        <div style="width: 20%">
-          <app-dropdown [data]="dropdownCol" [multiStatus]="false" [searchStatus]="true"
-            (selectedList)="dropdownMethod($event)"></app-dropdown>
-        </div>
-        <br /><br /><br />
-        <app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"
-          (selectedData)="karsila($event)"></app-checkbox>
-        <br /><br /><br />
-        <app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollStatus]="true"
-          [header]="'Cek tahsilat'" [paginationStatus]="true" [globalSearchStatus]="true"></app-table>
-      </div>
-    </app-card>
-  </div>
-</div>
-
-<app-dialog [header]="'Bu deneme Dialogu'" width="40%" [show]="show">
-  <div content>deneme</div>
+<app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
 </app-dialog> -->
 
-<form [formGroup]="PersonelForm"> 
-  <app-input formControlName="test"></app-input>
-</form> 
+<div style="height: 100vh; padding: 1%">
+  <app-table
+    [column]="col"
+    [data]="data"
+    [filterFormStatus]="true"
+    [scrollStatus]="true"
+    [header]="'Cek tahsilat'"
+    [paginationStatus]="true"
+    [globalSearchStatus]="true"
+  ></app-table>
+
+  <!-- <app-card [header]="'card başlığı'">
+    <div content>
+      <div style="width: 20%">
+        <app-dropdown
+          [data]="dropdownCol"
+          [multiStatus]="false"
+          [searchStatus]="true"
+          (selectedList)="dropdownMethod($event)"
+        ></app-dropdown>
+      </div>
+      <br /><br /><br />
+
+      <br /><br /><br />
+    </div>
+  </app-card> -->
+
+  <!-- <app-checkbox
+    [checkboxData]="value"
+    checkboxHeader="bu deneme datası"
+    [multiCheckbox]="false"
+    (selectedData)="karsila($event)"
+  ></app-checkbox> -->
+</div>
