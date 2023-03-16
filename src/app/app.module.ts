@@ -15,7 +15,7 @@ import { ToastComponent } from './Library/components/toast/toast.component';
 import { TabviewComponent } from './Library/components/tabview/tabview.component';
 
 @NgModule({
-  declarations: [AppComponent, InputDirective, TabviewComponent],
+  declarations: [AppComponent, InputDirective],
   imports: [
     BrowserModule,
     CheckboxComponent,
@@ -28,7 +28,8 @@ import { TabviewComponent } from './Library/components/tabview/tabview.component
     ReactiveFormsModule,
     DropdownComponent,
     ListboxComponent,
-    ToastComponent
+    ToastComponent,
+    TabviewComponent
   ],
   providers: [],
   bootstrap: [AppComponent],
