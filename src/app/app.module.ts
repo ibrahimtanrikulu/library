@@ -12,9 +12,10 @@ import { InputComponent } from './Library/components/input/input.component';
 import { DropdownComponent } from './Library/components/dropdown/dropdown.component';
 import { ListboxComponent } from './Library/components/listbox/listbox.component';
 import { ToastComponent } from './Library/components/toast/toast.component';
+import { TabviewComponent } from './Library/components/tabview/tabview.component';
 
 @NgModule({
-  declarations: [AppComponent, InputDirective],
+  declarations: [AppComponent, InputDirective, TabviewComponent],
   imports: [
     BrowserModule,
     CheckboxComponent,

@@ -1,55 +1,54 @@
 <div style="height: 100vh; padding: 1%">
   <!-- <div class="grid">
     <div class="col-4">
-      <app-listbox [data]="dropdownCol" [searchStatus]="true" (selectedList)="dropdownMethod($event)"></app-listbox>
+      <app-listbox
+        [data]="dropdownCol"
+        [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"
+      ></app-listbox>
     </div>
-  </div> -->
-  <!-- <div class="grid">
+  </div>
+  <div class="grid">
     <div class="col-6">
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
     </div>
   </div>
   <app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
-  </app-dialog> -->
-  <!-- <div style="width: 40%">
+  </app-dialog>
+  <div style="width: 40%">
     <app-dropdown
       [data]="dropdownCol"
       [multiStatus]="false"
-      [searchStatus]="true" 
+      [searchStatus]="true"
       (selectedList)="dropdownMethod($event)"
     ></app-dropdown>
-  </div> -->
-  <!-- <app-table
+  </div>
+  <app-table
     [column]="col"
     [data]="data"
     [filterFormStatus]="true"
     [scrollWidthStatus]="true"
     [header]="'Cek tahsilat'"
     [paginationStatus]="true"
-    [globalSearchStatus]="true" 
-  ></app-table> -->
+    [globalSearchStatus]="true"
+  ></app-table>
 
-  <!-- <app-card [header]="'card başlığı'">
-    <div content>
-      
-      <br /><br /><br />
+  <app-card [header]="'card başlığı'">
+    <div content></div>
+  </app-card>
 
-      <br /><br /><br />
-    </div>
-  </app-card> -->
-
-  <!-- <app-checkbox
+  <app-checkbox
     [checkboxData]="value"
     checkboxHeader="bu deneme datası"
     [multiCheckbox]="false"
     (selectedData)="karsila($event)"
-  ></app-checkbox> -->
+  ></app-checkbox>
 
   <div class="grid">
     <div class="col-2">
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
     </div>
   </div>
+  <app-toast [message]="message" [show]="show"></app-toast> 
+  <app-input></app-input>-->
 </div>
-
-<app-toast [message]="message" [show]="show"></app-toast>
