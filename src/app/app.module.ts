@@ -13,6 +13,7 @@ import { DropdownComponent } from './Library/components/dropdown/dropdown.compon
 import { ListboxComponent } from './Library/components/listbox/listbox.component';
 import { ToastComponent } from './Library/components/toast/toast.component';
 import { TabviewComponent } from './Library/components/tabview/tabview.component';
+import { TabComponent } from './Library/components/tabview/tab/tab.component';
 
 @NgModule({
   declarations: [AppComponent, InputDirective],
@@ -29,7 +30,8 @@ import { TabviewComponent } from './Library/components/tabview/tabview.component
     DropdownComponent,
     ListboxComponent,
     ToastComponent,
-    TabviewComponent
+    TabviewComponent,
+    TabComponent
   ],
   providers: [],
   bootstrap: [AppComponent],
