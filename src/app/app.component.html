@@ -1,11 +1,7 @@
 <div style="height: 100vh; padding: 1%">
   <!-- <div class="grid">
     <div class="col-4">
-      <app-listbox
-        [data]="dropdownCol"
-        [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)"
-      ></app-listbox>
+      
     </div>
   </div>
   <div class="grid">
@@ -23,26 +19,13 @@
       (selectedList)="dropdownMethod($event)"
     ></app-dropdown>
   </div>
-  <app-table
-    [column]="col"
-    [data]="data"
-    [filterFormStatus]="true"
-    [scrollWidthStatus]="true"
-    [header]="'Cek tahsilat'"
-    [paginationStatus]="true"
-    [globalSearchStatus]="true"
-  ></app-table>
+  
 
   <app-card [header]="'card başlığı'">
     <div content></div>
   </app-card>
 
-  <app-checkbox
-    [checkboxData]="value"
-    checkboxHeader="bu deneme datası"
-    [multiCheckbox]="false"
-    (selectedData)="karsila($event)"
-  ></app-checkbox>
+  
 
   <div class="grid">
     <div class="col-2">
@@ -50,10 +33,18 @@
     </div>
   </div>
   <app-toast [message]="message" [show]="show"></app-toast> 
-  <app-input></app-input>-->
+  
+  
   <app-tabview>
-    <app-tab tabTitle="bir">bir</app-tab>
-    <app-tab tabTitle="iki">iki</app-tab>
-    <app-tab tabTitle="uc">uc</app-tab>
-  </app-tabview>
+    <app-tab tabTitle="bir"><app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası"
+        [multiCheckbox]="false" (selectedData)="karsila($event)"></app-checkbox></app-tab>
+    <app-tab tabTitle="iki"><app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true"
+        [header]="'Cek tahsilat'" [paginationStatus]="true" [globalSearchStatus]="true"></app-table></app-tab>
+    <app-tab tabTitle="uc"><app-listbox [data]="dropdownCol" [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
+  </app-tabview>-->
+  <form [formGroup]="PersonelForm">
+    <app-input formControlName="test"></app-input>
+  </form>
+
 </div>
