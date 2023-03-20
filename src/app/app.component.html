@@ -43,8 +43,11 @@
     <app-tab tabTitle="uc"><app-listbox [data]="dropdownCol" [searchStatus]="true"
         (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
   </app-tabview>-->
+
   <form [formGroup]="PersonelForm">
-    <app-input formControlName="test" ></app-input>
+    <app-input formControlName="test" placeholder="aa" type="text"></app-input> <br><br><br>
+    <app-input formControlName="deneme" placeholder="aa" type="number"></app-input> <br><br><br>
+    <app-input formControlName="textarea" placeholder="aa" type="textarea"></app-input>  <br><br><br>
   </form>
   <button (click)="button()">deneem</button>
 

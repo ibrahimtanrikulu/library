@@ -16,41 +16,34 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  selector: 'app-inputnumber',
+  templateUrl: './inputnumber.component.html',
+  styleUrls: ['./inputnumber.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule]
 })
-export class InputComponent implements ControlValueAccessor, OnInit {
+export class InputnumberComponent implements ControlValueAccessor, OnInit {
   @Input() placeholder: string = "";
-  @Input() type: string = ""
   group = new UntypedFormGroup({
-    input: new UntypedFormControl(''),
+    input: new UntypedFormControl(0),
   });
   touched: boolean = false;
   private ngControl: NgControl;
-
-  _value: any;
-
-  get value(): any {
+  _value: number = 0;
+  get value(): number {
     return this._value;
   }
-
   @Input()
-  set value(value: any) {
+  set value(value: number) {
     this._value = value;
     this.input.setValue(value, { emitEvent: false });
   }
-
-  _disabled: any = false;
-
-  get disabled(): any {
+  _disabled: boolean = false;
+  get disabled(): boolean {
     return this._disabled;
   }
-
   @Input()
-  set disabled(disabled: any) {
+  set disabled(disabled: boolean) {
     this._disabled = disabled;
     if (disabled) {
       this.input.disable();
@@ -58,18 +51,15 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.input.enable();
     }
   }
-
   get input() {
     return this.group.get('input') as UntypedFormControl;
   }
-
   constructor(@Optional() @Self() ngControl: NgControl) {
     this.ngControl = ngControl;
     if (this.ngControl) {
       this.ngControl.valueAccessor = this;
     }
   }
-
   ngOnInit(): void {
     if (this.ngControl !== null) {
       this.ngControl.control?.statusChanges.subscribe((status) => {
@@ -82,11 +72,9 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     } else {
     }
   }
-
   onTouched = () => {
   };
-
-  writeValue(value: any): void {
+  writeValue(value: number): void {
     this.input.setValue(value, { emitEvent: false });
   }
 

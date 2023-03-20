@@ -14,9 +14,12 @@ import { ListboxComponent } from './Library/components/listbox/listbox.component
 import { ToastComponent } from './Library/components/toast/toast.component';
 import { TabviewComponent } from './Library/components/tabview/tabview.component';
 import { TabComponent } from './Library/components/tabview/tab/tab.component';
+import { InputnumberComponent } from './Library/components/inputnumber/inputnumber.component';
+import { TextareaComponent } from './Library/components/textarea/textarea.component'; 
+import { InputMaskComponent } from './Library/components/inputmask/inputmask.component';
 
 @NgModule({
-  declarations: [AppComponent, InputDirective],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     CheckboxComponent,
@@ -31,7 +34,11 @@ import { TabComponent } from './Library/components/tabview/tab/tab.component';
     ListboxComponent,
     ToastComponent,
     TabviewComponent,
-    TabComponent
+    TabComponent,
+    InputnumberComponent,
+    InputDirective,
+    TextareaComponent,
+    InputMaskComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

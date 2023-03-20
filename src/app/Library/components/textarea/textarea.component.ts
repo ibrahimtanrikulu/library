@@ -16,41 +16,40 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
+  selector: 'app-textarea',
+  templateUrl: './textarea.component.html',
+  styleUrls: ['./textarea.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule]
 })
-export class InputComponent implements ControlValueAccessor, OnInit {
+export class TextareaComponent implements ControlValueAccessor, OnInit {
   @Input() placeholder: string = "";
-  @Input() type: string = ""
   group = new UntypedFormGroup({
     input: new UntypedFormControl(''),
   });
   touched: boolean = false;
   private ngControl: NgControl;
 
-  _value: any;
+  _value: string = '';
 
-  get value(): any {
+  get value(): string {
     return this._value;
   }
 
   @Input()
-  set value(value: any) {
+  set value(value: string) {
     this._value = value;
     this.input.setValue(value, { emitEvent: false });
   }
 
-  _disabled: any = false;
+  _disabled: boolean = false;
 
-  get disabled(): any {
+  get disabled(): boolean {
     return this._disabled;
   }
 
   @Input()
-  set disabled(disabled: any) {
+  set disabled(disabled: boolean) {
     this._disabled = disabled;
     if (disabled) {
       this.input.disable();
@@ -86,7 +85,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   onTouched = () => {
   };
 
-  writeValue(value: any): void {
+  writeValue(value: string): void {
     this.input.setValue(value, { emitEvent: false });
   }
 

@@ -138,18 +138,18 @@ export class AppComponent {
     { field: 'edit', header: 'Düzenle', width: '5%', filter: true },
     { field: 'delete', header: 'Sil', width: '5%', filter: true },
   ];
-
+  public PersonelForm!: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl('dsadsadsa', [Validators.required]),
+      test: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.maxLength(4)]),
+      deneme: new FormControl({ value: 0, disabled: false }, [Validators.required]),
+      textarea: new FormControl(""),
+      dogru: new FormControl(false),
+      dogruiki: new FormControl(false),
     });
   }
-
-  public PersonelForm!: FormGroup;
-  inputDeneme(e: any) {}
-
   button() {
-    console.log(this.PersonelForm.value, 'dsadsa');
+    console.log(this.PersonelForm);
   }
 
   message: MessageType = new MessageType();
