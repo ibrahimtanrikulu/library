@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { DataType } from './Library/Interface/DataType';
 import { IColumnType } from './Library/Interface/CollumType';
 import { FilterTypeEnum } from './Library/Enum/FilterTypeEnum';
@@ -136,28 +141,22 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl("")
+      test: new FormControl('dsadsadsa', [Validators.required]),
     });
   }
 
-
   public PersonelForm!: FormGroup;
+  inputDeneme(e: any) {}
 
-  get test() {
-    console.log(this.PersonelForm.get('test'));
-
-    return this.PersonelForm.get('test');
-  }
-  inputDeneme(e: any) {
+  button() {
+    console.log(this.PersonelForm.value, 'dsadsa');
   }
 
-  karsila(e: any) { }
-
-  message: MessageType = new MessageType()
+  message: MessageType = new MessageType();
   show: boolean = false;
   tikla() {
-    this.message.detail = "dsadsadas";
-    this.message.header = "Deneme";
+    this.message.detail = 'dsadsadas';
+    this.message.header = 'Deneme';
     this.message.status = MessageEnum.error;
     this.show ? (this.show = false) : (this.show = true);
   }
