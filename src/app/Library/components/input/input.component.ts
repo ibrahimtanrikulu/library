@@ -1,11 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  OnInit,
-  Self,
-  Optional,
-} from '@angular/core';
+import { Component, Input, OnInit, Self, Optional } from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
@@ -23,8 +17,10 @@ import {
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
 })
 export class InputComponent implements ControlValueAccessor, OnInit {
-  @Input() placeholder: string = "";
-  @Input() type: string = ""
+  @Input() placeholder: string = '';
+  @Input() type: string = '';
+  @Input() inputNumberMax: any;
+  @Input() inputNumberMin: any;
   group = new UntypedFormGroup({
     input: new UntypedFormControl(''),
   });
@@ -83,8 +79,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  onTouched = () => {
-  };
+  onTouched = () => {};
 
   writeValue(value: any): void {
     this.input.setValue(value, { emitEvent: false });
@@ -115,5 +110,5 @@ export class InputComponent implements ControlValueAccessor, OnInit {
       this.input.enable();
     }
   }
-
 }
+

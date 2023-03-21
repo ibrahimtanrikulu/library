@@ -1,5 +1,5 @@
 <div style="height: 100vh; padding: 1%">
-  <!-- <div class="grid">
+  <div class="grid">
     <div class="col-4">
       
     </div>
@@ -19,13 +19,10 @@
       (selectedList)="dropdownMethod($event)"
     ></app-dropdown>
   </div>
-  
-
+   
   <app-card [header]="'card başlığı'">
     <div content></div>
   </app-card>
-
-  
 
   <div class="grid">
     <div class="col-2">
@@ -37,18 +34,40 @@
   
   <app-tabview>
     <app-tab tabTitle="bir"><app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası"
-        [multiCheckbox]="false" (selectedData)="karsila($event)"></app-checkbox></app-tab>
+        [multiCheckbox]="false"  ></app-checkbox></app-tab>
     <app-tab tabTitle="iki"><app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true"
         [header]="'Cek tahsilat'" [paginationStatus]="true" [globalSearchStatus]="true"></app-table></app-tab>
     <app-tab tabTitle="uc"><app-listbox [data]="dropdownCol" [searchStatus]="true"
         (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
-  </app-tabview>-->
+  </app-tabview>
 
   <form [formGroup]="PersonelForm">
-    <app-input formControlName="test" placeholder="aa" type="text"></app-input> <br><br><br>
-    <app-input formControlName="deneme" placeholder="aa" type="number"></app-input> <br><br><br>
-    <app-input formControlName="textarea" placeholder="aa" type="textarea"></app-input>  <br><br><br>
+    <app-input
+      formControlName="test"
+      placeholder="isim soyad"
+      type="text"
+    ></app-input>
+    <br /><br /><br />
+    <app-input
+      formControlName="deneme"
+      type="number"
+      placeholder="telefon numarası"
+    ></app-input>
+    <br /><br /><br />
+    <app-input
+      formControlName="textarea"
+      placeholder="açıklama"
+      type="textarea"
+    ></app-input>
+    <br /><br /><br />
+    <app-input formControlName="dogru" type="checkbox"></app-input>
+    <label style="color: black; font-size: x-large">deneme</label>
+    <br /><br /><br />
+    <app-input
+      formControlName="password"
+      placeholder="Şifre"
+      type="password"
+    ></app-input>
   </form>
   <button (click)="button()">deneem</button>
-
 </div>

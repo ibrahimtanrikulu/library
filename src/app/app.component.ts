@@ -146,6 +146,7 @@ export class AppComponent {
       textarea: new FormControl(""),
       dogru: new FormControl(false),
       dogruiki: new FormControl(false),
+      password: new FormControl(""),
     });
   }
   button() {
