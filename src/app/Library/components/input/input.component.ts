@@ -21,6 +21,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() type: string = '';
   @Input() inputNumberMax: any;
   @Input() inputNumberMin: any;
+  @Input() textAreaRows: any;
   group = new UntypedFormGroup({
     input: new UntypedFormControl(''),
   });
@@ -79,7 +80,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  onTouched = () => {};
+  onTouched = () => { };
 
   writeValue(value: any): void {
     this.input.setValue(value, { emitEvent: false });

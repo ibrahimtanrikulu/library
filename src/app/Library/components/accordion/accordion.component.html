@@ -1,0 +1,15 @@
+<div class="container">
+    <!-- <ul class="tabView grid">
+      <li *ngFor="let tab of tabs" class="tabViewHeader col-1" [ngClass]="{ a: tab.active === true }"
+        (click)="selectTab(tab)">
+        {{ tab.tabTitle }}
+      </li>
+    </ul> -->
+    <div class="tabView" (click)="open()">
+        <span class="tabViewHeader">
+            {{ header }}</span>
+    </div> 
+    <div class="body" *ngIf="show">
+        <ng-content></ng-content>
+    </div>
+</div>

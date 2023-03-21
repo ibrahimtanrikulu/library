@@ -1,77 +1,47 @@
 <span [formGroup]="group">
   <ng-container *ngIf="type === 'text'">
     <div class="form__group field">
-      <input
-        class="form__field"
-        id="{{ placeholder }}"
-        formControlName="input"
-        placeholder="{{ placeholder }}"
-        ngDefaultControl
-        type="text"
-      />
+      <input class="form__field" id="{{ placeholder }}" formControlName="input" placeholder="{{ placeholder }}"
+        ngDefaultControl type="text" />
       <label for="{{ placeholder }}" class="form__label">{{
         placeholder
-      }}</label>
+        }}</label>
     </div>
   </ng-container>
   <ng-container *ngIf="type === 'number'">
     <div class="form__group field">
-      <input
-        formControlName="input"
-        class="form__field"
-        ngDefaultControl
-        type="number"
-        placeholder="{{ placeholder }}"
-        id="{{ placeholder }}"
-        [max]="inputNumberMax ? inputNumberMax : ''"
-        [min]="inputNumberMin ? inputNumberMin : ''"
-      />
+      <input formControlName="input" class="form__field" ngDefaultControl type="number" placeholder="{{ placeholder }}"
+        id="{{ placeholder }}" [max]="inputNumberMax ? inputNumberMax : ''"
+        [min]="inputNumberMin ? inputNumberMin : ''" />
       <label for="{{ placeholder }}" class="form__label">{{
         placeholder
-      }}</label>
+        }}</label>
     </div>
   </ng-container>
   <ng-container *ngIf="type === 'password'">
     <div class="form__group field">
-      <input
-        class="form__field"
-        id="{{ placeholder }}"
-        formControlName="input"
-        placeholder="{{ placeholder }}"
-        ngDefaultControl
-        type="password"
-      />
+      <input class="form__field" id="{{ placeholder }}" formControlName="input" placeholder="{{ placeholder }}"
+        ngDefaultControl type="password" />
       <label for="{{ placeholder }}" class="form__label">{{
         placeholder
-      }}</label>
+        }}</label>
     </div>
   </ng-container>
   <ng-container *ngIf="type === 'textarea'">
     <div class="form__group field">
-      <textarea
-        class="form__field"
-        formControlName="input"
-        ngDefaultControl
-        placeholder="{{ placeholder }}"
-        id="{{ placeholder }}"
-      ></textarea>
+      <textarea class="form__field" formControlName="input" ngDefaultControl placeholder="{{ placeholder }}"
+        id="{{ placeholder }}" rows="{{textAreaRows}}" cols="10"></textarea>
       <label for="{{ placeholder }}" class="form__label">{{
         placeholder
-      }}</label>
+        }}</label>
     </div>
   </ng-container>
-  <ng-container *ngIf="type === 'checkbox'"
-    ><input
-      formControlName="input"
-      ngDefaultControl
-      type="checkbox"
-      [placeholder]="placeholder"
-  /></ng-container>
-  <ng-container *ngIf="type === 'switch'"
-    ><input
-      formControlName="input"
-      ngDefaultControl
-      type="checkbox"
-      [placeholder]="placeholder"
-  /></ng-container>
+  <ng-container *ngIf="type === 'checkbox'">
+    <div class="form__group field checkboxContainer">
+      <input formControlName="input" class="checkboxInput" ngDefaultControl type="checkbox" id="{{ placeholder }}" />
+      <label *ngIf="placeholder" for="{{ placeholder }}">{{ placeholder }}</label>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="type === 'switch'"><input formControlName="input" ngDefaultControl class="switchInput" type="checkbox"
+      [placeholder]="placeholder" /></ng-container>
 </span>

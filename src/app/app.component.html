@@ -1,5 +1,5 @@
 <div style="height: 100vh; padding: 1%">
-  <div class="grid">
+  <!-- <div class="grid">
     <div class="col-4">
       
     </div>
@@ -12,12 +12,7 @@
   <app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
   </app-dialog>
   <div style="width: 40%">
-    <app-dropdown
-      [data]="dropdownCol"
-      [multiStatus]="false"
-      [searchStatus]="true"
-      (selectedList)="dropdownMethod($event)"
-    ></app-dropdown>
+    
   </div>
    
   <app-card [header]="'card başlığı'">
@@ -29,45 +24,42 @@
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
     </div>
   </div>
-  <app-toast [message]="message" [show]="show"></app-toast> 
-  
-  
-  <app-tabview>
-    <app-tab tabTitle="bir"><app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası"
-        [multiCheckbox]="false"  ></app-checkbox></app-tab>
-    <app-tab tabTitle="iki"><app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true"
-        [header]="'Cek tahsilat'" [paginationStatus]="true" [globalSearchStatus]="true"></app-table></app-tab>
+  <app-toast [message]="message" [show]="show"></app-toast>  
+  <app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkbox>-->
+  <!-- <app-tabview>
+    <app-tab tabTitle="bir"></app-tab>
+    <app-tab tabTitle="iki"></app-tab>
     <app-tab tabTitle="uc"><app-listbox [data]="dropdownCol" [searchStatus]="true"
         (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
-  </app-tabview>
+  </app-tabview> 
+  <app-accordion header="deneme"><app-table [column]="col" [data]="data" [filterFormStatus]="true"
+      [scrollWidthStatus]="true" [header]="'Cek tahsilat'" [paginationStatus]="true"
+      [globalSearchStatus]="true"></app-table></app-accordion>
+  <br><br><br> 
 
   <form [formGroup]="PersonelForm">
-    <app-input
-      formControlName="test"
-      placeholder="isim soyad"
-      type="text"
-    ></app-input>
-    <br /><br /><br />
-    <app-input
-      formControlName="deneme"
-      type="number"
-      placeholder="telefon numarası"
-    ></app-input>
-    <br /><br /><br />
-    <app-input
-      formControlName="textarea"
-      placeholder="açıklama"
-      type="textarea"
-    ></app-input>
-    <br /><br /><br />
-    <app-input formControlName="dogru" type="checkbox"></app-input>
-    <label style="color: black; font-size: x-large">deneme</label>
-    <br /><br /><br />
-    <app-input
-      formControlName="password"
-      placeholder="Şifre"
-      type="password"
-    ></app-input>
+    <app-input formControlName="test" placeholder="isim soyad" type="text"></app-input>
+
+    <app-input formControlName="deneme" type="number" placeholder="telefon numarası"></app-input>
+
+    <app-input formControlName="textarea" placeholder="açıklama" type="textarea"></app-input>
+
+    <app-input formControlName="dogru" type="checkbox" placeholder="dsadsa"></app-input>
+
+    <app-input formControlName="password" placeholder="Şifre" type="password"></app-input>
   </form>
   <button (click)="button()">deneem</button>
+
+  <br><br><br><br>
+  <div class="grid">
+    <div class="col-6">
+      <app-progesbar [value]="80"></app-progesbar>
+    </div>
+  </div>-->
+<app-dropdown
+      [data]="dropdownCol"
+      [multiStatus]="false"
+      [searchStatus]="true"
+      (selectedList)="dropdownMethod($event)"
+    ></app-dropdown>
 </div>

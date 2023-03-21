@@ -14,12 +14,12 @@ import { ListboxComponent } from './Library/components/listbox/listbox.component
 import { ToastComponent } from './Library/components/toast/toast.component';
 import { TabviewComponent } from './Library/components/tabview/tabview.component';
 import { TabComponent } from './Library/components/tabview/tab/tab.component';
-import { InputnumberComponent } from './Library/components/inputnumber/inputnumber.component';
-import { TextareaComponent } from './Library/components/textarea/textarea.component'; 
 import { InputMaskComponent } from './Library/components/inputmask/inputmask.component';
+import { AccordionComponent } from './Library/components/accordion/accordion.component';
+import { ProgesbarComponent } from './Library/components/progesbar/progesbar.component';
 
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     CheckboxComponent,
@@ -35,10 +35,10 @@ import { InputMaskComponent } from './Library/components/inputmask/inputmask.com
     ToastComponent,
     TabviewComponent,
     TabComponent,
-    InputnumberComponent,
     InputDirective,
-    TextareaComponent,
-    InputMaskComponent
+    InputMaskComponent,
+    AccordionComponent,
+    ProgesbarComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

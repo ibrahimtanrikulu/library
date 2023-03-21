@@ -144,7 +144,7 @@ export class AppComponent {
       test: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.maxLength(4)]),
       deneme: new FormControl({ value: 0, disabled: false }, [Validators.required]),
       textarea: new FormControl(""),
-      dogru: new FormControl(false),
+      dogru: new FormControl(true),
       dogruiki: new FormControl(false),
       password: new FormControl(""),
     });
