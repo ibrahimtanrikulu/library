@@ -56,10 +56,10 @@
       <app-progesbar [value]="80"></app-progesbar>
     </div>
   </div>-->
-<app-dropdown
-      [data]="dropdownCol"
-      [multiStatus]="false"
-      [searchStatus]="true"
-      (selectedList)="dropdownMethod($event)"
-    ></app-dropdown>
+  <app-dropdown
+    [data]="dropdownCol"
+    [multiStatus]="true"
+    [searchStatus]="true"
+    (selectedList)="dropdownMethod($event)"
+  ></app-dropdown>
 </div>

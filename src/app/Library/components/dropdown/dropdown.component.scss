@@ -19,9 +19,9 @@
       font-weight: normal;
       font-style: none;
       font-family: sans-serif;
-      box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-        rgba(0, 0, 0, 0.07) 0px 16px 16px;
+      box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+        rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+        rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
       border: none;
       cursor: pointer;
 
@@ -80,6 +80,9 @@
         position: absolute;
         margin-bottom: 8px;
         margin-right: 10px;
+
+        input {
+        }
 
         i {
           cursor: pointer;
@@ -157,7 +160,7 @@ input[type="checkbox"] {
       --bc: var(--border);
     }
 
-    &+label {
+    & + label {
       cursor: not-allowed;
     }
   }
@@ -186,7 +189,7 @@ input[type="checkbox"] {
     }
   }
 
-  &+label {
+  & + label {
     font-size: 18px;
     display: inline-block;
     vertical-align: top;
@@ -216,9 +219,6 @@ input[type="checkbox"] {
   }
 }
 
-/*
-  animasyon
-*/
 @keyframes scale-up-ver-top {
   0% {
     -webkit-transform: scaleY(0.2);
