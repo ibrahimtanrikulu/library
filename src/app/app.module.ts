@@ -14,31 +14,34 @@ import { ListboxComponent } from './Library/components/listbox/listbox.component
 import { ToastComponent } from './Library/components/toast/toast.component';
 import { TabviewComponent } from './Library/components/tabview/tabview.component';
 import { TabComponent } from './Library/components/tabview/tab/tab.component';
-import { InputMaskComponent } from './Library/components/inputmask/inputmask.component';
 import { AccordionComponent } from './Library/components/accordion/accordion.component';
 import { ProgesbarComponent } from './Library/components/progesbar/progesbar.component';
+import { CalenderComponent } from './Library/components/calender/calender.component';
+import { FormComponent } from './Library/components/form/form.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    CheckboxComponent,
-    CardComponent,
-    DialogComponent,
-    TableComponent,
-    ButtonComponent,
-    InputComponent,
     FormsModule,
     ReactiveFormsModule,
+    //
     DropdownComponent,
     ListboxComponent,
     ToastComponent,
     TabviewComponent,
     TabComponent,
     InputDirective,
-    InputMaskComponent,
     AccordionComponent,
-    ProgesbarComponent
+    ProgesbarComponent,
+    CalenderComponent,
+    CheckboxComponent,
+    CardComponent,
+    DialogComponent,
+    TableComponent,
+    ButtonComponent,
+    InputComponent,
+    FormComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

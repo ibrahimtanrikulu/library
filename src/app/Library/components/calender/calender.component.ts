@@ -1,0 +1,13 @@
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-calender',
+  templateUrl: './calender.component.html',
+  styleUrls: ['./calender.component.scss'],
+  standalone: true,
+  imports: [CommonModule]
+})
+export class CalenderComponent {
+
+}

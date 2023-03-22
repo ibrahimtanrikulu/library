@@ -1,12 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IForm } from '../../Interface/Form';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { InputComponent } from '../input/input.component';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, InputComponent, DropdownComponent],
 })
-export class FormComponent { }
+export class FormComponent {
+  @Input() formGroup!: FormGroup;
+  @Input() forms!: IForm[];
+}

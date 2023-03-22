@@ -14,7 +14,7 @@ export class DropdownComponent implements OnInit {
   @Input() multiStatus: boolean = false;
   @Input() searchStatus: boolean = false;
   @Input() DropdownScrollHeightStatus: boolean = false;
-  @Input() DropdownScrollHeight: string = "100%";
+  @Input() DropdownScrollHeight: string = "";
   @Input() placeholder: string = '';
   @Output() selectedList: EventEmitter<DataType[]> = new EventEmitter();
 

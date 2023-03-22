@@ -1,0 +1,39 @@
+<div class="container">
+    <form [formGroup]="formGroup">
+        <div class="grid">
+            <ng-container *ngFor="let item of forms">
+                <ng-container *ngIf="item.type == 'text'">
+                    <div [class]="item.class ? item.class : 'col-12'" style="padding-left: 1%;padding-right: 1%;">
+                        <app-input formControlName="{{item.controlname}}" placeholder="{{item.header}}"
+                            type="text"></app-input>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="item.type == 'number'">
+                    <div [class]="item.class ? item.class : 'col-12'" style="padding-left: 1%;padding-right: 1%;">
+                        <app-input formControlName="{{item.controlname}}" type="number" placeholder="{{item.header}}"
+                            inputNumberMin="{{item.min}}" inputNumberMax="{{item.max}}"></app-input>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="item.type == 'textarea'">
+                    <div [class]="item.class ? item.class : 'col-12'" style="padding-left: 1%;padding-right: 1%;">
+                        <app-input formControlName="{{item.controlname}}" placeholder="{{item.header}}" type="textarea"
+                            [textAreaRows]="item.rows"></app-input>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="item.type == 'checkbox'">
+                    <div [class]="item.class ? item.class : 'col-12'" style="padding-left: 1%;padding-right: 1%;">
+                        <app-input formControlName="{{item.controlname}}" placeholder="{{item.header}}"
+                            type="checkbox"></app-input>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="item.type == 'dropdown'">
+                    <div [class]="item.class ? item.class : 'col-12'" style="padding-left: 1%;padding-right: 1%;">
+                        <app-dropdown [data]="item.data!" [multiStatus]="item.isMultiType!" [placeholder]="item.header!"
+                            [searchStatus]="item.search!" [DropdownScrollHeightStatus]="item.ScrollHeightStatus!"
+                            [DropdownScrollHeight]="item.ScrollHeight!" ></app-dropdown>
+                    </div>
+                </ng-container>
+            </ng-container>
+        </div>
+    </form>
+</div>
