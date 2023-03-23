@@ -38,7 +38,7 @@
   <br><br><br> 
 
   <form [formGroup]="PersonelForm">
-    <app-input formControlName="test" placeholder="isim soyad" type="text"></app-input>
+    
 
     <app-input formControlName="deneme" type="number" placeholder="telefon numarası"></app-input>
 
@@ -48,18 +48,33 @@
 
     <app-input formControlName="password" placeholder="Şifre" type="password"></app-input>
   </form>
-  <button (click)="button()">deneem</button>
+  
 
   <br><br><br><br>
   <div class="grid">
     <div class="col-6">
       <app-progesbar [value]="80"></app-progesbar>
     </div>
-  </div>
-  <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true"
-    (selectedList)="dropdownMethod($event)"></app-dropdown>
-  -->
+  </div> 
+
+  <app-deneme
+    [data]="dropdownCol"
+    [multiStatus]="true"
+    [searchStatus]="true"
+    (selectedList)="dropdownMethod($event)"
+    placeholder="deneme"
+  ></app-deneme>
+  <br>
   <app-card header="deneme">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-card>
+  </app-card>-->
+
+  <form [formGroup]="PersonelForm">
+    <app-input
+      formControlName="test"
+      placeholder="isim soyad"
+      type="mask"
+    ></app-input>
+  </form>
+  <button (click)="button()">deneem</button>
 </div>

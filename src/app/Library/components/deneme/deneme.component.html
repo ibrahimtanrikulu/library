@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="form__group field">
+    <input
+      [placeholder]="placeholder"
+      type="text"
+      class="form__field"
+      [value]="multiStatus ? text : list[0] ? list[0].text : ''"
+      (click)="
+        dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
+      "
+    />
+    <label for="{{ placeholder }}" class="form__label">{{ placeholder }}</label>
+  </div>
+  <div
+    *ngIf="dropdownStatus"
+    [style.height]="DropdownScrollHeight"
+    [ngStyle]="
+      DropdownScrollHeightStatus
+        ? { 'overflow-x': 'auto' }
+        : { overflow: 'hidden' }
+    "
+    class="listContainer"
+  >x</div>
+</div>

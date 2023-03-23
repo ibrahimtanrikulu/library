@@ -154,15 +154,11 @@ export class AppComponent {
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
       test: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.maxLength(4)]),
-      deneme: new FormControl({ value: 0, disabled: false }, [Validators.required]),
-      textarea: new FormControl(""),
-      dogru: new FormControl(true),
-      dogruiki: new FormControl(false),
-      password: new FormControl(""),
+ 
     });
   }
   button() {
-    console.log(this.PersonelForm);
+    console.log(this.PersonelForm.value.test);
   }
 
   message: MessageType = new MessageType();

@@ -18,6 +18,8 @@ import { AccordionComponent } from './Library/components/accordion/accordion.com
 import { ProgesbarComponent } from './Library/components/progesbar/progesbar.component';
 import { CalenderComponent } from './Library/components/calender/calender.component';
 import { FormComponent } from './Library/components/form/form.component';
+import { DenemeComponent } from './Library/components/deneme/deneme.component';
+import { PhoneDirective } from './Directive/phone.directive';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,9 +43,11 @@ import { FormComponent } from './Library/components/form/form.component';
     TableComponent,
     ButtonComponent,
     InputComponent,
-    FormComponent
+    FormComponent,
+    DenemeComponent,
+    PhoneDirective,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

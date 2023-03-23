@@ -8,13 +8,14 @@ import {
   UntypedFormControl,
   UntypedFormGroup,
 } from '@angular/forms';
+import { PhoneDirective } from 'src/app/Directive/phone.directive';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,PhoneDirective],
 })
 export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() placeholder: string = '';
