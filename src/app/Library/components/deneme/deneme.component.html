@@ -20,5 +20,35 @@
         : { overflow: 'hidden' }
     "
     class="listContainer"
-  >x</div>
+  >
+    <ng-container *ngIf="searchStatus">
+      <div class="searchContainer">
+        <input type="text" class="input" (keyup)="search($event)" />
+        <div><i class="fas fa-search"></i></div>
+      </div>
+    </ng-container> 
+    <ng-container *ngIf="multiStatus">
+      <div
+        class="Container"
+        *ngFor="let item of localData"
+        (click)="change(item)"
+      >
+        <input type="checkbox" [checked]="list.indexOf(item, 0) >= 0" />
+        <span>
+          {{ item.text }}
+        </span>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!multiStatus">
+      <div
+        class="Container"
+        *ngFor="let item of localData"
+        (click)="change(item)"
+      >
+        <span>
+          {{ item.text }}
+        </span>
+      </div>
+    </ng-container>
+  </div>
 </div>

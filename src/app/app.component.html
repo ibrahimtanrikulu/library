@@ -9,8 +9,7 @@
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
     </div>
   </div>
-  <app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
-  </app-dialog>
+  
   <div style="width: 40%">
     
   </div>
@@ -57,24 +56,28 @@
     </div>
   </div> 
 
+  
+  <br>
+  <app-card header="deneme">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+  </app-card>
+
+  <form [formGroup]="PersonelForm">
+    <app-input
+      formControlName="telefon"
+      placeholder="telefon"
+      type="mask"
+    ></app-input>
+  </form>
+  <button (click)="button()">deneem</button>
   <app-deneme
     [data]="dropdownCol"
     [multiStatus]="true"
     [searchStatus]="true"
     (selectedList)="dropdownMethod($event)"
     placeholder="deneme"
-  ></app-deneme>
-  <br>
-  <app-card header="deneme">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-card>-->
-
-  <form [formGroup]="PersonelForm">
-    <app-input
-      formControlName="test"
-      placeholder="telefon"
-      type="mask"
-    ></app-input>
-  </form>
-  <button (click)="button()">deneem</button> 
+  ></app-deneme> -->
+  <app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
+  </app-dialog>
+  <button (click)="show = true">dsadsa</button>
 </div>

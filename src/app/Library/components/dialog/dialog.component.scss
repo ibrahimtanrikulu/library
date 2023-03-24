@@ -4,10 +4,10 @@
     rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
   border: 1px solid #334155;
   border-radius: 8px;
-  width: 100%; 
+  width: 100%;
+  align-items: center;
   height: 100%;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-
   position: sticky;
   z-index: 10000;
 
@@ -47,7 +47,6 @@
     border-top: 1px solid black;
     margin: 0;
     padding: 0;
-    
   }
 }
 
