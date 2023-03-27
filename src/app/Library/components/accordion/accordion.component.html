@@ -3,7 +3,7 @@
         <span class="tabViewHeader">
             {{ header }}</span>
     </div> 
-    <div [class]="show ? 'bodyOpen' : 'bodyClose'" *ngIf="show">
+    <div class="body" *ngIf="show">
         <ng-content></ng-content>
     </div>
 </div>

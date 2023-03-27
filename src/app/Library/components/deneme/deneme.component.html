@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="body ">
     <input [placeholder]="placeholder" type="text" class="input"
       [value]="multiStatus ? text : list[0] ? list[0].text : ''" (click)="
@@ -37,4 +37,41 @@
       </div>
     </ng-container>
   </ul>
+</div> -->
+
+<div class="container">
+  <div class="form__group field">
+    <input class="form__field" id="{{ placeholder }}" [placeholder]="placeholder" type="text"
+      [value]="multiStatus ? text : list[0] ? list[0].text : ''" (click)="
+        dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
+      " />
+    <label for="{{ placeholder }}" class="form__label">{{
+      placeholder
+      }}</label>
+  </div>
+  <div *ngIf="dropdownStatus" [style.height]="DropdownScrollHeight" class="dropdownContainer"
+    [ngStyle]="DropdownScrollHeightStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }">
+    a
+    <ng-container *ngIf="searchStatus">
+      <!-- <div class="searchContainer">
+        <input type="text" class="input" (keyup)="search($event)" />
+        <div><i class="fas fa-search"></i></div>
+      </div> -->
+    </ng-container>
+    <ng-container *ngIf="multiStatus">
+      <!-- <div class="ulContainer" *ngFor="let item of localData" (click)="change(item)">
+        <input type="checkbox" [checked]="list.indexOf(item, 0) >= 0" />
+        <li>
+          {{ item.text }}
+        </li>
+      </div> -->
+    </ng-container>
+    <ng-container *ngIf="!multiStatus">
+      <!-- <div class="ulContainer" *ngFor="let item of localData" (click)="change(item)">
+        <li>
+          {{ item.text }}
+        </li>
+      </div> -->
+    </ng-container>
+  </div>
 </div>

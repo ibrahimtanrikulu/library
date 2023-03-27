@@ -21,6 +21,3 @@ input musk,
 form,
 table,
 calender
-
----animasyon---
-accordion
