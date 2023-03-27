@@ -1,54 +1,40 @@
 <div class="container">
-  <div class="form__group field">
-    <input
-      [placeholder]="placeholder"
-      type="text"
-      class="form__field"
-      [value]="multiStatus ? text : list[0] ? list[0].text : ''"
-      (click)="
+  <div class="body ">
+    <input [placeholder]="placeholder" type="text" class="input"
+      [value]="multiStatus ? text : list[0] ? list[0].text : ''" (click)="
         dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
-      "
-    />
-    <label for="{{ placeholder }}" class="form__label">{{ placeholder }}</label>
+      " />
+    <div>
+      <i class="fa-solid fa-xmark" style="margin-right: 10px" (click)="clear()"></i>
+      <i (click)="
+          dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
+        " [ngClass]="
+          dropdownStatus ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down'
+        "></i>
+    </div>
   </div>
-  <div
-    *ngIf="dropdownStatus"
-    [style.height]="DropdownScrollHeight"
-    [ngStyle]="
-      DropdownScrollHeightStatus
-        ? { 'overflow-x': 'auto' }
-        : { overflow: 'hidden' }
-    "
-    class="listContainer"
-  >
+  <ul *ngIf="dropdownStatus" [style.height]="DropdownScrollHeight" 
+    [ngStyle]="DropdownScrollHeightStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }">
     <ng-container *ngIf="searchStatus">
       <div class="searchContainer">
         <input type="text" class="input" (keyup)="search($event)" />
         <div><i class="fas fa-search"></i></div>
       </div>
-    </ng-container> 
+    </ng-container>
     <ng-container *ngIf="multiStatus">
-      <div
-        class="Container"
-        *ngFor="let item of localData"
-        (click)="change(item)"
-      >
+      <div class="ulContainer" *ngFor="let item of localData" (click)="change(item)">
         <input type="checkbox" [checked]="list.indexOf(item, 0) >= 0" />
-        <span>
+        <li>
           {{ item.text }}
-        </span>
+        </li>
       </div>
     </ng-container>
     <ng-container *ngIf="!multiStatus">
-      <div
-        class="Container"
-        *ngFor="let item of localData"
-        (click)="change(item)"
-      >
-        <span>
+      <div class="ulContainer" *ngFor="let item of localData" (click)="change(item)">
+        <li>
           {{ item.text }}
-        </span>
+        </li>
       </div>
     </ng-container>
-  </div>
+  </ul>
 </div>

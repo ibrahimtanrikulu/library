@@ -31,14 +31,10 @@
     <app-tab tabTitle="uc"><app-listbox [data]="dropdownCol" [searchStatus]="true"
         (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
   </app-tabview> 
-  <app-accordion header="deneme"><app-table [column]="col" [data]="data" [filterFormStatus]="true"
-      [scrollWidthStatus]="true" [header]="'Cek tahsilat'" [paginationStatus]="true"
-      [globalSearchStatus]="true"></app-table></app-accordion>
+  
   <br><br><br> 
 
-  <form [formGroup]="PersonelForm">
-    
-
+  <form [formGroup]="PersonelForm">  
     <app-input formControlName="deneme" type="number" placeholder="telefon numarası"></app-input>
 
     <app-input formControlName="textarea" placeholder="açıklama" type="textarea"></app-input>
@@ -70,14 +66,32 @@
     ></app-input>
   </form>
   <button (click)="button()">deneem</button>
-  <app-deneme
-    [data]="dropdownCol"
-    [multiStatus]="true"
-    [searchStatus]="true"
-    (selectedList)="dropdownMethod($event)"
-    placeholder="deneme"
-  ></app-deneme> -->
-  <app-dialog [header]="'Bu deneme Dialogu'" width="50%" [show]="show">
+ 
+  
+  <app-accordion header="Table"
+    ><app-table
+      [column]="col"
+      [data]="data"
+      [filterFormStatus]="true"
+      [scrollWidthStatus]="true"
+      [header]="'Cek tahsilat'"
+      [paginationStatus]="true"
+      [globalSearchStatus]="true"
+    ></app-table
+  ></app-accordion>
+  <div class="grid">
+    <div class="col-4">
+      <app-deneme
+        [data]="dropdownCol"
+        [multiStatus]="true"
+        [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"
+        placeholder="deneme"
+      ></app-deneme>
+    </div>
+  </div>-->
+
+  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show">
   </app-dialog>
   <button (click)="show = true">dsadsa</button>
 </div>

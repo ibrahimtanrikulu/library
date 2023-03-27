@@ -6,13 +6,13 @@ import { Component, Input } from '@angular/core';
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class AccordionComponent {
-  @Input() header: string = 'deneme';
+  @Input() header: string = '';
 
-  show: boolean = false
+  show: boolean = false;
   open() {
-    this.show ? this.show = false : this.show = true;
+    this.show ? (this.show = false) : (this.show = true);
   }
 }
