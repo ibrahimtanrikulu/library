@@ -159,7 +159,7 @@ export class AppComponent {
   }
 
   button() {
-    console.log(this.PersonelForm.value.telefon.length);
+    console.log(this.PersonelForm);
   }
 
   message: MessageType = new MessageType();

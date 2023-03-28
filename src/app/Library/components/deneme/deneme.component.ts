@@ -50,6 +50,7 @@ export class DenemeComponent implements OnInit {
       this.selectedList.emit(this.list);
       this.localData = this.data;
     }
+    
   }
   clear() {
     this.list = [];

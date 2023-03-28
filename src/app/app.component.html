@@ -24,52 +24,46 @@
     </div>
   </div>
   <app-toast [message]="message" [show]="show"></app-toast>  
-  <app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkbox>-->
-  <!-- <app-tabview>
-    <app-tab tabTitle="bir"></app-tab>
-    <app-tab tabTitle="iki"></app-tab>
-    <app-tab tabTitle="uc"><app-listbox [data]="dropdownCol" [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
-  </app-tabview> 
+  <app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkbox>
   
-  <br><br><br> 
-
-  <form [formGroup]="PersonelForm">  
-    <app-input formControlName="deneme" type="number" placeholder="telefon numarası"></app-input>
-
-    <app-input formControlName="textarea" placeholder="açıklama" type="textarea"></app-input>
-
-    <app-input formControlName="dogru" type="checkbox" placeholder="dsadsa"></app-input>
-
-    <app-input formControlName="password" placeholder="Şifre" type="password"></app-input>
-  </form>
-  
-
-  <br><br><br><br>
-  <div class="grid">
-    <div class="col-6">
-      <app-progesbar [value]="80"></app-progesbar>
-    </div>
-  </div> 
-
-  
-  <br>
   <app-card header="deneme">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card>
 
-  <form [formGroup]="PersonelForm">
-    <app-input
-      formControlName="telefon"
-      placeholder="telefon"
-      type="mask"
-    ></app-input>
-  </form>
+  
   <button (click)="button()">deneem</button>
 
   <app-dialog [header]="'Bu deneme Dialogu'" [show]="show">
   </app-dialog>
   <button (click)="show = true">dsadsa</button>
+  
+  
+
+  <form [formGroup]="PersonelForm">  
+    <app-input formControlName="test" type="number" placeholder="telefon numarası"></app-input> 
+    <app-input formControlName="telefon" placeholder="açıklama" type="textarea"></app-input> 
+  </form> 
+
+  <app-tabview>
+    <app-tab tabTitle="bir"></app-tab>
+    <app-tab tabTitle="iki"></app-tab>
+    <app-tab tabTitle="uc">
+      <div class="grid">
+        <div class="col-4">
+          <app-listbox
+            [data]="dropdownCol"
+            [searchStatus]="false"
+            (selectedList)="dropdownMethod($event)"
+          ></app-listbox>
+        </div></div
+    ></app-tab>
+  </app-tabview> 
+
+  <div class="grid">
+    <div class="col-6">
+      <app-progesbar [value]="1000"></app-progesbar>
+    </div>
+  </div>
 
   <app-accordion header="Table"
     ><app-table
@@ -81,17 +75,34 @@
       [paginationStatus]="true"
       [globalSearchStatus]="true"
     ></app-table
-  ></app-accordion>-->
+  ></app-accordion> 
+
+  <form [formGroup]="PersonelForm">
+    <app-input
+      formControlName="telefon"
+      placeholder="telefon"
+      type="mask"
+    ></app-input>
+  </form>
+  <button (click)="button()">dsadsasadsda</button>
 
   <div class="grid">
-    <div class="col-4">
+    <div class="col-2">
       <app-deneme
         [data]="dropdownCol"
         [multiStatus]="true"
-        [searchStatus]="true"
+        [searchStatus]="false"
         (selectedList)="dropdownMethod($event)"
         placeholder="deneme"
       ></app-deneme>
     </div>
-  </div>
+  </div> -->
+  <app-dropdown
+    [data]="dropdownCol"
+    [multiStatus]="true"
+    [searchStatus]="true"
+    (selectedList)="dropdownMethod($event)"
+    placeholder="deneme"
+    [disabled]="false" 
+  ></app-dropdown>
 </div>

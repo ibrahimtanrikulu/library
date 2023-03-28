@@ -15,9 +15,13 @@ header == font-size = x-large
 text = font-size = medium
 
 ---------------------düzenle-------------------------------
-
-dropdown,
 input musk,
 form,
 table,
 calender
+-----------------------------------------------------------
+
+dropdown =
+[ngStyle]="searchStatus ? { width: 'auto' } : {}"
+
+heightdin calışmasını bozuyor
