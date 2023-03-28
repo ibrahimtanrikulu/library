@@ -86,17 +86,6 @@
   </form>
   <button (click)="button()">dsadsasadsda</button>
 
-  <div class="grid">
-    <div class="col-2">
-      <app-deneme
-        [data]="dropdownCol"
-        [multiStatus]="true"
-        [searchStatus]="false"
-        (selectedList)="dropdownMethod($event)"
-        placeholder="deneme"
-      ></app-deneme>
-    </div>
-  </div> -->
   <app-dropdown
     [data]="dropdownCol"
     [multiStatus]="true"
@@ -104,5 +93,7 @@
     (selectedList)="dropdownMethod($event)"
     placeholder="deneme"
     [disabled]="false" 
-  ></app-dropdown>
+  ></app-dropdown>-->
+  <app-deneme [formGroup]="PersonelForm" [forms]="formsObject"></app-deneme>
+  <button (click)="button()">dsadsasadsda</button>
 </div>

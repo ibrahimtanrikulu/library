@@ -142,14 +142,13 @@ export class AppComponent {
 
   public PersonelForm!: FormGroup;
   formsObject: IForm[] = [
-    { controlname: 'test', class: "col-12 col-lg-6 col-md-12", header: 'Ad', type: 'text' },
-    { controlname: 'deneme', class: "col-12 col-lg-6 col-md-12", header: 'yaş', type: 'number', max: 50, min: 20 },
-    { controlname: 'textarea', class: "col-12 col-lg-6 col-md-12", header: 'acıklama', type: 'textarea' },
-    { controlname: 'dogru', class: "col-12 col-lg-6 col-md-12", header: 'dogrumu', type: 'checkbox' },
+    { controlname: 'test', class: "col-12 col-lg-6 col-md-8", header: 'Ad', type: 'text' },
+    { controlname: 'telefon', class: "col-12 col-lg-6 col-md-8", header: 'telefon', type: 'number', max: 50, min: 20 },
     {
-      class: "col-12 col-lg-6 col-md-12", header: 'dropdown', type: 'dropdown', search: true, data: this.dropdownCol,
-      isMultiType: false, ScrollHeightStatus: false
+      class: "col-12 col-lg-12 col-md-8", header: 'deneme', type: 'checkboxList',
+      data: this.dropdownCol, isMultiType: true, onChange: this.dropdownMethod.bind(this)
     },
+
   ]
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({

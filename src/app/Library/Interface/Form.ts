@@ -1,8 +1,10 @@
+import { DataType } from "./DataType";
+
 export interface IForm {
     class?: string;
     type?: string;
     controlname?: string;
-    data?: any[];
+    data?: DataType[];
     isMultiType?: boolean
     search?: boolean
     header?: string;
@@ -10,5 +12,8 @@ export interface IForm {
     max?: number,
     rows?: string,
     ScrollHeightStatus?: boolean,
-    ScrollHeight?: string
+    ScrollHeight?: string,
+    disabled?: boolean,
+    onChange?(data: any): void,
+    click?(data?: any): void,
 }

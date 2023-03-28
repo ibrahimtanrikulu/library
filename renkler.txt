@@ -15,7 +15,6 @@ header == font-size = x-large
 text = font-size = medium
 
 ---------------------düzenle-------------------------------
-form,
 table,
 input musk,
 calender 
