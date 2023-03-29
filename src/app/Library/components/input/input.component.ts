@@ -15,7 +15,7 @@ import { PhoneDirective } from 'src/app/Directive/phone.directive';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule,PhoneDirective],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, PhoneDirective],
 })
 export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() placeholder: string = '';
@@ -23,6 +23,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() inputNumberMax: any;
   @Input() inputNumberMin: any;
   @Input() textAreaRows: any;
+  @Input() ngModelStatus: boolean = false;
   group = new UntypedFormGroup({
     input: new UntypedFormControl(''),
   });
@@ -81,7 +82,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 
-  onTouched = () => { };
+  onTouched = () => {};
 
   writeValue(value: any): void {
     this.input.setValue(value, { emitEvent: false });
@@ -113,4 +114,3 @@ export class InputComponent implements ControlValueAccessor, OnInit {
     }
   }
 }
-

@@ -11,6 +11,7 @@ import { FilterTypeEnum } from './Library/Enum/FilterTypeEnum';
 import { MessageType } from './Library/Interface/messageType';
 import { MessageEnum } from './Library/Enum/messageEnum';
 import { IForm } from './Library/Interface/Form';
+import { FormTypeEnum } from './Library/Enum/formTypeEnum';
 
 @Component({
   selector: 'app-root',
@@ -104,6 +105,9 @@ export class AppComponent {
     { text: 'urun8', value: 3 },
   ];
 
+  denemeInput: any;
+  testInput: any;
+
   col: IColumnType[] = [
     {
       field: 'id',
@@ -142,23 +146,63 @@ export class AppComponent {
 
   public PersonelForm!: FormGroup;
   formsObject: IForm[] = [
-    { controlname: 'test', class: "col-12 col-lg-6 col-md-8", header: 'Ad', type: 'text' },
-    { controlname: 'telefon', class: "col-12 col-lg-6 col-md-8", header: 'telefon', type: 'number', max: 50, min: 20 },
     {
-      class: "col-12 col-lg-12 col-md-8", header: 'deneme', type: 'checkboxList',
-      data: this.dropdownCol, isMultiType: true, onChange: this.dropdownMethod.bind(this)
+      controlname: 'test',
+      class: 'col-12 col-lg-6 col-md-8',
+      header: 'Ad',
+      type: FormTypeEnum.text,
+      disabled: false,
     },
-
-  ]
+    {
+      controlname: 'telefon',
+      class: 'col-12 col-lg-6 col-md-8',
+      header: 'telefon',
+      type: FormTypeEnum.number,
+      max: 50,
+      min: 20,
+      disabled: false,
+    },
+    {
+      controlname: 'dogrumu',
+      class: 'col-12 col-lg-6 col-md-8',
+      header: 'evet',
+      type: FormTypeEnum.checkbox,
+    },
+    {
+      class: 'col-12 col-lg-6 col-md-8',
+      header: 'deneme',
+      type: FormTypeEnum.dropdown,
+      data: this.dropdownCol,
+      isMultiType: true,
+      onChange: this.dropdownMethod.bind(this),
+    },
+    {
+      class: 'col-12 col-lg-12 col-md-8',
+      header: 'test',
+      type: FormTypeEnum.checkboxList,
+      data: this.dropdownCol,
+      isMultiType: true,
+      onChange: this.dropdownMethod.bind(this),
+    },
+    {
+      class: 'col-12',
+      header: 'tikla',
+      type: FormTypeEnum.button,
+      click: this.button.bind(this),
+    },
+  ];
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.maxLength(4)]),
-      telefon: new FormControl({ value: "", disabled: false }, [Validators.required]),
+      test: new FormControl('', [Validators.required]),
+      telefon: new FormControl({ value: 0, disabled: false }, [
+        Validators.required,
+      ]),
+      dogrumu: new FormControl(false, [Validators.required]),
     });
   }
 
   button() {
-    console.log(this.PersonelForm);
+    console.log(this.denemeInput, 'deneme', this.testInput, 'test');
   }
 
   message: MessageType = new MessageType();
@@ -173,4 +217,6 @@ export class AppComponent {
   dropdownMethod(e: any) {
     console.log(e);
   }
+
+  dataModel: string = '';
 }

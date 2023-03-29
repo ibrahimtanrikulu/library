@@ -39,10 +39,7 @@
   
   
 
-  <form [formGroup]="PersonelForm">  
-    <app-input formControlName="test" type="number" placeholder="telefon numarası"></app-input> 
-    <app-input formControlName="telefon" placeholder="açıklama" type="textarea"></app-input> 
-  </form> 
+  
 
   <app-tabview>
     <app-tab tabTitle="bir"></app-tab>
@@ -93,7 +90,25 @@
     (selectedList)="dropdownMethod($event)"
     placeholder="deneme"
     [disabled]="false" 
-  ></app-dropdown>-->
-  <app-deneme [formGroup]="PersonelForm" [forms]="formsObject"></app-deneme>
-  <button (click)="button()">dsadsasadsda</button>
+  ></app-dropdown>
+  <app-deneme [formGroup]="PersonelForm" [forms]="formsObject"></app-deneme> -->
+
+  <!-- <app-input
+    [(ngModel)]="testInput"
+    [ngModelStatus]="true"
+    type="number"
+    placeholder="telefon numarası"
+  ></app-input>
+  <app-input
+    [(ngModel)]="denemeInput"
+    [ngModelStatus]="true"
+    placeholder="açıklama"
+    type="textarea"
+  ></app-input>
+  <button (click)="button()">deneme</button> -->
+ 
+  <p><span class="boldspan">Model data:</span> {{ dataModel }}</p> 
+    <app-deneme  [(ngModel)]="dataModel">
+      Write in this wrapper control:
+    </app-deneme> 
 </div>

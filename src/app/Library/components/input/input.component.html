@@ -1,4 +1,4 @@
-<span [formGroup]="group">
+<div *ngIf="!ngModelStatus" [formGroup]="group">
   <ng-container *ngIf="type === 'text'">
     <div class="form__group field">
       <input
@@ -91,7 +91,7 @@
         id="{{ placeholder }}"
         formControlName="input"
         placeholder="{{ placeholder }}"
-        ngDefaultControl 
+        ngDefaultControl
         appPhone
       />
       <label for="{{ placeholder }}" class="form__label">{{
@@ -99,4 +99,99 @@
       }}</label>
     </div>
   </ng-container>
-</span>
+</div>
+<div *ngIf="ngModelStatus">
+  <ng-container *ngIf="type === 'text'">
+    <div class="form__group field">
+      <input
+        class="form__field"
+        id="{{ placeholder }}"
+        placeholder="{{ placeholder }}"
+        type="text"
+        [(ngModel)]="value"
+      />
+      <label for="{{ placeholder }}" class="form__label">{{
+        placeholder
+      }}</label>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="type === 'number'">
+    <div class="form__group field">
+      <input
+        class="form__field"
+        type="number"
+        placeholder="{{ placeholder }}"
+        id="{{ placeholder }}"
+        [max]="inputNumberMax ? inputNumberMax : ''"
+        [min]="inputNumberMin ? inputNumberMin : ''"
+        [(ngModel)]="value"
+      />
+      <label for="{{ placeholder }}" class="form__label">{{
+        placeholder
+      }}</label>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="type === 'password'">
+    <div class="form__group field">
+      <input
+        class="form__field"
+        id="{{ placeholder }}"
+        placeholder="{{ placeholder }}"
+        type="password"
+        [(ngModel)]="value"
+      />
+      <label for="{{ placeholder }}" class="form__label">{{
+        placeholder
+      }}</label>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="type === 'textarea'">
+    <div class="form__group field">
+      <textarea
+        class="form__field"
+        placeholder="{{ placeholder }}"
+        id="{{ placeholder }}"
+        rows="{{ textAreaRows }}"
+        cols="10"
+        [(ngModel)]="value"
+      ></textarea>
+      <label for="{{ placeholder }}" class="form__label">{{
+        placeholder
+      }}</label>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="type === 'checkbox'">
+    <div class="form__group field checkboxContainer">
+      <input
+        class="checkboxInput"
+        type="checkbox"
+        id="{{ placeholder }}"
+        [(ngModel)]="value"
+      />
+      <label *ngIf="placeholder" for="{{ placeholder }}">{{
+        placeholder
+      }}</label>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="type === 'switch'"
+    ><input
+      class="switchInput"
+      type="checkbox"
+      [placeholder]="placeholder"
+      [(ngModel)]="value"
+  /></ng-container>
+  <ng-container *ngIf="type === 'mask'">
+    <div class="form__group field">
+      <input
+        class="form__field"
+        id="{{ placeholder }}"
+        placeholder="{{ placeholder }}"
+        appPhone
+        [(ngModel)]="value"
+      />
+      <label for="{{ placeholder }}" class="form__label">{{
+        placeholder
+      }}</label>
+    </div>
+  </ng-container>
+</div>
