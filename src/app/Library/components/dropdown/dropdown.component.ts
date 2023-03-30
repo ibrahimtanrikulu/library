@@ -31,7 +31,6 @@ export class DropdownComponent implements OnInit {
   change(value: DataType) {
     if (this.multiStatus) {
       let index = this.list.indexOf(value, 0);
-      console.log(index);
 
       if (index == -1) {
         this.list.push(value);

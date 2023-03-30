@@ -11,6 +11,6 @@ import { Component, Input } from '@angular/core';
 export class DialogComponent {
   @Input() header: string = '';
   @Input() show: boolean = false;
-  @Input() width: string = '25%';
-  @Input() height: string = '25%';
+  @Input() width: string = 'auto';
+  @Input() height: string = 'auto';
 }

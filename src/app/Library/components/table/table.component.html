@@ -1,6 +1,15 @@
+<div class="addContainer" *ngIf="headerButtonLabel">
+  <app-button
+    class="button buttonGenislik"
+    label="{{ headerButtonLabel }}"
+    (btnClick)="headerButton()"
+  ></app-button>
+</div>
 <div
   class="container"
-  [ngStyle]="scrollWidthStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }"
+  [ngStyle]="
+    scrollWidthStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }
+  "
 >
   <!-- Header -->
   <ng-container *ngIf="globalSearchStatus">
@@ -35,10 +44,10 @@
       <h2>{{ header }}</h2>
     </div>
   </ng-container>
-  <hr>
+  <hr />
   <!-- Header -->
 
-  <table >
+  <table>
     <!-- THead -->
     <thead>
       <tr class="header">
@@ -61,7 +70,6 @@
         <th *ngFor="let item of column">
           <div
             *ngIf="
-              item.filter &&
               item.field != 'edit' &&
               item.field != 'delete' &&
               item.field != 'extra'
@@ -122,17 +130,43 @@
             >{{ col.header }}:</span
           >
           <div>
-            <div *ngIf="col.field != ''">
-              <p>{{ data[col.field] }}</p>
-            </div>
+            <ng-container *ngIf="col.field != '' && col.inputStatus">
+              <div (click)="inputMethod(data)">
+                <input
+                  type="text"
+                  [(ngModel)]="data[col.field]"
+                  *ngIf="data == inputSelected"
+                  class="input"
+                />
+                <p *ngIf="data != inputSelected">
+                  {{ data[col.field] }}
+                </p>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="col.field != '' && !col.inputStatus">
+              <div>
+                <p>{{ data[col.field] }}</p>
+              </div>
+            </ng-container>
+
             <div *ngIf="col.field == 'edit'">
-              <app-button icon="fa-solid fa-pen"></app-button>
+              <app-button
+                icon="fa-solid fa-pen"
+                (btnClick)="col.click!(data)"
+              ></app-button>
             </div>
             <div *ngIf="col.field == 'delete'">
-              <app-button icon="fa-solid fa-trash"></app-button>
+              <app-button
+                icon="fa-solid fa-trash"
+                (btnClick)="col.click!(data)"
+              ></app-button>
             </div>
             <div *ngIf="col.field == 'extra'">
-              <app-button label="Ekstra"></app-button>
+              <app-button
+                label="{{ col.header }}"
+                (btnClick)="col.click!(data)"
+              ></app-button>
             </div>
           </div>
         </td>

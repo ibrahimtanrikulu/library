@@ -3,14 +3,14 @@
   box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
     rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
   border: 1px solid #334155;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 100%;
   align-items: center;
   justify-content: center;
   height: 100%;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   position: absolute;
-  z-index: 10000; 
+  z-index: 10000;
 
   .header {
     display: flex;
@@ -39,8 +39,6 @@
     padding: 0% 0.4%;
     margin: 0.8% 0%;
     width: 100%;
-    height: auto;
-    position: relative;
   }
   hr {
     display: block;
@@ -49,18 +47,7 @@
     margin: 0;
     padding: 0;
   }
-}
-
-// .background {
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   bottom: 0;
-//   left: 0;
-//   background-color: #292929;
-//   opacity: 0.75;
-//   z-index: 900;
-// }
+} 
 .background {
   display: flex;
   flex-direction: column;

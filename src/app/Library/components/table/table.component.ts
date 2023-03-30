@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
@@ -22,17 +22,25 @@ export class TableComponent implements OnInit {
   @Input() filterHeaderStatus: boolean = false;
   @Input() scrollWidthStatus: boolean = false;
   @Input() scrollHeightStatus: boolean = false;
-  @Input() scrollHeight: string = "";
+  @Input() scrollHeight: string = '';
   @Input() paginationStatus: boolean = false;
   @Input() globalSearchStatus: boolean = false;
 
+  @Input() headerButtonLabel: string = '';
+  @Output() headerButtonClick = new EventEmitter();
+
   //local variable
   localData: any[] = [];
-  constructor() { }
+  constructor() {}
   ngOnInit() {
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
+  }
+
+  //add container
+  headerButton() {
+    this.headerButtonClick.emit();
   }
 
   //filter
@@ -46,7 +54,7 @@ export class TableComponent implements OnInit {
     if (value) {
       let result: any[] = [];
       this.localData.filter((f: any[]) => {
-        this.column.map((m : any) => {
+        this.column.map((m: any) => {
           if (f[m.field] == value) {
             result.push(f);
           }
@@ -163,5 +171,11 @@ export class TableComponent implements OnInit {
       this.paginationKey++;
       this.paginationNumber();
     }
+  }
+
+  //İnput
+  inputSelected: any;
+  inputMethod(e: any) {
+    this.inputSelected = e;
   }
 }

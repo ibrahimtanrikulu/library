@@ -113,7 +113,6 @@ export class AppComponent {
       field: 'id',
       header: 'numara',
       width: '5%',
-      filter: true,
       filterType: FilterTypeEnum.text,
       filterHeaderOneIcon: 'fa-solid fa-sort',
     },
@@ -121,27 +120,36 @@ export class AppComponent {
       field: 'kod',
       header: 'kod',
       width: '25%',
-      filter: true,
       filterType: FilterTypeEnum.multiDropdown,
       filterData: this.dropdownCol,
       filterPlaceholder: 'seç',
+      inputStatus: true,
     },
     {
       field: 'aciklama',
       header: 'aciklama',
       width: '50%',
-      filter: true,
       filterType: FilterTypeEnum.text,
     },
     {
       field: 'fiyat',
       header: 'fiyat',
       width: '10%',
-      filter: true,
       filterType: FilterTypeEnum.text,
     },
-    { field: 'edit', header: 'Düzenle', width: '5%', filter: true },
-    { field: 'delete', header: 'Sil', width: '5%', filter: true },
+    {
+      field: 'edit',
+      header: 'Düzenle',
+      width: '5%',
+      click: this.duzenleTableClick.bind(this),
+    },
+    {
+      field: 'delete',
+      header: 'Sil',
+      width: '5%',
+      click: this.silTableClick.bind(this),
+    },
+    { field: 'extra', header: 'extra', width: '5%' },
   ];
 
   public PersonelForm!: FormGroup;
@@ -202,7 +210,7 @@ export class AppComponent {
   }
 
   button() {
-    console.log(this.denemeInput, 'deneme', this.testInput, 'test');
+    this.show ? (this.show = false) : (this.show = true);
   }
 
   message: MessageType = new MessageType();
@@ -214,9 +222,13 @@ export class AppComponent {
     this.show ? (this.show = false) : (this.show = true);
   }
 
-  dropdownMethod(e: any) {
+  dropdownMethod(e: any) {}
+
+  duzenleTableClick(e: any) {
     console.log(e);
+
+    this.show = true;
   }
 
-  dataModel: string = '';
+  silTableClick(e: any) {}
 }

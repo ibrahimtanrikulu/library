@@ -35,11 +35,7 @@
 
   <app-dialog [header]="'Bu deneme Dialogu'" [show]="show">
   </app-dialog>
-  <button (click)="show = true">dsadsa</button>
-  
-  
-
-  
+  <button (click)="show = true">dsadsa</button> 
 
   <app-tabview>
     <app-tab tabTitle="bir"></app-tab>
@@ -63,16 +59,7 @@
   </div>
 
   <app-accordion header="Table"
-    ><app-table
-      [column]="col"
-      [data]="data"
-      [filterFormStatus]="true"
-      [scrollWidthStatus]="true"
-      [header]="'Cek tahsilat'"
-      [paginationStatus]="true"
-      [globalSearchStatus]="true"
-    ></app-table
-  ></app-accordion> 
+    ></app-accordion> 
 
   <form [formGroup]="PersonelForm">
     <app-input
@@ -91,7 +78,7 @@
     placeholder="deneme"
     [disabled]="false" 
   ></app-dropdown>
-  <app-deneme [formGroup]="PersonelForm" [forms]="formsObject"></app-deneme> -->
+   -->
 
   <!-- <app-input
     [(ngModel)]="testInput"
@@ -105,10 +92,27 @@
     placeholder="açıklama"
     type="textarea"
   ></app-input>
-  <button (click)="button()">deneme</button> -->
+  <button (click)="button()">deneme</button>
  
   <p><span class="boldspan">Model data:</span> {{ dataModel }}</p> 
     <app-deneme  [(ngModel)]="dataModel">
       Write in this wrapper control:
-    </app-deneme> 
+    </app-deneme>  -->
+
+  <app-table
+    [column]="col"
+    [data]="data"
+    [filterFormStatus]="true"
+    [scrollWidthStatus]="true"
+    [header]="'Cek tahsilat'"
+    [paginationStatus]="true"
+    [globalSearchStatus]="true"
+    [headerButtonLabel]="'Ekle'"
+    (headerButtonClick)="button()"
+  ></app-table>
+
+  <app-dialog [header]="'Deneme'" [show]="show" [width]="'60%'">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+    <!-- <app-checkbox [checkboxData]="dropdownCol" [checkboxHeader]="'arabalar'" [multiCheckbox]="true"></app-checkbox> -->
+  </app-dialog>
 </div>
