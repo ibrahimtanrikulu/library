@@ -1,5 +1,6 @@
 <div style="height: 100vh; padding: 1%">
-  <!-- <div class="grid">
+  <!-- 
+  <div class="grid">
     <div class="col-4">
       
     </div>
@@ -12,11 +13,7 @@
   
   <div style="width: 40%">
     
-  </div>
-   
-  <app-card [header]="'card başlığı'">
-    <div content></div>
-  </app-card>
+  </div> 
 
   <div class="grid">
     <div class="col-2">
@@ -28,8 +25,7 @@
   
   <app-card header="deneme">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-card>
-
+  </app-card> 
   
   <button (click)="button()">deneem</button>
 
@@ -78,9 +74,8 @@
     placeholder="deneme"
     [disabled]="false" 
   ></app-dropdown>
-   -->
-
-  <!-- <app-input
+   
+  <app-input
     [(ngModel)]="testInput"
     [ngModelStatus]="true"
     type="number"
@@ -97,7 +92,12 @@
   <p><span class="boldspan">Model data:</span> {{ dataModel }}</p> 
     <app-deneme  [(ngModel)]="dataModel">
       Write in this wrapper control:
-    </app-deneme>  -->
+    </app-deneme> 
+  
+    <app-card [header]="'card başlığı'">
+    <div content></div>
+  </app-card>
+  -->
 
   <app-table
     [column]="col"
@@ -111,8 +111,7 @@
     (headerButtonClick)="button()"
   ></app-table>
 
-  <app-dialog [header]="'Deneme'" [show]="show" [width]="'60%'">
+  <app-dialog [header]="'Deneme'" [show]="show" [width]="'80%'">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-    <!-- <app-checkbox [checkboxData]="dropdownCol" [checkboxHeader]="'arabalar'" [multiCheckbox]="true"></app-checkbox> -->
   </app-dialog>
 </div>
