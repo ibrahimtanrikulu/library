@@ -79,7 +79,7 @@ table {
       border-bottom: 2px solid #000000;
       .iconFilterContainer {
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         justify-content: start;
         cursor: pointer;
       }

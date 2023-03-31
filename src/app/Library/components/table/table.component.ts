@@ -31,6 +31,12 @@ export class TableComponent implements OnInit {
 
   //local variable
   localData: any[] = [];
+  selected: any;
+  filterIconStatus: boolean = true;
+  filterText: string = '';
+  paginationList: number[] = [];
+  paginationNumberText: number = 10;
+  paginationKey: number = 1;
   constructor() {}
   ngOnInit() {
     this.paginationStatus
@@ -44,8 +50,6 @@ export class TableComponent implements OnInit {
   }
 
   //filter
-  filterIconStatus: boolean = true;
-  filterText: string = '';
   globalSearch(e: any) {
     this.paginationStatus
       ? this.paginationListNumber()
@@ -53,26 +57,19 @@ export class TableComponent implements OnInit {
     let value = e.target.value;
     if (value) {
       let result: any[] = [];
-      this.localData.filter((f: any[]) => {
-        this.column.map((m: any) => {
-          if (f[m.field] == value) {
-            result.push(f);
+      this.localData.map((m) => {
+        this.column.map((c) => {
+          if (m[c.field] == value) {
+            result.push(m);
           }
         });
       });
 
-      //ÇÖZ
-      // let result: any[] = [];
-      // this.column.map((m: IColumnType) => {
-      //   result.push(this.localData.filter((f) => f[m.field].includes(value)))
-      // })
-      //let result = this.data.filter((m) => m.text.includes(value));
       this.localData = result;
     }
   }
   inputFilter(event: any, filed: any) {
     let value = event.target.value;
-
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
@@ -104,22 +101,30 @@ export class TableComponent implements OnInit {
     }
   }
 
-  alphabeticalOrder(e: any) {
+  alphabeticalOrder(field: any) {
+    this.filterIconStatus
+      ? (this.filterIconStatus = false)
+      : (this.filterIconStatus = true);
+    this.paginationStatus
+      ? this.paginationListNumber()
+      : (this.localData = this.data);
+
     if (this.filterIconStatus) {
-      this.filterIconStatus = false;
+      this.localData.sort(function (a, b) {
+        if (a[field] < b[field]) return -1;
+        if (a[field] > b[field]) return 1;
+        return 0;
+      });
     } else {
-      this.filterIconStatus = true;
+      this.localData.sort(function (a, b) {
+        if (a[field] < b[field]) return 1;
+        if (a[field] > b[field]) return -1;
+        return 0;
+      });
     }
-    let ee: any[] = [];
-    this.localData.map((m) => {
-      ee.push(m[e]);
-    });
   }
 
   //pagination
-  paginationList: number[] = [];
-  paginationNumberText: number = 10;
-  paginationKey: number = 1;
   paginationBefore() {
     if (this.paginationKey > 1) {
       this.paginationKey--;
@@ -174,8 +179,7 @@ export class TableComponent implements OnInit {
   }
 
   //İnput
-  inputSelected: any;
   inputMethod(e: any) {
-    this.inputSelected = e;
+    this.selected = e;
   }
 }

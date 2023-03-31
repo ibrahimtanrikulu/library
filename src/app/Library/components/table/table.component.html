@@ -55,12 +55,22 @@
           *ngFor="let item of column"
           [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
         >
-          <div
-            *ngIf="item.field != ''"
-            class="iconFilterContainer"
-            (click)="alphabeticalOrder(item.field)"
-          >
+          <div *ngIf="item.field != ''" class="iconFilterContainer" (click)="alphabeticalOrder(item.field)">
             <span>{{ item.header }}</span>
+            <i
+              style="padding-left: 1%"
+              *ngIf="
+                item.field != 'edit' &&
+                item.field != 'delete' &&
+                item.field != 'extra'
+              "
+              [class]="
+                !filterIconStatus
+                  ? 'fa-solid fa-arrow-up'
+                  : 'fa-solid fa-arrow-down'
+              "
+              
+            ></i>
           </div>
         </th>
       </tr>
@@ -129,15 +139,16 @@
             >{{ col.header }}:</span
           >
           <div>
+            <!-- input değistirmek için -->
             <ng-container *ngIf="col.field != '' && col.inputStatus">
               <div (click)="inputMethod(data)">
                 <input
                   type="text"
                   [(ngModel)]="data[col.field]"
-                  *ngIf="data == inputSelected"
+                  *ngIf="data == selected"
                   class="input"
                 />
-                <p *ngIf="data != inputSelected">
+                <p *ngIf="data != selected">
                   {{ data[col.field] }}
                 </p>
               </div>

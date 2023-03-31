@@ -112,14 +112,14 @@ export class AppComponent {
     {
       field: 'id',
       header: 'numara',
-      width: '5%',
+      width: '10%',
       filterType: FilterTypeEnum.text,
       filterHeaderOneIcon: 'fa-solid fa-sort',
     },
     {
       field: 'kod',
       header: 'kod',
-      width: '25%',
+      width: '20%',
       filterType: FilterTypeEnum.multiDropdown,
       filterData: this.dropdownCol,
       filterPlaceholder: 'seç',
