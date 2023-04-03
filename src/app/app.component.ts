@@ -113,7 +113,7 @@ export class AppComponent {
       field: 'id',
       header: 'numara',
       width: '10%',
-      filterType: FilterTypeEnum.text,
+      filterType: FilterTypeEnum.number,
       filterHeaderOneIcon: 'fa-solid fa-sort',
     },
     {
@@ -135,7 +135,7 @@ export class AppComponent {
       field: 'fiyat',
       header: 'fiyat',
       width: '10%',
-      filterType: FilterTypeEnum.text,
+      filterType: FilterTypeEnum.number,
     },
     {
       field: 'edit',
@@ -193,7 +193,7 @@ export class AppComponent {
       onChange: this.dropdownMethod.bind(this),
     },
     {
-      class: 'col-12',
+      class: 'col-3',
       header: 'tikla',
       type: FormTypeEnum.button,
       click: this.button.bind(this),

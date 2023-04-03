@@ -5,6 +5,7 @@
     id="{{ placeholder }}"
     [placeholder]="placeholder"
     type="text"
+    readonly
     [value]="multiStatus ? text : list[0] ? list[0].text : ''"
     (click)="
       dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
@@ -20,7 +21,6 @@
       ? { 'overflow-x': 'auto' }
       : { overflow: 'hidden' }
   "
-  
   class="dropdownContainer"
 >
   <ng-container *ngIf="searchStatus">

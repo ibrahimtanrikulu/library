@@ -94,9 +94,7 @@
       Write in this wrapper control:
     </app-deneme> 
   
-    <app-card [header]="'card başlığı'">
-    <div content></div>
-  </app-card>
+    
   -->
 
   <app-table
@@ -109,9 +107,14 @@
     [globalSearchStatus]="true"
     [headerButtonLabel]="'Ekle'"
     (headerButtonClick)="button()"
+    [checkListStatus]="true"
   ></app-table>
 
   <app-dialog [header]="'Deneme'" [show]="show" [width]="'80%'">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-dialog>
+
+  <!-- <app-card [header]="'card başlığı'">
+    <div content></div>
+  </app-card> -->
 </div>

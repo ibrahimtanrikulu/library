@@ -26,8 +26,11 @@ export class TableComponent implements OnInit {
   @Input() paginationStatus: boolean = false;
   @Input() globalSearchStatus: boolean = false;
 
+  @Input() checkListStatus: boolean = false;
+
   @Input() headerButtonLabel: string = '';
   @Output() headerButtonClick = new EventEmitter();
+  @Output() checkList: EventEmitter<any[]> = new EventEmitter();
 
   //local variable
   localData: any[] = [];
@@ -37,6 +40,7 @@ export class TableComponent implements OnInit {
   paginationList: number[] = [];
   paginationNumberText: number = 10;
   paginationKey: number = 1;
+  checkboxList: any[] = [];
   constructor() {}
   ngOnInit() {
     this.paginationStatus
@@ -51,6 +55,7 @@ export class TableComponent implements OnInit {
 
   //filter
   globalSearch(e: any) {
+    this.checkboxList = [];
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
@@ -69,7 +74,8 @@ export class TableComponent implements OnInit {
     }
   }
   inputFilter(event: any, filed: any) {
-    let value = event.target.value;
+    this.checkboxList = [];
+    let value: string = event.target.value;
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
@@ -79,7 +85,20 @@ export class TableComponent implements OnInit {
     }
   }
 
+  inputNumberFilter(event: any, filed: any) {
+    this.checkboxList = [];
+    let value: number = event.target.value;
+    this.paginationStatus
+      ? this.paginationListNumber()
+      : (this.localData = this.data);
+    if (value) {
+      let result = this.localData.filter((m) => m[filed] == value);
+      this.localData = result;
+    }
+  }
+
   dropdownFilter(data: DataType[], field: any) {
+    this.checkboxList = [];
     this.paginationStatus
       ? this.paginationListNumber()
       : (this.localData = this.data);
@@ -132,6 +151,7 @@ export class TableComponent implements OnInit {
     }
   }
   paginationListNumber(e?: number) {
+    this.checkboxList = [];
     e ? (this.paginationNumberText = e) : 10;
     let value = 0;
     let key = 0;
@@ -181,5 +201,22 @@ export class TableComponent implements OnInit {
   //İnput
   inputMethod(e: any) {
     this.selected = e;
+  }
+
+  //checkboxList
+  checkboxCheck(e: any) {
+    console.log(e);
+    if (e === true) {
+    } else {
+      const index = this.checkboxList.indexOf(e, 0);
+      if (index == -1) {
+        this.checkboxList.push(e);
+      } else if (index >= 0) {
+        this.checkboxList.splice(index, 1);
+      }
+      console.log(this.checkboxList);
+
+      this.checkList.emit(this.checkboxList);
+    }
   }
 }

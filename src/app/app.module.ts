@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './Library/components/button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputDirective } from './Directive/input.directive';
 import { CheckboxComponent } from './Library/components/checkbox/checkbox.component';
 import { CardComponent } from './Library/components/card/card.component';
 import { DialogComponent } from './Library/components/dialog/dialog.component';
@@ -33,7 +32,6 @@ import { PhoneDirective } from './Directive/phone.directive';
     ToastComponent,
     TabviewComponent,
     TabComponent,
-    InputDirective,
     AccordionComponent,
     ProgesbarComponent,
     CalenderComponent,

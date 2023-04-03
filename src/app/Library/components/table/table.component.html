@@ -50,12 +50,17 @@
     <!-- THead -->
     <thead>
       <tr class="header">
+        <th *ngIf="checkListStatus" class="iconFilterContainer"></th>
         <th
           style="border: none"
           *ngFor="let item of column"
           [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
         >
-          <div *ngIf="item.field != ''" class="iconFilterContainer" (click)="alphabeticalOrder(item.field)">
+          <div
+            *ngIf="item.field != ''"
+            class="iconFilterContainer"
+            (click)="alphabeticalOrder(item.field)"
+          >
             <span>{{ item.header }}</span>
             <i
               style="padding-left: 1%"
@@ -69,13 +74,13 @@
                   ? 'fa-solid fa-arrow-up'
                   : 'fa-solid fa-arrow-down'
               "
-              
             ></i>
           </div>
         </th>
       </tr>
       <!-- Form Filter bölümnü -->
       <tr *ngIf="filterFormStatus" class="filterHeader">
+        <th *ngIf="checkListStatus" class="iconFilterContainer"></th>
         <th *ngFor="let item of column">
           <div
             *ngIf="
@@ -98,7 +103,7 @@
                 class="input"
                 placeholder="{{ item.filterPlaceholder }}"
                 type="{{ item.filterType }}"
-                (keyup)="inputFilter($event, item.field)"
+                (keyup)="inputNumberFilter($event, item.field)"
               />
             </ng-container>
             <ng-container *ngIf="item.filterType == 'dropdown'">
@@ -128,6 +133,15 @@
     <!-- TBody -->
     <tbody>
       <tr *ngFor="let data of localData">
+        <ng-container *ngIf="checkListStatus">
+          <td>
+            <input
+              class="checkboxInput"
+              type="checkbox"
+              (click)="checkboxCheck(data)"
+            />
+          </td>
+        </ng-container>
         <td *ngFor="let col of column">
           <span
             class="responseHeader"
@@ -139,8 +153,12 @@
             >{{ col.header }}:</span
           >
           <div>
+            <!-- check -->
+
             <!-- input değistirmek için -->
-            <ng-container *ngIf="col.field != '' && col.inputStatus">
+            <ng-container
+              *ngIf="col.field != '' && col.inputStatus && col.field"
+            >
               <div (click)="inputMethod(data)">
                 <input
                   type="text"
