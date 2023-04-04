@@ -1,21 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, forwardRef } from '@angular/core';
+import { Component, Input, OnInit, Optional, Self } from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
-  NG_VALUE_ACCESSOR,
+  NgControl,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ButtonComponent } from '../button/button.component';
 
-const noop = () => {};
-export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => DenemeComponent),
-  multi: true,
-};
 @Component({
   selector: 'app-deneme',
   templateUrl: './deneme.component.html',
@@ -30,4 +24,42 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     ButtonComponent,
   ],
 })
-export class DenemeComponent {}
+export class DenemeComponent implements OnInit, ControlValueAccessor {
+  @Input() disabled: boolean = false;
+  @Input() label: string = '';
+  @Input() placeholder: string = '';
+  @Input() type: 'text' | 'email' | 'password' = 'text';
+
+  value: any = '';
+
+  constructor(
+    @Self()
+    @Optional()
+    private ngControl: NgControl
+  ) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
+
+  ngOnInit() {}
+
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  onChange(e: any) {}
+  onTouched() {}
+}

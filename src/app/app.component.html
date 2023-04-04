@@ -94,8 +94,7 @@
       Write in this wrapper control:
     </app-deneme> 
   
-    
-  -->
+     
 
   <app-table
     [column]="col"
@@ -114,7 +113,12 @@
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-dialog>
 
-  <!-- <app-card [header]="'card başlığı'">
+  <app-card [header]="'card başlığı'">
     <div content></div>
   </app-card> -->
+
+  <form [formGroup]="PersonelForm">
+    <app-deneme formArrayName="test"></app-deneme>
+    <button (click)="button()">deneme</button>
+  </form>
 </div>

@@ -202,15 +202,16 @@ export class AppComponent {
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
       test: new FormControl('', [Validators.required]),
-      telefon: new FormControl({ value: 0, disabled: false }, [
-        Validators.required,
-      ]),
-      dogrumu: new FormControl(false, [Validators.required]),
+      // telefon: new FormControl({ value: 0, disabled: false }, [
+      //   Validators.required,
+      // ]),
+      // dogrumu: new FormControl(false, [Validators.required]),
     });
   }
 
   button() {
-    this.show ? (this.show = false) : (this.show = true);
+    // this.show ? (this.show = false) : (this.show = true);
+    console.log(this.PersonelForm.value);
   }
 
   message: MessageType = new MessageType();
