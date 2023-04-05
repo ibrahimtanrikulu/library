@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
+  NG_ASYNC_VALIDATORS,
+  NG_VALIDATORS,
   Validators,
 } from '@angular/forms';
 import { DataType } from './Library/Interface/DataType';
@@ -12,6 +14,7 @@ import { MessageType } from './Library/Interface/messageType';
 import { MessageEnum } from './Library/Enum/messageEnum';
 import { IForm } from './Library/Interface/Form';
 import { FormTypeEnum } from './Library/Enum/formTypeEnum';
+import { DenemeComponent } from './Library/components/deneme/deneme.component';
 
 @Component({
   selector: 'app-root',
@@ -201,10 +204,10 @@ export class AppComponent {
   ];
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl('', [Validators.required]),
-      // telefon: new FormControl({ value: 0, disabled: false }, [
-      //   Validators.required,
-      // ]),
+      test: new FormControl(""),
+      telefon: new FormControl({ value: false, disabled: false }, [
+        Validators.required,
+      ]),
       // dogrumu: new FormControl(false, [Validators.required]),
     });
   }
@@ -222,6 +225,9 @@ export class AppComponent {
     this.message.status = MessageEnum.error;
     this.show ? (this.show = false) : (this.show = true);
   }
+
+  deneme: string = '';
+  testDene: number = 0;
 
   dropdownMethod(e: any) {}
 

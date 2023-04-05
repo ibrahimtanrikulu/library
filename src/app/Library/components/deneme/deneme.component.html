@@ -3,6 +3,6 @@
   [placeholder]="placeholder"
   [value]="value"
   [disabled]="disabled"
-  (input)="onChange($event)"
+  (input)="onChange($any($event.target).value)"
   (blur)="onTouched()"
 />

@@ -7,7 +7,9 @@
     [disabled]="disabled"
     (input)="onChange($any($event.target).value)"
     (blur)="onTouched()"
-    type="text"
+    type="number"
+    [max]="Max ? Max : ''"
+    [min]="Min ? Min : ''"
   />
-  <label *ngIf="placeholder" for="{{ placeholder }}" class="form__label">{{ placeholder }}</label>
+  <label for="{{ placeholder }}" class="form__label">{{ placeholder }}</label>
 </div>

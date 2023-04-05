@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './Library/components/button/button.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CheckboxComponent } from './Library/components/checkbox/checkbox.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { CardComponent } from './Library/components/card/card.component';
 import { DialogComponent } from './Library/components/dialog/dialog.component';
 import { TableComponent } from './Library/components/table/table.component';
@@ -19,9 +18,14 @@ import { CalenderComponent } from './Library/components/calender/calender.compon
 import { FormComponent } from './Library/components/form/form.component';
 import { DenemeComponent } from './Library/components/deneme/deneme.component';
 import { PhoneDirective } from './Directive/phone.directive';
+import { InputnumberComponent } from './Library/components/inputnumber/inputnumber.component';
+import { InputpasswordComponent } from './Library/components/inputpassword/inputpassword.component';
+import { TextareaComponent } from './Library/components/textarea/textarea.component';
+import { SwitchComponent } from './Library/components/switch/switch.component';
+import { CheckboxComponent } from './Library/components/checkbox/checkbox.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SwitchComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -34,16 +38,19 @@ import { PhoneDirective } from './Directive/phone.directive';
     TabComponent,
     AccordionComponent,
     ProgesbarComponent,
-    CalenderComponent,
-    CheckboxComponent,
+    TextareaComponent,
+    CalenderComponent, 
+    InputpasswordComponent,
     CardComponent,
     DialogComponent,
     TableComponent,
     ButtonComponent,
     InputComponent,
+    InputnumberComponent,
     FormComponent,
     DenemeComponent,
     PhoneDirective,
+    CheckboxComponent
   ],
   providers: [],
   bootstrap: [AppComponent],

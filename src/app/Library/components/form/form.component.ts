@@ -4,7 +4,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IForm } from '../../Interface/Form';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ButtonComponent } from '../button/button.component';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { CheckboxListComponent } from '../checkboxList/checkboxList.component';
 
 @Component({
   selector: 'app-form',
@@ -16,7 +16,7 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
     FormsModule,
     ReactiveFormsModule,
     DropdownComponent,
-    CheckboxComponent,
+    CheckboxListComponent,
     ButtonComponent,
   ],
 })

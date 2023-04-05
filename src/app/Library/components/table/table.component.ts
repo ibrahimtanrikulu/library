@@ -5,13 +5,15 @@ import { ButtonComponent } from '../button/button.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { DataType } from '../../Interface/DataType';
 import { IColumnType } from '../../Interface/CollumType';
+import { InputComponent } from '../input/input.component';
+import { InputnumberComponent } from '../inputnumber/inputnumber.component';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent, DropdownComponent],
+  imports: [CommonModule, FormsModule, ButtonComponent, DropdownComponent,InputComponent,InputnumberComponent],
 })
 export class TableComponent implements OnInit {
   //input

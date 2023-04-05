@@ -1,0 +1,14 @@
+<div class="form__group field" style="margin: 0;">
+  <textarea
+    class="form__field"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onChange($any($event.target).value)"
+    (blur)="onTouched()"
+    placeholder="{{ placeholder }}"
+    id="{{ placeholder }}"
+    rows="{{ textAreaRows }}"
+    cols="10"
+  ></textarea>
+  <label for="{{ placeholder }}" class="form__label">{{ placeholder }}</label>
+</div>

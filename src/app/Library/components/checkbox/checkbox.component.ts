@@ -1,68 +1,48 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { DataType } from '../../Interface/DataType';
-import { ButtonComponent } from '../button/button.component'; 
+import { Component, Input, OnInit, Self, Optional } from '@angular/core';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NgControl,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-checkbox',
   templateUrl: './checkbox.component.html',
   styleUrls: ['./checkbox.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
 })
-export class CheckboxComponent implements OnInit {
-  @Input() checkboxData: DataType[] = [];
-  @Input() checkboxHeader: string = '';
-  @Input() multiCheckbox: boolean = false;
-  selectedList: number[] = [];
-  selectedAllChecked: boolean = false;
+export class CheckboxComponent implements ControlValueAccessor, OnInit {
+  @Input() disabled: boolean = false;
+  @Input() placeholder: string = '';
+  value: boolean = false;
 
-  @Output() selectedData: EventEmitter<number[]> = new EventEmitter();
-
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  selection(e: number) {
-    if (this.multiCheckbox == true) {
-      this.selectedList = [];
-      this.selectedList.push(e);
-    } else {
-      const index = this.selectedList.indexOf(e, 0);
-      if (index == -1) {
-        this.selectedList.push(e);
-      } else if (index >= 0) {
-        this.selectedList.splice(index, 1);
-      }
+  constructor(@Self() @Optional() private ngControl: NgControl) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
     }
-    this.selectedData.emit(this.selectedList);
   }
 
-  selectedAll() {
-    this.checkboxData.map((m) => {
-      this.selectedList.push(m.value);
-    });
-    this.selectedAllChecked = true;
-    this.selectedData.emit(this.selectedList);
+  ngOnInit() {}
+
+  writeValue(value: boolean): void {
+    this.value = value;
   }
 
-  selectedAllRemoveList() {
-    this.selectedList = [];
-    this.selectedAllChecked = false;
-    this.selectedData.emit(this.selectedList);
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
   }
 
-  reverse() {
-    let liste = this.selectedList;
-    this.selectedList = [];
-    this.checkboxData.map((m) => {
-      const index = liste.indexOf(m.value, 0);
-      if (index == -1) {
-        this.selectedList.push(m.value);
-      } else if (index >= 0) {
-      }
-    });
-    this.selectedData.emit(this.selectedList);
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
   }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  onChange(e: any) {}
+  onTouched() {}
 }

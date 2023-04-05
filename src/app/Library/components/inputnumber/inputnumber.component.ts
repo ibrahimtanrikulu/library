@@ -1,32 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import { Component, Input, OnInit, Self, Optional } from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
   NgControl,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { DropdownComponent } from '../dropdown/dropdown.component'; 
-import { ButtonComponent } from '../button/button.component';
 
 @Component({
-  selector: 'app-deneme',
-  templateUrl: './deneme.component.html',
-  styleUrls: ['./deneme.component.scss'],
+  selector: 'app-inputnumber',
+  templateUrl: './inputnumber.component.html',
+  styleUrls: ['./inputnumber.component.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    DropdownComponent, 
-    ButtonComponent,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
 })
-export class DenemeComponent implements OnInit, ControlValueAccessor {
+export class InputnumberComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean = false;
   @Input() placeholder: string = '';
-  @Input() type: string = 'text';
-
+  @Input() Max: any;
+  @Input() Min: any;
   value: any;
 
   constructor(@Self() @Optional() private ngControl: NgControl) {
@@ -37,7 +29,7 @@ export class DenemeComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {}
 
-  writeValue(value: any): void {
+  writeValue(value: number): void {
     this.value = value;
   }
 

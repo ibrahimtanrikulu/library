@@ -1,19 +1,10 @@
 <div style="height: 100vh; padding: 1%">
   <!-- 
   <div class="grid">
-    <div class="col-4">
-      
-    </div>
-  </div>
-  <div class="grid">
     <div class="col-6">
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
     </div>
   </div>
-  
-  <div style="width: 40%">
-    
-  </div> 
 
   <div class="grid">
     <div class="col-2">
@@ -54,8 +45,7 @@
     </div>
   </div>
 
-  <app-accordion header="Table"
-    ></app-accordion> 
+  <app-accordion header="Table"></app-accordion> 
 
   <form [formGroup]="PersonelForm">
     <app-input
@@ -92,9 +82,15 @@
   <p><span class="boldspan">Model data:</span> {{ dataModel }}</p> 
     <app-deneme  [(ngModel)]="dataModel">
       Write in this wrapper control:
-    </app-deneme> 
-  
-     
+    </app-deneme>  
+
+  <app-dialog [header]="'Deneme'" [show]="show" [width]="'80%'">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+  </app-dialog>
+
+  <app-card [header]="'card başlığı'">
+    <div content></div>
+  </app-card> -->
 
   <app-table
     [column]="col"
@@ -109,16 +105,15 @@
     [checkListStatus]="true"
   ></app-table>
 
-  <app-dialog [header]="'Deneme'" [show]="show" [width]="'80%'">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-dialog>
+  <!-- <app-deneme [(ngModel)]="deneme"></app-deneme>
+  <app-deneme [(ngModel)]="testDene"></app-deneme> -->
 
-  <app-card [header]="'card başlığı'">
-    <div content></div>
-  </app-card> -->
-
+  <!-- <form [formGroup]="PersonelForm">
+    <app-deneme formControlName="test" [(ngModel)]="deneme"></app-deneme>
+    <app-deneme formControlName="telefon"></app-deneme>
+  </form> -->
+  <!-- <br /><br /><br />
   <form [formGroup]="PersonelForm">
-    <app-deneme formArrayName="test"></app-deneme>
-    <button (click)="button()">deneme</button>
-  </form>
+    <app-input formControlName="test" placeholder="test"></app-input>
+  </form> -->
 </div>
