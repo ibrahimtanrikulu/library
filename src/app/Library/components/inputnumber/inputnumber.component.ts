@@ -19,7 +19,7 @@ export class InputnumberComponent implements ControlValueAccessor, OnInit {
   @Input() placeholder: string = '';
   @Input() Max: any;
   @Input() Min: any;
-  value: any;
+  value!: number;
 
   constructor(@Self() @Optional() private ngControl: NgControl) {
     if (this.ngControl) {

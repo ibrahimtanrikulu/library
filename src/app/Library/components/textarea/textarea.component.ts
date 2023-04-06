@@ -17,7 +17,7 @@ import {
 export class TextareaComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean = false;
   @Input() placeholder: string = '';
-  @Input() textAreaRows: any;
+  @Input() Rows: any;
   value: any;
 
   constructor(@Self() @Optional() private ngControl: NgControl) {

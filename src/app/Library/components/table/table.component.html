@@ -135,11 +135,7 @@
       <tr *ngFor="let data of localData">
         <ng-container *ngIf="checkListStatus">
           <td>
-            <input
-              class="checkboxInput"
-              type="checkbox"
-              (click)="checkboxCheck(data)"
-            />
+            <app-checkbox (click)="checkboxCheck(data)"></app-checkbox>
           </td>
         </ng-container>
         <td *ngFor="let col of column">
@@ -209,7 +205,6 @@
       <div>
         <app-button
           class="iconButton"
-          style="background-color: #334155; font-size: large"
           (btnClick)="paginationBefore()"
           icon="fa-solid fa-backward"
         >
@@ -218,7 +213,6 @@
       <div *ngFor="let key of paginationList">
         <app-button
           class="iconButton"
-          style="background-color: #334155; font-size: large"
           (btnClick)="paginationNumber(key)"
           label="{{ key }}"
         >
@@ -227,7 +221,6 @@
       <div>
         <app-button
           class="iconButton"
-          style="background-color: #334155; font-size: large"
           (click)="paginationAfter()"
           icon="fa-solid fa-forward"
         >

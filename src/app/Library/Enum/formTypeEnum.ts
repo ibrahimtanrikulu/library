@@ -7,4 +7,5 @@ export enum FormTypeEnum {
   dropdown = 'dropdown',
   checkboxList = 'checkboxList',
   button = 'button',
+  switch = 'switch',
 }

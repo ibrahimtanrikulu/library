@@ -3,10 +3,11 @@
     class="checkboxInput"
     type="checkbox"
     id="{{ placeholder }}"
-    [value]="value"
+    [ngModel]="checked"
     [disabled]="disabled"
-    (input)="onChange($any($event.target).value)"
-    (blur)="onTouched()"
+    (ngModelChange)="onModelChange($event)"
+    [checked]="checkedStatus"
+    [style]="styleInput"
   />
-  <label *ngIf="placeholder" for="{{ placeholder }}">{{ placeholder }}</label>
+  <label *ngIf="placeholder" for="{{ placeholder }}" [style]="styleLabel">{{ placeholder }}</label>
 </div>

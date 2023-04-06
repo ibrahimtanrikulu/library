@@ -18,25 +18,13 @@
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card> 
   
-  <button (click)="button()">deneem</button>
-
-  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show">
-  </app-dialog>
-  <button (click)="show = true">dsadsa</button> 
+  <button (click)="button()">deneem</button> 
 
   <app-tabview>
     <app-tab tabTitle="bir"></app-tab>
     <app-tab tabTitle="iki"></app-tab>
     <app-tab tabTitle="uc">
-      <div class="grid">
-        <div class="col-4">
-          <app-listbox
-            [data]="dropdownCol"
-            [searchStatus]="false"
-            (selectedList)="dropdownMethod($event)"
-          ></app-listbox>
-        </div></div
-    ></app-tab>
+      </app-tab>
   </app-tabview> 
 
   <div class="grid">
@@ -56,14 +44,7 @@
   </form>
   <button (click)="button()">dsadsasadsda</button>
 
-  <app-dropdown
-    [data]="dropdownCol"
-    [multiStatus]="true"
-    [searchStatus]="true"
-    (selectedList)="dropdownMethod($event)"
-    placeholder="deneme"
-    [disabled]="false" 
-  ></app-dropdown>
+  
    
   <app-input
     [(ngModel)]="testInput"
@@ -90,6 +71,62 @@
 
   <app-card [header]="'card başlığı'">
     <div content></div>
+  </app-card>  
+  
+  <app-deneme [(ngModel)]="deneme"></app-deneme>
+  <app-deneme [(ngModel)]="testDene"></app-deneme> -->
+
+  <!-- <form [formGroup]="PersonelForm">
+    <app-deneme formControlName="test" [(ngModel)]="deneme"></app-deneme>
+    <app-deneme formControlName="telefon"></app-deneme>
+  </form> -->
+  <!-- <form [formGroup]="PersonelForm">
+    <app-input formControlName="test" placeholder="test"></app-input>
+    <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
+    <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
+    <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
+  </form>
+
+  <app-dropdown
+    [data]="dropdownCol"
+    [multiStatus]="true"
+    [searchStatus]="true"
+    (selectedList)="dropdownMethod($event)"
+    placeholder="deneme"
+    [disabled]="false"
+  ></app-dropdown>
+
+  <app-checkbox [(ngModel)]="deneme"></app-checkbox>
+
+  <button (click)="button()">denemeö</button> -->
+
+  <!-- tamam olanlar  -->
+  <!-- <app-accordion header="deneme">dsaddsa</app-accordion> -->
+  <!-- <app-button label="deneme"></app-button> -->
+  <!-- <app-card header="deneme"></app-card> -->
+  <!-- <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist> -->
+  <!-- <app-dialog [header]="'Bu deneme Dialogu'" [show]="show"></app-dialog> -->
+
+  <!-- <div class="grid">
+    <div class="col-12">
+      <app-listbox
+        [data]="dropdownCol"
+        [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"
+      ></app-listbox>
+    </div>
+  </div> -->
+
+  <!-- <app-tabview>
+    <app-tab tabTitle="bir"></app-tab>
+    <app-tab tabTitle="iki"></app-tab>
+    <app-tab tabTitle="uc"> </app-tab>
+  </app-tabview> -->
+
+  <!-- <app-textarea [(ngModel)]="testDene" placeholder="deneme"></app-textarea>
+
+  <app-card header="form">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card> -->
 
   <app-table
@@ -104,16 +141,4 @@
     (headerButtonClick)="button()"
     [checkListStatus]="true"
   ></app-table>
-
-  <!-- <app-deneme [(ngModel)]="deneme"></app-deneme>
-  <app-deneme [(ngModel)]="testDene"></app-deneme> -->
-
-  <!-- <form [formGroup]="PersonelForm">
-    <app-deneme formControlName="test" [(ngModel)]="deneme"></app-deneme>
-    <app-deneme formControlName="telefon"></app-deneme>
-  </form> -->
-  <!-- <br /><br /><br />
-  <form [formGroup]="PersonelForm">
-    <app-input formControlName="test" placeholder="test"></app-input>
-  </form> -->
 </div>

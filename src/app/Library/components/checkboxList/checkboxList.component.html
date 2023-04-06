@@ -30,15 +30,15 @@
       *ngFor="let item of checkboxData"
       class="col-6 col-sm-5 col-md-4 col-lg-2"
     >
-      <span class="checkboxSpan">
-        <input
-          id="{{ item.value }}"
-          type="checkbox"
-          (click)="selection(item.value)"
-          [checked]="this.selectedList.indexOf(item.value) >= 0 ? true : false"
-        />
-        <label for="{{ item.value }}">{{ item.text }}</label>
-      </span>
+      <app-checkbox
+        placeholder="{{ item.text }}"
+        (click)="selection(item.value)"
+        [styleLabel]="'color:white'"
+        [styleInput]="'margin-top: 2%'"
+        [checkedStatus]="
+          this.selectedList.indexOf(item.value) >= 0 ? true : false
+        "
+      ></app-checkbox>
     </div>
   </div>
 </div>

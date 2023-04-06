@@ -3,13 +3,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DataType } from '../../Interface/DataType';
 import { ButtonComponent } from '../button/button.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
-  selector: 'app-checkbox',
+  selector: 'app-checkboxlist',
   templateUrl: './checkboxList.component.html',
   styleUrls: ['./checkboxList.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent],
+  imports: [CommonModule, FormsModule, ButtonComponent, CheckboxComponent],
 })
 export class CheckboxListComponent implements OnInit {
   @Input() checkboxData: DataType[] = [];
@@ -37,6 +38,7 @@ export class CheckboxListComponent implements OnInit {
       }
     }
     this.selectedData.emit(this.selectedList);
+    console.log(this.selectedList);
   }
 
   selectedAll() {

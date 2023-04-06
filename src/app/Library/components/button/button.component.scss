@@ -24,3 +24,16 @@
     transform: scale(0.8, 0.8);
   }
 }
+
+.iconButton {
+  font-size: 20px;
+  background-color: #131b2e;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: #334155;
+  font-size: large;
+  &:active {
+    transform: scale(0.8, 0.8);
+  }
+}

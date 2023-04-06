@@ -7,13 +7,22 @@ import { DataType } from '../../Interface/DataType';
 import { IColumnType } from '../../Interface/CollumType';
 import { InputComponent } from '../input/input.component';
 import { InputnumberComponent } from '../inputnumber/inputnumber.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent, DropdownComponent,InputComponent,InputnumberComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ButtonComponent,
+    DropdownComponent,
+    InputComponent,
+    InputnumberComponent,
+    CheckboxComponent,
+  ],
 })
 export class TableComponent implements OnInit {
   //input

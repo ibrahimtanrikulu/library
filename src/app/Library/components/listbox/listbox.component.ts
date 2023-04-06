@@ -2,19 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DataType } from '../../Interface/DataType';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
   selector: 'app-listbox',
   templateUrl: './listbox.component.html',
   styleUrls: ['./listbox.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, CheckboxComponent],
 })
 export class ListboxComponent {
   @Input() data: DataType[] = [];
   @Input() searchStatus: boolean = false;
   @Input() ListBoxScrollHeightStatus: boolean = false;
-  @Input() ListBoxScrollHeight: string = "100%";
+  @Input() ListBoxScrollHeight: string = '100%';
   @Output() selectedList: EventEmitter<DataType[]> = new EventEmitter();
 
   list: DataType[] = [];
@@ -22,7 +23,7 @@ export class ListboxComponent {
   localData: DataType[] = [];
   text: string = '';
 
-  constructor() { }
+  constructor() {}
   ngOnInit() {
     this.localData = this.data;
   }

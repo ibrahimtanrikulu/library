@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ButtonComponent } from './Library/components/button/button.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './Library/components/card/card.component';
 import { DialogComponent } from './Library/components/dialog/dialog.component';
 import { TableComponent } from './Library/components/table/table.component';
@@ -23,14 +23,14 @@ import { InputpasswordComponent } from './Library/components/inputpassword/input
 import { TextareaComponent } from './Library/components/textarea/textarea.component';
 import { SwitchComponent } from './Library/components/switch/switch.component';
 import { CheckboxComponent } from './Library/components/checkbox/checkbox.component';
+import { CheckboxListComponent } from './Library/components/checkboxList/checkboxList.component';
 
 @NgModule({
-  declarations: [AppComponent, SwitchComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    //
     DropdownComponent,
     ListboxComponent,
     ToastComponent,
@@ -39,7 +39,7 @@ import { CheckboxComponent } from './Library/components/checkbox/checkbox.compon
     AccordionComponent,
     ProgesbarComponent,
     TextareaComponent,
-    CalenderComponent, 
+    CalenderComponent,
     InputpasswordComponent,
     CardComponent,
     DialogComponent,
@@ -50,7 +50,9 @@ import { CheckboxComponent } from './Library/components/checkbox/checkbox.compon
     FormComponent,
     DenemeComponent,
     PhoneDirective,
-    CheckboxComponent
+    CheckboxComponent,
+    SwitchComponent,
+    CheckboxListComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

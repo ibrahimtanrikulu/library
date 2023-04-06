@@ -5,6 +5,12 @@ import { IForm } from '../../Interface/Form';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ButtonComponent } from '../button/button.component';
 import { CheckboxListComponent } from '../checkboxList/checkboxList.component';
+import { InputComponent } from '../input/input.component';
+import { InputnumberComponent } from '../inputnumber/inputnumber.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { SwitchComponent } from '../switch/switch.component';
+import { TextareaComponent } from '../textarea/textarea.component';
+import { InputpasswordComponent } from '../inputpassword/inputpassword.component';
 
 @Component({
   selector: 'app-form',
@@ -18,6 +24,12 @@ import { CheckboxListComponent } from '../checkboxList/checkboxList.component';
     DropdownComponent,
     CheckboxListComponent,
     ButtonComponent,
+    InputComponent,
+    InputnumberComponent,
+    CheckboxComponent,
+    SwitchComponent,
+    TextareaComponent,
+    InputpasswordComponent
   ],
 })
 export class FormComponent {

@@ -165,7 +165,7 @@ export class AppComponent {
       disabled: false,
     },
     {
-      controlname: 'telefon',
+      controlname: 'pc',
       class: 'col-12 col-lg-6 col-md-8',
       header: 'telefon',
       type: FormTypeEnum.number,
@@ -174,7 +174,7 @@ export class AppComponent {
       disabled: false,
     },
     {
-      controlname: 'dogrumu',
+      controlname: 'telefon',
       class: 'col-12 col-lg-6 col-md-8',
       header: 'evet',
       type: FormTypeEnum.checkbox,
@@ -202,19 +202,21 @@ export class AppComponent {
       click: this.button.bind(this),
     },
   ];
+
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl(""),
-      telefon: new FormControl({ value: false, disabled: false }, [
+      test: new FormControl(''),
+      telefon: new FormControl({ value: true, disabled: false }, [
         Validators.required,
       ]),
-      // dogrumu: new FormControl(false, [Validators.required]),
+      pc: new FormControl(0),
+      ibrahim: new FormControl(''),
     });
   }
 
   button() {
     // this.show ? (this.show = false) : (this.show = true);
-    console.log(this.PersonelForm.value);
+    console.log(this.PersonelForm.value, this.deneme);
   }
 
   message: MessageType = new MessageType();
@@ -226,8 +228,8 @@ export class AppComponent {
     this.show ? (this.show = false) : (this.show = true);
   }
 
-  deneme: string = '';
-  testDene: number = 0;
+  deneme: boolean = true;
+  testDene: string = "";
 
   dropdownMethod(e: any) {}
 

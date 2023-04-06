@@ -1,8 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, Self, Optional } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Self,
+  Optional,
+  forwardRef,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
+  NG_VALUE_ACCESSOR,
   NgControl,
   ReactiveFormsModule,
 } from '@angular/forms';
@@ -13,36 +21,45 @@ import {
   styleUrls: ['./checkbox.component.scss'],
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxComponent),
+      multi: true,
+    },
+  ],
 })
 export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean = false;
   @Input() placeholder: string = '';
-  value: boolean = false;
-
-  constructor(@Self() @Optional() private ngControl: NgControl) {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-    }
-  }
-
-  ngOnInit() {}
-
-  writeValue(value: boolean): void {
-    this.value = value;
-  }
+  @Input() styleInput: string = '';
+  @Input() styleLabel: string = '';
+  @Input() checkedStatus: boolean = false;
+  onChange: any = () => {};
+  onTouch: any = () => {};
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
-
   registerOnChange(fn: any): void {
     this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    this.onTouched = fn;
+    this.onTouch = fn;
   }
 
-  onChange(e: any) {}
-  onTouched() {}
+  constructor() {}
+
+  ngOnInit() {}
+
+  checked: boolean = false;
+  writeValue(checked: boolean) {
+    this.checked = checked;
+  }
+
+  onModelChange(e: boolean) {
+    this.checked = e;
+    this.onChange(e);
+  }
 }
