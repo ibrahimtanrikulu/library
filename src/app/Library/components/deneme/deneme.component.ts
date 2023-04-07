@@ -1,12 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
-import {
-  ControlValueAccessor,
-  FormsModule,
-  NgControl,
-  ReactiveFormsModule,
-} from '@angular/forms';
-import { DropdownComponent } from '../dropdown/dropdown.component'; 
+import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -18,41 +13,8 @@ import { ButtonComponent } from '../button/button.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    DropdownComponent, 
+    DropdownComponent,
     ButtonComponent,
   ],
 })
-export class DenemeComponent implements OnInit, ControlValueAccessor {
-  @Input() disabled: boolean = false;
-  @Input() placeholder: string = '';
-  @Input() type: string = 'text';
-
-  value: any;
-
-  constructor(@Self() @Optional() private ngControl: NgControl) {
-    if (this.ngControl) {
-      this.ngControl.valueAccessor = this;
-    }
-  }
-
-  ngOnInit() {}
-
-  writeValue(value: any): void {
-    this.value = value;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  onChange(e: any) {}
-  onTouched() {}
-}
+export class DenemeComponent {}

@@ -107,16 +107,6 @@
   <!-- <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist> -->
   <!-- <app-dialog [header]="'Bu deneme Dialogu'" [show]="show"></app-dialog> -->
 
-  <!-- <div class="grid">
-    <div class="col-12">
-      <app-listbox
-        [data]="dropdownCol"
-        [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)"
-      ></app-listbox>
-    </div>
-  </div> -->
-
   <!-- <app-tabview>
     <app-tab tabTitle="bir"></app-tab>
     <app-tab tabTitle="iki"></app-tab>
@@ -129,7 +119,7 @@
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card> -->
 
-  <app-table
+  <!-- <app-table
     [column]="col"
     [data]="data"
     [filterFormStatus]="true"
@@ -140,5 +130,18 @@
     [headerButtonLabel]="'Ekle'"
     (headerButtonClick)="button()"
     [checkListStatus]="true"
-  ></app-table>
+  ></app-table> -->
+  <!-- <div class="grid">
+    <div class="col-12">
+      <app-listbox
+        [data]="dropdownCol"
+        [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"
+      ></app-listbox>
+    </div>
+  </div> -->
+
+  <div class="grid">
+    <div class="col-12"><app-calender></app-calender></div>
+  </div>
 </div>

@@ -3,13 +3,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DataType } from '../../Interface/DataType';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { InputComponent } from '../input/input.component';
 
 @Component({
   selector: 'app-listbox',
   templateUrl: './listbox.component.html',
   styleUrls: ['./listbox.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, CheckboxComponent],
+  imports: [CommonModule, FormsModule, CheckboxComponent, InputComponent],
 })
 export class ListboxComponent {
   @Input() data: DataType[] = [];

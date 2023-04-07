@@ -1,1 +1,45 @@
-<p>calender works!</p>
+<div>
+  <div class="grid">
+    <div class="col-12 col-md-4 col-lg-4">
+      <app-button (btnClick)="decreaseMonth()" label="Geri"></app-button>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4">
+      <app-button (btnClick)="setCurrentMonth()" label="Now"></app-button>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4">
+      <app-button (btnClick)="increaseMonth()" label="İleri"></app-button>
+    </div>
+  </div>
+</div>
+
+<table class="calendar-table" *ngIf="calendar">
+  <thead>
+    <tr>
+      <th>P</th>
+      <th>S</th>
+      <th>Ç</th>
+      <th>P</th>
+      <th>C</th>
+      <th>Cm</th>
+      <th>P</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of calendar | chunk : 7; let i = index">
+      <td
+        class="calendar-day"
+        [ngClass]="{ 'past-date': c.isPastDate, today: c.isToday }"
+        *ngFor="let c of row; let j = index"
+      >
+        <div class="calendar-day-header" [ngClass]="{ 'blue-date': c.isToday }">
+          <strong>{{ c.date.getDate() }}</strong>
+          <strong
+            *ngIf="c.isToday || (i == 0 && j == 0) || c.date.getDate() == 1"
+          >
+            {{ monthNames[c.date.getMonth()] }}</strong
+          >
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

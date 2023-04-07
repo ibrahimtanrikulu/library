@@ -16,9 +16,7 @@ text = font-size = medium
 
 ---------------------Yap-------------------------------
 table,
-input musk,
-calender
-
+input musk,  
 
 ----------
 // $container: #334155;

@@ -23,7 +23,7 @@ import { InputpasswordComponent } from './Library/components/inputpassword/input
 import { TextareaComponent } from './Library/components/textarea/textarea.component';
 import { SwitchComponent } from './Library/components/switch/switch.component';
 import { CheckboxComponent } from './Library/components/checkbox/checkbox.component';
-import { CheckboxListComponent } from './Library/components/checkboxList/checkboxList.component';
+import { CheckboxListComponent } from './Library/components/checkboxList/checkboxList.component'; 
 
 @NgModule({
   declarations: [AppComponent],
