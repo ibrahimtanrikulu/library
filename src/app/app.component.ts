@@ -1,10 +1,8 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
-  NG_ASYNC_VALIDATORS,
-  NG_VALIDATORS,
   Validators,
 } from '@angular/forms';
 import { DataType } from './Library/Interface/DataType';
@@ -14,7 +12,6 @@ import { MessageType } from './Library/Interface/messageType';
 import { MessageEnum } from './Library/Enum/messageEnum';
 import { IForm } from './Library/Interface/Form';
 import { FormTypeEnum } from './Library/Enum/formTypeEnum';
-import { DenemeComponent } from './Library/components/deneme/deneme.component';
 
 @Component({
   selector: 'app-root',
@@ -123,7 +120,6 @@ export class AppComponent {
       field: 'kod',
       header: 'kod',
       width: '20%',
-      filterType: FilterTypeEnum.multiDropdown,
       filterData: this.dropdownCol,
       filterPlaceholder: 'seç',
       inputStatus: true,
@@ -229,7 +225,7 @@ export class AppComponent {
   }
 
   deneme: boolean = true;
-  testDene: string = "";
+  testDene: string = '';
 
   dropdownMethod(e: any) {}
 

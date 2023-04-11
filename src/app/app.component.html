@@ -139,9 +139,34 @@
         (selectedList)="dropdownMethod($event)"
       ></app-listbox>
     </div>
-  </div> -->
-
+  </div>  
+  
   <div class="grid">
     <div class="col-12"><app-calender></app-calender></div>
+  </div> 
+<app-table
+    [column]="col"
+    [data]="data"
+    [filterFormStatus]="true"
+    [scrollWidthStatus]="true"
+    [header]="'Cek tahsilat'"
+    [paginationStatus]="true"
+    [globalSearchStatus]="true"
+    [headerButtonLabel]="'Ekle'"
+    (headerButtonClick)="button()"
+    [checkListStatus]="true"
+  ></app-table> -->
+
+  <div class="grid">
+    <div class="col-6">
+      <app-deneme
+        [data]="dropdownCol"
+        [multiStatus]="true"
+        [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"
+        placeholder="deneme"
+        [disabled]="false"
+      ></app-deneme>
+    </div>
   </div>
 </div>
