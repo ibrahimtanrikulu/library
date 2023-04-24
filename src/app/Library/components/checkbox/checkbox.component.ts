@@ -1,17 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  Input,
-  OnInit,
-  Self,
-  Optional,
-  forwardRef,
-} from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
   NG_VALUE_ACCESSOR,
-  NgControl,
   ReactiveFormsModule,
 } from '@angular/forms';
 

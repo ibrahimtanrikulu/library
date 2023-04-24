@@ -3,8 +3,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
-import { DataType } from '../../Interface/DataType';
-import { IColumnType } from '../../Interface/CollumType';
+import { DataType } from '../../Interfaces/DataType';
+import { IColumnType } from '../../Interfaces/CollumType';
 import { InputComponent } from '../input/input.component';
 import { InputnumberComponent } from '../inputnumber/inputnumber.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -36,9 +36,7 @@ export class TableComponent implements OnInit {
   @Input() scrollHeight: string = '';
   @Input() paginationStatus: boolean = false;
   @Input() globalSearchStatus: boolean = false;
-
   @Input() checkListStatus: boolean = false;
-
   @Input() headerButtonLabel: string = '';
   @Output() headerButtonClick = new EventEmitter();
   @Output() checkList: EventEmitter<any[]> = new EventEmitter();

@@ -16,8 +16,10 @@ text = font-size = medium
 
 ---------------------Yap-------------------------------
 dropdown,
+calander
 table,
 input musk,
+swich
 
 ----------
 // $container: #334155;

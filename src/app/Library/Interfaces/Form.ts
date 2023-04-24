@@ -1,4 +1,4 @@
-import { FormTypeEnum } from '../Enum/formTypeEnum';
+import { FormTypeEnum } from '../Enums/formTypeEnum';
 import { DataType } from './DataType';
 
 export interface IForm {

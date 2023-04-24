@@ -1,73 +1,138 @@
-nav {
-  width: 100%;
-  position: relative;
-}
+// nav {
+//   width: 100%;
+//   position: relative;
+//   z-index: 100;
+// }
 
-nav h2 {
-  position: relative;
-  background: #1c64f2;
-  color: inherit;
-  font-weight: 200;
-  display: flex;
-  flex: 1;
-  justify-content: left;
-  align-items: center;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: all 0.4s;
-  cursor: pointer;
-}
+// nav h2 {
+//   position: relative;
+//   background-color: #1c64f2;
+//   color: inherit;
+//   font-weight: 200;
+//   display: flex;
+//   flex: 1;
+//   justify-content: left;
+//   align-items: center;
+//   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+//   transition: all 0.4s;
+//   cursor: pointer;
+// }
 
-h2::before {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: inherit;
-  background: currentColor;
-  display: flex;
-  align-items: center;
-  transform: rotate(180deg) scale(0.75);
-}
+// h2::before {
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   height: inherit;
+//   background: currentColor;
+//   display: flex;
+//   align-items: center;
+//   transform: rotate(180deg) scale(0.75);
+// }
 
-nav ul {
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-    rgba(0, 0, 0, 0.07) 0px 16px 16px;
-  padding-top: 0.8%;
-  background: blue;
-  list-style: none;
-  overflow: hidden;
-  text-align: left;
-  transition: all 0.4s ease-out;
-  width: 100%;
-  position: absolute;
-}
-nav ul li {
+// nav ul {
+//   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+//     rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+//     rgba(0, 0, 0, 0.07) 0px 16px 16px;
+//   padding-top: 0.8%;
+//   background-color: blue;
+//   list-style: none;
+//   overflow: hidden;
+//   text-align: left;
+//   transition: all 0.4s ease-out;
+//   width: 100%;
+//   position: absolute;
+// }
+// nav ul li {
+//   position: relative;
+//   display: inline-block;
+//   line-height: 1.5;
+//   width: 100%;
+//   cursor: pointer;
+//   transition: background-color 3s;
+//   input {
+//     width: 100%;
+//   }
+//   &:hover {
+//     background-color: #131b2e;
+//   }
+// }
+
+// nav ul p {
+//   display: block;
+//   color: inherit;
+//   text-transform: lowercase;
+//   font-weight: 200;
+//   text-decoration: none;
+// }
+
+// .liInput {
+//   padding: 0.4% 2%;
+// }
+
+// .liText {
+//   padding: 0.4% 2%;
+// }
+
+$color_1: #5a667f;
+$color_2: #223254;
+$font-family_1: inherit;
+$border-color_1: #07f;
+
+.select {
   position: relative;
-  display: inline-block;
-  line-height: 1.5;
-  width: 100%;
-  cursor: pointer;
-  transition: background-color 3s;
-  input {
+  svg {
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 3px);
+    width: 10px;
+    height: 6px;
+    stroke-width: 2px;
+    stroke: #9098a9;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
+  select {
+    -webkit-appearance: none;
+    padding: 7px 40px 7px 12px;
     width: 100%;
+    border: 1px solid #e8eaed;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 1px 3px -2px #9098a9;
+    cursor: pointer;
+    font-family: $font-family_1;
+    font-size: 16px;
+    transition: all 150ms ease;
+    &:required {
+      &:invalid {
+        color: $color_1;
+      }
+    }
+    option {
+      color: $color_2;
+    }
+    option[value=""][disabled] {
+      display: none;
+    }
+    &:focus {
+      outline: none;
+      border-color: $border-color_1;
+      box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+    }
+    &:hover {
+      + {
+        svg {
+          stroke: #07f;
+        }
+      }
+    }
   }
-  &:hover {
-    background-color: #131b2e;
-  }
 }
-
-nav ul a {
-  display: block;
-  color: inherit;
-  text-transform: lowercase;
-  font-weight: 200;
-  text-decoration: none;
-}
-
-.liInput {
-  padding: 0.4% 2%;
-}
-
-.liText {
-  padding: 0.4% 2%;
+.sprites {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }

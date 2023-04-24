@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DataType } from '../../Interface/DataType';
+import { DataType } from '../../Interfaces/DataType';
 
 @Component({
   selector: 'app-deneme',
