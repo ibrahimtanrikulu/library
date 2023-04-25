@@ -61,6 +61,18 @@
             ></app-checkbox>
           </div>
         </ng-container>
+        <ng-container *ngIf="item.type == 'checkbox'">
+          <div
+            [class]="item.class ? item.class : 'col-12'"
+            style="padding-left: 1%; padding-right: 1%; padding-top: 1%"
+          >
+            <app-switch
+              formControlName="{{ item.controlname }}"
+              [placeholder]="item.header ? item.header : ''"
+              styleLabel="color:white"
+            ></app-switch>
+          </div>
+        </ng-container>
         <ng-container *ngIf="item.type == 'dropdown'">
           <div
             [class]="item.class ? item.class : 'col-12'"

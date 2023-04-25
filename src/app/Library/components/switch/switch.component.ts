@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import {
-  ControlValueAccessor,
   FormsModule,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
@@ -22,27 +21,36 @@ import {
   ],
 })
 export class SwitchComponent {
-  // @Input() disabled: boolean = false;
-  // @Input() placeholder: string = '';
-  // onChange: any = () => {};
-  // onTouch: any = () => {};
-  // setDisabledState(isDisabled: boolean): void {
-  //   this.disabled = isDisabled;
-  // }
-  // registerOnChange(fn: any): void {
-  //   this.onChange = fn;
-  // }
-  // registerOnTouched(fn: any): void {
-  //   this.onTouch = fn;
-  // }
-  // constructor() {}
-  // ngOnInit() {}
-  // checked: boolean = false;
-  // writeValue(checked: boolean) {
-  //   this.checked = checked;
-  // }
-  // onModelChange(e: boolean) {
-  //   this.checked = e;
-  //   this.onChange(e);
-  // }
+  @Input() disabled: boolean = false;
+  @Input() placeholder: string = '';
+  @Input() styleInput: string = '';
+  @Input() styleLabel: string = '';
+  @Input() checkedStatus: boolean = false;
+  onChange: any = () => {};
+  onTouch: any = () => {};
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouch = fn;
+  }
+
+  constructor() {}
+
+  ngOnInit() {}
+
+  checked: boolean = false;
+  writeValue(checked: boolean) {
+    this.checked = checked;
+  }
+
+  onModelChange(e: boolean) {
+    this.checked = e;
+    this.onChange(e);
+  }
 }

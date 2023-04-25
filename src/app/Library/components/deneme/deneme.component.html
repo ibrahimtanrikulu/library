@@ -1,37 +1,60 @@
-<!-- <nav>
-  <h2
-    style="padding: 0.8%"
-    (click)="
-      dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
-    "
-  >
-    {{ multiStatus ? text : list[0] ? list[0].text : "" }}deneme
-  </h2>
-  <ul *ngIf="dropdownStatus">
-    <li class="liInput"><input type="text" /></li>
-    <li *ngFor="let item of localData" (click)="change(item)" class="liText">
-      <p>{{ item.text }}</p>
-    </li>
-  </ul>
-</nav> -->
-
-<label class="select" for="slct">
-  <select id="slct" required="required">
-    <option
-      disabled="disabled"
-      selected="selected"
+<div class="container">
+  <div class="headerContainer">
+    <input
+      [disabled]="disabled"
+      class="input"
+      id="{{ placeholder }}"
+      [placeholder]="placeholder"
+      type="text"
+      readonly
       [value]="multiStatus ? text : list[0] ? list[0].text : ''"
-    >
-      Seçiniz
-    </option>
-    <option *ngFor="let item of data" (click)="change(item)">
-      {{ item.text }}
-    </option>
-  </select>
-  <svg>
-    <use xlink:href="#select-arrow-down"></use></svg></label
-><svg class="sprites">
-  <symbol id="select-arrow-down" viewbox="0 0 10 6">
-    <polyline points="1 1 5 5 9 1"></polyline>
-  </symbol>
-</svg>
+      (click)="
+        dropdownStatus ? (dropdownStatus = false) : (dropdownStatus = true)
+      "
+    />
+    <div class="iconContainer">
+      <i class="fa-solid fa-arrows-up-down"></i>
+    </div>
+  </div>
+  <div
+    *ngIf="dropdownStatus"
+    [style.height]="DropdownScrollHeight"
+    [ngStyle]="
+      DropdownScrollHeightStatus
+        ? { 'overflow-x': 'auto' }
+        : { overflow: 'hidden' }
+    "
+    class="dropdownContainer"
+  >
+    <ng-container *ngIf="searchStatus">
+      <div class="searchContainer">
+        <input type="text" class="input" (keyup)="search($event)" />
+        <div><i class="fas fa-search"></i></div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="multiStatus">
+      <div
+        class="listContainer"
+        *ngFor="let item of localData"
+        (click)="change(item)"
+      >
+        <input type="checkbox" [checked]="list.indexOf(item, 0) >= 0" />
+        <li>
+          {{ item.text }}
+        </li>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!multiStatus">
+      <div
+        class="listContainer"
+        style="padding-left: 0px"
+        *ngFor="let item of localData"
+        (click)="change(item)"
+      >
+        <li>
+          {{ item.text }}
+        </li>
+      </div>
+    </ng-container>
+  </div>
+</div>

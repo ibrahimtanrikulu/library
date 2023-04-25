@@ -146,7 +146,7 @@
   </div>  
   -->
 
-  <div class="grid">
+  <!-- <div class="grid">
     <div class="col-12">
       <app-deneme
         [data]="dropdownCol"
@@ -157,7 +157,26 @@
         [disabled]="false"
       ></app-deneme>
     </div>
-  </div>
+  </div> 
+   
+
+  <div class="grid">
+    <div class="col-6">
+      <app-dropdown
+        [data]="dropdownCol"
+        [multiStatus]="true"
+        [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"
+        placeholder="deneme"
+        [disabled]="false"
+      ></app-dropdown>
+    </div>
+  </div> 
+  
+  <app-switch [placeholder]="'deneme'" [disabled]="true"></app-switch>
+  <app-checkbox [placeholder]="'deneme'" [disabled]="true"></app-checkbox>
+   -->
+
   <app-table
     [column]="col"
     [data]="data"

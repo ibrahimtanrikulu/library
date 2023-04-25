@@ -122,6 +122,7 @@ export class AppComponent {
       width: '20%',
       filterData: this.dropdownCol,
       filterPlaceholder: 'seç',
+      filterType: FilterTypeEnum.multiDropdown,
       inputStatus: true,
     },
     {

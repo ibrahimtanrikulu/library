@@ -14,12 +14,11 @@ containerHeaderBoxShodow = box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 
 header == font-size = x-large
 text = font-size = medium
 
----------------------Yap-------------------------------
-dropdown,
+---------------------Yap------------------------------- 
 calander
 table,
 input musk,
-swich
+
 
 ----------
 // $container: #334155;
