@@ -98,40 +98,29 @@
 
   <app-checkbox [(ngModel)]="deneme"></app-checkbox>
 
-  <button (click)="button()">denemeö</button> -->
+  <button (click)="button()">denemeö</button> 
 
-  <!-- tamam olanlar  -->
-  <!-- <app-accordion header="deneme">dsaddsa</app-accordion> -->
-  <!-- <app-button label="deneme"></app-button> -->
-  <!-- <app-card header="deneme"></app-card> -->
-  <!-- <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist> -->
-  <!-- <app-dialog [header]="'Bu deneme Dialogu'" [show]="show"></app-dialog> -->
-
-  <!-- <app-tabview>
+  <app-accordion header="deneme">dsaddsa</app-accordion>
+  <app-button label="deneme"></app-button> 
+  <app-card header="deneme"></app-card> 
+  <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist> 
+  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show"></app-dialog>
+    
+  <app-tabview>
     <app-tab tabTitle="bir"></app-tab>
     <app-tab tabTitle="iki"></app-tab>
     <app-tab tabTitle="uc"> </app-tab>
-  </app-tabview> -->
-
-  <!-- <app-textarea [(ngModel)]="testDene" placeholder="deneme"></app-textarea>
+  </app-tabview>
+  
+  <app-textarea [(ngModel)]="testDene" placeholder="deneme"></app-textarea>
 
   <app-card header="form">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-card> -->
+  </app-card> 
 
-  <!-- <app-table
-    [column]="col"
-    [data]="data"
-    [filterFormStatus]="true"
-    [scrollWidthStatus]="true"
-    [header]="'Cek tahsilat'"
-    [paginationStatus]="true"
-    [globalSearchStatus]="true"
-    [headerButtonLabel]="'Ekle'"
-    (headerButtonClick)="button()"
-    [checkListStatus]="true"
-  ></app-table> -->
-  <!-- <div class="grid">
+  
+  
+  <div class="grid">
     <div class="col-12">
       <app-listbox
         [data]="dropdownCol"
@@ -144,9 +133,8 @@
   <div class="grid">
     <div class="col-12"><app-calender></app-calender></div>
   </div>  
-  -->
-
-  <!-- <div class="grid">
+  
+  <div class="grid">
     <div class="col-12">
       <app-deneme
         [data]="dropdownCol"
@@ -158,7 +146,6 @@
       ></app-deneme>
     </div>
   </div> 
-   
 
   <div class="grid">
     <div class="col-6">
@@ -175,18 +162,23 @@
   
   <app-switch [placeholder]="'deneme'" [disabled]="true"></app-switch>
   <app-checkbox [placeholder]="'deneme'" [disabled]="true"></app-checkbox>
-   -->
+  
+  <div class="grid">
+    <div class="col-4">
+      <app-calender></app-calender>
+    </div>
+  </div>
+  -->
 
   <app-table
     [column]="col"
     [data]="data"
     [filterFormStatus]="true"
-    [scrollWidthStatus]="true"
-    [header]="'Cek tahsilat'"
+    [scrollWidthStatus]="true" 
     [paginationStatus]="true"
-    [globalSearchStatus]="true"
+    [globalSearchStatus]="false"
     [headerButtonLabel]="'Ekle'"
     (headerButtonClick)="button()"
     [checkListStatus]="true"
-  ></app-table>
+  ></app-table> 
 </div>

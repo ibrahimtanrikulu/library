@@ -1,45 +1,53 @@
-<div>
-  <div class="grid">
-    <div class="col-12 col-md-4 col-lg-4">
-      <app-button (btnClick)="decreaseMonth()" label="Geri"></app-button>
-    </div>
-    <div class="col-12 col-md-4 col-lg-4">
-      <app-button (btnClick)="setCurrentMonth()" label="Now"></app-button>
-    </div>
-    <div class="col-12 col-md-4 col-lg-4">
-      <app-button (btnClick)="increaseMonth()" label="İleri"></app-button>
-    </div>
+<div class="headerContainer">
+  <input
+    class="input"
+    style="cursor: pointer"
+    type="text"
+    readonly
+    [value]="selected ? selected : ''"
+    (click)="show ? (show = false) : (show = true)"
+  />
+  <div class="iconContainer">
+    <i class="fa-regular fa-calendar-days"></i>
   </div>
 </div>
+<div class="modal" *ngIf="show">
+  <div class="header">
+    <i class="fa-solid fa-angle-left" (click)="decreaseMonth()"></i>
+    <p>{{ displayMonth }} {{ displayYears }}</p>
+    <!-- <p style="cursor: pointer" (click)="setCurrentMonth()">Now</p> -->
+    <i class="fa-solid fa-angle-right" (click)="increaseMonth()"></i>
+  </div>
+  <hr />
 
-<table class="calendar-table" *ngIf="calendar">
-  <thead>
-    <tr>
-      <th>P</th>
-      <th>S</th>
-      <th>Ç</th>
-      <th>P</th>
-      <th>C</th>
-      <th>Cm</th>
-      <th>P</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let row of calendar | chunk : 7; let i = index">
-      <td
-        class="calendar-day"
-        [ngClass]="{ 'past-date': c.isPastDate, today: c.isToday }"
-        *ngFor="let c of row; let j = index"
-      >
-        <div class="calendar-day-header" [ngClass]="{ 'blue-date': c.isToday }">
-          <strong>{{ c.date.getDate() }}</strong>
-          <strong
-            *ngIf="c.isToday || (i == 0 && j == 0) || c.date.getDate() == 1"
+  <table class="calendar-table" *ngIf="calendar">
+    <thead>
+      <tr>
+        <th>Pzt</th>
+        <th>Sal</th>
+        <th>Çar</th>
+        <th>Per</th>
+        <th>Cum</th>
+        <th>Cmt</th>
+        <th>Paz</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of calendar | chunk : 7; let i = index">
+        <td
+          class="calendar-day"
+          [ngClass]="{ 'past-date': c.isPastDate, today: c.isToday }"
+          *ngFor="let c of row; let j = index"
+          (click)="selectedDate(c)"
+        >
+          <div
+            class="calendar-day-header"
+            [ngClass]="{ 'blue-date': c.isToday }"
           >
-            {{ monthNames[c.date.getMonth()] }}</strong
-          >
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+            <p>{{ c.date.getDate() }}</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

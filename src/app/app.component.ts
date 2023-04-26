@@ -114,7 +114,6 @@ export class AppComponent {
       header: 'numara',
       width: '10%',
       filterType: FilterTypeEnum.number,
-      filterHeaderOneIcon: 'fa-solid fa-sort',
     },
     {
       field: 'kod',

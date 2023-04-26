@@ -28,6 +28,7 @@ export class CalenderComponent implements OnInit {
     'Aralık',
   ];
   public displayMonth: string = '';
+  public displayYears: any;
   private monthIndex: number = 0;
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class CalenderComponent implements OnInit {
     );
 
     this.displayMonth = this.monthNames[day.getMonth()];
+    this.displayYears = day.getFullYear();
 
     let startingDateOfCalendar = this.getStartDateForCalendar(day);
 
@@ -80,5 +82,13 @@ export class CalenderComponent implements OnInit {
   public setCurrentMonth() {
     this.monthIndex = 0;
     this.generateCalendarDays(this.monthIndex);
+  }
+
+  /////////////////////
+  show = false;
+  selected: any;
+  selectedDate(e: any) {
+    this.selected = e.date.toLocaleDateString();
+    this.show = false;
   }
 }

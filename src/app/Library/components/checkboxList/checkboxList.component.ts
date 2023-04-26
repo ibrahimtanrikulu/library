@@ -38,7 +38,6 @@ export class CheckboxListComponent implements OnInit {
       }
     }
     this.selectedData.emit(this.selectedList);
-    console.log(this.selectedList);
   }
 
   selectedAll() {
