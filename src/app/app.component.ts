@@ -236,4 +236,7 @@ export class AppComponent {
   }
 
   silTableClick(e: any) {}
+  maskdene() {
+    console.log(this.testDene, 'test dene');
+  }
 }

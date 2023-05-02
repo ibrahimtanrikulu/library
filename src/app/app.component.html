@@ -165,15 +165,19 @@
         ></app-listbox>
       </div>
     </div>  -->
-  <app-table
+  <!-- <app-table
     [column]="col"
     [data]="data"
     [filterFormStatus]="true"
     [scrollWidthStatus]="true"
     [paginationStatus]="true"
+    [header]="'Personel'"
     [globalSearchStatus]="true"
     [headerButtonLabel]="'Ekle'"
     (headerButtonClick)="button()"
     [checkListStatus]="true"
-  ></app-table>
+  ></app-table> -->
+
+  <input type="text" phoneMask [(ngModel)]="testDene" />
+  <button (click)="maskdene()">deneme</button>
 </div>
