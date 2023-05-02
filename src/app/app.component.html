@@ -43,8 +43,6 @@
     ></app-input>
   </form>
   <button (click)="button()">dsadsasadsda</button>
-
-  
    
   <app-input
     [(ngModel)]="testInput"
@@ -74,13 +72,14 @@
   </app-card>  
   
   <app-deneme [(ngModel)]="deneme"></app-deneme>
-  <app-deneme [(ngModel)]="testDene"></app-deneme> -->
-
-  <!-- <form [formGroup]="PersonelForm">
+  <app-deneme [(ngModel)]="testDene"></app-deneme>
+  
+  <form [formGroup]="PersonelForm">
     <app-deneme formControlName="test" [(ngModel)]="deneme"></app-deneme>
     <app-deneme formControlName="telefon"></app-deneme>
-  </form> -->
-  <!-- <form [formGroup]="PersonelForm">
+  </form>
+  
+  <form [formGroup]="PersonelForm">
     <app-input formControlName="test" placeholder="test"></app-input>
     <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
     <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
@@ -117,18 +116,6 @@
   <app-card header="form">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card> 
-
-  
-  
-  <div class="grid">
-    <div class="col-12">
-      <app-listbox
-        [data]="dropdownCol"
-        [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)"
-      ></app-listbox>
-    </div>
-  </div>  
   
   <div class="grid">
     <div class="col-12"><app-calender></app-calender></div>
@@ -168,17 +155,25 @@
       <app-calender></app-calender>
     </div>
   </div>
-  -->
-
+  
+  <div class="grid">
+      <div class="col-12">
+        <app-listbox
+          [data]="dropdownCol"
+          [searchStatus]="true"
+          (selectedList)="dropdownMethod($event)"
+        ></app-listbox>
+      </div>
+    </div>  -->
   <app-table
     [column]="col"
     [data]="data"
     [filterFormStatus]="true"
-    [scrollWidthStatus]="true" 
+    [scrollWidthStatus]="true"
     [paginationStatus]="true"
-    [globalSearchStatus]="false"
+    [globalSearchStatus]="true"
     [headerButtonLabel]="'Ekle'"
     (headerButtonClick)="button()"
     [checkListStatus]="true"
-  ></app-table> 
+  ></app-table>
 </div>
