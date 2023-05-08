@@ -1,17 +1,34 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Optional, Self } from '@angular/core';
 import { ChunkPipe } from 'src/app/Pipe/chunk.pipe';
 import { CalendarDay } from '../../Class/CalendarDay';
 import { ButtonComponent } from '../button/button.component';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NgControl,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-calender',
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.scss'],
   standalone: true,
-  imports: [CommonModule, ChunkPipe, ButtonComponent],
+  imports: [
+    CommonModule,
+    ChunkPipe,
+    ButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
-export class CalenderComponent implements OnInit {
+export class CalenderComponent implements ControlValueAccessor, OnInit {
+  @Input() disabled: boolean = false;
+  show = false;
+
+  value: any;
+
   public calendar: CalendarDay[] = [];
   public monthNames = [
     'Ocak',
@@ -30,6 +47,12 @@ export class CalenderComponent implements OnInit {
   public displayMonth: string = '';
   public displayYears: any;
   private monthIndex: number = 0;
+
+  constructor(@Self() @Optional() private ngControl: NgControl) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor = this;
+    }
+  }
 
   ngOnInit(): void {
     this.generateCalendarDays(this.monthIndex);
@@ -84,11 +107,28 @@ export class CalenderComponent implements OnInit {
     this.generateCalendarDays(this.monthIndex);
   }
 
-  /////////////////////
-  show = false;
-  selected: any;
   selectedDate(e: any) {
-    this.selected = e.date.toLocaleDateString();
+    this.value = e.date;
     this.show = false;
   }
+
+  // custom form control
+  writeValue(value: any): void {
+    this.value = value;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  onChange(e: any) {}
+  onTouched() {}
 }

@@ -206,7 +206,7 @@ export class AppComponent {
         Validators.required,
       ]),
       pc: new FormControl(0),
-      ibrahim: new FormControl(''),
+      ibrahim: new FormControl(""),
     });
   }
 
@@ -226,9 +226,9 @@ export class AppComponent {
 
   deneme: boolean = true;
   testDene: string = '';
+  tarih: Date = new Date();
 
   dropdownMethod(e: any) {}
-
   duzenleTableClick(e: any) {
     console.log(e);
 
@@ -238,5 +238,9 @@ export class AppComponent {
   silTableClick(e: any) {}
   maskdene() {
     console.log(this.testDene, 'test dene');
+  }
+
+  goster() {
+    console.log(this.PersonelForm.value);
   }
 }

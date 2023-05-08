@@ -3,10 +3,13 @@
     class="input"
     style="cursor: pointer"
     type="text"
-    readonly
-    [value]="selected ? selected : ''"
+    [value]="value | date : 'dd/MM/yy'"
+    [disabled]="disabled"
     (click)="show ? (show = false) : (show = true)"
+    (input)="onChange($any($event.target).value)"
+    (blur)="onTouched()"
   />
+
   <div class="iconContainer">
     <i class="fa-regular fa-calendar-days"></i>
   </div>

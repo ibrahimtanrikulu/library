@@ -8,6 +8,8 @@ import { IColumnType } from '../../Interfaces/CollumType';
 import { InputComponent } from '../input/input.component';
 import { InputnumberComponent } from '../inputnumber/inputnumber.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { CalenderComponent } from '../calender/calender.component';
+import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
 
 @Component({
   selector: 'app-table',
@@ -22,6 +24,8 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
     InputComponent,
     InputnumberComponent,
     CheckboxComponent,
+    CalenderComponent,
+    SearchFilterPipe,
   ],
 })
 export class TableComponent implements OnInit {
@@ -63,25 +67,6 @@ export class TableComponent implements OnInit {
   }
 
   //filter
-  globalSearch(e: any) {
-    this.checkboxList = [];
-    this.paginationStatus
-      ? this.paginationListNumber()
-      : (this.localData = this.data);
-    let value = e.target.value;
-    if (value) {
-      let result: any[] = [];
-      this.localData.map((m) => {
-        this.column.map((c) => {
-          if (m[c.field] == value) {
-            result.push(m);
-          }
-        });
-      });
-
-      this.localData = result;
-    }
-  }
   inputFilter(event: any, filed: any) {
     this.checkboxList = [];
     let value: string = event.target.value;
@@ -126,6 +111,18 @@ export class TableComponent implements OnInit {
       this.paginationStatus
         ? this.paginationListNumber()
         : (this.localData = this.data);
+    }
+  }
+
+  calenderFilter(event: any, filed: any) {
+    this.checkboxList = [];
+    let value: string = event.target.value;
+    this.paginationStatus
+      ? this.paginationListNumber()
+      : (this.localData = this.data);
+    if (value) {
+      let result = this.localData.filter((m) => m[filed].includes(value));
+      this.localData = result;
     }
   }
 
@@ -214,7 +211,6 @@ export class TableComponent implements OnInit {
 
   //checkboxList
   checkboxCheck(e: any) {
-    console.log(e);
     if (e === true) {
     } else {
       const index = this.checkboxList.indexOf(e, 0);

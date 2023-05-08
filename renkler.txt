@@ -32,7 +32,7 @@ text = font-size = medium
 
 
 ---------------------Yap-------------------------------
-table,
+table, ===> filter icon düzelt -- panigation düzelt
 input musk,
 
 

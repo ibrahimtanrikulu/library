@@ -3,4 +3,5 @@ export enum FilterTypeEnum {
   number = 'number',
   dropdown = 'dropdown',
   multiDropdown = 'multiDropdown',
+  calender = 'calender',
 }

@@ -117,9 +117,7 @@
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card> 
   
-  <div class="grid">
-    <div class="col-12"><app-calender></app-calender></div>
-  </div>  
+  
   
   <div class="grid">
     <div class="col-12">
@@ -164,8 +162,19 @@
           (selectedList)="dropdownMethod($event)"
         ></app-listbox>
       </div>
-    </div>  -->
-  <!-- <app-table
+    </div> 
+    
+    <form [formGroup]="PersonelForm">
+    <div class="grid">
+      <div class="col-12">
+        <app-calender formArrayName="ibrahim"></app-calender>
+      </div>
+    </div>
+  </form>
+
+  <button (click)="goster()">tikla</button> -->
+  
+  <app-table
     [column]="col"
     [data]="data"
     [filterFormStatus]="true"
@@ -176,8 +185,5 @@
     [headerButtonLabel]="'Ekle'"
     (headerButtonClick)="button()"
     [checkListStatus]="true"
-  ></app-table> -->
-
-  <input type="text" phoneMask [(ngModel)]="testDene" />
-  <button (click)="maskdene()">deneme</button>
+  ></app-table> 
 </div>
