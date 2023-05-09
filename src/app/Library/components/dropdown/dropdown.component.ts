@@ -1,69 +1,58 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataType } from '../../Interfaces/DataType';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from '../button/button.component';
+import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ButtonComponent, SearchFilterPipe,]
 })
 export class DropdownComponent implements OnInit {
   @Input() data: DataType[] = [];
-  @Input() multiStatus: boolean = false;
-  @Input() searchStatus: boolean = false;
-  @Input() DropdownScrollHeightStatus: boolean = false;
-  @Input() DropdownScrollHeight: string = '';
-  @Input() placeholder: string = '';
-  @Input() disabled: boolean = false;
-  @Output() selectedList: EventEmitter<DataType[]> = new EventEmitter();
+  @Input() multiStatus = false;
+  @Input() searchStatus = false;
+  @Input() DropdownScrollHeightStatus = false;
+  @Input() DropdownScrollHeight = '';
+  @Input() placeholder = '';
+  @Input() disabled = false;
+  @Output() selectedList = new EventEmitter<DataType[]>();
 
   list: DataType[] = [];
-  dropdownStatus: boolean = false;
+  dropdownStatus = false;
   localData: DataType[] = [];
-  text: string = '';
+  text = '';
+  filterText = ""
 
-  constructor() {}
   ngOnInit() {
     this.localData = this.data;
   }
+
   change(value: DataType) {
     if (this.multiStatus) {
-      let index = this.list.indexOf(value, 0);
-
-      if (index == -1) {
+      const index = this.list.indexOf(value);
+      if (index === -1) {
         this.list.push(value);
-      } else if (index >= 0) {
+      } else {
         this.list.splice(index, 1);
       }
-      this.selectedList.emit(this.list);
-      this.text = '';
-      this.list.map((m) => {
-        this.text += m.text + ',';
-      });
-      this.localData = this.data;
     } else {
-      this.list = [];
-      this.list.push(value);
+      this.list = [value];
       this.dropdownStatus = false;
-      this.selectedList.emit(this.list);
-      this.localData = this.data;
     }
+    this.selectedList.emit(this.list);
+    this.text = this.list.map(m => m.text).join(',');
+    this.localData = this.data;
   }
+
   clear() {
     this.list = [];
     this.localData = this.data;
     this.text = '';
     this.selectedList.emit(this.list);
-  }
-  search(e: any) {
-    let value = e.target.value;
-    if (value) {
-      let result = this.data.filter((m) => m.text.includes(value));
-      this.localData = result;
-    } else {
-      this.localData = this.data;
-    }
   }
 }

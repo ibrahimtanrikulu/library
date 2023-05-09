@@ -1,27 +1,15 @@
 <div class="addContainer" *ngIf="headerButtonLabel">
-  <app-button
-    class="button buttonGenislik"
-    label="{{ headerButtonLabel }}"
-    (btnClick)="headerButton()"
-  ></app-button>
+  <app-button class="button buttonGenislik" label="{{ headerButtonLabel }}" (btnClick)="headerButton()"></app-button>
 </div>
-<div
-  class="container"
-  [ngStyle]="
+<div class="container" [ngStyle]="
     scrollWidthStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }
-  "
->
+  ">
   <!-- Header -->
   <ng-container *ngIf="globalSearchStatus">
     <div class="headerContainer" [ngStyle]="{ header: 'justify-content: end' }">
       <h2 *ngIf="header">{{ header }}</h2>
       <div>
-        <input
-          class="input"
-          type="text"
-          placeholder="Search"
-          [(ngModel)]="filterText"
-        />
+        <input class="input" type="text" placeholder="Search" [(ngModel)]="globalFilterText" />
       </div>
     </div>
   </ng-container>
@@ -37,30 +25,12 @@
     <thead>
       <tr class="header">
         <th *ngIf="checkListStatus" class="iconFilterContainer"></th>
-        <th
-          style="border: none"
-          *ngFor="let item of column"
-          [ngStyle]="item.width ? { width: item.width } : { width: 'auto' }"
-        >
-          <div
-            *ngIf="item.field != ''"
-            class="iconFilterContainer"
-            (click)="alphabeticalOrder(item.field)"
-          >
+        <th style="border: none" *ngFor="let item of column" [ngStyle]="{ width: item.width ? item.width : 'auto' }">
+          <div *ngIf="item.field !== ''" class="iconFilterContainer" (click)="alphabeticalOrder(item.field)">
             <span>{{ item.header }}</span>
-            <i
-              style="padding-left: 10px"
-              *ngIf="
-                item.field != 'edit' &&
-                item.field != 'delete' &&
-                item.field != 'extra'
-              "
-              [class]="
-                !filterIconStatus
-                  ? 'fa-solid fa-arrow-down-wide-short'
-                  : 'fa-solid fa-arrow-up-short-wide'
-              "
-            ></i>
+            <i style="padding-left: 10px"
+              *ngIf="item.field !== 'edit' && item.field !== 'delete' && item.field !== 'extra'"
+              [class]="!filterIconStatus ? 'fa-solid fa-arrow-up-short-wide' : ' fa-solid fa-arrow-down-wide-short'"></i>
           </div>
         </th>
       </tr>
@@ -68,123 +38,71 @@
       <tr *ngIf="filterFormStatus" class="filterHeader">
         <th *ngIf="checkListStatus" class="iconFilterContainer"></th>
         <th *ngFor="let item of column">
-          <div
-            *ngIf="
-              item.field != 'edit' &&
-              item.field != 'delete' &&
-              item.field != 'extra'
-            "
-          >
+          <div *ngIf="item.field !== 'edit' && item.field !== 'delete' && item.field !== 'extra'">
             <!-- burası header altı filter bölümü -->
-            <ng-container *ngIf="item.filterType == 'text'">
-              <input
-                class="input"
-                placeholder="{{ item.filterPlaceholder }}"
-                type="{{ item.filterType }}"
-                (keyup)="inputFilter($event, item.field)"
-              />
-            </ng-container>
-            <ng-container *ngIf="item.filterType == 'number'">
-              <input
-                class="input"
-                placeholder="{{ item.filterPlaceholder }}"
-                type="{{ item.filterType }}"
-                (keyup)="inputNumberFilter($event, item.field)"
-              />
-            </ng-container>
-            <ng-container *ngIf="item.filterType == 'calender'">
-              <app-calender class="input" />
-            </ng-container>
-            <ng-container *ngIf="item.filterType == 'dropdown'">
-              <app-dropdown
-                [data]="item.filterData"
-                [multiStatus]="false"
-                [searchStatus]="true"
-                placeholder="{{ item.filterPlaceholder }}"
-                (selectedList)="dropdownFilter($event, item.field)"
-              ></app-dropdown>
-            </ng-container>
-            <ng-container *ngIf="item.filterType == 'multiDropdown'">
-              <app-dropdown
-                [data]="item.filterData"
-                [multiStatus]="true"
-                [searchStatus]="true"
-                placeholder="{{ item.filterPlaceholder }}"
-                (selectedList)="dropdownFilter($event, item.field)"
-              ></app-dropdown>
+            <ng-container [ngSwitch]="item.filterType">
+              <input class="input" *ngSwitchCase="'text'" placeholder="{{ item.filterPlaceholder }}" type="text"
+                [(ngModel)]="inputFilterText" />
+              <input class="input" *ngSwitchCase="'number'" placeholder="{{ item.filterPlaceholder }}" type="number"
+                [(ngModel)]="inputNumberFilterText" />
+              <app-calender class="input" *ngSwitchCase="'calender'"></app-calender>
+              <app-dropdown *ngSwitchCase="'dropdown'" [data]="item.filterData" [multiStatus]="false"
+                [searchStatus]="true" placeholder="{{ item.filterPlaceholder }}"
+                (selectedList)="dropdownFilter($event, item.field)">
+              </app-dropdown>
+              <app-dropdown *ngSwitchCase="'multiDropdown'" [data]="item.filterData" [multiStatus]="true"
+                [searchStatus]="true" placeholder="{{ item.filterPlaceholder }}"
+                (selectedList)="dropdownFilter($event, item.field)">
+              </app-dropdown>
             </ng-container>
           </div>
         </th>
       </tr>
       <!-- Form Filter bölümnü -->
     </thead>
+
     <!-- THead -->
     <!-- TBody -->
     <tbody>
-      <tr *ngFor="let data of localData | searchFilter : filterText">
+      <tr *ngFor="let data of localData | searchFilter : globalFilterText ? globalFilterText : 
+        inputFilterText ? inputFilterText : inputNumberFilterText ? inputNumberFilterText : ''">
         <ng-container *ngIf="checkListStatus">
           <td>
             <app-checkbox (click)="checkboxCheck(data)"></app-checkbox>
           </td>
         </ng-container>
         <td *ngFor="let col of column">
-          <span
-            class="responseHeader"
-            *ngIf="
-              col.field != 'edit' &&
-              col.field != 'delete' &&
-              col.field != 'extra'
-            "
-            >{{ col.header }}:</span
-          >
+          <span class="responseHeader" *ngIf="
+              col.field !== 'edit' &&
+              col.field !== 'delete' &&
+              col.field !== 'extra'
+            ">{{ col.header }}:</span>
           <div>
-            <!-- check -->
-
-            <!-- input değistirmek için -->
-            <ng-container
-              *ngIf="col.field != '' && col.inputStatus && col.field"
-            >
+            <ng-container *ngIf="col.field !== '' && col.inputStatus && col.field">
               <div (click)="inputMethod(data)">
-                <input
-                  type="text"
-                  [(ngModel)]="data[col.field]"
-                  *ngIf="data == selected"
-                  class="input"
-                />
-                <p *ngIf="data != selected">
-                  {{ data[col.field] }}
-                </p>
+                <input type="text" [(ngModel)]="data[col.field]" *ngIf="data === selected" class="input" />
+                <p *ngIf="data !== selected">{{ data[col.field] }}</p>
               </div>
             </ng-container>
-
-            <ng-container *ngIf="col.field != '' && !col.inputStatus">
+            <ng-container *ngIf="col.field !== '' && !col.inputStatus">
               <div>
                 <p>{{ data[col.field] }}</p>
               </div>
             </ng-container>
-
-            <div *ngIf="col.field == 'edit'">
-              <app-button
-                icon="fa-solid fa-pen"
-                (btnClick)="col.click!(data)"
-              ></app-button>
+            <div *ngIf="col.field === 'edit'">
+              <app-button icon="fa-solid fa-pen" (btnClick)="col.click!(data)"></app-button>
             </div>
-            <div *ngIf="col.field == 'delete'">
-              <app-button
-                icon="fa-solid fa-trash"
-                (btnClick)="col.click!(data)"
-              ></app-button>
+            <div *ngIf="col.field === 'delete'">
+              <app-button icon="fa-solid fa-trash" (btnClick)="col.click!(data)"></app-button>
             </div>
-            <div *ngIf="col.field == 'extra'">
-              <app-button
-                label="{{ col.header }}"
-                (btnClick)="col.click!(data)"
-              ></app-button>
+            <div *ngIf="col.field === 'extra'">
+              <app-button label="{{ col.header }}" (btnClick)="col.click!(data)"></app-button>
             </div>
           </div>
         </td>
       </tr>
     </tbody>
+
     <!-- TBody -->
   </table>
 
@@ -192,27 +110,15 @@
   <ng-container *ngIf="paginationStatus">
     <div class="pagination">
       <div>
-        <app-button
-          class="iconButton"
-          (btnClick)="paginationBefore()"
-          icon="fa-solid fa-backward"
-        >
+        <app-button class="iconButton" (btnClick)="paginationBefore()" icon="fa-solid fa-backward">
         </app-button>
       </div>
       <div *ngFor="let key of paginationList">
-        <app-button
-          class="iconButton"
-          (btnClick)="paginationNumber(key)"
-          label="{{ key }}"
-        >
+        <app-button class="iconButton" (btnClick)="paginationNumber(key)" label="{{ key }}">
         </app-button>
       </div>
       <div>
-        <app-button
-          class="iconButton"
-          (click)="paginationAfter()"
-          icon="fa-solid fa-forward"
-        >
+        <app-button class="iconButton" (click)="paginationAfter()" icon="fa-solid fa-forward">
         </app-button>
       </div>
       <div>
@@ -221,17 +127,8 @@
             <span>{{ paginationNumberText }}</span>
           </div>
           <ul class="paginationList">
-            <li (click)="paginationListNumber(5)">5</li>
-            <li (click)="paginationListNumber(10)">10</li>
-            <li (click)="paginationListNumber(20)">20</li>
-            <li (click)="paginationListNumber(30)">30</li>
-            <li (click)="paginationListNumber(40)">40</li>
-            <li (click)="paginationListNumber(50)">50</li>
-            <li (click)="paginationListNumber(60)">60</li>
-            <li (click)="paginationListNumber(70)">70</li>
-            <li (click)="paginationListNumber(80)">80</li>
-            <li (click)="paginationListNumber(90)">90</li>
-            <li (click)="paginationListNumber(100)">100</li>
+            <li *ngFor="let number of [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]"
+              (click)="paginationListNumber(number)">{{ number }}</li>
           </ul>
         </div>
       </div>

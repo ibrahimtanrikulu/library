@@ -2,16 +2,19 @@ import { Directive, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[formControlName][appInputMask]',
-  standalone: true,
 })
 export class InputMaskDateDirective {
   @HostListener('input', ['$event'])
-  onKeyDown(event: KeyboardEvent) {
+  onInput(event: InputEvent) {
     const input = event.target as HTMLInputElement;
+    let value = input.value.replace(/\s+/g, '');
 
-    const trimmed = input.value.replace(/\s+/g, '').slice(0, 4);
-    if (trimmed.length > 3) {
-      return (input.value = `${trimmed.slice(0, 2)}/${trimmed.slice(2)}`);
+    if (value.length > 4) {
+      value = `${value.slice(0, 2)}/${value.slice(2, 4)}/${value.slice(4, 8)}`;
+    } else if (value.length > 2) {
+      value = `${value.slice(0, 2)}/${value.slice(2)}`;
     }
+
+    input.value = value;
   }
 }

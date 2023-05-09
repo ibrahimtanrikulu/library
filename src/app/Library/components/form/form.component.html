@@ -2,117 +2,30 @@
   <form [formGroup]="formGroup">
     <div class="grid">
       <ng-container *ngFor="let item of forms">
-        <ng-container *ngIf="item.type == 'text'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%"
-          >
-            <app-input
-              formControlName="{{ item.controlname }}"
-              [placeholder]="item.header ? item.header : ''"
-            ></app-input>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'number'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%"
-          >
-            <app-inputnumber
-              formControlName="{{ item.controlname }}"
-              [placeholder]="item.header ? item.header : ''"
-              [Max]="item.max ? item.max : 99999"
-              [Min]="item.min ? item.min : 0"
-            ></app-inputnumber>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'password'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%"
-          >
-            <app-inputpassword
-              formControlName="{{ item.controlname }}"
-              [placeholder]="item.header ? item.header : ''"
-            ></app-inputpassword>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'textarea'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%"
-          >
-            <app-textarea
-              formControlName="{{ item.controlname }}"
-              [placeholder]="item.header ? item.header : ''"
-              [Rows]="item.rows"
-            ></app-textarea>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'checkbox'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%; padding-top: 1%"
-          >
-            <app-checkbox
-              formControlName="{{ item.controlname }}"
-              [placeholder]="item.header ? item.header : ''"
-              styleLabel="color:white"
-            ></app-checkbox>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'checkbox'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%; padding-top: 1%"
-          >
-            <app-switch
-              formControlName="{{ item.controlname }}"
-              [placeholder]="item.header ? item.header : ''"
-              styleLabel="color:white"
-            ></app-switch>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'dropdown'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%"
-          >
-            <app-dropdown
-              [data]="item.data ? item.data : []"
-              [multiStatus]="item.isMultiType ? item.isMultiType : false"
-              [searchStatus]="item.search ? item.search : false"
-              (selectedList)="item.onChange!($event)"
-              [placeholder]="item.header ? item.header : ''"
-              [disabled]="item.disabled!"
-            ></app-dropdown>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'checkboxList'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%"
-          >
-            <app-checkboxlist
-              [checkboxData]="item.data ? item.data : []"
-              [checkboxHeader]="item.header ? item.header : ''"
-              [multiCheckbox]="item.isMultiType!"
-              (selectedData)="item.onChange!($event)"
-            ></app-checkboxlist>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="item.type == 'button'">
-          <div
-            [class]="item.class ? item.class : 'col-12'"
-            style="padding-left: 1%; padding-right: 1%; margin-top: 1%"
-          >
-            <app-button
-              (btnClick)="item.click!()"
-              [label]="item.header ? item.header : ''"
-              [isDisabled]="formGroup.invalid"
-            ></app-button>
-          </div>
-        </ng-container>
+        <div [class]="item.class ? item.class : 'col-12'" style="padding: 0 1%">
+          <ng-container [ngSwitch]="item.type">
+            <app-input *ngSwitchCase="'text'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}"></app-input>
+            <app-inputnumber *ngSwitchCase="'number'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}" [Max]="item.max || 99999" [Min]="item.min || 0"></app-inputnumber>
+            <app-inputpassword *ngSwitchCase="'password'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}"></app-inputpassword>
+            <app-textarea *ngSwitchCase="'textarea'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}" [Rows]="item.rows"></app-textarea>
+            <app-checkbox *ngSwitchCase="'checkbox'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}" styleLabel="color:white"></app-checkbox>
+            <app-switch *ngSwitchCase="'switch'" formControlName="{{ item.controlname }}" placeholder="{{item.header}}"
+              styleLabel="color:white"></app-switch>
+            <app-dropdown *ngSwitchCase="'dropdown'" [data]="item.data || []" [multiStatus]="item.isMultiType || false"
+              [searchStatus]="item.search || false" (selectedList)="item.onChange && item.onChange($event)"
+              placeholder="{{item.header}}" [disabled]="item.disabled || false"></app-dropdown>
+            <app-checkboxlist *ngSwitchCase="'checkboxList'" [checkboxData]="item.data || []"
+              checkboxHeader="{{item.header}}" [multiCheckbox]="item.isMultiType || false"
+              (selectedData)="item.onChange && item.onChange($event)"></app-checkboxlist>
+            <app-button *ngSwitchCase="'button'" (btnClick)="item.click && item.click()" label="{{item.header}}"
+              [isDisabled]="formGroup.invalid"></app-button>
+          </ng-container>
+        </div>
       </ng-container>
     </div>
   </form>

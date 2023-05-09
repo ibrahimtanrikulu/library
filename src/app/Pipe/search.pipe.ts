@@ -1,17 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({
-  name: 'searchFilter',
-  standalone: true,
-})
+@Pipe({ name: 'searchFilter', pure: true, standalone: true })
 export class SearchFilterPipe implements PipeTransform {
   transform(value: any, args?: any): any {
     if (!value) return null;
     if (!args) return value;
-
-    args = args.toLowerCase();
-    return value.filter(function (item: any) {
-      return JSON.stringify(item).toLowerCase().includes(args);
+    return value.filter((item: any) => {
+      const stringValue = JSON.stringify(item).toLowerCase();
+      if (typeof item === 'number') {
+        return stringValue.includes(args.toLowerCase());
+      }
+      return stringValue.includes(args.toLowerCase());
     });
   }
 }

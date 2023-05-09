@@ -1,7 +1,6 @@
-import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { DataType } from '../../Interfaces/DataType';
+import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 
@@ -10,30 +9,27 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
   templateUrl: './checkboxList.component.html',
   styleUrls: ['./checkboxList.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent, CheckboxComponent],
+  imports: [CommonModule, ButtonComponent, CheckboxComponent]
 })
 export class CheckboxListComponent implements OnInit {
   @Input() checkboxData: DataType[] = [];
-  @Input() checkboxHeader: string = '';
-  @Input() multiCheckbox: boolean = false;
+  @Input() checkboxHeader = '';
+  @Input() multiCheckbox = false;
   selectedList: number[] = [];
-  selectedAllChecked: boolean = false;
+  selectedAllChecked = false;
 
-  @Output() selectedData: EventEmitter<number[]> = new EventEmitter();
+  @Output() selectedData = new EventEmitter<number[]>();
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   selection(e: number) {
-    if (this.multiCheckbox == true) {
-      this.selectedList = [];
-      this.selectedList.push(e);
+    if (this.multiCheckbox) {
+      this.selectedList = [e];
     } else {
-      const index = this.selectedList.indexOf(e, 0);
-      if (index == -1) {
+      const index = this.selectedList.indexOf(e);
+      if (index === -1) {
         this.selectedList.push(e);
-      } else if (index >= 0) {
+      } else {
         this.selectedList.splice(index, 1);
       }
     }
@@ -41,9 +37,7 @@ export class CheckboxListComponent implements OnInit {
   }
 
   selectedAll() {
-    this.checkboxData.map((m) => {
-      this.selectedList.push(m.value);
-    });
+    this.selectedList = this.checkboxData.map((m) => m.value);
     this.selectedAllChecked = true;
     this.selectedData.emit(this.selectedList);
   }
@@ -55,15 +49,10 @@ export class CheckboxListComponent implements OnInit {
   }
 
   reverse() {
-    let liste = this.selectedList;
-    this.selectedList = [];
-    this.checkboxData.map((m) => {
-      const index = liste.indexOf(m.value, 0);
-      if (index == -1) {
-        this.selectedList.push(m.value);
-      } else if (index >= 0) {
-      }
-    });
+    const selectedValues = this.selectedList.slice();
+    this.selectedList = this.checkboxData
+      .filter((m) => !selectedValues.includes(m.value))
+      .map((m) => m.value);
     this.selectedData.emit(this.selectedList);
   }
 }

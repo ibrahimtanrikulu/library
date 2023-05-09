@@ -172,18 +172,39 @@
     </div>
   </form>
 
-  <button (click)="goster()">tikla</button> -->
-  
-  <app-table
-    [column]="col"
-    [data]="data"
-    [filterFormStatus]="true"
-    [scrollWidthStatus]="true"
-    [paginationStatus]="true"
-    [header]="'Personel'"
-    [globalSearchStatus]="true"
-    [headerButtonLabel]="'Ekle'"
-    (headerButtonClick)="button()"
-    [checkListStatus]="true"
-  ></app-table> 
+  <button (click)="goster()">tikla</button> 
+
+  -->
+
+  <!-- <div class="grid">
+    <div class="col-4">
+      <app-calender></app-calender>
+    </div>
+  </div> -->
+
+  <!-- <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>  -->
+
+  <!-- <div class="grid">
+    <div class="col-6">
+      <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)" placeholder="deneme" [disabled]="false"></app-dropdown>
+    </div>
+  </div> -->
+
+  <!-- <form [formGroup]="PersonelForm">
+    <app-input formControlName="test" placeholder="test"></app-input>
+    <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
+    <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
+    <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
+  </form> -->
+
+  <!-- <div class="grid">
+    <div class="col-4">
+      <app-listbox [data]="dropdownCol" [searchStatus]="false" (selectedList)="dropdownMethod($event)"></app-listbox>
+    </div>
+  </div> -->
+
+  <app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true" [paginationStatus]="true"
+    [header]="'Personel'" [globalSearchStatus]="true" [headerButtonLabel]="'Ekle'" (headerButtonClick)="button()"
+    [checkListStatus]="true"></app-table>
 </div>

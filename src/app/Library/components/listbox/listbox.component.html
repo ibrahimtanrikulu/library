@@ -1,26 +1,13 @@
-<ul
-  [style.height]="ListBoxScrollHeight"
-  [ngStyle]="
-    ListBoxScrollHeightStatus
-      ? { 'overflow-y': 'auto' }
-      : { overflow: 'hidden' }
-  "
->
+<ul [style.height]="ListBoxScrollHeight"
+  [ngStyle]="ListBoxScrollHeightStatus ? { 'overflow-y': 'auto' } : { overflow: 'hidden' }">
   <ng-container *ngIf="searchStatus">
     <div class="searchContainer">
-      <input type="text" class="input" (keyup)="search($event)" />
+      <input type="text" class="input" [(ngModel)]="filterText" />
       <div><i class="fas fa-search"></i></div>
     </div>
   </ng-container>
-  <div
-    class="ulContainer"
-    *ngFor="let item of localData"
-    (click)="change(item)"
-  >
-    <app-checkbox
-      [checkedStatus]="list.indexOf(item, 0) >= 0"
-      placeholder="{{ item.text }}"
-      styleLabel="color:white"
-    ></app-checkbox>
+  <div class="ulContainer" *ngFor="let item of localData | searchFilter:filterText" (click)="change(item)">
+    <app-checkbox [checkedStatus]="list.indexOf(item, 0) >= 0" placeholder="{{ item.text }}"
+      styleLabel="color:white"></app-checkbox>
   </div>
 </ul>

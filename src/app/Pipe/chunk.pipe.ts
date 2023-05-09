@@ -2,16 +2,17 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'chunk',
-  standalone: true,
+  pure: true,
+  standalone: true
 })
 export class ChunkPipe implements PipeTransform {
-  transform(calendarDaysArray: any, chunkSize: number): any {
-    let calendarDays: any[] = [];
+  transform(calendarDaysArray: any[], chunkSize: number): any[] {
+    const calendarDays: any[] = [];
     let weekDays: any[] = [];
 
-    calendarDaysArray.map((day: any, index: any) => {
+    calendarDaysArray.forEach((day, index) => {
       weekDays.push(day);
-      if (++index % chunkSize === 0) {
+      if ((index + 1) % chunkSize === 0) {
         calendarDays.push(weekDays);
         weekDays = [];
       }
