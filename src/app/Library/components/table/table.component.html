@@ -30,7 +30,7 @@
             <span>{{ item.header }}</span>
             <i style="padding-left: 10px"
               *ngIf="item.field !== 'edit' && item.field !== 'delete' && item.field !== 'extra'"
-              [class]="!filterIconStatus ? 'fa-solid fa-arrow-up-short-wide' : ' fa-solid fa-arrow-down-wide-short'"></i>
+              [class]="!filterIconStatus && selectedField == item.field ? 'fa-solid fa-arrow-up-short-wide' : ' fa-solid fa-arrow-down-wide-short'"></i>
           </div>
         </th>
       </tr>

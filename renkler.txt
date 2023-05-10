@@ -32,7 +32,7 @@ text = font-size = medium
 
 
 ---------------------Yap-------------------------------
-table, ===> filter icon düzelt --input td
+table, ===> input td
 calender,
 input musk,
 
