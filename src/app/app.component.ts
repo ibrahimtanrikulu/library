@@ -173,20 +173,12 @@ export class AppComponent {
       controlname: 'telefon',
       class: 'col-12 col-lg-6 col-md-8',
       header: 'evet',
-      type: FormTypeEnum.checkbox,
+      type: FormTypeEnum.switch,
     },
     {
       class: 'col-12 col-lg-6 col-md-8',
       header: 'deneme',
       type: FormTypeEnum.dropdown,
-      data: this.dropdownCol,
-      isMultiType: true,
-      onChange: this.dropdownMethod.bind(this),
-    },
-    {
-      class: 'col-12 col-lg-12 col-md-8',
-      header: 'test',
-      type: FormTypeEnum.checkboxList,
       data: this.dropdownCol,
       isMultiType: true,
       onChange: this.dropdownMethod.bind(this),
@@ -211,7 +203,7 @@ export class AppComponent {
   }
 
   button() {
-    // this.show ? (this.show = false) : (this.show = true);
+    this.show ? (this.show = false) : (this.show = true);
     console.log(this.PersonelForm.value, this.deneme);
   }
 
@@ -228,14 +220,14 @@ export class AppComponent {
   testDene: string = '';
   tarih: Date = new Date();
 
-  dropdownMethod(e: any) {}
+  dropdownMethod(e: any) { }
   duzenleTableClick(e: any) {
     console.log(e);
 
     this.show = true;
   }
 
-  silTableClick(e: any) {}
+  silTableClick(e: any) { }
   maskdene() {
     console.log(this.testDene, 'test dene');
   }

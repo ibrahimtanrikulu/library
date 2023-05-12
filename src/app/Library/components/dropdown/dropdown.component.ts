@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
 import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent, SearchFilterPipe,]
+  imports: [CommonModule, FormsModule, ButtonComponent, SearchFilterPipe, CheckboxComponent]
 })
 export class DropdownComponent implements OnInit {
   @Input() data: DataType[] = [];

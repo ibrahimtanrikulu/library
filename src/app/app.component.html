@@ -13,25 +13,6 @@
   </div>
   <app-toast [message]="message" [show]="show"></app-toast>  
   <app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkbox>
-  
-  <app-card header="deneme">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-card> 
-  
-  <button (click)="button()">deneem</button> 
-
-  <app-tabview>
-    <app-tab tabTitle="bir"></app-tab>
-    <app-tab tabTitle="iki"></app-tab>
-    <app-tab tabTitle="uc">
-      </app-tab>
-  </app-tabview> 
-
-  <div class="grid">
-    <div class="col-6">
-      <app-progesbar [value]="1000"></app-progesbar>
-    </div>
-  </div>
 
   <app-accordion header="Table"></app-accordion> 
 
@@ -63,9 +44,7 @@
       Write in this wrapper control:
     </app-deneme>  
 
-  <app-dialog [header]="'Deneme'" [show]="show" [width]="'80%'">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-dialog>
+  
 
   <app-card [header]="'card başlığı'">
     <div content></div>
@@ -86,14 +65,7 @@
     <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
   </form>
 
-  <app-dropdown
-    [data]="dropdownCol"
-    [multiStatus]="true"
-    [searchStatus]="true"
-    (selectedList)="dropdownMethod($event)"
-    placeholder="deneme"
-    [disabled]="false"
-  ></app-dropdown>
+  
 
   <app-checkbox [(ngModel)]="deneme"></app-checkbox>
 
@@ -202,9 +174,46 @@
     <div class="col-4">
       <app-listbox [data]="dropdownCol" [searchStatus]="false" (selectedList)="dropdownMethod($event)"></app-listbox>
     </div>
-  </div> -->
+  </div> 
+ 
+  <app-accordion header="Table">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+  </app-accordion>
+
+  <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>
+
+
+  <button (click)="button()">dialog aç</button>
+
+  <app-dialog [header]="'Deneme'" [show]="show" [width]="'80%'">
+
+  </app-dialog>
+
+  <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
+    placeholder="deneme" [disabled]="false"></app-dropdown>
+
+  
+  <div class="grid">
+    <div class="col-6">
+      <app-progesbar [value]="1000"></app-progesbar>
+    </div>
+  </div>
+
+  <app-tabview>
+    <app-tab tabTitle="bir"><app-listbox [data]="dropdownCol" [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
+    <app-tab tabTitle="iki"></app-tab>
+    <app-tab tabTitle="uc"><app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+    </app-tab>
+  </app-tabview> 
 
   <app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true" [paginationStatus]="true"
     [header]="'Personel'" [globalSearchStatus]="true" [headerButtonLabel]="'Ekle'" (headerButtonClick)="button()"
-    [checkListStatus]="true"></app-table>
+    [checkListStatus]="true"></app-table>  -->
+
+  <app-card header="deneme">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+  </app-card>
+
+
 </div>

@@ -1,21 +1,22 @@
 <div class="addContainer" *ngIf="headerButtonLabel">
   <app-button class="button buttonGenislik" label="{{ headerButtonLabel }}" (btnClick)="headerButton()"></app-button>
 </div>
+
 <div class="container" [ngStyle]="
     scrollWidthStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }
   ">
   <!-- Header -->
   <ng-container *ngIf="globalSearchStatus">
     <div class="headerContainer" [ngStyle]="{ header: 'justify-content: end' }">
-      <h2 *ngIf="header">{{ header }}</h2>
+      <h3 *ngIf="header">{{ header }}</h3>
       <div>
-        <input class="input" type="text" placeholder="Search" [(ngModel)]="globalFilterText" />
+        <input class="globalInput" type="text" placeholder="Search" [(ngModel)]="globalFilterText" />
       </div>
     </div>
   </ng-container>
   <ng-container *ngIf="!globalSearchStatus">
     <div class="headerContainer" *ngIf="header" style="justify-content: center">
-      <h2>{{ header }}</h2>
+      <h3>{{ header }}</h3>
     </div>
   </ng-container>
   <!-- Header -->
@@ -41,11 +42,11 @@
           <div *ngIf="item.field !== 'edit' && item.field !== 'delete' && item.field !== 'extra'">
             <!-- burası header altı filter bölümü -->
             <ng-container [ngSwitch]="item.filterType">
-              <input class="input" *ngSwitchCase="'text'" placeholder="{{ item.filterPlaceholder }}" type="text"
+              <input class="globalInput" *ngSwitchCase="'text'" placeholder="{{ item.filterPlaceholder }}" type="text"
                 [(ngModel)]="inputFilterText" />
-              <input class="input" *ngSwitchCase="'number'" placeholder="{{ item.filterPlaceholder }}" type="number"
-                [(ngModel)]="inputNumberFilterText" />
-              <app-calender class="input" *ngSwitchCase="'calender'"></app-calender>
+              <input class="globalInput" *ngSwitchCase="'number'" placeholder="{{ item.filterPlaceholder }}"
+                type="number" [(ngModel)]="inputNumberFilterText" />
+              <app-calender *ngSwitchCase="'calender'"></app-calender>
               <app-dropdown *ngSwitchCase="'dropdown'" [data]="item.filterData" [multiStatus]="false"
                 [searchStatus]="true" placeholder="{{ item.filterPlaceholder }}"
                 (selectedList)="dropdownFilter($event, item.field)">
@@ -80,7 +81,7 @@
           <div>
             <ng-container *ngIf="col.field !== '' && col.inputStatus && col.field">
               <div (click)="inputMethod(data)">
-                <input type="text" [(ngModel)]="data[col.field]" *ngIf="data === selected" class="input" />
+                <input type="text" [(ngModel)]="data[col.field]" *ngIf="data === selected" class="globalInput" />
                 <p *ngIf="data !== selected">{{ data[col.field] }}</p>
               </div>
             </ng-container>

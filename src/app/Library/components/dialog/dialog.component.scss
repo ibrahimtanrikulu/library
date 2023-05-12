@@ -1,53 +1,3 @@
-.modal {
-  background-color: #334155;
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
-    rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
-  border: 1px solid #334155;
-  border-radius: 10px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-  position: absolute;
-  z-index: 10000;
-
-  .header {
-    display: flex;
-    justify-content: space-between;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-    align-items: center;
-    padding: 0.8% 1.4%;
-    background-color: #1e293b;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-      rgba(0, 0, 0, 0.07) 0px 16px 16px;
-
-    h3 {
-      font-size: x-large;
-      font-weight: 500;
-    }
-
-    i {
-      font-size: large;
-      cursor: pointer;
-    }
-  }
-
-  .content {
-    padding: 0% 0.4%;
-    margin: 0.8% 0%;
-    width: 100%;
-  }
-  hr {
-    display: block;
-    border: 0;
-    border-top: 1px solid black;
-    margin: 0;
-    padding: 0;
-  }
-} 
 .background {
   display: flex;
   flex-direction: column;
@@ -59,6 +9,51 @@
   background: rgba(0, 0, 0, 0.7);
   align-items: center;
   justify-content: center;
+
+  .modal {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+    position: absolute;
+    z-index: 10000;
+
+    hr {
+      display: block;
+      border: 0;
+      border-top: 1px solid whitesmoke;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+      align-items: center;
+      padding: 0.8% 1.4%;
+      background-color: white;
+      box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+
+      h3 {
+        font-size: large;
+      }
+
+      i {
+        font-size: large;
+        cursor: pointer;
+      }
+    }
+
+    .content {
+      padding: 0% 0.4% 0.4% 0.4%;
+      margin: 0.8% 0%;
+      width: 100%;
+    }
+  }
 }
 
 //animation

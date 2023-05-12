@@ -24,7 +24,6 @@ import { TextareaComponent } from './Library/components/textarea/textarea.compon
 import { SwitchComponent } from './Library/components/switch/switch.component';
 import { CheckboxComponent } from './Library/components/checkbox/checkbox.component';
 import { CheckboxListComponent } from './Library/components/checkboxList/checkboxList.component';
-import { InputnumbermaskComponent } from './Library/components/inputnumbermask/inputnumbermask.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,7 +48,6 @@ import { InputnumbermaskComponent } from './Library/components/inputnumbermask/i
     InputComponent,
     InputnumberComponent,
     FormComponent,
-    InputnumbermaskComponent,
     DenemeComponent,
     PhoneDirective,
     CheckboxComponent,

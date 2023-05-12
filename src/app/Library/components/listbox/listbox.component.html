@@ -7,7 +7,6 @@
     </div>
   </ng-container>
   <div class="ulContainer" *ngFor="let item of localData | searchFilter:filterText" (click)="change(item)">
-    <app-checkbox [checkedStatus]="list.indexOf(item, 0) >= 0" placeholder="{{ item.text }}"
-      styleLabel="color:white"></app-checkbox>
+    <app-checkbox [checkedStatus]="list.indexOf(item, 0) >= 0" placeholder="{{ item.text }}"></app-checkbox>
   </div>
 </ul>

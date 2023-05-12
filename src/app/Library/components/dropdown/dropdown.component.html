@@ -1,9 +1,10 @@
 <div class="container">
   <div class="headerContainer">
     <input [disabled]="disabled" class="input" [id]="placeholder" [placeholder]="placeholder" type="text" readonly
-      [value]="multiStatus ? text : list[0]?.text || ''" (click)="dropdownStatus = !dropdownStatus" />
+      [value]="multiStatus ? text : list[0].text || ''" (click)="dropdownStatus = !dropdownStatus"
+      style="cursor: pointer;" />
     <div class="iconContainer">
-      <i class="fa-solid fa-arrows-up-down"></i>
+      <i class="fa-solid {{ dropdownStatus ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
     </div>
   </div>
   <div *ngIf="dropdownStatus" [style.height]="DropdownScrollHeight"
@@ -16,7 +17,7 @@
       </div>
     </ng-container>
     <div class="listContainer" *ngFor="let item of localData | searchFilter: filterText" (click)="change(item)">
-      <input *ngIf="multiStatus" type="checkbox" [checked]="list.includes(item)" />
+      <app-checkbox *ngIf="multiStatus" [checkedStatus]="list.includes(item)"></app-checkbox>
       <li>{{ item.text }}</li>
     </div>
   </div>
