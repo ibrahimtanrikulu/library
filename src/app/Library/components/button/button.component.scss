@@ -1,7 +1,7 @@
 .button {
   width: 100%;
   color: #eeeeee;
-  background-color: #1c64f2;
+  background-color: #3B82F6;
   padding: 5px 20px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
   border-radius: 8px;
@@ -15,22 +15,22 @@
   &:hover {
     transition: 855ms;
     transform: translateY(-0px);
-    background-color: rgb(3, 3, 230);
+    background-color: #15325A;
   }
 
   &:active {
-    transform: scale(0.8, 0.8);
+    transform: scale(0.9, 0.8);
   }
 }
 
 .iconButton {
   font-size: 20px;
-  background-color: #131b2e;
   align-items: center;
   border: none;
   cursor: pointer;
-  background-color: #334155;
+  background-color: white;
   font-size: large;
+  color:  #334155;
 
   &:active {
     transform: scale(0.8, 0.8);

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DataType } from '../../Interfaces/DataType';
+import { DataType } from '../../../Interfaces/DataType';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -15,14 +15,14 @@ export class CheckboxListComponent implements OnInit {
   @Input() checkboxData: DataType[] = [];
   @Input() checkboxHeader = '';
   @Input() multiCheckbox = false;
+  @Output() selectedData = new EventEmitter<number[]>();
+
   selectedList: number[] = [];
   selectedAllChecked = false;
 
-  @Output() selectedData = new EventEmitter<number[]>();
-
   ngOnInit(): void { }
 
-  selection(e: number) {
+  selection(e: number): void {
     if (this.multiCheckbox) {
       this.selectedList = [e];
     } else {
@@ -33,26 +33,30 @@ export class CheckboxListComponent implements OnInit {
         this.selectedList.splice(index, 1);
       }
     }
-    this.selectedData.emit(this.selectedList);
+    this.emitSelectedData();
   }
 
-  selectedAll() {
+  selectedAll(): void {
     this.selectedList = this.checkboxData.map((m) => m.value);
     this.selectedAllChecked = true;
-    this.selectedData.emit(this.selectedList);
+    this.emitSelectedData();
   }
 
-  selectedAllRemoveList() {
+  selectedAllRemoveList(): void {
     this.selectedList = [];
     this.selectedAllChecked = false;
-    this.selectedData.emit(this.selectedList);
+    this.emitSelectedData();
   }
 
-  reverse() {
-    const selectedValues = this.selectedList.slice();
+  reverse(): void {
+    const selectedValues = [...this.selectedList];
     this.selectedList = this.checkboxData
       .filter((m) => !selectedValues.includes(m.value))
       .map((m) => m.value);
+    this.emitSelectedData();
+  }
+
+  private emitSelectedData(): void {
     this.selectedData.emit(this.selectedList);
   }
 }

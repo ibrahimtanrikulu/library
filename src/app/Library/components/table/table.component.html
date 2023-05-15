@@ -7,16 +7,12 @@
   ">
   <!-- Header -->
   <ng-container *ngIf="globalSearchStatus">
-    <div class="headerContainer" [ngStyle]="{ header: 'justify-content: end' }">
+    <div class="headerContainer" [ngStyle]="{ 'justify-content': globalSearchStatus ? 'space-between' : 'center' }">
       <h3 *ngIf="header">{{ header }}</h3>
-      <div>
-        <input class="globalInput" type="text" placeholder="Search" [(ngModel)]="globalFilterText" />
+      <div *ngIf="globalSearchStatus || header">
+        <input class="globalInput" type="text" placeholder="Search" [(ngModel)]="globalFilterText"
+          *ngIf="globalSearchStatus" />
       </div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="!globalSearchStatus">
-    <div class="headerContainer" *ngIf="header" style="justify-content: center">
-      <h3>{{ header }}</h3>
     </div>
   </ng-container>
   <!-- Header -->
@@ -111,15 +107,15 @@
   <ng-container *ngIf="paginationStatus">
     <div class="pagination">
       <div>
-        <app-button class="iconButton" (btnClick)="paginationBefore()" icon="fa-solid fa-backward">
+        <app-button cssClass="iconButton" (btnClick)="paginationBefore()" icon="fa-solid fa-backward">
         </app-button>
       </div>
       <div *ngFor="let key of paginationList">
-        <app-button class="iconButton" (btnClick)="paginationNumber(key)" label="{{ key }}">
+        <app-button cssClass="iconButton" (btnClick)="paginationNumber(key)" label="{{ key }}">
         </app-button>
       </div>
       <div>
-        <app-button class="iconButton" (click)="paginationAfter()" icon="fa-solid fa-forward">
+        <app-button cssClass="iconButton" (click)="paginationAfter()" icon="fa-solid fa-forward">
         </app-button>
       </div>
       <div>

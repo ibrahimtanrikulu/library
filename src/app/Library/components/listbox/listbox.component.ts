@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DataType } from '../../Interfaces/DataType';
+import { DataType } from '../../../Interfaces/DataType';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { InputComponent } from '../input/input.component';
 import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';

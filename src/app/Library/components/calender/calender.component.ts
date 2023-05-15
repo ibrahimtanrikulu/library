@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, Optional, Self } from '@angular/core';
-import { ChunkPipe } from 'src/app/Pipe/chunk.pipe';
-import { CalendarDay } from '../../Class/CalendarDay';
+import { ChunkPipe } from 'src/app/Pipe/chunk.pipe'; 
 import { ButtonComponent } from '../button/button.component';
 import {
   ControlValueAccessor,
@@ -9,6 +8,7 @@ import {
   NgControl,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { CalendarDay } from 'src/app/Class/CalendarDay';
 
 @Component({
   selector: 'app-calender',

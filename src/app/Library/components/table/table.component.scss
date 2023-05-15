@@ -19,23 +19,23 @@
     flex-wrap: wrap;
     width: 100%;
     display: flex;
-    justify-content: space-between;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     align-items: center;
     padding: 0.8% 1.4%;
     background-color: white;
-    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 
     h3 {
-      font-size: large;
+      font-size: x-large;
+      color: #1e293b;
+      font-weight: 600;
     }
   }
 
   hr {
     display: block;
     border: 0;
-    border-top: 1px solid black;
+    border-top: 1px solid gray;
     margin: 0;
     padding: 0;
   }
@@ -61,15 +61,16 @@ table {
   width: 100%;
 
   .header {
+    color: #1e293b;
+    font-weight: 600;
     text-align: left;
-    background-color: white;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid gray;
 
     th {
       text-transform: capitalize;
       padding: 0.4% 1%;
       font-size: large;
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid gray;
 
       .iconFilterContainer {
         display: flex;
@@ -82,13 +83,12 @@ table {
 
   .filterHeader {
     text-align: left;
-    background-color: white;
 
     th {
       text-transform: capitalize;
       padding: 0.2% 1%;
       font-size: large;
-      border-bottom: 2px solid #000000;
+      border-bottom: 2px solid gray;
 
       .iconFilterContainer {
         display: flex;
@@ -103,17 +103,17 @@ table {
     tr {
       cursor: pointer;
       align-items: center;
-      background-color: white;
+      background-color: rgb(232, 232, 232);
 
       td {
         text-align: left;
         padding: 0.2vw 1vw;
         font-size: medium;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid gray;
       }
 
       &:hover {
-        background-color: #131b2e;
+        background-color: gray;
         transition-duration: 0.8s;
       }
     }
@@ -140,7 +140,9 @@ table {
     span {
       padding: 4px;
       font-size: medium;
-      color: #1e293b;
+      color: #334155;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+      border-radius: 4px;
     }
   }
 
@@ -161,7 +163,7 @@ table {
       li {
         width: 100%;
         cursor: pointer;
-        border-bottom: 0.5px solid #1e293b;
+        border-bottom: 0.5px solid gray;
         color: #1e293b;
         font-size: medium;
 
@@ -209,14 +211,13 @@ table {
 
   .responseHeader {
     display: block;
-    color: white;
     text-transform: uppercase;
   }
 
   table {
     tbody {
       tr {
-        border: 1px solid #131b2e;
+        border-bottom: 2px solid gray;
         padding-top: 0.8%;
 
         td {
@@ -226,7 +227,6 @@ table {
 
           span {
             flex: 1;
-            color: whitesmoke;
           }
 
           div {

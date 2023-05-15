@@ -5,13 +5,13 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { DataType } from './Library/Interfaces/DataType';
-import { IColumnType } from './Library/Interfaces/CollumType';
-import { FilterTypeEnum } from './Library/Enums/FilterTypeEnum';
-import { MessageType } from './Library/Interfaces/messageType';
-import { MessageEnum } from './Library/Enums/messageEnum';
-import { IForm } from './Library/Interfaces/Form';
-import { FormTypeEnum } from './Library/Enums/formTypeEnum';
+import { DataType } from './Interfaces/DataType';
+import { IColumnType } from './Interfaces/CollumType';
+import { FilterTypeEnum } from './Enums/FilterTypeEnum';
+import { MessageType } from './Interfaces/messageType';
+import { MessageEnum } from './Enums/messageEnum';
+import { IForm } from './Interfaces/Form';
+import { FormTypeEnum } from './Enums/formTypeEnum';
 
 @Component({
   selector: 'app-root',

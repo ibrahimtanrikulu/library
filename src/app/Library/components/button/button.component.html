@@ -1,12 +1,6 @@
-<button
-  [type]="type"
-  (click)="onClick()"
-  [disabled]="isDisabled"
-  [class]="class"
-  [style]="style"
->
+<button [type]="type" (click)="onClick()" [disabled]="isDisabled" [class]="cssClass" [style]="style">
   <ng-container *ngIf="icon">
-    <i [class]="icon" [style]="buttonText ? 'margin-right: 6px;' : ''"></i>
+    <i [class]="icon" [style]="label ? 'margin-right: 6px;' : ''"></i>
   </ng-container>
-  <span>{{ buttonText }}</span>
+  <span>{{ label }}</span>
 </button>

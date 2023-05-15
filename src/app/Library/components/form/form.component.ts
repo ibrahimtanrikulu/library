@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IForm } from '../../Interfaces/Form';
+import { IForm } from '../../../Interfaces/Form';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ButtonComponent } from '../button/button.component';
 import { CheckboxListComponent } from '../checkboxList/checkboxList.component';
