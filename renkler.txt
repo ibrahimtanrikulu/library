@@ -37,3 +37,7 @@ calender,
 input musk,
 
 
+[ngStyle]="{scrollHeightStatus: 'height:{{scrollHeight}}'}"
+    [ngStyle]="{scrollHeightStatus: { 'overflow-y': 'auto' }}"
+
+

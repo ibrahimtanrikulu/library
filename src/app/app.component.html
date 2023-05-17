@@ -189,8 +189,7 @@
 
   </app-dialog>
 
-  <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
-    placeholder="deneme" [disabled]="false"></app-dropdown>
+  
 
   
   <div class="grid">
@@ -207,7 +206,8 @@
     </app-tab>
   </app-tabview> 
 
-    
+  <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
+    placeholder="deneme" [disabled]="false"></app-dropdown>  
 
   <app-card header="deneme">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
@@ -215,6 +215,8 @@
   <app-card header="deneme">
     <app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true"
       [paginationStatus]="true" [header]="'Personel'" [globalSearchStatus]="false" [headerButtonLabel]="'Ekle'"
-      (headerButtonClick)="button()" [checkListStatus]="true"></app-table>
+      (headerButtonClick)="button()" [checkListStatus]="true" [scrollHeightStatus]="true" scrollHeight="50px"></app-table>
   </app-card>
+
+  
 </div>
