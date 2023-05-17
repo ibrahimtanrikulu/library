@@ -6,7 +6,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: end;
+  align-items: flex-end;
   justify-content: flex-end;
   color: #131b2e;
 
@@ -75,7 +75,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: end;
+  align-items: flex-end;
   justify-content: flex-end;
   color: #131b2e;
 
@@ -102,10 +102,11 @@
   border-radius: 4px;
   padding: 5px;
   width: 100%;
-  color: #1e293b; 
+  color: #1e293b;
   background-color: whitesmoke;
   border: none;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+
   &:focus {
     outline: none;
   }

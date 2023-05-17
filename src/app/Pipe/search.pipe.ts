@@ -6,11 +6,23 @@ export class SearchFilterPipe implements PipeTransform {
     if (!value) return null;
     if (!args) return value;
     return value.filter((item: any) => {
-      const stringValue = JSON.stringify(item).toLowerCase();
       if (typeof item === 'number') {
-        return stringValue.includes(args.toLowerCase());
+        const numberString = item.toString();
+        return numberString.includes(args);
       }
-      return stringValue.includes(args.toLowerCase());
+      if (typeof item === 'object') {
+        for (const key in item) {
+          if (item.hasOwnProperty(key) && typeof item[key] === 'number') {
+            const numberString = item[key].toString()
+            if (numberString.includes(args)) {
+              return true;
+            }
+          }
+        }
+      }
+      const stringValue = JSON.stringify(item)
+      return stringValue.includes(args);
     });
   }
 }
+

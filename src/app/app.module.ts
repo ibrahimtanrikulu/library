@@ -1,29 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from './Library/components/button/button.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CardComponent } from './Library/components/card/card.component';
-import { DialogComponent } from './Library/components/dialog/dialog.component';
-import { TableComponent } from './Library/components/table/table.component';
-import { InputComponent } from './Library/components/input/input.component';
-import { DropdownComponent } from './Library/components/dropdown/dropdown.component';
-import { ListboxComponent } from './Library/components/listbox/listbox.component';
-import { ToastComponent } from './Library/components/toast/toast.component';
-import { TabviewComponent } from './Library/components/tabview/tabview.component';
-import { TabComponent } from './Library/components/tabview/tab/tab.component';
-import { AccordionComponent } from './Library/components/accordion/accordion.component';
-import { ProgesbarComponent } from './Library/components/progesbar/progesbar.component';
-import { CalenderComponent } from './Library/components/calender/calender.component';
-import { FormComponent } from './Library/components/form/form.component';
-import { DenemeComponent } from './Library/components/deneme/deneme.component';
 import { PhoneDirective } from './Directive/phone.directive';
-import { InputnumberComponent } from './Library/components/inputnumber/inputnumber.component';
-import { InputpasswordComponent } from './Library/components/inputpassword/inputpassword.component';
-import { TextareaComponent } from './Library/components/textarea/textarea.component';
-import { SwitchComponent } from './Library/components/switch/switch.component';
-import { CheckboxComponent } from './Library/components/checkbox/checkbox.component';
-import { CheckboxListComponent } from './Library/components/checkboxList/checkboxList.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { ListboxComponent } from './components/listbox/listbox.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { TabviewComponent } from './components/tabview/tabview.component';
+import { TabComponent } from './components/tabview/tab/tab.component';
+import { AccordionComponent } from './components/accordion/accordion.component';
+import { ProgesbarComponent } from './components/progesbar/progesbar.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
+import { CalenderComponent } from './components/calender/calender.component';
+import { InputpasswordComponent } from './components/inputpassword/inputpassword.component';
+import { CardComponent } from './components/card/card.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { TableComponent } from './components/table/table.component';
+import { ButtonComponent } from './components/button/button.component';
+import { InputComponent } from './components/input/input.component';
+import { InputnumberComponent } from './components/inputnumber/inputnumber.component';
+import { FormComponent } from './components/form/form.component';
+import { DenemeComponent } from './components/deneme/deneme.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { SwitchComponent } from './components/switch/switch.component';
+import { CheckboxListComponent } from './components/checkboxList/checkboxList.component';
+
 
 @NgModule({
   declarations: [AppComponent],

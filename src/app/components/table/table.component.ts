@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
-import { DropdownComponent } from '../dropdown/dropdown.component';
-import { DataType } from '../../../Interfaces/DataType';
-import { IColumnType } from '../../../Interfaces/CollumType';
+import { DropdownComponent } from '../dropdown/dropdown.component'; 
 import { InputComponent } from '../input/input.component';
 import { InputnumberComponent } from '../inputnumber/inputnumber.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { CalenderComponent } from '../calender/calender.component';
 import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
+import { IColumnType } from 'src/app/Interfaces/CollumType';
+import { DataType } from 'src/app/Interfaces/DataType';
 
 @Component({
   selector: 'app-table',

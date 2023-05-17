@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IForm } from '../../../Interfaces/Form';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ButtonComponent } from '../button/button.component';
 import { CheckboxListComponent } from '../checkboxList/checkboxList.component';
@@ -11,6 +10,7 @@ import { CheckboxComponent } from '../checkbox/checkbox.component';
 import { SwitchComponent } from '../switch/switch.component';
 import { TextareaComponent } from '../textarea/textarea.component';
 import { InputpasswordComponent } from '../inputpassword/inputpassword.component';
+import { IForm } from 'src/app/Interfaces/Form';
 
 @Component({
   selector: 'app-form',
