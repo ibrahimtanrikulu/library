@@ -114,6 +114,7 @@ export class AppComponent {
       header: 'numara',
       width: '10%',
       filterType: FilterTypeEnum.number,
+      inputStatus: true,
     },
     {
       field: 'kod',
@@ -122,13 +123,12 @@ export class AppComponent {
       filterData: this.dropdownCol,
       filterPlaceholder: 'seç',
       filterType: FilterTypeEnum.multiDropdown,
-      inputStatus: true,
     },
     {
       field: 'aciklama',
       header: 'aciklama',
       width: '50%',
-      filterType: FilterTypeEnum.text,
+      filterType: FilterTypeEnum.text, 
     },
     {
       field: 'fiyat',

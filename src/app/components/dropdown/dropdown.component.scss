@@ -29,6 +29,8 @@
 
 .dropdownContainer {
   width: 100%;
+  animation: growDown 300ms ease-in-out forwards;
+  transform-origin: top center;
   position: absolute;
   margin-top: 0.2%;
   background-color: white;
@@ -109,5 +111,19 @@
 
   &:focus {
     outline: none;
+  }
+}
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0)
+  }
+
+  80% {
+    transform: scaleY(1.1)
+  }
+
+  100% {
+    transform: scaleY(1)
   }
 }

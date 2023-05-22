@@ -17,7 +17,7 @@
   </ng-container>
   <!-- Header -->
 
-  <table >
+  <table>
     <!-- THead -->
     <thead>
       <tr class="header">
@@ -60,9 +60,9 @@
 
     <!-- THead -->
     <!-- TBody -->
-    <tbody >
+    <tbody>
       <tr *ngFor="let data of localData | searchFilter : globalFilterText ? globalFilterText : 
-        inputFilterText ? inputFilterText : inputNumberFilterText ? inputNumberFilterText : ''"> 
+        inputFilterText ? inputFilterText : inputNumberFilterText ? inputNumberFilterText : ''">
         <ng-container *ngIf="checkListStatus">
           <td>
             <app-checkbox (click)="checkboxCheck(data)"></app-checkbox>

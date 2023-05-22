@@ -205,18 +205,14 @@
     <app-tab tabTitle="uc"><app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
     </app-tab>
   </app-tabview> 
-
-  <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
-    placeholder="deneme" [disabled]="false"></app-dropdown>  
-
+ 
   <app-card header="deneme">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card>-->
-  <app-card header="deneme">
+  <app-card header="table">
     <app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true"
-      [paginationStatus]="true" [header]="'Personel'" [globalSearchStatus]="false" [headerButtonLabel]="'Ekle'"
-      (headerButtonClick)="button()" [checkListStatus]="true" [scrollHeightStatus]="true" scrollHeight="50px"></app-table>
+      [globalSearchStatus]="true" [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'"
+      (headerButtonClick)="button()" [checkListStatus]="true" [scrollHeightStatus]="false"
+      scrollHeight="50px"></app-table>
   </app-card>
-
-  
 </div>

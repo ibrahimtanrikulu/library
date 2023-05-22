@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
-import { DropdownComponent } from '../dropdown/dropdown.component'; 
+import { DropdownComponent } from '../dropdown/dropdown.component';
 import { InputComponent } from '../input/input.component';
 import { InputnumberComponent } from '../inputnumber/inputnumber.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';
@@ -33,10 +33,8 @@ export class TableComponent implements OnInit {
   @Input() data: any[] = [];
   @Input() column: IColumnType[] = [];
   @Input() filterFormStatus = false;
-  @Input() filterHeaderStatus = false;
   @Input() scrollWidthStatus = false;
   @Input() scrollHeightStatus = false;
-  @Input() scrollHeight = '';
   @Input() paginationStatus = false;
   @Input() globalSearchStatus = false;
   @Input() checkListStatus = false;
@@ -68,9 +66,7 @@ export class TableComponent implements OnInit {
   }
 
   //add container
-  headerButton() {
-    this.headerButtonClick.emit();
-  }
+  headerButton = () => this.headerButtonClick.emit();
 
   //filter
   dropdownFilter(data: DataType[], field: any) {
@@ -78,15 +74,6 @@ export class TableComponent implements OnInit {
     this.paginationStatusCheck()
     if (data.length > 0) {
       this.localData = this.localData.filter(m => data.some(value => m[field] === value.text));
-    }
-  }
-  calenderFilter(event: any, filed: any) {
-    this.checkboxList = [];
-    let value: string = event.target.value;
-    this.paginationStatusCheck()
-    if (value) {
-      let result = this.localData.filter((m) => m[filed].includes(value));
-      this.localData = result;
     }
   }
   alphabeticalOrder(field: any) {

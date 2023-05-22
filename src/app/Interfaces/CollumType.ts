@@ -5,7 +5,6 @@ export interface IColumnType {
   filterType?: any;
   filterData?: any | any[];
   filterPlaceholder?: string;
-
   inputStatus?: boolean;
   click?(data?: any): void;
 }
