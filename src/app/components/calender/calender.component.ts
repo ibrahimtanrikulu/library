@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, Optional, Self } from '@angular/core';
-import { ChunkPipe } from 'src/app/Pipe/chunk.pipe'; 
-import { ButtonComponent } from '../button/button.component';
 import {
   ControlValueAccessor,
   FormsModule,
   NgControl,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { CalendarDay } from 'src/app/Class/CalendarDay';
+import { ChunkPipe } from 'src/app/Pipe';
+import { ButtonComponent } from '..';
+import { CalendarDay } from 'src/app/Class';
 
 @Component({
   selector: 'app-calender',
@@ -129,6 +129,6 @@ export class CalenderComponent implements ControlValueAccessor, OnInit {
     this.onTouched = fn;
   }
 
-  onChange(e: any) {}
-  onTouched() {}
+  onChange(e: any) { }
+  onTouched() { }
 }

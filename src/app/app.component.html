@@ -176,9 +176,7 @@
     </div>
   </div> 
  
-  <app-accordion header="Table">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-accordion>
+  
 
   <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>
 
@@ -208,11 +206,19 @@
  
   <app-card header="deneme">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-card>-->
+  </app-card>
+  
+  <app-accordion header="Table">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+  </app-accordion>-->
+
+  
   <app-card header="table">
     <app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true"
       [globalSearchStatus]="true" [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'"
-      (headerButtonClick)="button()" [checkListStatus]="true" [scrollHeightStatus]="false"
+      (headerButtonClick)="button()" [checkListStatus]="true" [scrollHeightStatus]="true"
       scrollHeight="50px"></app-table>
   </app-card>
+
+  
 </div>

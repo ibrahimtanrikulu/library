@@ -24,5 +24,4 @@ export class SearchFilterPipe implements PipeTransform {
       return stringValue.includes(args);
     });
   }
-}
-
+} 

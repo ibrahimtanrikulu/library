@@ -1,19 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, ContentChildren, QueryList } from '@angular/core';
-import { TabComponent } from './tab/tab.component';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '..';
+import { TabComponent } from './tab/tab.component';
 
 @Component({
   selector: 'app-tabview',
   templateUrl: './tabview.component.html',
   styleUrls: ['./tabview.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, TabComponent,ButtonComponent],
+  imports: [CommonModule, FormsModule, TabComponent, ButtonComponent],
 })
 export class TabviewComponent {
   @ContentChildren(TabComponent) tabs!: QueryList<TabComponent>;
-  constructor() {}
+  constructor() { }
   ngAfterContentInit() {
     const activeTabs = this.tabs.filter((tab) => tab.active);
 

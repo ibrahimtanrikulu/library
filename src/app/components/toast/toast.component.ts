@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { MessageType } from 'src/app/Interfaces/messageType';
+import { MessageType } from 'src/app/Interfaces';
 
 @Component({
   selector: 'app-toast',

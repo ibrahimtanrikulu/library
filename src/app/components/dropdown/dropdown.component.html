@@ -17,7 +17,7 @@
       </div>
     </ng-container>
     <div class="listContainer" *ngFor="let item of localData | searchFilter: filterText" (click)="change(item)">
-      <app-checkbox *ngIf="multiStatus" [checkedStatus]="list.includes(item)"></app-checkbox>
+      <input class="checkboxInput" type="checkbox" *ngIf="multiStatus" [checked]="list.includes(item)" />
       <li>{{ item.text }}</li>
     </div>
   </div>

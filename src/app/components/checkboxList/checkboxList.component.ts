@@ -1,8 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'; 
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../button/button.component';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { DataType } from 'src/app/Interfaces/DataType';
+import { ButtonComponent, CheckboxComponent } from '..';
+import { DataType } from 'src/app/Interfaces';
 
 @Component({
   selector: 'app-checkboxlist',

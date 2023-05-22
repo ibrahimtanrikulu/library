@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms'; 
-import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { InputComponent } from '../input/input.component';
-import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
-import { DataType } from 'src/app/Interfaces/DataType';
+import { FormsModule } from '@angular/forms';
+import { CheckboxComponent, InputComponent } from '..';
+import { SearchFilterPipe } from 'src/app/Pipe';
+import { DataType } from 'src/app/Interfaces';
 
 @Component({
   selector: 'app-listbox',
