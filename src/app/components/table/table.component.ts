@@ -27,7 +27,7 @@ export class TableComponent implements OnInit {
   @Input() data: any[] = [];
   @Input() column: IColumnType[] = [];
   @Input() filterFormStatus = false;
-  @Input() scrollWidthStatus = false;
+  @Input() scrollWidthStatus = true;
   @Input() scrollHeightStatus = false;
   @Input() paginationStatus = false;
   @Input() globalSearchStatus = false;
@@ -37,17 +37,15 @@ export class TableComponent implements OnInit {
   @Output() checkList = new EventEmitter<any[]>();
   localData: any[] = [];
   selected: any;
+  selectedPagination: any;
   selectedField: any;
   filterIconStatus = true;
   globalFilterText = '';
-  inputFilterText = '';
-  inputNumberFilterText = '';
   paginationList: number[] = [];
   paginationNumberText = 10;
   paginationKey = 1;
   checkboxList: any[] = [];
   constructor() { }
-
   ngOnInit(): void {
     this.paginationStatusCheck()
   }
@@ -58,22 +56,20 @@ export class TableComponent implements OnInit {
       this.localData = [...this.data];
     }
   }
-
   //add container
   headerButton = () => this.headerButtonClick.emit();
-
+  //İnput 
+  inputMethod = (e: any) => this.selected = e;
   //filter
-  dropdownFilter(data: DataType[], field: any) {
+  dropdownFilter(data: DataType[], field: string) {
     this.checkboxList = [];
     this.paginationStatusCheck()
     if (data.length > 0) {
       this.localData = this.localData.filter(m => data.some(value => m[field] === value.text));
     }
   }
-  alphabeticalOrder(field: any) {
+  alphabeticalOrder(field: string) {
     this.filterIconStatus = !this.filterIconStatus;
-    this.paginationStatusCheck();
-
     this.selectedField = field;
     this.localData.sort((a: any, b: any) => {
       const valueA = a[field];
@@ -86,35 +82,38 @@ export class TableComponent implements OnInit {
       return this.filterIconStatus ? strA.localeCompare(strB) : strB.localeCompare(strA);
     });
   }
-
+  inputSearch(value: any, field: string) {
+    this.paginationStatusCheck();
+    if (value) {
+      this.localData = this.localData.filter(m => m[field].toString().includes(value));
+    }
+  }
   //pagination
   paginationBefore() {
     if (this.paginationKey > 1) {
+      this.paginationKey = this.selectedPagination
       this.paginationKey--;
       this.paginationNumber();
     }
   }
-  paginationListNumber(e: number = 10) {
+  paginationListNumber(e: number = this.paginationNumberText) {
     this.checkboxList = [];
     this.paginationNumberText = e;
     this.paginationList = Array.from({ length: Math.ceil(this.data.length / this.paginationNumberText) }, (_, i) => i + 1);
     this.paginationNumber();
   }
   paginationNumber(key: number = this.paginationKey) {
+    this.selectedPagination = key
     const startIndex = (key - 1) * this.paginationNumberText;
     const endIndex = startIndex + this.paginationNumberText;
     this.localData = this.data.slice(startIndex, endIndex);
   }
   paginationAfter() {
     if (this.paginationList.length > this.paginationKey) {
+      this.paginationKey = this.selectedPagination
       this.paginationKey++;
       this.paginationNumber();
     }
-  }
-
-  //İnput
-  inputMethod(e: any) {
-    this.selected = e;
   }
 
   //checkboxList

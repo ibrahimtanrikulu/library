@@ -39,9 +39,7 @@
             <!-- burası header altı filter bölümü -->
             <ng-container [ngSwitch]="item.filterType">
               <input class="globalInput" *ngSwitchCase="'text'" placeholder="{{ item.filterPlaceholder }}" type="text"
-                [(ngModel)]="inputFilterText" />
-              <input class="globalInput" *ngSwitchCase="'number'" placeholder="{{ item.filterPlaceholder }}"
-                type="number" [(ngModel)]="inputNumberFilterText" />
+                (keyup)="inputSearch($any($event.target).value,item.field)" />
               <app-calender *ngSwitchCase="'calender'"></app-calender>
               <app-dropdown *ngSwitchCase="'dropdown'" [data]="item.filterData" [multiStatus]="false"
                 [searchStatus]="true" placeholder="{{ item.filterPlaceholder }}"
@@ -61,8 +59,7 @@
     <!-- THead -->
     <!-- TBody -->
     <tbody>
-      <tr *ngFor="let data of localData | searchFilter : globalFilterText ? globalFilterText : 
-        inputFilterText ? inputFilterText : inputNumberFilterText ? inputNumberFilterText : ''">
+      <tr *ngFor="let data of localData | searchFilter : globalFilterText ? globalFilterText : ''">
         <ng-container *ngIf="checkListStatus">
           <td>
             <app-checkbox (click)="checkboxCheck(data)"></app-checkbox>
@@ -106,31 +103,18 @@
   <!-- pagination -->
   <ng-container *ngIf="paginationStatus">
     <div class="pagination">
-      <div>
-        <app-button cssClass="iconButton" style="background-color: rgb(232, 232, 232);" (btnClick)="paginationBefore()"
-          icon="fa-solid fa-angle-left">
-        </app-button>
-      </div>
-      <div *ngFor="let key of paginationList">
-        <app-button cssClass="iconButton" style="background-color: rgb(232, 232, 232);"
-          (btnClick)="paginationNumber(key)" label="{{ key }}">
-        </app-button>
-      </div>
-      <div>
-        <app-button cssClass="iconButton" style="background-color: rgb(232, 232, 232);" (click)="paginationAfter()"
-          icon="fa-solid fa-angle-right">
-        </app-button>
-      </div>
-      <div>
-        <div class="paginationContainer">
-          <div>
-            <span>{{ paginationNumberText }}</span>
-          </div>
-          <ul class="paginationList">
-            <li *ngFor="let number of [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]"
-              (click)="paginationListNumber(number)">{{ number }}</li>
-          </ul>
+      <a (click)="paginationBefore()"><i class="fa-solid fa-angle-left"></i></a>
+      <a *ngFor="let key of paginationList" [class.paginationActive]="selectedPagination === key"
+        (click)="paginationNumber(key)">{{ key }}</a>
+      <a (click)="paginationAfter()"><i class="fa-solid fa-angle-right"></i></a>
+      <div class="paginationContainer">
+        <div>
+          <span>{{ paginationNumberText }}<i class="fa-solid fa-chevron-down"></i></span>
         </div>
+        <ul class="paginationList">
+          <li *ngFor="let number of [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]"
+            (click)="paginationListNumber(number)">{{ number }}</li>
+        </ul>
       </div>
     </div>
   </ng-container>

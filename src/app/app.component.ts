@@ -113,8 +113,10 @@ export class AppComponent {
       field: 'id',
       header: 'numara',
       width: '10%',
-      filterType: FilterTypeEnum.number,
+      filterType: FilterTypeEnum.text,
       inputStatus: true,
+      filterPlaceholder:'id',
+      
     },
     {
       field: 'kod',
@@ -127,14 +129,14 @@ export class AppComponent {
     {
       field: 'aciklama',
       header: 'aciklama',
-      width: '50%',
-      filterType: FilterTypeEnum.text, 
+      width: '10%',
+      filterType: FilterTypeEnum.text,
     },
     {
       field: 'fiyat',
       header: 'fiyat',
       width: '10%',
-      filterType: FilterTypeEnum.number,
+      filterType: FilterTypeEnum.text,
     },
     {
       field: 'edit',
