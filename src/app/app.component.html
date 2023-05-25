@@ -156,13 +156,6 @@
 
   <!-- <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>  -->
 
-  <!-- <div class="grid">
-    <div class="col-6">
-      <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)" placeholder="deneme" [disabled]="false"></app-dropdown>
-    </div>
-  </div> -->
-
   <!-- <form [formGroup]="PersonelForm">
     <app-input formControlName="test" placeholder="test"></app-input>
     <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
@@ -176,19 +169,9 @@
     </div>
   </div> 
  
-  
-
   <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>
 
-
   <button (click)="button()">dialog aç</button>
-
-  <app-dialog [header]="'Deneme'" [show]="show" [width]="'80%'">
-
-  </app-dialog>
-
-  
-
   
   <div class="grid">
     <div class="col-6">
@@ -210,13 +193,20 @@
   
   <app-accordion header="Table">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-accordion>-->
+  </app-accordion>
 
-  
+  <div class="grid">
+    <div class="col-6">
+      <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true"
+        (selectedList)="dropdownMethod($event)" placeholder="deneme" [disabled]="false"></app-dropdown>
+    </div>
+  </div>
+  --> 
+
   <app-card header="table">
-    <app-table [column]="col" [data]="data" [filterFormStatus]="true" [scrollWidthStatus]="true"
-      [globalSearchStatus]="true" [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'"
-      (headerButtonClick)="button()" [checkListStatus]="false" [scrollHeightStatus]="true"
-      scrollHeight="50px"></app-table>
+    <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
+      [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
+        [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
   </app-card>
+  
 </div>

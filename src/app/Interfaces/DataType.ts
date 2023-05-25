@@ -1,4 +1,4 @@
 export interface DataType {
-  value: number;
+  value: number | any;
   text: string;
 }

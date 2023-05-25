@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent, CalenderComponent, CheckboxComponent, DropdownComponent, InputComponent, InputnumberComponent } from '..';
+import { ButtonComponent, CalenderComponent, CheckboxComponent, DialogComponent, DropdownComponent, InputComponent, InputnumberComponent, ListboxComponent } from '..';
 import { SearchFilterPipe } from 'src/app/Pipe';
 import { DataType, IColumnType } from 'src/app/Interfaces';
 
@@ -20,6 +20,8 @@ import { DataType, IColumnType } from 'src/app/Interfaces';
     CheckboxComponent,
     CalenderComponent,
     SearchFilterPipe,
+    DialogComponent,
+    ListboxComponent
   ],
 })
 export class TableComponent implements OnInit {
@@ -28,7 +30,7 @@ export class TableComponent implements OnInit {
   @Input() column: IColumnType[] = [];
   @Input() filterFormStatus = false;
   @Input() scrollWidthStatus = true;
-  @Input() scrollHeightStatus = false;
+  @Input() scrollHeight: string = '';
   @Input() paginationStatus = false;
   @Input() globalSearchStatus = false;
   @Input() checkListStatus = false;
@@ -45,9 +47,15 @@ export class TableComponent implements OnInit {
   paginationNumberText = 10;
   paginationKey = 1;
   checkboxList: any[] = [];
+  collumsSettingsShow: boolean = false;
+  collumsSettingCustomizable: DataType[] = []
   constructor() { }
   ngOnInit(): void {
     this.paginationStatusCheck()
+
+    this.column.map(m => {
+      this.collumsSettingCustomizable.push({ text: m.header, value: m.field });
+    })
   }
   paginationStatusCheck() {
     if (this.paginationStatus) {
@@ -128,5 +136,9 @@ export class TableComponent implements OnInit {
       this.checkList.emit(this.checkboxList);
 
     }
+  }
+  //collumsSettings
+  collumsSettings() {
+    this.collumsSettingsShow = !this.collumsSettingsShow;
   }
 }

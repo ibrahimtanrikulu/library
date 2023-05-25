@@ -9,6 +9,7 @@
   background: rgba(0, 0, 0, 0.7);
   align-items: center;
   justify-content: center;
+  z-index: 10000;
 
   .modal {
     background-color: white;
@@ -18,7 +19,6 @@
     height: 100%;
     animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
     position: absolute;
-    z-index: 10000;
 
     hr {
       display: block;

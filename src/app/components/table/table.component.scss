@@ -8,6 +8,10 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
+  .buttonGenislik {
+    width: 10%;
+  }
 }
 
 .container {
@@ -21,14 +25,20 @@
     display: flex;
     border-radius: 8px 8px 0 0;
     align-items: center;
+    justify-content: space-between;
     padding: 0.8% 1.4%;
     background-color: rgb(232, 232, 232);
-    border-bottom: 2px solid gray;
+    border-bottom: 1px solid gray;
 
     h3 {
       font-size: x-large;
       color: #1e293b;
       font-weight: 600;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -84,27 +94,33 @@
       .paginationList {
         display: none;
         position: absolute;
-        z-index: 100;
+        z-index: 5;
+        overflow-y: scroll;
+        height: 120px;
+      }
+
+      //scroll gizleme
+      .paginationList::-webkit-scrollbar {
+        display: none;
       }
 
       &:hover {
-        box-shadow: 0px 0px 5px 0px rgba(51, 65, 85, 0.73);
-
         .paginationList {
           display: block;
           background-color: white;
-          margin-top: 36px;
+          margin-top: 38px;
+          border-radius: 8px;
 
           li {
             width: 100%;
             padding: 4px 14px;
             cursor: pointer;
             background-color: rgb(232, 232, 232);
-            border-bottom: 0.5px solid gray;
             color: #1e293b;
             font-size: medium;
 
             &:hover {
+              transition: 555ms;
               background-color: #1c64f2;
               color: #cccccc;
             }
@@ -120,12 +136,6 @@
   }
 }
 
-
-
-.buttonGenislik {
-  width: 10%;
-}
-
 table {
   border: none;
   width: 100%;
@@ -135,13 +145,13 @@ table {
     color: #1e293b;
     font-weight: 400;
     text-align: left;
-    border-bottom: 2px solid gray;
+    border-bottom: 1px solid gray;
 
     th {
       text-transform: capitalize;
       padding: 0.4% 1%;
       font-size: large;
-      border-bottom: 2px solid gray;
+      border-bottom: 1px solid gray;
 
       .iconFilterContainer {
         display: flex;
@@ -159,7 +169,7 @@ table {
       text-transform: capitalize;
       padding: 0.2% 1%;
       font-size: large;
-      border-bottom: 2px solid gray;
+      border-bottom: 1px solid gray;
 
       .iconFilterContainer {
         display: flex;
@@ -180,7 +190,11 @@ table {
         text-align: left;
         padding: 0.2vw 1vw;
         font-size: medium;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid #E2E2E2;
+
+        span {
+          display: none;
+        }
       }
 
       &:hover {
@@ -189,10 +203,6 @@ table {
       }
     }
   }
-}
-
-.responseHeader {
-  display: none;
 }
 
 @media only screen and (max-width: 960px) {
@@ -224,15 +234,16 @@ table {
     white-space: nowrap;
   }
 
-  .responseHeader {
-    display: block;
-    text-transform: uppercase;
+  .addContainer {
+    .buttonGenislik {
+      width: 100%;
+    }
   }
 
   table {
     tbody {
       tr {
-        border-bottom: 2px solid gray;
+        border-bottom: 1px solid gray;
         padding-top: 0.8%;
 
         td {
@@ -242,6 +253,8 @@ table {
 
           span {
             flex: 1;
+            display: block;
+            text-transform: uppercase;
           }
 
           div {
@@ -261,11 +274,7 @@ table {
     width: 50px;
   }
 
-  .buttonGenislik {
-    width: 100%;
-  }
 }
-
 
 @keyframes growDown {
   0% {
