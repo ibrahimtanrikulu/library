@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent, CheckboxComponent } from '..';
-import { SearchFilterPipe } from 'src/app/Pipe';
-import { DataType } from 'src/app/Interfaces';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
+import { ButtonComponent } from '../button/button.component';
+import { DataType } from 'src/app/Interfaces/DataType';
 
 @Component({
   selector: 'app-dropdown',

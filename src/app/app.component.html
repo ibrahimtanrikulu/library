@@ -126,15 +126,7 @@
     </div>
   </div>
   
-  <div class="grid">
-      <div class="col-12">
-        <app-listbox
-          [data]="dropdownCol"
-          [searchStatus]="true"
-          (selectedList)="dropdownMethod($event)"
-        ></app-listbox>
-      </div>
-    </div> 
+  
     
     <form [formGroup]="PersonelForm">
     <div class="grid">
@@ -201,12 +193,17 @@
         (selectedList)="dropdownMethod($event)" placeholder="deneme" [disabled]="false"></app-dropdown>
     </div>
   </div>
-  --> 
-
+  
+  <app-listbox [data]="dropdownCol" [searchStatus]="true"></app-listbox>
+  
+  <app-checkboxlist [checkboxData]="dropdownCol" checkboxHeader="bu deneme datası"
+    [multiCheckbox]="false"></app-checkboxlist>
+  -->
   <app-card header="table">
     <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
       [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
-        [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
+      [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
   </app-card>
-  
+
+
 </div>

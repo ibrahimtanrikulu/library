@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ContentChildren, QueryList } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent } from '..';
 import { TabComponent } from './tab/tab.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-tabview',

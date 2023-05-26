@@ -1,22 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CheckboxComponent, InputComponent } from '..';
-import { SearchFilterPipe } from 'src/app/Pipe';
-import { DataType } from 'src/app/Interfaces';
+import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { DataType } from 'src/app/Interfaces/DataType';
 
 @Component({
   selector: 'app-listbox',
   templateUrl: './listbox.component.html',
   styleUrls: ['./listbox.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, CheckboxComponent, InputComponent, SearchFilterPipe],
+  imports: [CommonModule, FormsModule, CheckboxComponent, SearchFilterPipe]
 })
 export class ListboxComponent {
   @Input() data: DataType[] = [];
   @Input() searchStatus = false;
-  @Input() ListBoxScrollHeightStatus = false;
-  @Input() ListBoxScrollHeight = '100%';
+  @Input() scrollHeight = "";
   @Output() selectedList = new EventEmitter<DataType[]>();
 
   list: DataType[] = [];
@@ -39,5 +38,6 @@ export class ListboxComponent {
     this.selectedList.emit(this.list);
     this.text = this.list.map(m => m.text).join(',');
     this.localData = this.data;
+
   }
 }

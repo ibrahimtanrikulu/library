@@ -1,9 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent, CalenderComponent, CheckboxComponent, DialogComponent, DropdownComponent, InputComponent, InputnumberComponent, ListboxComponent } from '..';
-import { SearchFilterPipe } from 'src/app/Pipe';
-import { DataType, IColumnType } from 'src/app/Interfaces';
+import { ListboxComponent } from '../listbox/listbox.component';
+import { DialogComponent } from '../dialog/dialog.component';
+import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
+import { CalenderComponent } from '../calender/calender.component';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+import { InputnumberComponent } from '../inputnumber/inputnumber.component';
+import { InputComponent } from '../input/input.component';
+import { DropdownComponent } from '../dropdown/dropdown.component';
+import { ButtonComponent } from '../button/button.component';
+import { IColumnType } from 'src/app/Interfaces/CollumType';
+import { DataType } from 'src/app/Interfaces/DataType';
 
 @Component({
   selector: 'app-table',
@@ -38,6 +46,7 @@ export class TableComponent implements OnInit {
   @Output() headerButtonClick = new EventEmitter<void>();
   @Output() checkList = new EventEmitter<any[]>();
   localData: any[] = [];
+  localColumn: IColumnType[] = [];
   selected: any;
   selectedPagination: any;
   selectedField: any;
@@ -51,10 +60,10 @@ export class TableComponent implements OnInit {
   collumsSettingCustomizable: DataType[] = []
   constructor() { }
   ngOnInit(): void {
+    this.localColumn = this.column;
     this.paginationStatusCheck()
-
     this.column.map(m => {
-      this.collumsSettingCustomizable.push({ text: m.header, value: m.field });
+      this.collumsSettingCustomizable.push({ text: m.header, value: m.field, active: true });
     })
   }
   paginationStatusCheck() {
@@ -140,5 +149,19 @@ export class TableComponent implements OnInit {
   //collumsSettings
   collumsSettings() {
     this.collumsSettingsShow = !this.collumsSettingsShow;
+  }
+
+  collumsMethod(value: DataType[]) {
+    value.map(v => {
+      this.localColumn.map(c => {
+        if (c.field == v.value) {
+          let deger = this.localColumn.indexOf(c);
+          this.localColumn.splice(deger, 1);
+          this.localColumn = [...this.localColumn];
+        } else { 
+        }
+      })
+    })
+
   }
 }

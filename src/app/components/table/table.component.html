@@ -25,7 +25,7 @@
           <th *ngIf="checkListStatus" class="iconFilterContainer">
             <app-checkbox></app-checkbox>
           </th>
-          <th style="border: none" *ngFor="let item of column" [ngStyle]="{ width: item.width ? item.width : 'auto' }">
+          <th style="border: none" *ngFor="let item of localColumn" [ngStyle]="{ width: item.width ? item.width : 'auto' }">
             <div *ngIf="item.field !== ''" class="iconFilterContainer" (click)="alphabeticalOrder(item.field)">
               <span>{{ item.header }}</span>
               <i *ngIf="item.field !== 'edit' && item.field !== 'delete' && item.field !== 'extra'"
@@ -36,7 +36,7 @@
         <!-- Form Filter bölümnü -->
         <tr *ngIf="filterFormStatus" class="filterHeader">
           <th *ngIf="checkListStatus" class="iconFilterContainer"></th>
-          <th *ngFor="let item of column">
+          <th *ngFor="let item of localColumn">
             <div *ngIf="item.field !== 'edit' && item.field !== 'delete' && item.field !== 'extra'">
               <!-- burası header altı filter bölümü -->
               <ng-container [ngSwitch]="item.filterType">
@@ -67,7 +67,7 @@
               <app-checkbox (click)="checkboxCheck(data)"></app-checkbox>
             </td>
           </ng-container>
-          <td *ngFor="let col of column">
+          <td *ngFor="let col of localColumn">
             <span *ngIf="
               col.field !== 'edit' &&
               col.field !== 'delete' &&
@@ -124,10 +124,11 @@
   <!-- pagination -->
 </div>
 
-<app-dialog [header]="'Collums Ayarları'" [show]="collumsSettingsShow" [width]="'100%'" [height]="'100%'">
-  <div class="grid">
+<app-dialog [header]="'Collums Ayarları'" [show]="collumsSettingsShow" [width]="'300px'" [height]="'50%'">
+  <div class="grid" style="height: 100%;">
     <div class="col-12">
-      <app-listbox [data]="collumsSettingCustomizable" [searchStatus]="true" [ListBoxScrollHeightStatus]="true" [ListBoxScrollHeight]="'40%'"></app-listbox>
+      <app-listbox [data]="collumsSettingCustomizable" [searchStatus]="true" [scrollHeight]="'90%'"
+        (selectedList)="collumsMethod($event)"></app-listbox>
     </div>
   </div>
 </app-dialog>

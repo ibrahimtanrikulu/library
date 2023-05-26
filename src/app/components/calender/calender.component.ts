@@ -5,10 +5,10 @@ import {
   FormsModule,
   NgControl,
   ReactiveFormsModule,
-} from '@angular/forms';
-import { ChunkPipe } from 'src/app/Pipe';
-import { ButtonComponent } from '..';
-import { CalendarDay } from 'src/app/Class';
+} from '@angular/forms'; import { ChunkPipe } from 'src/app/Pipe/chunk.pipe';
+import { ButtonComponent } from '../button/button.component';
+import { CalendarDay } from 'src/app/Class/CalendarDay';
+;
 
 @Component({
   selector: 'app-calender',

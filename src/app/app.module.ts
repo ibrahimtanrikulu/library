@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PhoneDirective } from './Directive/phone.directive';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { ListboxComponent } from './components/listbox/listbox.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { TabviewComponent } from './components/tabview/tabview.component';
 import { TabComponent } from './components/tabview/tab/tab.component';
@@ -23,8 +22,8 @@ import { FormComponent } from './components/form/form.component';
 import { DenemeComponent } from './components/deneme/deneme.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { SwitchComponent } from './components/switch/switch.component';
-import { CheckboxListComponent } from './components/checkboxList/checkboxList.component';
-
+import { CheckboxListComponent } from './components/checkboxList/checkboxList.component'; 
+import { ListboxComponent } from './components/listbox/listbox.component';
 
 @NgModule({
   declarations: [AppComponent],

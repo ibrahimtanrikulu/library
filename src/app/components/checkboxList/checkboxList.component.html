@@ -12,7 +12,7 @@
   </div>
   <div class="checkboxInput grid">
     <div *ngFor="let item of checkboxData" class="col-6 col-sm-5 col-md-4 col-lg-2">
-      <app-checkbox placeholder="{{ item.text }}" (click)="selection(item.value)" [styleLabel]="'color:white'"
+      <app-checkbox placeholder="{{ item.text }}" (click)="selection(item.value)"
         [styleInput]="'margin-top: 2%'" [checkedStatus]="selectedList.includes(item.value)"></app-checkbox>
     </div>
   </div>
