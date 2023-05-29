@@ -46,7 +46,6 @@ export class TableComponent implements OnInit {
   @Output() headerButtonClick = new EventEmitter<void>();
   @Output() checkList = new EventEmitter<any[]>();
   localData: any[] = [];
-  localColumn: IColumnType[] = [];
   selected: any;
   selectedPagination: any;
   selectedField: any;
@@ -60,10 +59,10 @@ export class TableComponent implements OnInit {
   collumsSettingCustomizable: DataType[] = []
   constructor() { }
   ngOnInit(): void {
-    this.localColumn = this.column;
+    this.column = this.column;
     this.paginationStatusCheck()
     this.column.map(m => {
-      this.collumsSettingCustomizable.push({ text: m.header, value: m.field, active: true });
+      this.collumsSettingCustomizable.push({ text: m.header, value: m.field });
     })
   }
   paginationStatusCheck() {
@@ -73,10 +72,13 @@ export class TableComponent implements OnInit {
       this.localData = [...this.data];
     }
   }
+
   //add container
   headerButton = () => this.headerButtonClick.emit();
+
   //İnput 
   inputMethod = (e: any) => this.selected = e;
+
   //filter
   dropdownFilter(data: DataType[], field: string) {
     this.checkboxList = [];
@@ -105,6 +107,7 @@ export class TableComponent implements OnInit {
       this.localData = this.localData.filter(m => m[field].toString().includes(value));
     }
   }
+
   //pagination
   paginationBefore() {
     if (this.paginationKey > 1) {
@@ -146,22 +149,20 @@ export class TableComponent implements OnInit {
 
     }
   }
+
   //collumsSettings
-  collumsSettings() {
-    this.collumsSettingsShow = !this.collumsSettingsShow;
-  }
+  collumsSettings = () => this.collumsSettingsShow = !this.collumsSettingsShow;
 
-  collumsMethod(value: DataType[]) {
-    value.map(v => {
-      this.localColumn.map(c => {
-        if (c.field == v.value) {
-          let deger = this.localColumn.indexOf(c);
-          this.localColumn.splice(deger, 1);
-          this.localColumn = [...this.localColumn];
-        } else { 
-        }
-      })
-    })
+  collumsMethod(selectedColumns: DataType[]) {
+    this.column.map(c => {
+      c.active = false;
+    });
 
+    selectedColumns.map(selectedColumn => {
+      const column = this.column.find(c => c.field === selectedColumn.value);
+      if (column) {
+        column.active = true;
+      }
+    });
   }
 }

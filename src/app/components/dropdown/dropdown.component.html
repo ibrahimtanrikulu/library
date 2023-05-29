@@ -1,6 +1,6 @@
 <div class="container">
   <div class="headerContainer">
-    <input [disabled]="disabled" class="input" [id]="placeholder" [placeholder]="placeholder" type="text" readonly
+    <input [disabled]="disabled" class="globalInput" [id]="placeholder" [placeholder]="placeholder" type="text" readonly
       [value]="multiStatus ? text : list[0].text || ''" (click)="dropdownStatus = !dropdownStatus"
       style="cursor: pointer;" />
     <div class="iconContainer">
@@ -12,7 +12,7 @@
     class="dropdownContainer">
     <ng-container *ngIf="searchStatus">
       <div class="searchContainer">
-        <input type="text" class="input" [(ngModel)]="filterText" />
+        <input type="text" class="globalInput" [(ngModel)]="filterText" />
         <div><i class="fas fa-search"></i></div>
       </div>
     </ng-container>

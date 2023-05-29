@@ -220,17 +220,17 @@ table {
     left: -9999px;
   }
 
-  td {
-    border: none;
-    position: relative;
-    padding-left: 50%;
-  }
+  // td {
+  //   border: none;
+  //   position: relative;
+  //   padding-left: 50%;
+  // }
 
-  td:before {
-    position: absolute;
-    width: 100%;
-    white-space: nowrap;
-  }
+  // td:before {
+  //   position: absolute;
+  //   width: 100%;
+  //   white-space: nowrap;
+  // }
 
   .addContainer {
     .buttonGenislik {
@@ -267,11 +267,6 @@ table {
       }
     }
   }
-
-  .paginationList {
-    width: 50px;
-  }
-
 }
 
 @keyframes growDown {

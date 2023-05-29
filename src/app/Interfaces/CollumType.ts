@@ -7,5 +7,5 @@ export interface IColumnType {
   filterPlaceholder?: string;
   inputStatus?: boolean;
   click?(data?: any): void;
-  active?: boolean
+  active?: boolean;
 }

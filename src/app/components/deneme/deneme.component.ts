@@ -9,4 +9,17 @@ import { Component } from '@angular/core';
   imports: [CommonModule],
 })
 export class DenemeComponent {
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    const data = event.dataTransfer!.getData('text');
+    console.log('Bırakılan veri:', data);
+  }
+
+  onDragStart(event: DragEvent) {
+    event.dataTransfer!.setData('text', 'Sürüklenecek veri');
+  }
 }

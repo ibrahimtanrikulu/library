@@ -1,11 +1,19 @@
-<div class="container" [ngStyle]="{'overflow-y': scrollHeight ? 'scroll' : 'hidden', 'height': scrollHeight }">
+<div class="container" [ngStyle]="{'overflow-y': scrollHeight ? 'scroll' : 'hidden', 'height': scrollHeight }"
+  cdkDropList (cdkDropListDropped)="drop($event)">
   <ng-container *ngIf="searchStatus">
     <div class="searchContainer">
       <div><i class="fas fa-search"></i></div>
       <input type="text" class="globalInput" [(ngModel)]="filterText" />
     </div>
   </ng-container>
-  <div class="ulContainer" *ngFor="let item of localData | searchFilter:filterText" (click)="change(item)">
-    <app-checkbox [checkedStatus]="item.active" placeholder="{{ item.text }}"></app-checkbox>
-  </div>
+  <ng-container *ngFor="let item of localData | searchFilter:filterText">
+    <div class="listContainer grid" cdkDrag (click)="change(item)">
+      <div class="col-11">
+        <app-checkbox [checkedStatus]="item.active" placeholder="{{ item.text }}"></app-checkbox>
+      </div>
+      <div class="col-1 iconContainer">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </ng-container>
 </div>
