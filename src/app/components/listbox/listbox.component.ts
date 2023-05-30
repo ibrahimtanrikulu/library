@@ -14,22 +14,22 @@ import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-
   imports: [CommonModule, FormsModule, CheckboxComponent, SearchFilterPipe, DragDropModule]
 })
 export class ListboxComponent {
-  @Input() data: DataType[] = [];
+  @Input() data: any[] = [];
   @Input() searchStatus = false;
   @Input() scrollHeight = "";
-  @Output() selectedList = new EventEmitter<DataType[]>();
-  @Output() selectedData = new EventEmitter<DataType>();
+  @Output() selectedList = new EventEmitter<any[]>();
+  @Output() selectedDragList = new EventEmitter<any[]>();
 
-  list: DataType[] = [];
+  list: any[] = [];
   dropdownStatus = false;
-  localData: DataType[] = [];
+  localData: any[] = [];
   text = '';
   filterText = "";
 
   ngOnInit() {
     this.localData = this.data;
   }
-  change(value: DataType) {
+  change(value: any) {
     const index = this.list.indexOf(value);
     if (index === -1) {
       this.list.push(value);
@@ -37,13 +37,13 @@ export class ListboxComponent {
       this.list.splice(index, 1);
     }
     this.selectedList.emit(this.list);
-    this.selectedData.emit(value);
     this.text = this.list.map(m => m.text).join(',');
     this.localData = this.data;
   }
 
-  drop(event: CdkDragDrop<DataType[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(this.localData, event.previousIndex, event.currentIndex);
+    this.selectedDragList.emit(this.localData);
   }
 
 }

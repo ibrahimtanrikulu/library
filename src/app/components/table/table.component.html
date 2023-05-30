@@ -132,10 +132,6 @@
 </div>
 
 <app-dialog [header]="'Sütün Ayarları'" [show]="collumsSettingsShow" [width]="'300px'" [height]="'50%'">
-  <div class="grid" style="height: 100%;">
-    <div class="col-12">
-      <app-listbox [data]="collumsSettingCustomizable" [searchStatus]="true" [scrollHeight]="'90%'"
-        (selectedList)="collumsMethod($event)"></app-listbox>
-    </div>
-  </div>
+      <app-listbox [data]="column" [searchStatus]="true" [scrollHeight]="'90%'" (selectedList)="collumsMethod($event)"
+        (selectedDragList)="collumsDrag($event)"></app-listbox>
 </app-dialog>

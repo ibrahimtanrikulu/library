@@ -152,14 +152,15 @@ export class TableComponent implements OnInit {
 
   //collumsSettings
   collumsSettings = () => this.collumsSettingsShow = !this.collumsSettingsShow;
-
-  collumsMethod(selectedColumns: DataType[]) {
+  collumsDrag = (selectedColumns: IColumnType[]) => this.column = [...selectedColumns];
+  collumsMethod(selectedColumns: IColumnType[]) {
     this.column.map(c => {
       c.active = false;
     });
 
+
     selectedColumns.map(selectedColumn => {
-      const column = this.column.find(c => c.field === selectedColumn.value);
+      const column = this.column.find(c => c.field === selectedColumn.field);
       if (column) {
         column.active = true;
       }

@@ -41,7 +41,13 @@
     .iconContainer {
       display: flex;
       align-items: center;
-      font-size: large; 
+      font-size: large;
     }
   }
+
+
+}
+
+.container::-webkit-scrollbar {
+  display: none;
 }
