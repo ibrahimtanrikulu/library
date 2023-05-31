@@ -183,9 +183,7 @@
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card>
   
-  <app-accordion header="Table">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-accordion>
+  
 
   <div class="grid">
     <div class="col-6">
@@ -197,12 +195,14 @@
   <app-listbox [data]="dropdownCol" [searchStatus]="true"></app-listbox>
 
   <app-checkboxlist [checkboxData]="dropdownCol" checkboxHeader="bu deneme datası"
-    [multiCheckbox]="false"></app-checkboxlist> -->
+    [multiCheckbox]="false"></app-checkboxlist> 
   <app-card header="table">
-    <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
+    
+  </app-card>-->
+
+  <app-accordion header="Table">
+  </app-accordion>
+  <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
       [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
       [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
-  </app-card>
-
-  
 </div>
