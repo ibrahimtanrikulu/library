@@ -9,7 +9,7 @@
   <ng-container *ngFor="let item of localData | searchFilter:filterText">
     <div class="listContainer grid" cdkDrag (click)="change(item)">
       <div class="col-11">
-        <app-checkbox [checkedStatus]="item.active" placeholder="{{ item.header }}"></app-checkbox>
+        <app-checkbox [checkedStatus]="item.active" placeholder="{{ item.header }}{{ item.text }}"></app-checkbox>
       </div>
       <div class="col-1 iconContainer">
         <i class="fa-solid fa-bars"></i>

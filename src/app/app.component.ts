@@ -193,7 +193,7 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl(''),
+      test: new FormControl(false),
       telefon: new FormControl({ value: true, disabled: false }, [
         Validators.required,
       ]),

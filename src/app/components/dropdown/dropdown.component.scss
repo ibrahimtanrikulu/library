@@ -21,8 +21,7 @@
 
     i {
       cursor: pointer;
-      color: #1c64f2;
-      font-size: large;
+      font-size: 100%;
     }
   }
 }
@@ -40,7 +39,7 @@
   border-radius: 4px;
   padding: 8px 10px;
   color: #131b2e;
-  font-size: medium;
+  font-size: 100%;
   display: flex;
   justify-self: center;
   flex-direction: column;
@@ -92,7 +91,7 @@
     i {
       cursor: pointer;
       color: #334155;
-      font-size: large;
+      font-size: 100%;
     }
   }
 }
@@ -193,7 +192,7 @@
   }
 
   &+label {
-    font-size: 18px;
+    font-size: 100%;
     display: inline-block;
     vertical-align: top;
     cursor: pointer;

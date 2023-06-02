@@ -1,9 +1,5 @@
-<div style="background-color: bisque;padding: 20px;" id="dropArea" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
-    Sürükleme Alanı
-</div>
-
-<div>
-    <div id="myDiv" draggable="true" style="background-color: aqua;" (dragstart)="onDragStart($event)">
-        Sürüklenebilir Div
-    </div>
-</div>
+<label>
+    <input type="checkbox" [formControl]="formControl" [name]="name" (ngModelChange)="onChange($event)">
+    {{ label }}
+</label>
+ 

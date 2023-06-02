@@ -110,7 +110,7 @@
       <!-- TBody -->
     </table>
   </div>
-  <!-- pagination  tamamdır-->
+  <!-- pagination -->
   <ng-container *ngIf="paginationStatus">
     <div class="pagination">
       <a (click)="paginationBefore()"><i class="fa-solid fa-angle-left"></i></a>
@@ -132,6 +132,6 @@
 </div>
 
 <app-dialog [header]="'Sütün Ayarları'" [show]="collumsSettingsShow" [width]="'300px'" [height]="'50%'">
-      <app-listbox [data]="column" [searchStatus]="true" [scrollHeight]="'90%'" (selectedList)="collumsMethod($event)"
-        (selectedDragList)="collumsDrag($event)"></app-listbox>
+  <app-listbox [data]="column" [searchStatus]="true" [scrollHeight]="'90%'" (selectedList)="collumsMethod($event)"
+    (selectedDragList)="collumsDrag($event)"></app-listbox>
 </app-dialog>

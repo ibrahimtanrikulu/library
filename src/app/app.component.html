@@ -197,12 +197,15 @@
   <app-checkboxlist [checkboxData]="dropdownCol" checkboxHeader="bu deneme datası"
     [multiCheckbox]="false"></app-checkboxlist> 
   <app-card header="table">
-    
-  </app-card>-->
+  </app-card>
 
   <app-accordion header="Table">
   </app-accordion>
+
+  <app-progesbar></app-progesbar>
+  --> 
+
   <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
-      [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
-      [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
+    [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
+    [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
 </div>

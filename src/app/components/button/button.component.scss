@@ -24,13 +24,12 @@
 }
 
 .iconButton {
-  font-size: 20px;
   align-items: center;
   border: none;
   cursor: pointer;
   background-color: white;
-  font-size: large;
-  color:  #334155;
+  font-size: 100%;
+  color: #334155;
 
   &:active {
     transform: scale(0.8, 0.8);

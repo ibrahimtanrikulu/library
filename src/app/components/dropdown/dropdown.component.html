@@ -3,9 +3,10 @@
     <input [disabled]="disabled" class="globalInput" [id]="placeholder" [placeholder]="placeholder" type="text" readonly
       [value]="multiStatus ? text : list[0].text || ''" (click)="dropdownStatus = !dropdownStatus"
       style="cursor: pointer;" />
-    <div class="iconContainer">
-      <i class="fa-solid {{ dropdownStatus ? 'fa-arrow-up' : 'fa-arrow-down' }}"></i>
+    <div class="iconContainer" [ngStyle]="{ 'transform': dropdownStatus ? 'rotate(180deg)' : '' }">
+      <i class="fa-solid fa-arrow-down"></i>
     </div>
+
   </div>
   <div *ngIf="dropdownStatus" [style.height]="DropdownScrollHeight"
     [ngStyle]="DropdownScrollHeightStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }"

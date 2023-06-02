@@ -18,6 +18,7 @@
   border-radius: 8px;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  background-color: white;
 
   .headerContainer {
     flex-wrap: wrap;
@@ -31,7 +32,7 @@
     border-bottom: 1px solid gray;
 
     h3 {
-      font-size: x-large;
+      font-size: 150%;
       color: #1e293b;
       font-weight: 600;
     }
@@ -80,7 +81,7 @@
 
         span {
           padding: 10px;
-          font-size: medium;
+          font-size: 100%;
           color: #334155;
           box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
           border-radius: 4px;
@@ -107,7 +108,6 @@
       &:hover {
         .paginationList {
           display: block;
-          background-color: white;
           margin-top: 38px;
           border-radius: 8px;
 
@@ -117,7 +117,7 @@
             cursor: pointer;
             background-color: rgb(232, 232, 232);
             color: #1e293b;
-            font-size: medium;
+            font-size: 100%;
 
             &:hover {
               transition: 555ms;
@@ -149,7 +149,7 @@ table {
     th {
       text-transform: capitalize;
       padding: 0.4% 1%;
-      font-size: large;
+      font-size: 120%;
 
       .iconFilterContainer {
         display: flex;
@@ -166,8 +166,7 @@ table {
     th {
       text-transform: capitalize;
       padding: 0.2% 1%;
-      font-size: large;
-      border-bottom: 1px solid gray;
+      font-size: 100%;
 
       .iconFilterContainer {
         display: flex;
@@ -187,7 +186,7 @@ table {
       td {
         text-align: left;
         padding: 0.2vw 1vw;
-        font-size: medium;
+        font-size: 100%;
         border-bottom: 1px solid #E2E2E2;
 
         span {
@@ -268,19 +267,5 @@ table {
         }
       }
     }
-  }
-}
-
-@keyframes growDown {
-  0% {
-    transform: scaleY(0)
-  }
-
-  80% {
-    transform: scaleY(1.1)
-  }
-
-  100% {
-    transform: scaleY(1)
   }
 }

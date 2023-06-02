@@ -1,25 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-deneme',
   templateUrl: './deneme.component.html',
   styleUrls: ['./deneme.component.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
 })
 export class DenemeComponent {
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-  }
+  @Input() formControl!: FormControl;
+  @Input() name: string = "";
+  @Input() label: string = ""; 
 
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    const data = event.dataTransfer!.getData('text');
-    console.log('Bırakılan veri:', data);
-  }
+  onChange(checked: boolean) {
+    console.log(checked);
 
-  onDragStart(event: DragEvent) {
-    event.dataTransfer!.setData('text', 'Sürüklenecek veri');
+    this.formControl.setValue(checked);
   }
 }
