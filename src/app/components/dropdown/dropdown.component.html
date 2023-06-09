@@ -9,8 +9,7 @@
 
   </div>
   <div *ngIf="dropdownStatus" [style.height]="DropdownScrollHeight"
-    [ngStyle]="DropdownScrollHeightStatus ? { 'overflow-x': 'auto' } : { overflow: 'hidden' }"
-    class="dropdownContainer">
+    [ngStyle]="{ 'overflow-x': DropdownScrollHeight ? 'auto' : 'hidden' }" class="dropdownContainer">
     <ng-container *ngIf="searchStatus">
       <div class="searchContainer">
         <input type="text" class="globalInput" [(ngModel)]="filterText" />

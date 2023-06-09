@@ -25,7 +25,7 @@
   margin: 0;
   cursor: pointer;
   background: var(--b, var(--background));
-   
+
   border: 1px solid grey;
 
   &:after {
@@ -56,7 +56,7 @@
       --bc: var(--border);
     }
 
-    & + label {
+    &+label {
       cursor: not-allowed;
     }
   }
@@ -85,12 +85,11 @@
     }
   }
 
-  & + label {
+  &+label {
     font-size: 100%;
     display: inline-block;
     vertical-align: top;
     cursor: pointer;
-    margin-left: 0.5%;
   }
 }
 

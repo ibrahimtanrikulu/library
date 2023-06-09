@@ -103,6 +103,15 @@ export class AppComponent {
     { text: 'urun2', value: 1 },
     { text: 'urun4', value: 2 },
     { text: 'urun8', value: 3 },
+
+    { text: 'urun4', value: 2 },
+    { text: 'urun8', value: 3 },
+    { text: 'urun4', value: 2 },
+    { text: 'urun8', value: 3 },
+    { text: 'urun4', value: 2 },
+    { text: 'urun8', value: 3 },
+    { text: 'urun4', value: 2 },
+    { text: 'urun8', value: 3 },
   ];
 
   denemeInput: any;
@@ -154,6 +163,21 @@ export class AppComponent {
   public PersonelForm!: FormGroup;
   formsObject: IForm[] = [
     {
+      controlname: 'telefon',
+      class: 'col-12 col-lg-6 col-md-8',
+      header: 'evet',
+      type: FormTypeEnum.checkboxList,
+      data: this.dropdownCol,
+      onChange: this.dropdownMethod.bind(this)
+    },
+    {
+      class: 'col-12 col-lg-6 col-md-8',
+      header: 'deneme',
+      type: FormTypeEnum.dropdown,
+      data: this.dropdownCol,
+      isMultiType: true,
+      onChange: this.dropdownMethod.bind(this),
+    }, {
       controlname: 'test',
       class: 'col-12 col-lg-6 col-md-8',
       header: 'Ad',
@@ -170,21 +194,7 @@ export class AppComponent {
       disabled: false,
     },
     {
-      controlname: 'telefon',
-      class: 'col-12 col-lg-6 col-md-8',
-      header: 'evet',
-      type: FormTypeEnum.switch,
-    },
-    {
-      class: 'col-12 col-lg-6 col-md-8',
-      header: 'deneme',
-      type: FormTypeEnum.dropdown,
-      data: this.dropdownCol,
-      isMultiType: true,
-      onChange: this.dropdownMethod.bind(this),
-    },
-    {
-      class: 'col-3',
+      class: 'col-12',
       header: 'tikla',
       type: FormTypeEnum.button,
       click: this.button.bind(this),
@@ -193,7 +203,7 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl(false),
+      test: new FormControl(),
       telefon: new FormControl({ value: true, disabled: false }, [
         Validators.required,
       ]),
@@ -220,7 +230,10 @@ export class AppComponent {
   testDene: string = '';
   tarih: Date = new Date();
 
-  dropdownMethod(e: any) { }
+  dropdownMethod(e: any) {
+    console.log(e);
+
+  }
   duzenleTableClick(e: any) {
     console.log(e);
 

@@ -17,7 +17,6 @@ export class DropdownComponent implements OnInit {
   @Input() data: DataType[] = [];
   @Input() multiStatus = false;
   @Input() searchStatus = false;
-  @Input() DropdownScrollHeightStatus = false;
   @Input() DropdownScrollHeight = '';
   @Input() placeholder = '';
   @Input() disabled = false;

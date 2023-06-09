@@ -49,11 +49,11 @@
                   <app-calender *ngSwitchCase="'calender'"></app-calender>
                   <app-dropdown *ngSwitchCase="'dropdown'" [data]="item.filterData" [multiStatus]="false"
                     [searchStatus]="true" placeholder="{{ item.filterPlaceholder }}"
-                    (selectedList)="dropdownFilter($event, item.field)">
+                    (selectedList)="dropdownFilter($event, item.field)" [DropdownScrollHeight]="'200px'">
                   </app-dropdown>
                   <app-dropdown *ngSwitchCase="'multiDropdown'" [data]="item.filterData" [multiStatus]="true"
                     [searchStatus]="true" placeholder="{{ item.filterPlaceholder }}"
-                    (selectedList)="dropdownFilter($event, item.field)">
+                    (selectedList)="dropdownFilter($event, item.field)" [DropdownScrollHeight]="'200px'">
                   </app-dropdown>
                 </ng-container>
               </div>

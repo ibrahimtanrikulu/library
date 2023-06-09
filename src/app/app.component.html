@@ -40,11 +40,9 @@
   <button (click)="button()">deneme</button>
  
   <p><span class="boldspan">Model data:</span> {{ dataModel }}</p> 
-    <app-deneme  [(ngModel)]="dataModel">
-      Write in this wrapper control:
-    </app-deneme>  
-
-  
+  <app-deneme  [(ngModel)]="dataModel">
+    Write in this wrapper control:
+  </app-deneme>  
 
   <app-card [header]="'card başlığı'">
     <div content></div>
@@ -64,9 +62,7 @@
     <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
     <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
   </form>
-
-  
-
+ 
   <app-checkbox [(ngModel)]="deneme"></app-checkbox>
 
   <button (click)="button()">denemeö</button> 
@@ -75,7 +71,7 @@
   <app-button label="deneme"></app-button> 
   <app-card header="deneme"></app-card> 
   <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist> 
-  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show"></app-dialog>
+  
     
   <app-tabview>
     <app-tab tabTitle="bir"></app-tab>
@@ -88,9 +84,7 @@
   <app-card header="form">
     <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
   </app-card> 
-  
-  
-  
+    
   <div class="grid">
     <div class="col-12">
       <app-deneme
@@ -125,10 +119,8 @@
       <app-calender></app-calender>
     </div>
   </div>
-  
-  
-    
-    <form [formGroup]="PersonelForm">
+   
+  <form [formGroup]="PersonelForm">
     <div class="grid">
       <div class="col-12">
         <app-calender formArrayName="ibrahim"></app-calender>
@@ -138,24 +130,17 @@
 
   <button (click)="goster()">tikla</button> 
 
-  -->
-
-  <!-- <div class="grid">
+  <div class="grid">
     <div class="col-4">
       <app-calender></app-calender>
     </div>
-  </div> -->
-
-  <!-- <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>  -->
-
-  <!-- <form [formGroup]="PersonelForm">
-    <app-input formControlName="test" placeholder="test"></app-input>
-    <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
-    <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
-    <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
-  </form> -->
-
-  <!-- <div class="grid">
+  </div> 
+  
+  <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>  
+  
+  
+  
+  <div class="grid">
     <div class="col-4">
       <app-listbox [data]="dropdownCol" [searchStatus]="false" (selectedList)="dropdownMethod($event)"></app-listbox>
     </div>
@@ -180,11 +165,9 @@
   </app-tabview> 
  
   <app-card header="deneme">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+    
   </app-card>
   
-  
-
   <div class="grid">
     <div class="col-6">
       <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true"
@@ -199,11 +182,24 @@
   <app-card header="table">
   </app-card>
 
-  <app-accordion header="Table">
-  </app-accordion>
+  <form [formGroup]="PersonelForm">
+      <app-input formControlName="test" placeholder="test"></app-input>
+      <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
+      <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
+      <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
+    </form>
 
   <app-progesbar></app-progesbar>
-  --> 
+  
+
+  <app-accordion header="Table">
+    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+  </app-accordion>
+
+  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show" [height]="'50%'" [width]="'50%'">
+    
+  </app-dialog>
+-->
 
   <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
     [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
