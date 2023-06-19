@@ -1,5 +1,5 @@
-<div style="height: 100vh; padding: 1%">
-  <!-- 
+<!--<div style="height: 100vh; padding: 1%">
+   
   <div class="grid">
     <div class="col-6">
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
@@ -72,13 +72,6 @@
   <app-card header="deneme"></app-card> 
   <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist> 
   
-    
-  <app-tabview>
-    <app-tab tabTitle="bir"></app-tab>
-    <app-tab tabTitle="iki"></app-tab>
-    <app-tab tabTitle="uc"> </app-tab>
-  </app-tabview>
-  
   <app-textarea [(ngModel)]="testDene" placeholder="deneme"></app-textarea>
 
   <app-card header="form">
@@ -113,12 +106,6 @@
   
   <app-switch [placeholder]="'deneme'" [disabled]="true"></app-switch>
   <app-checkbox [placeholder]="'deneme'" [disabled]="true"></app-checkbox>
-  
-  <div class="grid">
-    <div class="col-4">
-      <app-calender></app-calender>
-    </div>
-  </div>
    
   <form [formGroup]="PersonelForm">
     <div class="grid">
@@ -137,8 +124,6 @@
   </div> 
   
   <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>  
-  
-  
   
   <div class="grid">
     <div class="col-4">
@@ -164,10 +149,6 @@
     </app-tab>
   </app-tabview> 
  
-  <app-card header="deneme">
-    
-  </app-card>
-  
   <div class="grid">
     <div class="col-6">
       <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true"
@@ -175,8 +156,6 @@
     </div>
   </div>
   
-  <app-listbox [data]="dropdownCol" [searchStatus]="true"></app-listbox>
-
   <app-checkboxlist [checkboxData]="dropdownCol" checkboxHeader="bu deneme datası"
     [multiCheckbox]="false"></app-checkboxlist> 
   <app-card header="table">
@@ -187,21 +166,42 @@
       <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
       <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
       <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
-    </form>
+  </form>
 
   <app-progesbar></app-progesbar>
-  
-
-  <app-accordion header="Table">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-accordion>
 
   <app-dialog [header]="'Bu deneme Dialogu'" [show]="show" [height]="'50%'" [width]="'50%'">
     
   </app-dialog>
--->
 
-  <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
+  
+
+    <app-accordion header="Table">
+      
+    </app-accordion>
+
+    <app-listbox [data]="dropdownCol" [searchStatus]="true"></app-listbox>
+
+    <app-card header="deneme">
+      
+    </app-card>
+    
+    <app-calender></app-calender> 
+
+    <app-tabview>
+      <app-tab tabTitle="bir">
+        <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+      </app-tab>
+      <app-tab tabTitle="iki"></app-tab>
+      <app-tab tabTitle="uc"> </app-tab>
+    </app-tabview>
+    
+
+    <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
     [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
     [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
-</div>
+  
+  
+</div>-->
+
+<app-layout></app-layout>

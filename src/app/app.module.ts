@@ -22,8 +22,9 @@ import { FormComponent } from './components/form/form.component';
 import { DenemeComponent } from './components/deneme/deneme.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { SwitchComponent } from './components/switch/switch.component';
-import { CheckboxListComponent } from './components/checkboxList/checkboxList.component'; 
+import { CheckboxListComponent } from './components/checkboxList/checkboxList.component';
 import { ListboxComponent } from './components/listbox/listbox.component';
+import { LayoutModule } from './Layout/layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -53,8 +54,9 @@ import { ListboxComponent } from './components/listbox/listbox.component';
     CheckboxComponent,
     SwitchComponent,
     CheckboxListComponent,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

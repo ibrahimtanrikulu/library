@@ -1,0 +1,20 @@
+<div style="display: flex;">
+    <div class="sidebar-container" *ngIf="layoutService.sidebarShow">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="content-container">
+        <div class="navbar">
+            <app-navbar></app-navbar>
+        </div>
+        <div class="content">
+            <router-outlet></router-outlet>
+            <div style="height: 88vh;"></div>
+        </div>
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+    <div style="display: none;">
+        <app-config></app-config>
+    </div>
+</div>
