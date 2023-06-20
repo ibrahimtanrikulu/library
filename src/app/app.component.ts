@@ -100,7 +100,7 @@ export class AppComponent {
   ];
 
   dropdownCol: DataType[] = [
-    { text: 'urun2', value: 1 },
+    { text: 'urun2', value: 1, active: true },
     { text: 'urun4', value: 2 },
     { text: 'urun8', value: 3 },
 
@@ -203,7 +203,7 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder) {
     this.PersonelForm = this.formBuilder.group({
-      test: new FormControl(),
+      test: new FormControl(""),
       telefon: new FormControl({ value: true, disabled: false }, [
         Validators.required,
       ]),

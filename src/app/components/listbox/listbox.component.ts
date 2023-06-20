@@ -14,8 +14,9 @@ import { CdkDragDrop, DragDropModule, moveItemInArray } from '@angular/cdk/drag-
   imports: [CommonModule, FormsModule, CheckboxComponent, SearchFilterPipe, DragDropModule]
 })
 export class ListboxComponent {
-  @Input() data: any[] = [];
+  @Input() data: any[] | DataType[] = [];
   @Input() searchStatus = false;
+  @Input() dragStatus = false;
   @Input() scrollHeight = "";
   @Output() selectedList = new EventEmitter<any[]>();
   @Output() selectedDragList = new EventEmitter<any[]>();

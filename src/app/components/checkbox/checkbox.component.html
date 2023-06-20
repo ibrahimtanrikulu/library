@@ -5,8 +5,7 @@
     id="{{ placeholder }}"
     [ngModel]="checked"
     [disabled]="disabled"
-    (ngModelChange)="onModelChange($event)"
-    [checked]="checkedStatus"
+    (ngModelChange)="onModelChange($event)" 
     [style]="styleInput"
   />
   <label *ngIf="placeholder" for="{{ placeholder }}" [style]="styleLabel">{{ placeholder }}</label>

@@ -1,5 +1,5 @@
-<!--<div style="height: 100vh; padding: 1%">
-   
+<div style="height: 100vh; padding: 1%">
+  <!-- 
   <div class="grid">
     <div class="col-6">
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
@@ -107,13 +107,7 @@
   <app-switch [placeholder]="'deneme'" [disabled]="true"></app-switch>
   <app-checkbox [placeholder]="'deneme'" [disabled]="true"></app-checkbox>
    
-  <form [formGroup]="PersonelForm">
-    <div class="grid">
-      <div class="col-12">
-        <app-calender formArrayName="ibrahim"></app-calender>
-      </div>
-    </div>
-  </form>
+  
 
   <button (click)="goster()">tikla</button> 
 
@@ -127,7 +121,7 @@
   
   <div class="grid">
     <div class="col-4">
-      <app-listbox [data]="dropdownCol" [searchStatus]="false" (selectedList)="dropdownMethod($event)"></app-listbox>
+      
     </div>
   </div> 
  
@@ -161,12 +155,7 @@
   <app-card header="table">
   </app-card>
 
-  <form [formGroup]="PersonelForm">
-      <app-input formControlName="test" placeholder="test"></app-input>
-      <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
-      <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
-      <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
-  </form>
+  
 
   <app-progesbar></app-progesbar>
 
@@ -195,13 +184,36 @@
       <app-tab tabTitle="iki"></app-tab>
       <app-tab tabTitle="uc"> </app-tab>
     </app-tabview>
-    
-
+  
     <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
     [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
     [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
-  
-  
-</div>-->
 
-<app-layout></app-layout>
+    <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
+    placeholder="deneme" [disabled]="false"></app-dropdown> -->
+
+  <!-- <form [formGroup]="PersonelForm">
+    <div class="grid">
+      <div class="col-12">
+        <app-calender formArrayName="ibrahim"></app-calender>
+      </div>
+    </div>
+  </form> -->
+
+  <!-- <div class="grid">
+    <div class="col-6">
+    <app-listbox [data]="dropdownCol" [searchStatus]="true" [dragStatus]="false"
+      (selectedList)="dropdownMethod($event)"></app-listbox>
+    </div>
+  </div> -->
+  <form [formGroup]="PersonelForm">
+    <app-input formControlName="test" placeholder="test"></app-input>
+    <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
+    <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
+    <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
+  </form>
+</div>
+
+
+
+<!-- <app-layout></app-layout> -->

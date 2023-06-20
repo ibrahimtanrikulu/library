@@ -7,13 +7,22 @@
     </div>
   </ng-container>
   <ng-container *ngFor="let item of localData | searchFilter:filterText">
-    <div class="listContainer grid" cdkDrag (click)="change(item)">
-      <div class="col-11">
-        <app-checkbox [checkedStatus]="item.active" placeholder="{{ item.header }}{{ item.text }}"></app-checkbox>
+    <ng-container *ngIf="dragStatus">
+      <div class="listContainer grid" cdkDrag (click)="change(item)">
+        <div class="col-11">
+          <app-checkbox [(ngModel)]="item.active" placeholder="{{ item.header }}{{ item.text }}"></app-checkbox>
+        </div>
+        <div class="col-1 iconContainer">
+          <i class="fa-solid fa-bars"></i>
+        </div>
       </div>
-      <div class="col-1 iconContainer">
-        <i class="fa-solid fa-bars"></i>
+    </ng-container>
+    <ng-container *ngIf="!dragStatus">
+      <div class="listContainer grid" (click)="change(item)">
+        <div class="col-11">
+          <app-checkbox [(ngModel)]="item.active" placeholder="{{ item.header }}{{ item.text }}"></app-checkbox>
+        </div>
       </div>
-    </div>
+    </ng-container>
   </ng-container>
 </div>

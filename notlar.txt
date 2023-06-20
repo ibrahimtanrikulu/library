@@ -1,3 +1,30 @@
----checkbox düzelt
----form düzelt
----calender düzelt
+yapılacak componentler---✓
+
+calender,
+checkbox,
+
+dropdwon-->✓
+listbox-->✓
+button-->✓
+table-->✓
+Accordion-->✓
+card-->✓
+Panel-->✓
+TabView-->✓
+dialog-->✓
+Toast-->✓
+ProgressBar-->✓
+inputText-->✓
+inputTextarea-->✓
+inputNumber-->✓
+inputPassword-->✓
+swicth-->✓
+form-->✓
+checkboxList-->✓
+
+//yapılacaklar
+radioButton,
+Slider,
+ProgressSpinner,
+Charts,
+inputMask,
