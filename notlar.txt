@@ -1,7 +1,6 @@
-yapılacak componentler---✓
+componentler---✓
 
-calender,
-checkbox,
+
 
 dropdwon-->✓
 listbox-->✓
@@ -21,6 +20,10 @@ inputPassword-->✓
 swicth-->✓
 form-->✓
 checkboxList-->✓
+
+//düzenlenecekler
+calender,
+checkbox,
 
 //yapılacaklar
 radioButton,

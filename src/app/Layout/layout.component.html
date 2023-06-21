@@ -7,8 +7,11 @@
             <app-navbar></app-navbar>
         </div>
         <div class="content">
-            <router-outlet></router-outlet>
-            <div style="height: 88vh;"></div>
+            <!-- <router-outlet></router-outlet> -->
+            <div style="height: 88vh;">
+                <button class="button" (click)="switchTheme()">Switch theme</button>
+                <app-input></app-input>
+            </div>
         </div>
         <div class="footer">
             <app-footer></app-footer>

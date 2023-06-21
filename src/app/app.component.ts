@@ -12,6 +12,7 @@ import { MessageType } from './Interfaces/messageType';
 import { MessageEnum } from './Enums/messageEnum';
 import { IForm } from './Interfaces/Form';
 import { FormTypeEnum } from './Enums/formTypeEnum';
+import { LayoutService } from './Layout/service/layout.service';
 
 @Component({
   selector: 'app-root',
@@ -201,7 +202,7 @@ export class AppComponent {
     },
   ];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private layoutService:LayoutService) {
     this.PersonelForm = this.formBuilder.group({
       test: new FormControl(""),
       telefon: new FormControl({ value: true, disabled: false }, [

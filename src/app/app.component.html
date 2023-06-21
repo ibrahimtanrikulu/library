@@ -1,5 +1,4 @@
-<div style="height: 100vh; padding: 1%">
-  <!-- 
+<!-- 
   <div class="grid">
     <div class="col-6">
       <app-button class="button" (click)="tikla()" label="tikla"></app-button>
@@ -106,9 +105,7 @@
   
   <app-switch [placeholder]="'deneme'" [disabled]="true"></app-switch>
   <app-checkbox [placeholder]="'deneme'" [disabled]="true"></app-checkbox>
-   
-  
-
+    
   <button (click)="goster()">tikla</button> 
 
   <div class="grid">
@@ -155,44 +152,30 @@
   <app-card header="table">
   </app-card>
 
-  
-
   <app-progesbar></app-progesbar>
 
-  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show" [height]="'50%'" [width]="'50%'">
-    
-  </app-dialog>
+  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show" [height]="'50%'" [width]="'50%'"></app-dialog>
 
+  <app-listbox [data]="dropdownCol" [searchStatus]="true"></app-listbox>
   
+  <app-calender></app-calender> 
 
-    <app-accordion header="Table">
-      
-    </app-accordion>
+  <app-tabview>
+    <app-tab tabTitle="bir">
+      <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
+    </app-tab>
+    <app-tab tabTitle="iki"></app-tab>
+    <app-tab tabTitle="uc"> </app-tab>
+  </app-tabview>
 
-    <app-listbox [data]="dropdownCol" [searchStatus]="true"></app-listbox>
+  <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
+  [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
+  [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
 
-    <app-card header="deneme">
-      
-    </app-card>
-    
-    <app-calender></app-calender> 
-
-    <app-tabview>
-      <app-tab tabTitle="bir">
-        <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-      </app-tab>
-      <app-tab tabTitle="iki"></app-tab>
-      <app-tab tabTitle="uc"> </app-tab>
-    </app-tabview>
+  <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
+  placeholder="deneme" [disabled]="false"></app-dropdown>  
   
-    <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
-    [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
-    [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
-
-    <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
-    placeholder="deneme" [disabled]="false"></app-dropdown> -->
-
-  <!-- <form [formGroup]="PersonelForm">
+  <form [formGroup]="PersonelForm">
     <div class="grid">
       <div class="col-12">
         <app-calender formArrayName="ibrahim"></app-calender>
@@ -200,20 +183,21 @@
     </div>
   </form> -->
 
-  <!-- <div class="grid">
+<!-- <div class="grid">
     <div class="col-6">
     <app-listbox [data]="dropdownCol" [searchStatus]="true" [dragStatus]="false"
       (selectedList)="dropdownMethod($event)"></app-listbox>
     </div>
-  </div> -->
+  </div> 
+
   <form [formGroup]="PersonelForm">
     <app-input formControlName="test" placeholder="test"></app-input>
     <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
     <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
     <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
   </form>
-</div>
+   -->
 
+  
 
-
-<!-- <app-layout></app-layout> -->
+<app-layout></app-layout>
