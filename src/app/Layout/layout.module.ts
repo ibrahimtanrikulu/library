@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutService } from './service/layout.service';
 import { InputComponent } from '../components/input/input.component';
+import { AccordionComponent } from '../components/accordion/accordion.component';
 
 @NgModule({
     declarations: [LayoutComponent, FooterComponent, SidebarComponent, ConfigComponent, NavbarComponent],
@@ -19,7 +20,8 @@ import { InputComponent } from '../components/input/input.component';
         ReactiveFormsModule,
         RouterModule,
         LayoutRoutingModule,
-        InputComponent
+        InputComponent,
+        AccordionComponent
     ],
     providers: [LayoutService],
     bootstrap: [LayoutComponent],

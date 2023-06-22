@@ -33,11 +33,6 @@
               "src/styles.scss",
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               {
-                "input": "src/assets/theme/style/dark.scss",
-                "bundleName": "dark",
-                "inject": true
-              },
-              {
                 "input": "src/assets/theme/style/light.scss",
                 "bundleName": "light",
                 "inject": false

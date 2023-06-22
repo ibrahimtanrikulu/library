@@ -1,13 +1,8 @@
-<div class="container">
+<div class="tab-view-container">
   <div class="tabView grid">
-    <span
-      *ngFor="let tab of tabs"
-      class="tabViewHeader col-3 col-sm-2 col-md-2 col-lg-1"
-      [ngClass]="{ active: tab.active === true }"
-      (click)="selectTab(tab)"
-    >
-      {{ tab.tabTitle }}</span
-    >
+    <span *ngFor="let tab of tabs" class="tabViewHeader col-3 col-sm-2 col-md-2 col-lg-1"
+      [ngClass]="{ active: tab.active === true }" (click)="selectTab(tab)">
+      {{ tab.tabTitle }}</span>
   </div>
   <ng-content></ng-content>
 </div>

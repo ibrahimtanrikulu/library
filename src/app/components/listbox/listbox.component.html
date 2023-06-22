@@ -1,4 +1,4 @@
-<div class="container" [ngStyle]="{'overflow-y': scrollHeight ? 'scroll' : 'hidden', 'height': scrollHeight }"
+<div class="listBoxContainer" [ngStyle]="{'overflow-y': scrollHeight ? 'scroll' : 'hidden', 'height': scrollHeight }"
   cdkDropList (cdkDropListDropped)="drop($event)">
   <ng-container *ngIf="searchStatus">
     <div class="searchContainer">

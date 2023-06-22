@@ -28,3 +28,58 @@
         background-color: #ffffff;
     }
 }
+
+.config-container {
+    position: absolute;
+    display: flex;
+    background-color: #343a40;
+    right: 0;
+    top: 25%;
+    width: 290px;
+    height: 50%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    justify-content: center;
+    animation: scale-up-hor-right 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    align-items: center;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+@keyframes scale-up-hor-right {
+    0% {
+        -webkit-transform: scaleX(0.2);
+        transform: scaleX(0.2);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+
+    25% {
+        -webkit-transform: scaleX(0.4);
+        transform: scaleX(0.4);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+
+    50% {
+        -webkit-transform: scaleX(0.6);
+        transform: scaleX(0.6);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+
+    75% {
+        -webkit-transform: scaleX(0.8);
+        transform: scaleX(0.8);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+
+    100% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+}

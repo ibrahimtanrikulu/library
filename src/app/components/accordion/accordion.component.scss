@@ -1,40 +1,40 @@
-.container {
-  border-radius: 8px;
-  width: 100%;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+// .container {
+//   border-radius: 8px;
+//   width: 100%;
+//   background-color: white;
+//   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 
-  .tabView {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    background-color: white;
-    padding: 0;
-    align-items: center;
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-    text-align: start;
-    cursor: pointer;
+//   .tabView {
+//     display: flex;
+//     width: 100%;
+//     justify-content: flex-start;
+//     flex-wrap: wrap;
+//     background-color: white;
+//     padding: 0;
+//     align-items: center;
+//     width: 100%;
+//     border-radius: 8px;
+//     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+//     text-align: start;
+//     cursor: pointer;
 
-    .tabViewHeader {
-      padding: 0.8% 1.4%;
-      font-size: 150%;
-      cursor: pointer;
-      width: 100%;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+//     .tabViewHeader {
+//       padding: 0.8% 1.4%;
+//       font-size: 150%;
+//       cursor: pointer;
+//       width: 100%;
+//       border-top-left-radius: 8px;
+//       border-top-right-radius: 8px;
 
-      &:hover {
-        background-color: rgb(235, 234, 234);
-        transition: 1000ms;
-      }
-    }
-  }
+//       &:hover {
+//         background-color: rgb(235, 234, 234);
+//         transition: 1000ms;
+//       }
+//     }
+//   }
 
-  .body {
-    padding: 0% 0.4% 0.4% 0.4%;
-    margin: 0.8% 0%; 
-  }
-}
+//   .body {
+//     padding: 0% 0.4% 0.4% 0.4%;
+//     margin: 0.8% 0%;
+//   }
+// }

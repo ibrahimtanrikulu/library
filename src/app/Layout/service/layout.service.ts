@@ -7,8 +7,7 @@ import { Injectable, Inject } from '@angular/core';
 })
 
 export class LayoutService {
-
- 
   sidebarShow: boolean = true;
+  configShow: boolean = false;
   constructor() { }
 }

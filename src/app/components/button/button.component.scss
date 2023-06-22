@@ -1,36 +1,36 @@
-.button {
-  width: 100%;
-  color: #eeeeee;
-  background-color: #3B82F6;
-  padding: 5px 20px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-  border-radius: 8px;
-  transition: 555ms; 
-  border: none;
-  text-transform: capitalize;
-  align-items: center;
-  cursor: pointer;
+// .button {
+//   width: 100%;
+//   color: #eeeeee;
+//   background-color: #3B82F6;
+//   padding: 5px 20px;
+//   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+//   border-radius: 8px;
+//   transition: 555ms; 
+//   border: none;
+//   text-transform: capitalize;
+//   align-items: center;
+//   cursor: pointer;
 
-  &:hover {
-    transition: 855ms;
-    transform: translateY(-0px);
-    background-color: #15325A;
-  }
+//   &:hover {
+//     transition: 855ms;
+//     transform: translateY(-0px);
+//     background-color: #15325A;
+//   }
 
-  &:active {
-    transform: scale(0.9, 0.8);
-  }
-}
+//   &:active {
+//     transform: scale(0.9, 0.8);
+//   }
+// }
 
-.iconButton {
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  background-color: white;
-  font-size: 100%;
-  color: #334155;
+// .iconButton {
+//   align-items: center;
+//   border: none;
+//   cursor: pointer;
+//   background-color: white;
+//   font-size: 100%;
+//   color: #334155;
 
-  &:active {
-    transform: scale(0.8, 0.8);
-  }
-}
+//   &:active {
+//     transform: scale(0.8, 0.8);
+//   }
+// }

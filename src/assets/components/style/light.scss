@@ -1,0 +1,603 @@
+//Variables
+$backgroundColor: white;
+$backgroundColorHover: rgb(235, 234, 234);
+$backgroundColorButton: #3B82F6;
+$backgroundColorButtonHover: #15325A;
+$containerBoxShadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+$containerHeaderBoxShodow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+$iconColor: #9BA4B5;
+$iconColorHover: #1c64f2;
+
+//accordion
+.accordion-container {
+    border-radius: 8px;
+    width: 100%;
+    background-color: $backgroundColor;
+    box-shadow: $containerBoxShadow ;
+
+    .tabView {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        background-color: $backgroundColor;
+        padding: 0;
+        align-items: center;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: $containerHeaderBoxShodow;
+        text-align: start;
+        cursor: pointer;
+
+        .tabViewHeader {
+            padding: 0.8% 1.4%;
+            font-size: 150%;
+            cursor: pointer;
+            width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+
+            &:hover {
+                background-color: $backgroundColorHover;
+                transition: 1000ms;
+            }
+        }
+    }
+
+    .body {
+        padding: 0% 0.4% 0.4% 0.4%;
+        margin: 0.8% 0%;
+    }
+}
+
+//button
+.button {
+    width: 100%;
+    background-color: $backgroundColorButton;
+    padding: 5px 20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    border-radius: 8px;
+    transition: 555ms;
+    border: none;
+    text-transform: capitalize;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+        transition: 855ms;
+        transform: translateY(-0px);
+        background-color: $backgroundColorButtonHover;
+    }
+
+    &:active {
+        transform: scale(0.9, 0.8);
+    }
+}
+
+.iconButton {
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    font-size: 100%;
+    color: #334155;
+
+    &:active {
+        transform: scale(0.8, 0.8);
+    }
+}
+
+//card
+.card-container {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    background-color: $backgroundColor;
+    box-shadow: $containerBoxShadow;
+
+    hr {
+        display: block;
+        border: 0;
+        border-top: 1px solid whitesmoke;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header {
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        align-items: center;
+        padding: 0.8% 1.4%;
+        background-color: $backgroundColor;
+        box-shadow: $containerHeaderBoxShodow;
+
+        h3 {
+            font-size: 150%;
+        }
+    }
+
+    .body {
+        padding: 0% 0.4% 0.4% 0.4%;
+        margin: 0.8% 0%;
+    }
+}
+
+//checkbox
+.checkboxContainer {
+    display: flex;
+    align-items: flex-end;
+
+    label {
+        padding-left: 8px;
+        color: #1e293b;
+    }
+}
+
+.checkboxInput {
+    box-sizing: content-box;
+    --active: #1c64f2;
+    --active-inner: #fff;
+    --focus: 2px rgba(4, 8, 23, 0.3);
+    --border: #bbc1e1;
+    --border-hover: #1c64f2;
+    --background: #fff;
+    --disabled: #f6f8ff;
+    --disabled-inner: #e1e6f9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 22px;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    background: var(--b, var(--background));
+
+    border: 1px solid grey;
+
+    &:after {
+        content: "";
+        display: block;
+        left: 0;
+        top: 0;
+        position: absolute;
+        transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
+            opacity var(--d-o, 0.2s);
+    }
+
+    &:checked {
+        --b: var(--active);
+        --bc: var(--active);
+        --d-o: 0.3s;
+        --d-t: 0.6s;
+        --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+    }
+
+    &:disabled {
+        --b: var(--disabled);
+        cursor: not-allowed;
+        opacity: 0.9;
+
+        &:checked {
+            --b: var(--disabled-inner);
+            --bc: var(--border);
+        }
+
+        &+label {
+            cursor: not-allowed;
+        }
+    }
+
+    &:hover {
+        &:not(:checked) {
+            &:not(:disabled) {
+                --bc: var(--border-hover);
+            }
+        }
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 var(--focus);
+    }
+
+    &:not(.switch) {
+        width: 22px;
+
+        &:after {
+            opacity: var(--o, 0);
+        }
+
+        &:checked {
+            --o: 1;
+        }
+    }
+
+    &+label {
+        font-size: 100%;
+        display: inline-block;
+        vertical-align: top;
+        cursor: pointer;
+    }
+}
+
+.checkboxInput {
+    &:not(.switch) {
+        border-radius: 7px;
+
+        &:after {
+            width: 5px;
+            height: 9px;
+            border: 2px solid var(--active-inner);
+            border-top: 0;
+            border-left: 0;
+            left: 7px;
+            top: 4px;
+            transform: rotate(var(--r, 20deg));
+        }
+
+        &:checked {
+            --r: 43deg;
+        }
+    }
+}
+
+//checkbox List
+.checkboxListContainer {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    background-color: $backgroundColor;
+    box-shadow: $containerBoxShadow;
+
+    hr {
+        display: block;
+        border: 0;
+        border-top: 1px solid whitesmoke;
+        margin: 0;
+        padding: 0;
+    }
+
+    .checkboxHeader {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0.4% 1.4%;
+        background-color: $backgroundColor;
+        align-items: center;
+        width: 100%;
+        border-top-right-radius: 8px;
+        border-top-left-radius: 8px;
+        box-shadow: $containerHeaderBoxShodow;
+
+        h4 {
+            font-size: 150%;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+    }
+
+    .checkboxInput {
+        padding: 0.8%;
+        padding-top: 0.2%;
+    }
+}
+
+//dialog
+.dialog-background {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+
+    .modal {
+        background-color: $backgroundColor;
+        box-shadow: $containerBoxShadow;
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+        position: absolute;
+
+        hr {
+            display: block;
+            border: 0;
+            border-top: 1px solid whitesmoke;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
+            align-items: center;
+            padding: 0.8% 1.4%;
+            background-color: white;
+            box-shadow: $containerHeaderBoxShodow;
+
+            h3 {
+                font-size: 150%;
+            }
+
+            i {
+                font-size: 150%;
+                cursor: pointer;
+                color: $iconColor;
+
+                &:hover {
+                    color: $iconColorHover;
+                    transition: 555ms;
+                }
+            }
+        }
+
+        .content {
+            padding: 0% 0.4% 0.4% 0.4%;
+            margin: 0.8% 0%;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+@keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+//dropdown
+.dropdown-container {
+    position: relative;
+
+    .headerContainer {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        .iconContainer {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            position: absolute;
+            margin-bottom: 8px;
+            margin-right: 10px;
+
+            i {
+                cursor: pointer;
+                font-size: 100%;
+                color: $iconColor;
+            }
+        }
+    }
+
+    .dropdownContainer {
+        width: 100%;
+        animation: growDown 300ms ease-in-out forwards;
+        transform-origin: top center;
+        position: absolute;
+        margin-top: 0.2%;
+        background-color: $backgroundColor;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+            rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+            rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        border-radius: 4px;
+        padding: 8px 10px;
+        font-size: 100%;
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+
+        .searchContainer {
+            padding-left: 4px;
+            padding-right: 4px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            justify-content: flex-end;
+
+            div {
+                display: flex;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                position: absolute;
+                margin-bottom: 8px;
+                margin-right: 10px;
+
+                i {
+                    cursor: pointer;
+                    color: $iconColor;
+                    font-size: 100%;
+                }
+            }
+        }
+
+        .listContainer {
+            cursor: pointer;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            transition: 555ms;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            padding-left: 5px;
+            color: #131b2e;
+
+            li {
+                list-style: none;
+                padding-left: 4px;
+                color: #131b2e;
+                border-bottom: $backgroundColorButton;
+            }
+
+            &:hover {
+                background-color: rgb(211, 211, 211);
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0)
+    }
+
+    80% {
+        transform: scaleY(1.1)
+    }
+
+    100% {
+        transform: scaleY(1)
+    }
+}
+
+//List box
+.listBoxContainer {
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    background-color: $backgroundColor;
+    box-shadow: $containerBoxShadow;
+
+    .searchContainer {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        justify-content: flex-end;
+        box-shadow: $containerHeaderBoxShodow;
+        padding: 1%;
+
+        div {
+            margin-bottom: 5px;
+            margin-right: 10px;
+
+            i {
+                font-size: 100%;
+                color: $iconColor;
+            }
+        }
+    }
+
+    .listContainer {
+        cursor: pointer;
+        transition: 555ms;
+        display: flex;
+        padding: 1%;
+        margin: 1%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: $backgroundColorButton;
+        }
+
+        .iconContainer {
+            display: flex;
+            align-items: center;
+            font-size: 100%;
+        }
+    }
+
+
+}
+
+.listBoxContainer::-webkit-scrollbar {
+    display: none;
+}
+
+//proges bar
+.progesBarContainer {
+    display: flex;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: $containerBoxShadow;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border-radius: 8px;
+        width: 8%;
+        background-color: green;
+        padding: 8px 0px;
+    }
+}
+
+//tab-tabview
+.tab-container {
+    padding: 0.6% 1%;
+    width: 100%;
+
+    hr {
+        display: block;
+        border: 0;
+        border-top: 1px solid whitesmoke;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.tab-view-container {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    background-color: $backgroundColor;
+    box-shadow: $containerBoxShadow;
+
+    hr {
+        display: block;
+        border: 0;
+        border-top: 1px solid whitesmoke;
+        margin: 0;
+        padding: 0;
+    }
+
+    .tabView {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        border-radius: 8px;
+        align-items: center;
+        padding: 0.6% 1%;
+        background-color: $backgroundColor;
+        box-shadow: $containerHeaderBoxShodow;
+        text-align: center;
+
+        .tabViewHeader {
+            padding: 0.8% 1.4%;
+            font-size: 100%;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(211, 211, 211);
+                border-radius: 8px;
+            }
+        }
+    }
+}
+
+.active {
+    background-color: rgb(211, 211, 211);
+    border-radius: 8px;
+}
