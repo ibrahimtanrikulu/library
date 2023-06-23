@@ -36,6 +36,11 @@
                 "input": "src/assets/theme/style/light.scss",
                 "bundleName": "light",
                 "inject": false
+              },
+              {
+                "input": "src/assets/theme/style/green.scss",
+                "bundleName": "green",
+                "inject": false
               }
             ],
             "scripts": []

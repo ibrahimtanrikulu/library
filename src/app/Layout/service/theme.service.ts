@@ -4,22 +4,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ThemeService {
-  public static default: string = 'light';
-  public get current(): string {
-    return localStorage.getItem('theme') ?? ThemeService.default;
-  }
-  public set current(value: string) {
-    localStorage.setItem('theme', value);
-    this.style.href = `/${value}.css`;
-  }
+  private static readonly DEFAULT_THEME = 'light';
   private readonly style: HTMLLinkElement;
+
   constructor() {
     this.style = document.createElement('link');
     this.style.rel = 'stylesheet';
     document.head.appendChild(this.style);
+    this.setThemeFromLocalStorage();
+  }
 
-    if (localStorage.getItem('theme') !== undefined) {
-      this.style.href = `/${this.current}.css`;
-    }
+  public get current(): string {
+    return localStorage.getItem('theme') ?? ThemeService.DEFAULT_THEME;
+  }
+
+  public set current(value: string) {
+    localStorage.setItem('theme', value);
+    this.style.href = `/${value}.css`;
+  }
+
+  private setThemeFromLocalStorage() {
+    const storedTheme = localStorage.getItem('theme');
+    this.style.href = `/${storedTheme || ThemeService.DEFAULT_THEME}.css`;
   }
 }

@@ -1,33 +1,34 @@
-componentler---✓
+------componentler------
+    dropdwon-->✓
+    listbox-->✓
+    button-->✓
+    table-->✓
+    Accordion-->✓
+    card-->✓
+    Panel-->✓
+    TabView-->✓
+    dialog-->✓
+    Toast-->✓
+    ProgressBar-->✓
+    inputText-->✓
+    inputTextarea-->✓
+    inputNumber-->✓
+    inputPassword-->✓
+    swicth-->✓
+    form-->✓
+    checkboxList-->✓
+    checkbox-->✓
 
+    //düzenlenecekler
+    calender,
 
+    //yapılacaklar
+    radioButton,
+    Slider,
+    ProgressSpinner,
+    Charts,
+    inputMask,
+    inputGroup,
+    Steps
 
-dropdwon-->✓
-listbox-->✓
-button-->✓
-table-->✓
-Accordion-->✓
-card-->✓
-Panel-->✓
-TabView-->✓
-dialog-->✓
-Toast-->✓
-ProgressBar-->✓
-inputText-->✓
-inputTextarea-->✓
-inputNumber-->✓
-inputPassword-->✓
-swicth-->✓
-form-->✓
-checkboxList-->✓
-
-//düzenlenecekler
-calender,
-checkbox,
-
-//yapılacaklar
-radioButton,
-Slider,
-ProgressSpinner,
-Charts,
-inputMask,
+------theme------

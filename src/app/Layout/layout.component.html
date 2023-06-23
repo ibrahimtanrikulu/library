@@ -1,21 +1,20 @@
-<div style="display: flex;">
-    <div class="sidebar-container" *ngIf="layoutService.sidebarShow">
+<div class="theme-container">
+    <div class="sidebar-container" [ngStyle]="layoutService.sidebarShow ? {'width':'13%'} : {'width':'4%'}">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="content-container">
+    <div class="content-container" [ngStyle]="layoutService.sidebarShow ? {'width':'87%'} : {'width':'96%'}">
         <div class="navbar">
             <app-navbar></app-navbar>
         </div>
         <div class="content">
             <router-outlet></router-outlet>
-            <div style="height: 88vh;">
-            </div>
+            <div style="height: 88vh;"></div>
         </div>
         <div class="footer">
             <app-footer></app-footer>
         </div>
     </div>
-    <div [style]="layoutService.configShow ? 'display:flex':'display:none'" class="config-container">
+    <div class="config-container" [ngStyle]="layoutService.configShow ? {'display':'flex'} : {'display':'none'}">
         <app-config></app-config>
     </div>
 </div>
