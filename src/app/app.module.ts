@@ -25,7 +25,7 @@ import { SwitchComponent } from './components/switch/switch.component';
 import { CheckboxListComponent } from './components/checkboxList/checkboxList.component';
 import { ListboxComponent } from './components/listbox/listbox.component';
 import { LayoutModule } from './Layout/layout.module';
-import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerComponent } from './components/spinner/spinner.component'; 
 
 @NgModule({
   declarations: [AppComponent],
