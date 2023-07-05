@@ -19,7 +19,6 @@ import { ButtonComponent } from './components/button/button.component';
 import { InputComponent } from './components/input/input.component';
 import { InputnumberComponent } from './components/inputnumber/inputnumber.component';
 import { FormComponent } from './components/form/form.component';
-import { DenemeComponent } from './components/deneme/deneme.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { SwitchComponent } from './components/switch/switch.component';
 import { CheckboxListComponent } from './components/checkboxList/checkboxList.component';
@@ -50,7 +49,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     InputComponent,
     InputnumberComponent,
     FormComponent,
-    DenemeComponent,
     PhoneDirective,
     CheckboxComponent,
     SwitchComponent,
