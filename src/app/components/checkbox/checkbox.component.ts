@@ -26,6 +26,7 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
   @Input() placeholder: string = '';
   @Input() styleInput: string = '';
   @Input() styleLabel: string = '';
+  @Input() checked: boolean = false;
   onChange: any = () => { };
   onTouch: any = () => { };
 
@@ -44,7 +45,6 @@ export class CheckboxComponent implements ControlValueAccessor, OnInit {
 
   ngOnInit() { }
 
-  checked: boolean = false;
   writeValue(checked: boolean) {
     this.checked = checked;
   }

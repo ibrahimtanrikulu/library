@@ -9,6 +9,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutService } from './service/layout.service';
+import { CheckboxListComponent } from '../components/checkboxList/checkboxList.component';
+import { ButtonComponent } from '../components/button/button.component';
+import { CheckboxComponent } from '../components/checkbox/checkbox.component';
+import { TableComponent } from '../components/table/table.component';
 
 @NgModule({
     declarations: [LayoutComponent, FooterComponent, SidebarComponent, ConfigComponent, NavbarComponent],
@@ -18,6 +22,10 @@ import { LayoutService } from './service/layout.service';
         ReactiveFormsModule,
         RouterModule,
         LayoutRoutingModule,
+        CheckboxListComponent,
+        ButtonComponent,
+        CheckboxComponent,
+        TableComponent
     ],
     providers: [LayoutService],
     bootstrap: [LayoutComponent],

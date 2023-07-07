@@ -5,7 +5,7 @@ export interface IColumnType {
   filterType?: any;
   filterData?: any | any[];
   filterPlaceholder?: string;
-  inputStatus?: boolean;
+  inputStatus?: boolean; // columns datayı değistirmek için
   click?(data?: any): void;
   active?: boolean;
 }

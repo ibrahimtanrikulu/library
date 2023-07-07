@@ -18,14 +18,12 @@
     form-->✓
     checkboxList-->✓
     checkbox-->✓
-
-    //düzenlenecekler
-    calender,
+    calender-->✓
+    ProgressSpinner-->✓
 
     //yapılacaklar
     radioButton,
     Slider,
-    ProgressSpinner,
     Charts,
     inputMask,
     inputGroup,

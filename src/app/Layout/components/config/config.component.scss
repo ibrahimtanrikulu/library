@@ -1,0 +1,26 @@
+.config-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .color-container {
+        width: 100%;
+        height: 15%;
+        margin: 20%;
+
+        h3 {
+            color: white;
+        }
+
+        .list-container {
+            margin-top: 5%;
+            button {
+                background-color: #343a40;
+                border: none;
+                cursor: pointer;
+
+            }
+        }
+    }
+}

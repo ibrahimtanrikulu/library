@@ -10,10 +10,10 @@
         icon="fa-brands fa-rev"></app-button>
     </div>
   </div>
-  <div class="checkboxInput grid">
+  <div class="grid">
     <div *ngFor="let item of checkboxData" class="col-6 col-sm-5 col-md-4 col-lg-2">
       <app-checkbox placeholder="{{ item.text }}" (click)="selection(item.value)" [styleInput]="'margin-top: 2%'"
-        (click)="selectedList.includes(item.value)"></app-checkbox>
+        [checked]="selectedList.includes(item.value)"></app-checkbox>
     </div>
   </div>
 </div>
