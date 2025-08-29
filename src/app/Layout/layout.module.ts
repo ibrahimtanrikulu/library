@@ -15,7 +15,7 @@ import { CheckboxComponent } from '../components/checkbox/checkbox.component';
 import { TableComponent } from '../components/table/table.component';
 
 @NgModule({
-    declarations: [LayoutComponent, FooterComponent, SidebarComponent, ConfigComponent, NavbarComponent],
+    declarations: [],
     imports: [
         BrowserModule,
         FormsModule,
@@ -25,10 +25,10 @@ import { TableComponent } from '../components/table/table.component';
         CheckboxListComponent,
         ButtonComponent,
         CheckboxComponent,
-        TableComponent
+        TableComponent,
+        LayoutComponent
     ],
-    providers: [LayoutService],
-    bootstrap: [LayoutComponent],
+    providers: [LayoutService], 
     exports: [LayoutComponent]
 })
 export class LayoutModule { }

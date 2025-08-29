@@ -3,14 +3,34 @@ import { LayoutService } from './service/layout.service';
 import { DataType } from '../Interfaces/DataType';
 import { IColumnType } from '../Interfaces/CollumType';
 import { FilterTypeEnum } from '../Enums/FilterTypeEnum';
+import { CommonModule } from '@angular/common';
+import { FooterComponent } from './components/footer/footer.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ConfigComponent } from './components/config/config.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CheckboxListComponent } from '../components/checkboxList/checkboxList.component';
+import { TableComponent } from '../components/table/table.component';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FooterComponent,
+    SidebarComponent,
+    ConfigComponent,
+    NavbarComponent,
+    ReactiveFormsModule,
+    RouterModule,
+    CheckboxListComponent,
+    TableComponent
+  ],
 })
 export class LayoutComponent {
-
   col: IColumnType[] = [
     {
       field: 'id',
@@ -131,11 +151,7 @@ export class LayoutComponent {
     { id: 19999, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
   ];
 
-  constructor(public layoutService: LayoutService) {
-  }
+  constructor(public layoutService: LayoutService) {}
 
-  button() {
-
-  }
-
+  button() {}
 }
