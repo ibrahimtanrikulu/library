@@ -11,7 +11,7 @@ import { DataType } from 'src/app/Interfaces/DataType';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent, SearchFilterPipe, CheckboxComponent]
+  imports: [CommonModule, FormsModule, SearchFilterPipe]
 })
 export class DropdownComponent implements OnInit {
   @Input() data: DataType[] = [];

@@ -17,8 +17,7 @@ import { CalendarDay } from 'src/app/Class/CalendarDay';
   standalone: true,
   imports: [
     CommonModule,
-    ChunkPipe,
-    ButtonComponent,
+    ChunkPipe, 
     FormsModule,
     ReactiveFormsModule,
   ],

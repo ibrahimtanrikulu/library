@@ -9,7 +9,7 @@ import { ButtonComponent } from '../button/button.component';
   templateUrl: './tabview.component.html',
   styleUrls: ['./tabview.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, TabComponent, ButtonComponent],
+  imports: [CommonModule, FormsModule],
 })
 export class TabviewComponent {
   @ContentChildren(TabComponent) tabs!: QueryList<TabComponent>;

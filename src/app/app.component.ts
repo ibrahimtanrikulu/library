@@ -13,11 +13,16 @@ import { MessageEnum } from './Enums/messageEnum';
 import { IForm } from './Interfaces/Form';
 import { FormTypeEnum } from './Enums/formTypeEnum';
 import { LayoutService } from './Layout/service/layout.service';
+import { LayoutComponent } from './Layout/layout.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  standalone: true, 
+  imports: [
+    LayoutComponent
+  ],
 })
 export class AppComponent {
   value: DataType[] = [
