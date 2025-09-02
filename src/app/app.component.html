@@ -1,203 +1,91 @@
-<!-- 
-  <div class="grid">
-    <div class="col-6">
-      <app-button class="button" (click)="tikla()" label="tikla"></app-button>
-    </div>
-  </div>
+ <!-- <app-button label="Save" cssClass="button button--default"></app-button>  
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <label for="date">Select a date</label>
+  <app-calender formControlName="date"></app-calender>
 
-  <div class="grid">
-    <div class="col-2">
-      <app-button class="button" (click)="tikla()" label="tikla"></app-button>
-    </div>
-  </div>
-  <app-toast [message]="message" [show]="show"></app-toast>  
-  <app-checkbox [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkbox>
+  <button type="submit">Submit</button>
+</form>
 
-  <app-accordion header="Table"></app-accordion> 
-
-  <form [formGroup]="PersonelForm">
-    <app-input
-      formControlName="telefon"
-      placeholder="telefon"
-      type="mask"
-    ></app-input>
-  </form>
-  <button (click)="button()">dsadsasadsda</button>
-   
-  <app-input
-    [(ngModel)]="testInput"
-    [ngModelStatus]="true"
-    type="number"
-    placeholder="telefon numarası"
-  ></app-input>
-  <app-input
-    [(ngModel)]="denemeInput"
-    [ngModelStatus]="true"
-    placeholder="açıklama"
-    type="textarea"
-  ></app-input>
-  <button (click)="button()">deneme</button>
+<app-card header="Dashboard">
+  <p>Welcome to your dashboard. You can see your stats and activities here.</p>
+</app-card>
  
-  <p><span class="boldspan">Model data:</span> {{ dataModel }}</p> 
-  <app-deneme  [(ngModel)]="dataModel">
-    Write in this wrapper control:
-  </app-deneme>  
+<app-checkbox placeholder="Accept terms"></app-checkbox>
 
-  <app-card [header]="'card başlığı'">
-    <div content></div>
-  </app-card>  
-  
-  <app-deneme [(ngModel)]="deneme"></app-deneme>
-  <app-deneme [(ngModel)]="testDene"></app-deneme>
-  
-  <form [formGroup]="PersonelForm">
-    <app-deneme formControlName="test" [(ngModel)]="deneme"></app-deneme>
-    <app-deneme formControlName="telefon"></app-deneme>
-  </form>
-  
-  <form [formGroup]="PersonelForm">
-    <app-input formControlName="test" placeholder="test"></app-input>
-    <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
-    <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
-    <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
-  </form>
  
-  <app-checkbox [(ngModel)]="deneme"></app-checkbox>
+<button (click)="showDialog = true">Open Dialog</button>
 
-  <button (click)="button()">denemeö</button> 
+<app-dialog [header]="'Example Dialog'" [show]="showDialog">
+  <p>This is the content of the dialog.</p>
+</app-dialog>
 
-  <app-accordion header="deneme">dsaddsa</app-accordion>
-  <app-button label="deneme"></app-button> 
-  <app-card header="deneme"></app-card> 
-  <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist> 
-  
-  <app-textarea [(ngModel)]="testDene" placeholder="deneme"></app-textarea>
+<app-input placeholder="Email"></app-input>
+<app-inputnumber placeholder="sayı"></app-inputnumber>
+<app-inputpassword placeholder="sifre"></app-inputpassword>
+<app-dropdown
+  [data]="cities"
+  [placeholder]="'Select a city'"
+  (selectedList)="onCity($event)">
+</app-dropdown><app-dropdown
+  [data]="cities"
+  [multiStatus]="true"
+  [searchStatus]="true"
+  [DropdownScrollHeight]="'240px'"
+  [placeholder]="'Select skills'"
+  (selectedList)="onSkills($event)">
+</app-dropdown>
 
-  <app-card header="form">
-    <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-  </app-card> 
-    
-  <div class="grid">
-    <div class="col-12">
-      <app-deneme
-        [data]="dropdownCol"
-        [multiStatus]="true"
-        [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)"
-        placeholder="deneme"
-        [disabled]="false"
-      ></app-deneme>
-    </div>
-  </div> 
+<app-listbox
+  [data]="items"
+  [searchStatus]="true"
+  [scrollHeight]="'260px'"
+  (selectedList)="onSelected($event)">
+</app-listbox>
+<app-progesbar class="progress--sm" [value]="25"></app-progesbar>
+<app-progesbar class="progress--lg progress--success" [value]="80"></app-progesbar>
 
-  <div class="grid">
-    <div class="col-6">
-      <app-dropdown
-        [data]="dropdownCol"
-        [multiStatus]="true"
-        [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)"
-        placeholder="deneme"
-        [disabled]="false"
-      ></app-dropdown>
-    </div>
-  </div> 
-  
-  <app-switch [placeholder]="'deneme'" [disabled]="true"></app-switch>
-  <app-checkbox [placeholder]="'deneme'" [disabled]="true"></app-checkbox>
-    
-  <button (click)="goster()">tikla</button> 
+<app-spinner></app-spinner>
 
-  <div class="grid">
-    <div class="col-4">
-      <app-calender></app-calender>
-    </div>
-  </div> 
-  
-  <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>  
-  
-  <div class="grid">
-    <div class="col-4">
-      
-    </div>
-  </div> 
+<app-switch placeholder="Enable notifications"></app-switch>
+
+<app-toast [show]="true" [message]="{ status: 'info', header: 'Information', detail: 'New update available.',show:true }"></app-toast>
+
+<app-toast [show]="true" [message]="{ status: 'warning', header: 'Warning', detail: 'Your session will expire soon.',show:true }"></app-toast>
+
+<app-toast [show]="true" [message]="{ status: 'error', header: 'Error', detail: 'Something went wrong.',show:true }"></app-toast>
+
+<app-textarea placeholder="Description"></app-textarea>
+
+<app-tabview>  
+  <app-tab tabTitle="Account" [active]="true">
+    <div>Profile settings form here…</div>
+  </app-tab>
+
+  <app-tab tabTitle="Password">
+    <div>Change password form here…</div>
+  </app-tab>
+
+  <app-tab tabTitle="Billing">
+    <div>Invoices, cards, etc…</div>
+  </app-tab>
+</app-tabview>
  
-  <app-checkboxlist [checkboxData]="value" checkboxHeader="bu deneme datası" [multiCheckbox]="false"></app-checkboxlist>
+ <div style="width: 80%;"><app-checkboxlist
+  [checkboxHeader]="checkboxHeader"
+  [checkboxData]="checkboxData"
+  [multiCheckbox]="multiCheckbox" >
+</app-checkboxlist></div> --> 
 
-  <button (click)="button()">dialog aç</button>
-  
-  <div class="grid">
-    <div class="col-6">
-      <app-progesbar [value]="1000"></app-progesbar>
-    </div>
-  </div>
-
-  <app-tabview>
-    <app-tab tabTitle="bir"><app-listbox [data]="dropdownCol" [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)"></app-listbox></app-tab>
-    <app-tab tabTitle="iki"></app-tab>
-    <app-tab tabTitle="uc"><app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-    </app-tab>
-  </app-tabview> 
- 
-  <div class="grid">
-    <div class="col-6">
-      <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true"
-        (selectedList)="dropdownMethod($event)" placeholder="deneme" [disabled]="false"></app-dropdown>
-    </div>
-  </div>
-  
-  <app-checkboxlist [checkboxData]="dropdownCol" checkboxHeader="bu deneme datası"
-    [multiCheckbox]="false"></app-checkboxlist> 
-  <app-card header="table">
-  </app-card>
-
-  <app-progesbar></app-progesbar>
-
-  <app-dialog [header]="'Bu deneme Dialogu'" [show]="show" [height]="'50%'" [width]="'50%'"></app-dialog>
-
-  <app-listbox [data]="dropdownCol" [searchStatus]="true"></app-listbox>
-  
-  <app-calender></app-calender> 
-
-  <app-tabview>
-    <app-tab tabTitle="bir">
-      <app-form [formGroup]="PersonelForm" [forms]="formsObject"></app-form>
-    </app-tab>
-    <app-tab tabTitle="iki"></app-tab>
-    <app-tab tabTitle="uc"> </app-tab>
-  </app-tabview>
-
-  <app-table [column]="col" [data]="data" [filterFormStatus]="true" [globalSearchStatus]="true"
-  [paginationStatus]="true" [header]="'Personel'" [headerButtonLabel]="'Ekle'" [checkListStatus]="true"
-  [scrollWidthStatus]="true" (headerButtonClick)="button()"></app-table>
-
-  <app-dropdown [data]="dropdownCol" [multiStatus]="true" [searchStatus]="true" (selectedList)="dropdownMethod($event)"
-  placeholder="deneme" [disabled]="false"></app-dropdown>  
-  
-  <form [formGroup]="PersonelForm">
-    <div class="grid">
-      <div class="col-12">
-        <app-calender formArrayName="ibrahim"></app-calender>
-      </div>
-    </div>
-  </form> -->
-
-<!-- <div class="grid">
-    <div class="col-6">
-    <app-listbox [data]="dropdownCol" [searchStatus]="true" [dragStatus]="false"
-      (selectedList)="dropdownMethod($event)"></app-listbox>
-    </div>
-  </div> 
-
-  <form [formGroup]="PersonelForm">
-    <app-input formControlName="test" placeholder="test"></app-input>
-    <app-checkbox formControlName="telefon" placeholder="doğrumu"></app-checkbox>
-    <app-inputnumber formControlName="pc" placeholder="numara"></app-inputnumber>
-    <app-inputpassword formControlName="ibrahim" placeholder="sifre"></app-inputpassword>
-  </form>
-   -->
-
-
-
-<app-layout></app-layout>
+<!-- parent.component.html -->
+<app-table
+  [header]="header"
+  [data]="data"
+  [column]="columns"
+  [globalSearchStatus]="true"
+  [filterFormStatus]="true"
+  [paginationStatus]="true"
+  [scrollWidthStatus]="true" 
+  [checkListStatus]="true" 
+  (headerButtonClick)="onHeaderButton()"
+  (checkList)="onCheckList($event)">
+</app-table>

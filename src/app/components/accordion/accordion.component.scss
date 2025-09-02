@@ -1,40 +1,95 @@
-// .container {
-//   border-radius: 8px;
-//   width: 100%;
-//   background-color: white;
-//   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+/* ======================================================
+   Accordion Component Styles (standalone SCSS)
+   Brand colors scoped to this component
+====================================================== */
+$primary:        #4F46E5;  // indigo-600
+$primary-hover:  #4338CA;  // indigo-700
+$secondary:      #64748B;  // slate-500
 
-//   .tabView {
-//     display: flex;
-//     width: 100%;
-//     justify-content: flex-start;
-//     flex-wrap: wrap;
-//     background-color: white;
-//     padding: 0;
-//     align-items: center;
-//     width: 100%;
-//     border-radius: 8px;
-//     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-//     text-align: start;
-//     cursor: pointer;
+$bg:     #ffffff;
+$text:   #0f172a;  // slate-900
+$muted:  #334155;  // slate-700
+$border: #e2e8f0;  // slate-200
+$hover:  #f8fafc;  // slate-50
+$ring:   #93c5fd;  // blue-300
 
-//     .tabViewHeader {
-//       padding: 0.8% 1.4%;
-//       font-size: 150%;
-//       cursor: pointer;
-//       width: 100%;
-//       border-top-left-radius: 8px;
-//       border-top-right-radius: 8px;
+.accordion { width: 100%; }
 
-//       &:hover {
-//         background-color: rgb(235, 234, 234);
-//         transition: 1000ms;
-//       }
-//     }
-//   }
+.accordion-item {
+  background: $bg;
+  border: 1px solid $border;
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+  overflow: hidden;
+  transition: box-shadow .15s ease, border-color .15s ease;
 
-//   .body {
-//     padding: 0% 0.4% 0.4% 0.4%;
-//     margin: 0.8% 0%;
-//   }
-// }
+  &:hover { box-shadow: 0 6px 20px rgba(0, 0, 0, .06); }
+}
+
+.accordion-trigger {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  text-align: left;
+
+  padding: .75rem 1rem;   /* py-3 px-4 */
+  font-size: .875rem;     /* text-sm */
+  font-weight: 500;       /* font-medium */
+  color: $text;
+  cursor: pointer;
+
+  transition: background-color .15s ease;
+
+  &:hover { background: $hover; }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px $bg,
+      0 0 0 4px $ring;
+    border-radius: .5rem;
+  }
+
+  .accordion-header { flex: 1 1 auto; }
+
+  .chevron {
+    flex: 0 0 auto;
+    transition: transform .2s ease;
+    transform: rotate(0deg);
+    color: $secondary;
+  }
+}
+
+/* Open state: rotate chevron (add .open on root) */
+.accordion.open .chevron { transform: rotate(180deg); }
+
+.accordion-content {
+  color: $muted;
+  background: $bg;
+  border-top: 1px solid $border;
+  padding: 0.75rem 1rem;
+
+  animation: accordion-down .2s ease-out;
+  transform-origin: top;
+  overflow: hidden;
+}
+
+@keyframes accordion-down {
+  from { opacity: 0; transform: scaleY(0.98); }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes accordion-up {
+  from { opacity: 1; transform: scaleY(1); }
+  to   { opacity: 0; transform: scaleY(0.98); }
+}
+
+/* Optional spacing if you list many accordions */
+.accordion-list .accordion { margin-bottom: 0.5rem; }
+.accordion-list .accordion:last-child { margin-bottom: 0; }

@@ -9,8 +9,7 @@ import { Component, Input } from '@angular/core';
   imports: [CommonModule],
 })
 export class AccordionComponent {
-  @Input() header: string = '';
-
+  @Input() header: string = ''; 
   show: boolean = false;
   open() {
     this.show ? (this.show = false) : (this.show = true);

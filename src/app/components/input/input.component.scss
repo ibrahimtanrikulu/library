@@ -1,59 +1,109 @@
-$primary: #1c64f2;
-$gray: grey;
+/* ======================================================
+   input.component.scss
+   shadcn/ui Input look & feel + floating label
+   Uses global tokens defined in :root:
+   --bg --text --muted --border --hover --ring --color-primary --color-secondary
+====================================================== */
+
+$form-height: 2.25rem;         /* h-9 ~ 36px */
+$radius: .375rem;              /* rounded-md */
+$label-float-font: .70rem;     /* ~text-[11px] */
+$label-normal-font: .875rem;   /* text-sm */
 
 .form__group {
   position: relative;
-  padding: 10px 0 0;
   width: 100%;
+  margin: 0;                   /* sen zaten inline style ile 0 veriyordun */
 }
 
+/* ---- Input (trigger) ---- */
 .form__field {
   width: 100%;
-  border: 0;
-  border-bottom: 2px solid $gray;
+  height: $form-height;
+  padding: .5rem .75rem;       /* py-2 px-3  sorun burda with sorunu*/
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  background: var(--bg);
+  color: var(--text);
+  font-size: $label-normal-font;
+  line-height: 1.25rem;
   outline: 0;
-  font-size: 100%;
-  color: black;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
+  transition:
+    box-shadow .15s ease,
+    border-color .15s ease,
+    background-color .15s ease;
 
-  &::placeholder {
-    color: transparent;
+  /* shadcn-like hover */
+  &:hover { background: #fcfdff; }
+
+  /* Focus ring */
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--ring);
   }
 
-  &:placeholder-shown~.form__label {
-    cursor: text;
-    top: 24px;
+  /* Placeholder floating-label için gizli */
+  &::placeholder { color: transparent; }
+
+  /* Disabled */
+  &:disabled {
+    background: #f8fafc;      /* slate-50 */
+    color: #94a3b8;           /* slate-400 */
+    cursor: not-allowed;
+  }
+
+  /* Floating label default (placeholder shown) */
+  &:placeholder-shown ~ .form__label {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: $label-normal-font;
+    color: var(--color-secondary);
+    padding: 0 .25rem;
+    background: transparent;
   }
 }
 
+/* ---- Label (floating) ---- */
 .form__label {
   position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 100%;
-  color: $gray;
+  left: .75rem;                 /* px-3 ile hizalı */
+  top: .375rem;                 /* focus/not-empty konum */
+  transform: translateY(0);
+  color: var(--color-secondary);
+  background: var(--bg);        /* label altı çizgiyi kapatmak için */
+  padding: 0 .25rem;            /* küçük aralık */
+  font-size: $label-float-font; /* küçültülmüş label */
+  line-height: 1;
+  pointer-events: none;
+  transition:
+    color .15s ease,
+    transform .15s ease,
+    top .15s ease,
+    font-size .15s ease,
+    background-color .15s ease;
 }
 
-.form__field:focus {
-  ~.form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 100%;
-    color: $primary;
-  }
-  padding-bottom: 6px;
-  border-width: 3px;
+/* Focus olduğunda label rengi primary */
+.form__field:focus ~ .form__label {
+  color: var(--color-primary);
 }
 
-@media (max-width: 767px) {
-  .form__group {
-    margin-top: 4%;
-  }
+/* Değer girildiğinde (placeholder gösterilmiyorsa) label floated kalsın */
+.form__field:not(:placeholder-shown) ~ .form__label {
+  top: .375rem;
+  transform: translateY(0);
+  font-size: $label-float-font;
 }
 
+/* Disabled olduğunda label da soluklaşsın */
+.form__field:disabled ~ .form__label {
+  color: #94a3b8;
+}
 
+/* ---- Optional: invalid state (kullanmak istersen) ----
+   .form__group.is-invalid .form__field { border-color: #ef4444; }
+   .form__group.is-invalid .form__label { color: #ef4444; }
+*/
+ 

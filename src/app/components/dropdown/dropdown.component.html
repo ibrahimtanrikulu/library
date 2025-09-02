@@ -1,22 +1,38 @@
-<div class="dropdown-container">
-  <div class="headerContainer">
-    <input [disabled]="disabled" class="globalInput" [id]="placeholder" [placeholder]="placeholder" type="text" readonly
-      [value]="multiStatus ? text : list[0].text || ''" (click)="dropdownStatus = !dropdownStatus"
-      style="cursor: pointer;" />
-    <div class="iconContainer" [ngStyle]="{ 'transform': dropdownStatus ? 'rotate(180deg)' : '' }">
+<div class="dropdown-container" (click)="$event.stopPropagation()">
+  <div class="headerContainer" role="button" tabindex="0"
+       (click)="toggle()" (keydown.enter)="toggle()" (keydown.space)="toggle()">
+    <input
+      [disabled]="disabled"
+      class="globalInput"
+      [id]="placeholder"
+      [placeholder]="placeholder"
+      type="text"
+      readonly
+      [value]="multiStatus ? text : (list[0]?.text || '')"  
+      style="cursor: pointer;"
+    />
+    <div class="iconContainer"
+         [ngStyle]="{ 'transform': dropdownStatus ? 'rotate(180deg)' : '' }"
+         (click)="toggle()">
       <i class="fa-solid fa-arrow-down"></i>
     </div>
-
   </div>
-  <div *ngIf="dropdownStatus" [style.height]="DropdownScrollHeight"
-    [ngStyle]="{ 'overflow-x': DropdownScrollHeight ? 'auto' : 'hidden' }" class="dropdownContainer">
+
+  <div *ngIf="dropdownStatus"
+       class="dropdownContainer"
+       [style.height]="DropdownScrollHeight"
+       [ngStyle]="{ 'overflow-x': DropdownScrollHeight ? 'auto' : 'hidden' }">
     <ng-container *ngIf="searchStatus">
       <div class="searchContainer">
         <input type="text" class="globalInput" [(ngModel)]="filterText" />
         <div><i class="fas fa-search"></i></div>
       </div>
     </ng-container>
-    <div class="listContainer" *ngFor="let item of localData | searchFilter: filterText" (click)="change(item)">
+
+    <div class="listContainer"
+         *ngFor="let item of localData | searchFilter: filterText"
+         (click)="change(item)"
+         [class.selected]="list.includes(item)">
       <input class="checkboxInput" type="checkbox" *ngIf="multiStatus" [checked]="list.includes(item)" />
       <li>{{ item.text }}</li>
     </div>
