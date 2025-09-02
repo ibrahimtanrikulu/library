@@ -1,4 +1,82 @@
+/* ======================================================
+   form.component.scss — Adjustable, consistent form grid
+   - CSS vars: --form-columns, --form-gap, --form-max
+   - Helpers: .span-1, .span-2, .span-full
+====================================================== */
+
+/* Sayfa ortasında form kartı */
 .container {
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;                   /* dış boşluk */
+  box-sizing: border-box;
+}
+
+/* Kart gövdesi */
+.container > form[formGroup] {
+  width: 100%;
+  max-width: var(--form-max, 920px);
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: .5rem;            /* rounded-lg */
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,.06),
+    0 4px 6px -4px rgba(0,0,0,.04);
+  padding: 1rem;                   /* p-4 */
+}
+
+/* Grid: kolon sayısı ve boşluklar tamamen değişken */
+.container > form[formGroup] .grid {
+  display: grid;
+  grid-template-columns: repeat(var(--form-columns, 2), minmax(0, 1fr));
+  gap: var(--form-gap, 1rem);
+  margin: 0;                       /* eski gutters yok */
+}
+
+/* Inline style padding’i nötrle (tutarlı boşluk gridden gelsin) */
+.container > form[formGroup] .grid > div {
+  padding: 0 !important;
+}
+
+/* Tüm alanlar full-width render */
+.container app-input .form__group,
+.container app-inputnumber .form__group,
+.container app-inputpassword .form__group,
+.container app-textarea .form__group,
+.container app-dropdown .dropdown-container,
+.container app-checkboxlist .checkboxListContainer,
+.container app-switch .container {
+  width: 100%;
+}
+
+/* Submit buton satırı: tüm satırı kapla ve sağa hizala */
+.container app-button {
+  grid-column: 1 / -1;             /* full row */
+  display: flex;
+  justify-content: flex-end;
+}
+.container app-button button {
+  width: auto;                      /* buton kendi boyu */
+  height: 2.5rem;                   /* h-10 */
+  padding: 0 .875rem;
+  border-radius: .5rem;
+}
+
+/* --------- Helpers: span sınıfları (forms[].class ile kullan) --------- */
+.span-1 { grid-column: span 1; }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.span-full { grid-column: 1 / -1; }   /* tüm satırı kapla */
+
+/* --------- Responsive: mobilde 1 kolon (isteğe bağlı) ---------
+   collapseOnMobile=true ise (default) bu kural aktif.
+   form--no-collapse class'ı varsa mobilde de kolon sayısı korunur.
+*/
+@media (max-width: 768px) {
+  :host:not(.form--no-collapse) .container > form[formGroup] .grid {
+    grid-template-columns: 1fr !important;
+  }
 }

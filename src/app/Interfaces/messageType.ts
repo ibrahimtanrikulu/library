@@ -3,6 +3,6 @@ import { MessageEnum } from "../Enums/messageEnum";
 export class MessageType {
   header: string = '';
   detail: string = '';
-  status: MessageEnum = MessageEnum.Success;
+  status: any = MessageEnum.Success || 'success';
   show: boolean = false;
 }

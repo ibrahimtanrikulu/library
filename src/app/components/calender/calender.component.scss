@@ -1,111 +1,179 @@
+/* ======================================================
+   Calendar Component (shadcn-like, compact sizing)
+   Uses global tokens: --color-primary, --border, --hover, etc.
+====================================================== */
+
+/* ===== Header (input + icon) ===== */
 .headerContainer {
   width: 100%;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: flex-end;
-  color: #131b2e;
+  align-items: center;
+
+  .globalInput {
+    width: 100%;
+    height: 2.25rem; /* h-9 (~36px) */
+    padding: 0.25rem 2rem 0.25rem 0.75rem; /* space for icon on right */
+    border-radius: 0.375rem; /* rounded-md */
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease;
+
+    &:hover { background: #fcfdff; }
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+
+    &:disabled {
+      background: #f8fafc;
+      color: #94a3b8;
+      cursor: not-allowed;
+    }
+  }
 
   .iconContainer {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
     position: absolute;
-    margin-bottom: 8px;
-    margin-right: 10px;
-    color: #131b2e;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color-secondary);
 
     i {
+      font-size: 0.9rem;
+      color: var(--color-secondary);
       cursor: pointer;
-      color: #1c64f2;
-      font-size: 100%;
+
+      &:hover { color: var(--color-primary); }
     }
   }
 }
 
+/* ===== Popover / Modal ===== */
 .modal {
-  background-color: white;
-  padding: 4px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  border-radius: 10px;
-  width: 300px;
-  align-items: center;
-  justify-content: center;
-  height: 300px;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   position: absolute;
   z-index: 100;
-
-  .calendar-table {
-    border: none;
-    width: 100%;
-    text-align: center;
-    height: 84%;
-    justify-content: center;
-    align-items: center;
-
-    .calendar-day {
-      cursor: pointer;
-
-      &:hover {
-        background-color: rgb(248, 248, 248);
-      }
-    }
-
-    .calendar-day-header {
-      width: 100%;
-      height: 100%;
-
-      p {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-      }
-    }
-  }
+  margin-top: 0.25rem;
+  width: 280px;                 /* shadcn default width */
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;        /* rounded-lg */
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,0.1),
+    0 4px 6px -4px rgba(0,0,0,0.1);
+  animation: dp-scale-in .2s ease-out;
 
   .header {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
+    padding: .25rem .5rem;
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      user-select: none;
+    }
 
     i {
-      font-size: 100%;
+      font-size: 0.8rem;
       cursor: pointer;
-
-      padding: 4px 8px;
+      color: var(--text);
+      padding: 0.25rem;
+      border-radius: 0.375rem;
+      transition: background-color .15s ease, color .15s ease;
 
       &:hover {
-        background-color: #dee2e6;
-        border-radius: 12px;
+        background: var(--hover);
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ===== Calendar table ===== */
+  .calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+
+    thead th {
+      height: 2rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-secondary);
+      user-select: none;
+    }
+
+    tbody td {
+      padding: 0;
+      height: 2.25rem; /* row height ~36px */
+    }
+
+    .calendar-day {
+      cursor: pointer;
+      position: relative;
+
+      &:hover { background: var(--hover); }
+
+      .calendar-day-header {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+
+        p {
+          width: 1.75rem;
+          height: 1.75rem;
+          display: grid;
+          place-items: center;
+          border-radius: 0.375rem;
+          font-size: 0.75rem; /* text-xs */
+          color: var(--text);
+          transition: background-color .12s ease, color .12s ease;
+        }
+      }
+
+      /* today */
+      &.today .calendar-day-header p {
+        color: var(--color-primary);
+        box-shadow: inset 0 0 0 1.5px var(--color-primary);
+      }
+      &.today:hover .calendar-day-header p {
+        background: var(--color-primary);
+        color: #fff;
+      }
+
+      /* past dates */
+      &.past-date .calendar-day-header p {
+        color: #94a3b8;
       }
     }
   }
 }
 
-.past-date {
-  background-color: whitesmoke;
-}
-
-.blue-date {
-  background-color: #1c64f2;
-}
-
-//animation
-@keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
+/* ===== Animations ===== */
+@keyframes dp-scale-in {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: scale(1); }
 }

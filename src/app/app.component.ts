@@ -1,19 +1,29 @@
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms'; 
+import { CommonModule } from '@angular/common';  
+import { ButtonComponent } from './components/button/button.component';
+import { CalenderComponent } from './components/calender/calender.component';
+import { CardComponent } from './components/card/card.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { InputComponent } from './components/input/input.component';
+import { InputnumberComponent } from './components/inputnumber/inputnumber.component';
+import { InputpasswordComponent } from './components/inputpassword/inputpassword.component';
 import { DataType } from './Interfaces/DataType';
-import { IColumnType } from './Interfaces/CollumType';
-import { FilterTypeEnum } from './Enums/FilterTypeEnum';
-import { MessageType } from './Interfaces/messageType';
-import { MessageEnum } from './Enums/messageEnum';
+import { ListboxComponent } from './components/listbox/listbox.component';
+import { ProgesbarComponent } from './components/progesbar/progesbar.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SwitchComponent } from './components/switch/switch.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
+import { TabComponent } from './components/tabview/tab/tab.component';
+import { TabviewComponent } from './components/tabview/tabview.component';
+import { CheckboxListComponent } from './components/checkboxList/checkboxList.component';
 import { IForm } from './Interfaces/Form';
 import { FormTypeEnum } from './Enums/formTypeEnum';
-import { LayoutService } from './Layout/service/layout.service';
-import { LayoutComponent } from './Layout/layout.component';
+import { FormComponent } from './components/form/form.component';
+import { TableComponent } from './components/table/table.component';
 
 @Component({
   selector: 'app-root',
@@ -21,237 +31,64 @@ import { LayoutComponent } from './Layout/layout.component';
   styleUrls: ['./app.component.scss'],
   standalone: true, 
   imports: [
-    LayoutComponent
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,  
+    ButtonComponent,
+    CalenderComponent,
+    CardComponent,
+    CheckboxComponent,
+    DialogComponent,
+    DropdownComponent,
+    InputComponent,
+    InputnumberComponent,
+    InputpasswordComponent,
+    ListboxComponent,
+    ProgesbarComponent,
+    SpinnerComponent,
+    SwitchComponent,
+    ToastComponent,
+    TextareaComponent,
+    TabComponent,
+    TabviewComponent,
+    CheckboxListComponent,
+    FormComponent,
+    TableComponent
   ],
 })
-export class AppComponent {
-  value: DataType[] = [
-    { text: 'deneme', value: 1 },
-    { text: 'araba', value: 2 },
-    { text: 'dsa', value: 3 },
-    { text: 'a', value: 4 },
-    { text: 'c', value: 5 },
-    { text: 'b', value: 6 },
+export class AppComponent { 
+    header = 'Users';
+  data = [
+    { id: 1, name: 'Alice', role: 'Admin', age: 31 },
+    { id: 2, name: 'Bob', role: 'Editor', age: 27 },
+    { id: 4, name: 'Carol', role: 'Viewer', age: 23 },
+    { id: 5, name: 'Alice', role: 'Admin', age: 31 },
+    { id: 6, name: 'Bob', role: 'Editor', age: 27 },
+    { id: 7, name: 'Carol', role: 'Viewer', age: 23 },
+    { id: 8, name: 'Alice', role: 'Admin', age: 31 },
+    { id: 9, name: 'Bob', role: 'Editor', age: 27 },
+    { id: 0, name: 'Carol', role: 'Viewer', age: 23 }, 
   ];
 
-  data: any[] = [
-    { id: 1, kod: 'urun', aciklama: 'deneme', fiyat: 100 },
-    { id: 2, kod: 'urun2', aciklama: 'araba', fiyat: 200 },
-    { id: 3, kod: 'urun3', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 4, kod: 'urun4', aciklama: 'mehmet', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 10, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 11, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 12, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 5, kod: 'urun5', aciklama: 'bakır', fiyat: 300 },
-    { id: 6, kod: 'urun6', aciklama: 'altın', fiyat: 300 },
-    { id: 7, kod: 'urun7', aciklama: 'test', fiyat: 300 },
-    { id: 8, kod: 'urun8', aciklama: 'merrhaba', fiyat: 300 },
-    { id: 9, kod: 'urun9', aciklama: 'ibrahimaaaaaaaaa', fiyat: 300 },
-    { id: 1099, kod: 'urun10', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 1199, kod: 'urun11', aciklama: 'ibrahim', fiyat: 300 },
-    { id: 19999, kod: 'urun12', aciklama: 'ibrahim', fiyat: 300 },
+  columns = [
+    { header: 'ID', field: 'id', width: '80px', filterType: 'text', filterPlaceholder: 'ID' },
+    { header: 'Name', field: 'name', filterType: 'text', filterPlaceholder: 'Search name', inputStatus: false },
+    {
+      header: 'Role',
+      field: 'role',
+      filterType: 'dropdown',
+      filterPlaceholder: 'Role',
+      filterData: [
+        { value: 'admin', text: 'Admin' },
+        { value: 'editor', text: 'Editor' },
+        { value: 'viewer', text: 'Viewer' },
+      ]
+    },
+    { header: 'Age', field: 'age', filterType: 'text', filterPlaceholder: 'Age' },
+    { header: 'Edit', field: 'edit', click: (row: any) => alert('Edit: ' + row.name) },
+    { header: 'Delete', field: 'delete', click: (row: any) => alert('Delete: ' + row.name) },
   ];
-
-  dropdownCol: DataType[] = [
-    { text: 'urun2', value: 1, active: true },
-    { text: 'urun4', value: 2 },
-    { text: 'urun8', value: 3 },
-
-    { text: 'urun4', value: 2 },
-    { text: 'urun8', value: 3 },
-    { text: 'urun4', value: 2 },
-    { text: 'urun8', value: 3 },
-    { text: 'urun4', value: 2 },
-    { text: 'urun8', value: 3 },
-    { text: 'urun4', value: 2 },
-    { text: 'urun8', value: 3 },
-  ];
-
-  denemeInput: any;
-  testInput: any;
-
-  col: IColumnType[] = [
-    {
-      field: 'id',
-      header: 'numara',
-      width: '10%',
-      filterType: FilterTypeEnum.text,
-      inputStatus: true,
-      filterPlaceholder: 'id',
-    },
-    {
-      field: 'kod',
-      header: 'kod',
-      width: '40%',
-      filterData: this.dropdownCol,
-      filterPlaceholder: 'seç',
-      filterType: FilterTypeEnum.multiDropdown,
-    },
-    {
-      field: 'aciklama',
-      header: 'aciklama',
-      width: '40%',
-      filterType: FilterTypeEnum.text,
-    },
-    {
-      field: 'fiyat',
-      header: 'fiyat',
-      width: '10%',
-      filterType: FilterTypeEnum.text,
-    },
-    {
-      field: 'edit',
-      header: 'Düzenle',
-      width: '5%',
-      click: this.duzenleTableClick.bind(this),
-    },
-    {
-      field: 'delete',
-      header: 'Sil',
-      width: '5%',
-      click: this.silTableClick.bind(this),
-    },
-  ];
-
-  public PersonelForm!: FormGroup;
-  formsObject: IForm[] = [
-    {
-      controlname: 'telefon',
-      class: 'col-12 col-lg-6 col-md-8',
-      header: 'evet',
-      type: FormTypeEnum.checkboxList,
-      data: this.dropdownCol,
-      onChange: this.dropdownMethod.bind(this)
-    },
-    {
-      class: 'col-12 col-lg-6 col-md-8',
-      header: 'deneme',
-      type: FormTypeEnum.dropdown,
-      data: this.dropdownCol,
-      isMultiType: true,
-      onChange: this.dropdownMethod.bind(this),
-    }, {
-      controlname: 'test',
-      class: 'col-12 col-lg-6 col-md-8',
-      header: 'Ad',
-      type: FormTypeEnum.text,
-      disabled: false,
-    },
-    {
-      controlname: 'pc',
-      class: 'col-12 col-lg-6 col-md-8',
-      header: 'telefon',
-      type: FormTypeEnum.number,
-      max: 50,
-      min: 20,
-      disabled: false,
-    },
-    {
-      class: 'col-12',
-      header: 'tikla',
-      type: FormTypeEnum.button,
-      click: this.button.bind(this),
-    },
-  ];
-
-  constructor(private formBuilder: FormBuilder, private layoutService:LayoutService) {
-    this.PersonelForm = this.formBuilder.group({
-      test: new FormControl(""),
-      telefon: new FormControl({ value: true, disabled: false }, [
-        Validators.required,
-      ]),
-      pc: new FormControl(0),
-      ibrahim: new FormControl(""),
-    });
-  }
-
-  button() {
-    this.show ? (this.show = false) : (this.show = true);
-    console.log(this.PersonelForm.value, this.deneme);
-  }
-
-  message: MessageType = new MessageType();
-  show: boolean = false;
-  tikla() {
-    this.message.detail = 'dsadsadas';
-    this.message.header = 'Deneme';
-    this.message.status = MessageEnum.error;
-    this.show ? (this.show = false) : (this.show = true);
-  }
-
-  deneme: boolean = true;
-  testDene: string = '';
-  tarih: Date = new Date();
-
-  dropdownMethod(e: any) {
-    console.log(e);
-
-  }
-  duzenleTableClick(e: any) {
-    console.log(e);
-
-    this.show = true;
-  }
-
-  silTableClick(e: any) { }
-  maskdene() {
-    console.log(this.testDene, 'test dene');
-  }
-
-  goster() {
-    console.log(this.PersonelForm.value);
-  }
+  
+  onHeaderButton() { alert('Add new'); }
+  onCheckList(selected: any[]) { console.log('Selected rows:', selected); }
 }

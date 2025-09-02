@@ -1,43 +1,104 @@
-// .checkboxListContainer {
-//   border-radius: 8px;
-//   width: 100%;
-//   height: auto;
-//   background-color: white;
-//   box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+/* ======================================================
+   checkboxList.component.scss
+   shadcn/ui-like checkbox list (header + actions + grid)
+====================================================== */
 
-//   hr {
-//     display: block;
-//     border: 0;
-//     border-top: 1px solid whitesmoke;
-//     margin: 0;
-//     padding: 0;
-//   }
+.checkboxListContainer {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: .5rem;                     /* rounded-lg */
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  padding: 0.75rem;                         /* p-3 */
+}
 
-//   .checkboxHeader {
-//     display: flex;
-//     justify-content: space-between;
-//     flex-wrap: wrap;
-//     padding: 0.4% 1.4%;
-//     background-color: white;
-//     align-items: center;
-//     width: 100%;
-//     border-top-right-radius: 8px;
-//     border-top-left-radius: 8px;
-//     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+/* Header row */
+.checkboxHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .25rem .25rem .5rem .25rem;
+  border-bottom: 1px solid var(--border);
 
-//     h4 {
-//       font-size: 150%;
-//     }
+  h4 {
+    margin: 0;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
 
-//     div {
-//       display: flex;
-//       align-items: center;
-//       flex-direction: row;
-//     }
-//   }
+  .actions {
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
 
-//   .checkboxInput {
-//     padding: 0.8%;
-//     padding-top: 0.2%;
-//   }
-// }
+    app-button.iconButton {
+      padding: .25rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: .375rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--muted);
+
+      &:hover {
+        background: var(--hover);
+        color: var(--text);
+      }
+
+      &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+      }
+
+      i {
+        font-size: .9rem;
+      }
+    }
+  }
+}
+
+/* Grid area */
+.grid {
+  padding: .75rem .25rem .25rem;
+}
+
+/* Each checkbox item looks like a subtle card row */
+.grid .col-6,
+.grid .col-sm-5,
+.grid .col-md-4,
+.grid .col-lg-2 {
+  padding: .25rem;
+}
+
+app-checkbox {
+  display: block;
+  width: 100%;
+  padding: .5rem .625rem;                  /* py-2 px-2.5 */
+  border: 1px solid var(--border);
+  border-radius: .375rem;                  /* rounded-md */
+  background: var(--bg);
+  transition: background-color .12s ease, border-color .12s ease, box-shadow .12s ease;
+
+  /* hover like shadcn command item */
+  &:hover { background: var(--hover); }
+
+  /* when checked (using :has if destekli; yoksa Angular class ekleyebilirsin) */
+  &:has(input.checkboxInput:checked) {
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--ring);
+  }
+}
+
+/* Fallback: checked’e class ile vurmak istersen (opsiyonel)
+.checked-item {
+  border-color: var(--color-primary) !important;
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px var(--ring) !important;
+}
+*/

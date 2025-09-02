@@ -31,17 +31,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              {
-                "input": "src/assets/theme/style/light.scss",
-                "bundleName": "light",
-                "inject": false
-              },
-              {
-                "input": "src/assets/theme/style/green.scss",
-                "bundleName": "green",
-                "inject": false
-              }
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": []
           },

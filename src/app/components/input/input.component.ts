@@ -18,7 +18,7 @@ export class InputComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean = false;
   @Input() placeholder: string = '';
 
-  value: any;
+  value: string ="";
 
   constructor(@Self() @Optional() private ngControl: NgControl) {
     if (this.ngControl) {

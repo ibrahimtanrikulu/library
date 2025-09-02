@@ -1,6 +1,6 @@
 <button [type]="type" (click)="onClick()" [disabled]="isDisabled" [class]="cssClass" [style]="style">
   <ng-container *ngIf="icon">
-    <i [class]="icon" [style]="label ? 'margin-right: 6px;' : ''"></i>
-  </ng-container>
-  <span>{{ label }}</span>
+  <i [class]="icon"></i>
+</ng-container>
+<span *ngIf="label">{{ label }}</span>
 </button>

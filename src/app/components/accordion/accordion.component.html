@@ -1,9 +1,18 @@
-<div class="accordion-container">
-    <div class="tabView" (click)="open()">
-        <span class="tabViewHeader">
-            {{ header }}</span>
+<div class="accordion" [class.open]="show">
+  <div class="accordion-item">
+    <button
+      class="accordion-trigger"
+      type="button"
+      (click)="open()"
+      [attr.aria-expanded]="show"
+    >
+      <span class="accordion-header">{{ header }}</span> 
+      <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 15.5c-.26 0-.51-.1-.71-.29l-5-5a1.003 1.003 0 0 1 1.42-1.42L12 12.59l4.29-4.3a1.003 1.003 0 0 1 1.42 1.42l-5 5c-.2.19-.45.29-.71.29z"/>
+      </svg>
+    </button> 
+    <div class="accordion-content" *ngIf="show">
+      <ng-content></ng-content>
     </div>
-    <div class="body" *ngIf="show">
-        <ng-content></ng-content>
-    </div>
+  </div>
 </div>

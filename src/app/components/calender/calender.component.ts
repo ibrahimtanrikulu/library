@@ -15,12 +15,7 @@ import { CalendarDay } from 'src/app/Class/CalendarDay';
   templateUrl: './calender.component.html',
   styleUrls: ['./calender.component.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    ChunkPipe, 
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, ChunkPipe, FormsModule, ReactiveFormsModule],
 })
 export class CalenderComponent implements ControlValueAccessor, OnInit {
   @Input() disabled: boolean = false;
@@ -30,18 +25,18 @@ export class CalenderComponent implements ControlValueAccessor, OnInit {
 
   public calendar: CalendarDay[] = [];
   public monthNames = [
-    'Ocak',
-    'Subat',
-    'Mart',
-    'Nisan',
-    'Mayıs',
-    'Haziran',
-    'Temmuz',
-    'Ağustos',
-    'Eylül',
-    'Ekim',
-    'Kasım',
-    'Aralık',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
   public displayMonth: string = '';
   public displayYears: any;
@@ -128,6 +123,6 @@ export class CalenderComponent implements ControlValueAccessor, OnInit {
     this.onTouched = fn;
   }
 
-  onChange(e: any) { }
-  onTouched() { }
+  onChange(e: any) {}
+  onTouched() {}
 }

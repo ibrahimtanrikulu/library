@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ButtonComponent } from '../button/button.component';
@@ -35,4 +35,16 @@ import { IForm } from 'src/app/Interfaces/Form';
 export class FormComponent {
   @Input() formGroup!: FormGroup;
   @Input() forms!: IForm[];
+
+  /** 🔧 Ayarlanabilir düzen */
+  @Input() columns: number = 2;                 // kaç kolon
+  @Input() gap: string = '1rem';                // boşluk (örn. .75rem, 12px)
+  @Input() maxWidth: string = '920px';          // form kart genişliği
+  @Input() collapseOnMobile: boolean = true;    // mobilde 1 kolona düşür
+
+  /** Host’a CSS değişkeni basıyoruz – SCSS bunları kullanacak */
+  @HostBinding('style.--form-columns') get _cols() { return String(this.columns); }
+  @HostBinding('style.--form-gap') get _gap() { return this.gap; }
+  @HostBinding('style.--form-max') get _max() { return this.maxWidth; }
+  @HostBinding('class.form--no-collapse') get _noCollapse() { return !this.collapseOnMobile; }
 }

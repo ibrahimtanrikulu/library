@@ -1,9 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { CheckboxComponent } from '../checkbox/checkbox.component';
-import { SearchFilterPipe } from 'src/app/Pipe/search.pipe';
-import { ButtonComponent } from '../button/button.component';
+import { FormsModule } from '@angular/forms'; 
+import { SearchFilterPipe } from 'src/app/Pipe/search.pipe'; 
 import { DataType } from 'src/app/Interfaces/DataType';
 
 @Component({
@@ -26,26 +24,28 @@ export class DropdownComponent implements OnInit {
   dropdownStatus = false;
   localData: DataType[] = [];
   text = '';
-  filterText = ""
+  filterText = '';
 
   ngOnInit() {
     this.localData = this.data;
   }
 
+  toggle() {
+    if (this.disabled) return;
+    this.dropdownStatus = !this.dropdownStatus;
+  }
+
   change(value: DataType) {
     if (this.multiStatus) {
       const index = this.list.indexOf(value);
-      if (index === -1) {
-        this.list.push(value);
-      } else {
-        this.list.splice(index, 1);
-      }
+      index === -1 ? this.list.push(value) : this.list.splice(index, 1);
+      this.text = this.list.map(m => m.text).join(', ');
     } else {
       this.list = [value];
+      this.text = value?.text ?? '';
       this.dropdownStatus = false;
     }
     this.selectedList.emit(this.list);
-    this.text = this.list.map(m => m.text).join(',');
     this.localData = this.data;
   }
 
@@ -54,5 +54,9 @@ export class DropdownComponent implements OnInit {
     this.localData = this.data;
     this.text = '';
     this.selectedList.emit(this.list);
+  } 
+  @HostListener('document:click')
+  closeOnOutsideClick() {
+    if (this.dropdownStatus) this.dropdownStatus = false;
   }
 }

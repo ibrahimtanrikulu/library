@@ -1,85 +1,161 @@
+/* ======================================================
+   toast.component.scss
+   shadcn/ui-like Toast (top-right, variants, subtle motion)
+   Uses your existing HTML structure & classes.
+   No TS/template change required.
+====================================================== */
+
 .container {
-    position: absolute;
-    z-index: 99999;
-    top: 2%;
-    right: 2%;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
-        rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
-        rgba(179, 55, 55, 0.07) 0px 16px 16px;
-    animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-    width: 300px;
-    height: 70px;
-    opacity: 0.7;
-    border-radius: 8px;
-    display: flex;
+  position: fixed; /* more robust than absolute for viewport toasts */
+  top: 1rem;
+  right: 1rem;
+  z-index: 99999;
 
-    .line {
-        width: 6px;
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-        height: 100%;
-    }
+  display: flex;
+  align-items: stretch;
+  gap: .75rem;
 
-    .icon {
-        flex: 3;
-        display: flex;
-        justify-content: center;
-        padding-top: 10px;
-        font-size: 100%;
-    }
+  min-width: 280px;
+  max-width: min(92vw, 420px);
 
-    .content {
+  background: var(--toast-bg, #fff);
+  color: var(--toast-fg, #0f172a);
+  border: 1px solid var(--toast-border, #e2e8f0);
+  border-radius: .5rem; /* rounded-lg */
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,0.1),
+    0 4px 6px -4px rgba(0,0,0,0.1);
 
-        flex: 8;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+  /* remove global opacity; let colors read clearly */
+  opacity: 1;
 
-        h3 {
-            font-size: 100%;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
+  /* enter animation */
+  animation: toast-in .18s cubic-bezier(.16,1,.3,1) both;
 
-        p {
-            font-size: 100%;
-        }
-    }
-
-    .close {
-        flex: 2;
-        display: flex;
-        justify-content: center;
-        padding-top: 8px;
-        font-size: 100%;
-
-        i {
-            cursor: pointer;
-        }
-    }
+  /* internal spacing */
+  padding: .75rem .75rem;
 }
 
-//animation
-@-webkit-keyframes scale-up-center {
-    0% {
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5);
-    }
-
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
+/* Accent line */
+.container .line {
+  width: 4px;
+  border-radius: .5rem 0 0 .5rem;
+  background: var(--toast-accent, #4F46E5);
 }
 
-@keyframes scale-up-center {
-    0% {
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5);
-    }
+/* Icon */
+.container .icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: .125rem;
+  font-size: 1rem;
+}
+.container .icon i {
+  color: var(--toast-accent, #4F46E5);
+}
 
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-    }
+/* Content */
+.container .content {
+  display: flex;
+  flex-direction: column;
+  gap: .125rem;
+  min-width: 0; /* allow text wrap */
+
+  h3 {
+    margin: 0;
+    font-size: .875rem;     /* text-sm */
+    font-weight: 600;
+    color: var(--toast-title, var(--toast-fg, #0f172a));
+    line-height: 1.25rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: .8125rem;    /* ~text-[13px] */
+    color: var(--toast-body, color-mix(in oklab, var(--toast-fg, #0f172a) 82%, #0000));
+    line-height: 1.125rem;
+    word-break: break-word;
+  }
+}
+
+/* Close */
+/* Close */
+.container .close {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;   /* 🔥 en sağa yasla */
+ margin-left: auto;
+  i {
+    font-size: 1rem;
+    line-height: 1;
+    color: color-mix(in oklab, var(--toast-accent, #4F46E5) 86%, #0000);
+    cursor: pointer;
+    padding: .25rem;
+    border-radius: .375rem;
+    transition: background-color .15s ease, transform .05s ease;
+
+    &:hover { background: rgba(2,6,23,.06); }
+    &:active { transform: translateY(.5px); }
+  }
+}
+
+/* =========================
+   Variants (maps to your ngClass)
+   ========================= */
+/* Success (green) */
+.success {
+  --toast-accent: #16a34a;                 /* green-600 */
+  --toast-bg: #ecfdf5;                     /* green-50 */
+  --toast-fg: #064e3b;                     /* green-900 */
+  --toast-border: #bbf7d0;                 /* green-200 */
+}
+/* Info (indigo/blue) */
+.info {
+  --toast-accent: #4f46e5;                 /* indigo-600 */
+  --toast-bg: #eef2ff;                     /* indigo-50 */
+  --toast-fg: #1e1b4b;                     /* indigo-950 */
+  --toast-border: #c7d2fe;                 /* indigo-200 */
+}
+/* Warning (amber) */
+.warning {
+  --toast-accent: #f59e0b;                 /* amber-500 */
+  --toast-bg: #fffbeb;                     /* amber-50 */
+  --toast-fg: #78350f;                     /* amber-900 */
+  --toast-border: #fde68a;                  /* amber-200 */
+}
+/* Error (red) */
+.error {
+  --toast-accent: #ef4444;                 /* red-500 */
+  --toast-bg: #fef2f2;                     /* red-50 */
+  --toast-fg: #7f1d1d;                     /* red-900 */
+  --toast-border: #fecaca;                 /* red-200 */
+}
+
+/* =========================
+   Animations
+   ========================= */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-6px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* (Optional) auto-out animation class you can toggle before removing */
+.toast-out {
+  animation: toast-out .16s ease forwards;
+}
+@keyframes toast-out {
+  to { opacity: 0; transform: translateY(-6px) scale(.98); }
+}
+
+/* =========================
+   Responsive tweaks
+   ========================= */
+@media (max-width: 640px) {
+  .container {
+    left: .75rem;
+    right: .75rem;
+    min-width: auto;
+    max-width: none;
+  }
 }

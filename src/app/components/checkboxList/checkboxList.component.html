@@ -1,19 +1,43 @@
 <div class="checkboxListContainer">
   <div class="checkboxHeader">
     <h4>{{ checkboxHeader }}</h4>
-    <div>
-      <app-button *ngIf="!multiCheckbox && !selectedAllChecked" (click)="selectedAll()"
-        icon="fa-solid fa-check"></app-button>
-      <app-button *ngIf="!multiCheckbox && selectedAllChecked" (click)="selectedAllRemoveList()"
-        icon="fa-solid fa-xmark"></app-button>
-      <app-button *ngIf="!multiCheckbox" (click)="reverse()" style="margin: 4px" [isDisabled]="!selectedList"
-        icon="fa-brands fa-rev"></app-button>
+
+    <div class="actions">
+      <!-- Select All -->
+      <app-button
+        *ngIf="!multiCheckbox && !selectedAllChecked"
+        (btnClick)="selectedAll()"
+        cssClass="iconButton"
+        icon="fa-solid fa-check">
+      </app-button>
+
+      <!-- Clear All -->
+      <app-button
+        *ngIf="!multiCheckbox && selectedAllChecked"
+        (btnClick)="selectedAllRemoveList()"
+        cssClass="iconButton"
+        icon="fa-solid fa-xmark">
+      </app-button>
+
+      <!-- Reverse Selection -->
+      <app-button
+        *ngIf="!multiCheckbox"
+        (btnClick)="reverse()"
+        cssClass="iconButton"
+        [isDisabled]="selectedList.length === 0"
+        icon="fa-solid fa-arrows-rotate">
+      </app-button>
     </div>
   </div>
+
   <div class="grid">
     <div *ngFor="let item of checkboxData" class="col-6 col-sm-5 col-md-4 col-lg-2">
-      <app-checkbox placeholder="{{ item.text }}" (click)="selection(item.value)" [styleInput]="'margin-top: 2%'"
-        [checked]="selectedList.includes(item.value)"></app-checkbox>
+      <app-checkbox
+        placeholder="{{ item.text }}"
+        (click)="selection(item.value)"
+        [styleInput]="'margin-top: 2%'"
+        [checked]="selectedList.includes(item.value)">
+      </app-checkbox>
     </div>
   </div>
 </div>
