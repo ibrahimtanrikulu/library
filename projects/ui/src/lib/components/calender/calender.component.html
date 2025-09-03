@@ -1,0 +1,56 @@
+<div class="headerContainer">
+  <input
+    class="globalInput"
+    style="cursor: pointer"
+    type="text"
+    [value]="value | date : 'dd/MM/yy'"
+    [disabled]="disabled"
+    (click)="show ? (show = false) : (show = true)"
+    (input)="onChange($any($event.target).value)"
+    (blur)="onTouched()"
+  />
+
+  <div class="iconContainer">
+    <i class="fa-regular fa-calendar-days"></i>
+  </div>
+</div>
+<div class="modal" *ngIf="show">
+  <div class="header">
+    <i class="fa-solid fa-angle-left" (click)="decreaseMonth()"></i>
+    <p>{{ displayMonth }} {{ displayYears }}</p>
+    <!-- <p style="cursor: pointer" (click)="setCurrentMonth()">Now</p> -->
+    <i class="fa-solid fa-angle-right" (click)="increaseMonth()"></i>
+  </div>
+  <hr />
+
+  <table class="calendar-table" *ngIf="calendar">
+    <thead>
+      <tr>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of calendar | chunk : 7; let i = index">
+        <td
+          class="calendar-day"
+          [ngClass]="{ 'past-date': c.isPastDate, today: c.isToday }"
+          *ngFor="let c of row; let j = index"
+          (click)="selectedDate(c)"
+        >
+          <div
+            class="calendar-day-header"
+            [ngClass]="{ 'blue-date': c.isToday }"
+          >
+            <p>{{ c.date.getDate() }}</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

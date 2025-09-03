@@ -1,0 +1,32 @@
+<ng-container
+  *ngIf="show && (message.status === 'success' || message.status === 'info' || message.status === 'warning' || message.status === 'error' || message.status === 'custom')">
+
+  <div [ngClass]="{
+        'container': true,
+        'success': message.status === 'success',
+        'info': message.status === 'info',
+        'warning': message.status === 'warning',
+        'error': message.status === 'error',
+        'custom': message.status === 'custom'
+    }">
+
+    <!-- Accent line -->
+    <div class="line" [ngStyle]="{'background-color': getColor(message.status)}"></div>
+
+    <!-- Icon -->
+    <div class="icon">
+      <i [ngClass]="getIconClass(message.status)" [ngStyle]="{'color': getAccent(message.status)}"></i>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <h3 [ngStyle]="{'color': getAccent(message.status)}">{{message.header}}</h3>
+      <p>{{message.detail}}</p>
+    </div>
+
+    <!-- Close button -->
+    <div class="close">
+      <i class="fa-solid fa-xmark" [ngStyle]="{'color': getAccent(message.status)}" (click)="show = false"></i>
+    </div>
+  </div>
+</ng-container>

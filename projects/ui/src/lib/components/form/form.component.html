@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="formGroup">
+    <div class="grid">
+      <ng-container *ngFor="let item of forms">
+        <div [class]="item.class ? item.class : 'col-12'" style="padding: 0.4% 1%">
+          <ng-container [ngSwitch]="item.type">
+            <app-input *ngSwitchCase="'text'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}"></app-input>
+            <app-inputnumber *ngSwitchCase="'number'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}" [Max]="item.max || 99999" [Min]="item.min || 0"></app-inputnumber>
+            <app-inputpassword *ngSwitchCase="'password'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}"></app-inputpassword>
+            <app-textarea *ngSwitchCase="'textarea'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}" [Rows]="item.rows"></app-textarea>
+            <app-checkbox *ngSwitchCase="'checkbox'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}"></app-checkbox>
+            <app-switch *ngSwitchCase="'switch'" formControlName="{{ item.controlname }}"
+              placeholder="{{item.header}}"></app-switch>
+            <app-dropdown *ngSwitchCase="'dropdown'" [data]="item.data || []" [multiStatus]="item.isMultiType || false"
+              [searchStatus]="item.search || false" (selectedList)="item.onChange && item.onChange($event)"
+              placeholder="{{item.header}}" [disabled]="item.disabled || false"></app-dropdown>
+            <app-checkboxlist *ngSwitchCase="'checkboxList'" [checkboxData]="item.data || []"
+              checkboxHeader="{{item.header}}" [multiCheckbox]="item.isMultiType || false"
+              (selectedData)="item.onChange && item.onChange($event)"></app-checkboxlist>
+            <app-button *ngSwitchCase="'button'" (btnClick)="item.click && item.click()" label="{{item.header}}"
+              [isDisabled]="formGroup.invalid"></app-button>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </form>
+</div>

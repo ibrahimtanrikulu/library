@@ -1,0 +1,102 @@
+/* ======================================================
+   card.component.scss
+   shadcn/ui Card look & feel (uses global design tokens)
+   Requires :root tokens in styles.scss:
+     --bg, --text, --border, --hover
+====================================================== */
+
+.card-container {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 1px 2px rgba(0,0,0,.05); /* shadow-sm */
+  overflow: hidden; /* clip header radius */
+  width: 100%;
+
+  /* Optional: hover elevation (add .card--hover on container) */
+  &.card--hover:hover {
+    box-shadow:
+      0 10px 15px -3px rgba(0,0,0,0.1),
+      0 4px 6px -4px rgba(0,0,0,0.1);
+  }
+}
+
+/* Header = shadcn CardHeader (p-6) */
+.card-container .header {
+  padding: 1.5rem; /* p-6 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem; /* space-y-1 */
+
+  h3 {
+    margin: 0;
+    font-weight: 600;          /* font-semibold */
+    font-size: 1.25rem;        /* text-xl (close to shadcn title) */
+    line-height: 1.2;          /* leading-tight */
+    letter-spacing: -0.01em;   /* tracking-tight-ish */
+  }
+
+  /* Optional subtext if you add <p class="description"> */
+  .description {
+    margin: 0;
+    color: var(--color-secondary); /* muted-foreground */
+    font-size: 0.875rem;           /* text-sm */
+  }
+}
+
+/* Divider matches shadcn border color */
+.card-container > hr {
+  margin: 0;
+  border: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Body = shadcn CardContent (p-6 pt-0 when separated by hr) */
+.card-container .body {
+  padding: 1.5rem; /* p-6 */
+}
+
+/* Optional footer block if you add it later:
+   <div class="footer">...</div>
+   (p-6 pt-0 similar to shadcn)
+*/
+.card-container .footer {
+  padding: 1.5rem;
+  padding-top: 0; /* pt-0 if preceded by hr or content */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Variant: ghost (no border/background; content sits on page bg) */
+.card-container.card--ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* Compact density variant (add .card--dense) */
+.card-container.card--dense .header,
+.card-container.card--dense .body,
+.card-container.card--dense .footer {
+  padding: 1rem; /* p-4 */
+}
+
+/* Interactive states for clickable cards (optional)
+   Add .card--interactive when wrapping entire card in a click handler
+*/
+.card-container.card--interactive {
+  transition: box-shadow .15s ease, transform .05s ease, background-color .15s ease;
+  cursor: pointer;
+}
+.card-container.card--interactive:hover {
+  background: var(--hover);
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,0.08),
+    0 4px 6px -4px rgba(0,0,0,0.08);
+}
+.card-container.card--interactive:active {
+  transform: translateY(0.5px);
+}

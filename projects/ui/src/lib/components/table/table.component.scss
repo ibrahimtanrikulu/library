@@ -1,0 +1,302 @@
+/* ======================================================
+   table.component.scss — Polished DataTable (shadcn vibe++)
+   Uses :root tokens:
+   --bg --text --muted --border --hover --ring --color-primary
+====================================================== */
+
+/* ---- Add bar (optional action button) ---- */
+.addContainer {
+  width: 100%;
+  margin-bottom: .75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  padding: .5rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+
+  .buttonGenislik { width: auto; }
+}
+
+/* ---- Card shell ---- */
+.container {
+  --tbl-radius: .75rem;
+  --tbl-cell-py: .625rem;  /* cell vertical padding */
+  --tbl-cell-px: .875rem;  /* cell horizontal padding */
+
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--tbl-radius);
+  overflow: hidden;
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,.06),
+    0 4px 6px -4px rgba(0,0,0,.04);
+
+  /* Header strip */
+  .headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: .75rem .875rem;
+    background: var(--hover);
+    border-bottom: 1px solid var(--border);
+
+    h3 {
+      margin: 0;
+      font-weight: 600;
+      font-size: .975rem;
+      color: var(--text);
+      letter-spacing: .2px;
+    }
+
+    .globalInput {
+      height: 2.25rem;
+      border: 1px solid var(--border);
+      border-radius: .375rem;
+      background: var(--bg);
+      color: var(--text);
+      padding: 0 .625rem;
+      outline: 0;
+      transition: border-color .15s, box-shadow .15s;
+      min-width: 200px;
+    }
+    .globalInput:focus {
+      border-color: var(--color-primary);
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+
+    /* ghost icon button */
+    .iconButton button {
+      height: 2.25rem; width: 2.25rem;
+      border-radius: .375rem;
+      background: transparent;
+      border: 1px solid transparent;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: background-color .12s ease;
+      i { font-size: .95rem; color: var(--muted); }
+    }
+    .iconButton button:hover { background: var(--bg); }
+  }
+
+  /* Pagination bar */
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem .5rem;
+    padding: .625rem;
+    background: var(--hover);
+    border-top: 1px solid var(--border);
+
+    a {
+      min-width: 2rem; height: 2rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: .375rem;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 0 .5rem;
+      transition: background-color .12s, color .12s;
+      user-select: none;
+    }
+    a:hover { background: var(--bg); color: var(--text); }
+
+    .paginationActive {
+      color: var(--bg);
+      background: var(--color-primary);
+      border-bottom: none;
+      font-weight: 600;
+    }
+
+    .paginationContainer {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      margin-left: .25rem;
+
+      span {
+        display: inline-flex; align-items: center;
+        gap: .375rem;
+        padding: .375rem .5rem;
+        border: 1px solid var(--border);
+        border-radius: .375rem;
+        background: var(--bg);
+        color: var(--muted);
+      }
+
+      .paginationList {
+        display: none;
+        position: absolute;
+        top: calc(100% + .25rem);
+        right: 0;
+        z-index: 10;
+        width: 4.5rem;
+        max-height: 12rem;
+        overflow-y: auto;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: .375rem;
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,.1);
+      }
+      &:hover .paginationList { display: block; }
+
+      .paginationList li {
+        padding: .375rem .5rem;
+        cursor: pointer;
+        color: var(--text);
+      }
+      .paginationList li:hover { background: var(--hover); }
+    }
+  }
+}
+
+/* ---- Table ---- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg);
+}
+
+/* THEAD – sticky, clean */
+thead .header th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: .8rem;
+  text-align: left;
+  padding: var(--tbl-cell-py) var(--tbl-cell-px);
+
+  .iconFilterContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+/* Filter row */
+thead .filterHeader th {
+  background: var(--hover);
+  padding: .5rem var(--tbl-cell-px);
+  border-bottom: 1px solid var(--border);
+
+  .iconFilterContainer { display: flex; align-items: center; gap: .5rem; }
+
+  .globalInput,
+  app-dropdown .dropdown-container .headerContainer .globalInput {
+    height: 2.25rem;
+    border: 1px solid var(--border);
+    border-radius: .375rem;
+    background: var(--bg);
+    color: var(--text);
+    padding: 0 .625rem;
+    outline: 0;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .globalInput:focus {
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--ring);
+  }
+}
+
+/* TBODY – tidy rows, subtle hover */
+tbody tr {
+  background: var(--bg);
+  transition: background-color .12s ease;
+  will-change: background-color;
+}
+tbody tr:hover { background: var(--hover); }
+
+tbody td {
+  padding: var(--tbl-cell-py) var(--tbl-cell-px);
+  font-size: .875rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+
+  /* mobile label (hidden on desktop) */
+  > span { display: none; }
+}
+
+/* Checkbox column more consistent width */
+thead .header th.iconFilterContainer,
+thead .header th:first-child,
+tbody td:first-child {
+  white-space: nowrap;
+}
+
+/* Cell actions (buttons inside) */
+tbody td div app-button button {
+  height: 2rem; min-width: 2rem;
+  padding: 0 .5rem;
+  border-radius: .375rem;
+}
+
+/* Text overflow helpers in cells */
+tbody td p, tbody td div > p {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- Optional styles (toggle with host classes) ---- */
+
+/* Zebra stripes */
+:host(.table--zebra) tbody tr:nth-child(odd) {
+  background: color-mix(in oklab, var(--hover) 55%, #0000);
+}
+:host(.table--zebra) tbody tr:hover { background: var(--hover); }
+
+/* Compact density */
+:host(.table--compact) .container {
+  --tbl-cell-py: .45rem;
+  --tbl-cell-px: .75rem;
+}
+
+/* Cozy density (default is comfy) */
+:host(.table--cozy) .container {
+  --tbl-cell-py: .55rem;
+  --tbl-cell-px: .8rem;
+}
+
+/* ---- Responsive: turn rows into cards on small screens ---- */
+@media (max-width: 767px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  thead tr { position: absolute; top: -9999px; left: -9999px; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    padding-top: .5rem;
+    border-radius: .5rem;
+  }
+
+  tbody td {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border: none;
+    padding: .5rem var(--tbl-cell-px);
+
+    > span {
+      display: block;
+      flex: 1;
+      text-transform: uppercase;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+    > div { flex: 2; width: 100%; }
+    > div button { width: 100%; }
+  }
+}

@@ -1,0 +1,146 @@
+/* ======================================================
+   listbox.component.scss
+   shadcn/ui-like Listbox (Command/List + Checkbox + Drag)
+   Uses global tokens in :root:
+     --bg --text --muted --border --hover --ring
+     --color-primary --color-secondary
+====================================================== */
+
+/* Wrapper (scroll height is passed inline via [ngStyle]) */
+.listBoxContainer {
+  position: relative;
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.05),
+    0 0 0 1px rgba(255,255,255,.6) inset;
+  overflow-y: auto;
+
+  /* nice scrolling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.listBoxContainer::-webkit-scrollbar { width: 8px; height: 8px; }
+.listBoxContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+.listBoxContainer::-webkit-scrollbar-track { background: transparent; }
+
+/* =========================
+   Search area (optional)
+   ========================= */
+.searchContainer {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .75rem;     /* py-2 px-3 */
+  border-bottom: 1px solid var(--border);
+
+  > div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      font-size: .9rem;
+      color: var(--color-secondary);
+    }
+  }
+
+  .globalInput {
+    height: 2.25rem;         /* h-9 */
+    padding: .25rem .5rem;
+    border: 1px solid var(--border);
+    border-radius: .375rem;  /* rounded-md */
+    background: var(--bg);
+    color: var(--text);
+    font-size: .875rem;
+    line-height: 1.25rem;
+    transition: box-shadow .15s, border-color .15s, background-color .15s;
+    &:hover { background: #fcfdff; }
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+  }
+}
+
+/* =========================
+   List items
+   ========================= */
+.listContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .5rem .75rem;     /* py-2 px-3 */
+  margin: .25rem .5rem;      /* compact spacing */
+  border-radius: .375rem;    /* rounded-md */
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color .12s ease,
+    color .12s ease,
+    transform .05s ease;
+
+  /* hover state like shadcn command item */
+  &:hover {
+    background: var(--hover);
+  }
+
+  /* pressed micro interaction */
+  &:active {
+    transform: translateY(.5px);
+  }
+
+  /* content column */
+  .col-11 { display: flex; align-items: center; gap: .5rem; }
+
+  /* drag handle / right icon */
+  .iconContainer {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary);
+    i { font-size: .95rem; line-height: 1; }
+  }
+}
+
+/* When an item is “active/checked”, give subtle tint.
+   (Works nicely if your checkbox binds to item.active) */
+.listContainer:has(input.checkboxInput:checked) {
+  background: color-mix(in oklab, var(--color-primary) 12%, transparent);
+  /* fallback if :has unsupported — harmless */
+}
+
+/* =========================
+   CDK Drag styles
+   ========================= */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: .375rem;
+  background: var(--bg);
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,0.1),
+    0 4px 6px -4px rgba(0,0,0,0.1);
+}
+
+.cdk-drag-placeholder {
+  opacity: .4;
+}
+
+/* Better grab cursor when drag is enabled */
+[cdkDrag] {
+  cursor: grab;
+}
+[cdkDrag]:active {
+  cursor: grabbing;
+}

@@ -1,0 +1,8 @@
+<div class="container">
+  <label class="switch">
+    <input class="checkbox" type="checkbox" id="{{ placeholder }}" [ngModel]="checked" [disabled]="disabled"
+      (ngModelChange)="onModelChange($event)" [style]="styleInput" />
+    <div class="slider"></div>
+  </label>
+  <label class="text" *ngIf="placeholder" for="{{ placeholder }}" [style]="styleLabel">{{ placeholder }}</label>
+</div>

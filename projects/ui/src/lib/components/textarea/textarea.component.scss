@@ -1,0 +1,90 @@
+/* ======================================================
+   textarea.component.scss
+   shadcn/ui-like Textarea with floating label
+   Uses global tokens: --bg --text --muted --border --hover --ring
+====================================================== */
+
+$height-min: 5rem;                 /* ~80px */
+$radius: .375rem;                  /* rounded-md */
+$label-float-font: .75rem;         /* ~12px */
+$label-normal-font: .875rem;       /* text-sm */
+
+.form__group {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+/* Textarea */
+.form__field {
+  display: block;
+  width: 100%;
+  min-height: $height-min;
+  padding: 1.5rem .75rem .75rem .75rem;   /* 🔥 extra top space so text starts below label */
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  background: var(--bg);
+  color: var(--text);
+  font-size: $label-normal-font;
+  line-height: 1.4;
+  box-sizing: border-box;
+  resize: vertical;
+  transition:
+    background-color .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease;
+
+  &:hover { background: #fcfdff; }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--ring);
+  }
+
+  /* floating label logic */
+  &::placeholder { color: transparent; }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .6;
+    background: #f8fafc; /* slate-50 */
+  }
+
+  /* When empty (placeholder shown) → label sits inside, larger */
+  &:placeholder-shown ~ .form__label {
+    top: 1rem;
+    left: .75rem;
+    font-size: $label-normal-font;
+    color: var(--muted);
+  }
+}
+
+/* Label (floating) */
+.form__label {
+  position: absolute;
+  top: .45rem;                     /* floated position */
+  left: .75rem;
+  padding: 0 .25rem;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: $label-float-font;
+  line-height: 1;
+  pointer-events: none;
+  transition:
+    color .15s ease,
+    top .15s ease,
+    font-size .15s ease,
+    background-color .15s ease;
+}
+
+/* Focused or has value → keep label floated & highlight */
+.form__field:focus ~ .form__label,
+.form__field:not(:placeholder-shown) ~ .form__label {
+  top: .45rem;
+  left: .75rem;
+  font-size: $label-float-font;
+  color: var(--color-primary);
+}

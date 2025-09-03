@@ -1,0 +1,60 @@
+/* ======================================================
+   spinner.component.scss
+   shadcn-like loader (ring pulse) using design tokens
+   HTML değişmiyor: <span class="loader"></span>
+   Renk: var(--color-primary)
+====================================================== */
+
+.loader {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3rem;              /* default: 48px (compact) */
+  height: 3rem;
+
+  /* Spacing isteğe bağlı — container’da ortalamak için */
+  margin: 1rem 0;
+}
+
+/* Halkalar */
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  animation: pulse-out 1.2s ease-in-out infinite;
+  /* shadcn hissi için primary bazlı glow */
+  filter: drop-shadow(0 0 .6rem color-mix(in oklab, var(--color-primary) 55%, transparent));
+}
+
+/* İç halka (shrink/pulse-in) */
+.loader::before {
+  box-shadow: inset 0 0 0 .4rem var(--color-primary);
+  animation-name: pulse-in;
+}
+
+/* Dış halka (expand/pulse-out) */
+.loader::after {
+  /* içten 6px küçült */
+  inset: .375rem;
+  box-shadow: 0 0 0 0 var(--color-primary);
+}
+
+/* Keyframes */
+@keyframes pulse-in {
+  0%   { box-shadow: inset 0 0 0 .4rem var(--color-primary); opacity: 1; }
+  60%,
+  100% { box-shadow: inset 0 0 0 0 var(--color-primary);     opacity: 0; }
+}
+@keyframes pulse-out {
+  0%,
+  40%  { box-shadow: 0 0 0 0 var(--color-primary); opacity: 0; }
+  100% { box-shadow: 0 0 0 .4rem var(--color-primary);        opacity: 1; }
+}
+
+/* ===== Boyut varyantları (opsiyonel) ===== */
+.loader.spinner--sm { width: 2rem; height: 2rem; }   /* 32px */
+.loader.spinner--lg { width: 4rem; height: 4rem; }   /* 64px */

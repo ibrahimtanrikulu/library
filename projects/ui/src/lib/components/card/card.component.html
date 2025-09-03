@@ -1,0 +1,12 @@
+<div class="card-container"> 
+  <ng-container *ngIf="header && header.trim().length > 0">
+    <div class="header">
+      <h3>{{ header }}</h3>
+    </div>
+    <hr />
+  </ng-container>
+
+  <div class="body">
+    <ng-content></ng-content>
+  </div>
+</div>

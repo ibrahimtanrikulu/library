@@ -1,0 +1,34 @@
+{
+  "name": "@ibrahimtanrikulu/ui", 
+  "version": "1.0.0",
+  "description": "Angular 19 Standalone UI Component Library",
+  "author": "İbrahim Tanrıkulu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibrahimtanrikulu/angular-ui-library.git"
+  },
+  "keywords": [
+    "angular",
+    "angular-components",
+    "ui-library",
+    "standalone",
+    "forms",
+    "table",
+    "toast",
+    "dialog"
+  ],
+  "peerDependencies": {
+    "@angular/animations": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "rxjs": "^7.8.0",
+    "zone.js": "^0.15.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

@@ -1,0 +1,99 @@
+/* ======================================================
+   inputnumber.component.scss
+   Aynı input.component.scss tasarımı (shadcn-like, floating label)
+   + number input için spin button gizleme
+====================================================== */
+
+$form-height: 2.25rem;         /* h-9 ~ 36px */
+$radius: .375rem;              /* rounded-md */
+$label-float-font: .70rem;     /* ~text-[11px] */
+$label-normal-font: .875rem;   /* text-sm */
+
+.form__group {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+/* ---- Input (trigger) ---- */
+.form__field {
+  width: 100%;
+  height: $form-height;
+  padding: .5rem .75rem;       
+  border: 1px solid var(--border);
+  border-radius: $radius;
+  background: var(--bg);
+  color: var(--text);
+  font-size: $label-normal-font;
+  line-height: 1.25rem;
+  outline: 0;
+  transition:
+    box-shadow .15s ease,
+    border-color .15s ease,
+    background-color .15s ease;
+
+  &:hover { background: #fcfdff; }
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--ring);
+  }
+
+  &::placeholder { color: transparent; }
+
+  &:disabled {
+    background: #f8fafc;      
+    color: #94a3b8;           
+    cursor: not-allowed;
+  }
+
+  &:placeholder-shown ~ .form__label {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: $label-normal-font;
+    color: var(--color-secondary);
+    padding: 0 .25rem;
+    background: transparent;
+  }
+
+  /* 🔥 Number input spin butonlarını gizle */
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  &[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+}
+
+/* ---- Label (floating) ---- */
+.form__label {
+  position: absolute;
+  left: .75rem;                
+  top: .375rem;                
+  transform: translateY(0);
+  color: var(--color-secondary);
+  background: var(--bg);       
+  padding: 0 .25rem;           
+  font-size: $label-float-font;
+  line-height: 1;
+  pointer-events: none;
+  transition: all .15s ease;
+}
+
+.form__field:focus ~ .form__label {
+  color: var(--color-primary);
+}
+
+.form__field:not(:placeholder-shown) ~ .form__label {
+  top: .375rem;
+  transform: translateY(0);
+  font-size: $label-float-font;
+}
+
+.form__field:disabled ~ .form__label {
+  color: #94a3b8;
+}

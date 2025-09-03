@@ -1,0 +1,123 @@
+/* ======================================================
+   Dialog (shadcn-like) — uses global design tokens
+   Requires in :root:
+     --bg --text --muted --border --hover --ring
+     --color-primary --color-primary-hover
+====================================================== */
+
+/* Backdrop */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  /* shadcn overlay */
+  background: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+  backdrop-filter: saturate(100%) blur(2px);
+
+  /* fade-in */
+  animation: dlg-fade-in .15s ease-out both;
+
+  /* Center the modal */
+  display: grid;
+  place-items: center;
+  padding: 1rem; /* safe space on small screens */
+}
+
+/* Panel */
+.modal {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;                    /* rounded-xl */
+  box-shadow:
+    0 24px 48px rgba(2, 6, 23, 0.18),        /* deep */
+    0 8px 16px rgba(2, 6, 23, 0.12);
+  overflow: hidden;
+
+  /* default responsive sizing (overridable by [ngStyle]) */
+  width: min(560px, 92vw);
+  max-height: 85vh;
+
+  /* scale-in (shadcn presence) */
+  animation: dlg-scale-in .18s cubic-bezier(.16,1,.3,1) both;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header (like shadcn CardHeader) */
+.modal .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: 1rem 1.25rem;                     /* p-4 px-5 */
+  border-bottom: 1px solid var(--border);
+
+  h3 {
+    margin: 0;
+    font-weight: 600;                        /* semibold */
+    font-size: 1.125rem;                     /* text-lg */
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  /* Close button */
+  i {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    padding: .375rem;                        /* 6px hit area */
+    border-radius: .5rem;
+    transition: background-color .15s, color .15s, transform .05s;
+
+    &:hover {
+      background: var(--hover);
+      color: var(--text);
+    }
+    &:active { transform: translateY(.5px); }
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+  }
+}
+
+/* Content */
+.modal .content {
+  padding: 1rem 1.25rem;                     /* p-4 px-5 */
+  overflow: auto;                             /* scroll long content */
+}
+
+/* Divider */
+.modal > hr {
+  margin: 0;
+  border: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---------- Size helpers (optional) ---------- */
+/* Add class="dialog--sm" or "dialog--lg" on .modal if you prefer presets */
+.modal.dialog--sm { width: min(440px, 92vw); }
+.modal.dialog--lg { width: min(720px, 92vw); }
+
+/* ---------- Animations ---------- */
+@keyframes dlg-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes dlg-scale-in {
+  from { opacity: 0; transform: translateY(4px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Dark-mode friendly (optional) ----------
+   If you later add a dark theme, these will adapt nicely.
+   .dark .modal { background: #0b1220; color: #e5e7eb; border-color: #1f2937; }
+   .dark .modal .header i:hover { background: rgba(255,255,255,.06); }
+*/

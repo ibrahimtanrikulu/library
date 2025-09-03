@@ -1,0 +1,115 @@
+/* ======================================================
+   checkbox.component.scss (shadcn-like, pixel-perfect)
+   Needs global tokens in :root:
+   --bg --text --muted --border --hover --ring --color-primary
+====================================================== */
+
+/* wrapper */
+.checkboxContainer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* 8px */
+  color: var(--text);
+  line-height: 1;
+
+  label {
+    margin: 0;
+    font-size: 0.875rem;   /* text-sm */
+    line-height: 1.25rem;  /* 20px */
+    cursor: pointer;
+    user-select: none;
+  }
+}
+
+/* the box */
+.checkboxInput {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 1rem;   /* 16px */
+  height: 1rem;  /* 16px */
+  border-radius: 0.25rem;        /* 4px = rounded-sm */
+  border: 2px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  outline: none;
+  display: inline-block;
+  vertical-align: middle;
+  transition:
+    background-color .15s ease,
+    border-color .15s ease,
+    box-shadow .15s ease,
+    transform .05s ease;
+
+  /* subtle hover like shadcn */
+  &:hover { background: var(--hover); }
+
+  /* focus ring */
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--ring);
+  }
+
+  /* pressed micro interaction */
+  &:active:not(:disabled) { transform: translateY(.5px); }
+
+  /* disabled */
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  /* CHECKED STATE
+     Use a crisp check via SVG mask to avoid blur/aliasing.
+  */
+  &:checked {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  &:checked::before {
+    content: "";
+    position: absolute;
+    inset: 0;                 /* center mask within the box */
+    margin: auto;
+    width: 0.75rem;           /* 12px */
+    height: 0.75rem;          /* 12px */
+    background: #fff;         /* check color */
+    /* svg check mask (rounded, crisp stroke) */
+    -webkit-mask: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'>\
+  <path d='M5 10.5l3 3 7-7' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/>\
+</svg>") center / contain no-repeat;
+            mask: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'>\
+  <path d='M5 10.5l3 3 7-7' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/>\
+</svg>") center / contain no-repeat;
+  }
+
+  /* INDETERMINATE (optional class) */
+  &.indeterminate {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+  &.indeterminate::before {
+    content: "";
+    position: absolute;
+    width: 0.7rem;     /* 11px */
+    height: 2px;
+    background: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* label when disabled */
+.checkboxInput:disabled + label {
+  color: #94a3b8; /* slate-400 */
+  cursor: not-allowed;
+}
+
+/* size variants (optional) */
+.checkboxInput.checkbox--sm { width: .875rem; height: .875rem; border-width: 2px; }
+.checkboxInput.checkbox--lg { width: 1.125rem; height: 1.125rem; border-width: 2px; }

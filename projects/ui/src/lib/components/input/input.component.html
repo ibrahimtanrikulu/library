@@ -1,0 +1,5 @@
+<div class="form__group field" style="margin: 0;">
+  <input class="form__field" id="{{ placeholder }}" [placeholder]="placeholder" [value]="value" [disabled]="disabled"
+    (input)="onChange($any($event.target).value)" (blur)="onTouched()" type="text" />
+  <label *ngIf="placeholder" for="{{ placeholder }}" class="form__label">{{ placeholder }}</label>
+</div>
