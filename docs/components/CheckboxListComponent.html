@@ -1,0 +1,1197 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">library documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CheckboxListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/checkboxList/checkboxList.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>CheckboxList – A reusable list component that renders multiple checkboxes
+and provides selection utilities (select all, clear all, reverse selection).</p>
+<p><em>Features</em></p>
+<ul>
+<li>Renders checkboxes from an array of <code>DataType</code> objects</li>
+<li>Supports single or multiple selection mode</li>
+<li>Emits the currently selected values as an array of numbers</li>
+<li>Provides helper actions: select all, clear all, reverse selection</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Basic usage --&gt;
+&lt;app-checkboxlist
+  [checkboxData]=&quot;options&quot;
+  checkboxHeader=&quot;Select items&quot;
+  [multiCheckbox]=&quot;false&quot;
+  (selectedData)=&quot;onSelected($event)&quot;&gt;
+&lt;/app-checkboxlist&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Multi-select with header --&gt;
+&lt;app-checkboxlist
+  [checkboxData]=&quot;categories&quot;
+  checkboxHeader=&quot;Categories&quot;
+  [multiCheckbox]=&quot;true&quot;
+  (selectedData)=&quot;onCategoriesChanged($event)&quot;&gt;
+&lt;/app-checkboxlist&gt;</code></pre></div>
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-checkboxlist</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                                <code><a href="../components/ButtonComponent.html" target="_self" >ButtonComponent</a></code>
+                                <code><a href="../components/CheckboxComponent.html" target="_self" >CheckboxComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./checkboxList.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./checkboxList.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectedAllChecked" >selectedAllChecked</a>
+                            </li>
+                            <li>
+                                <a href="#selectedList" >selectedList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#emitSelectedData" >emitSelectedData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#reverse" >reverse</a>
+                            </li>
+                            <li>
+                                <a href="#selectedAll" >selectedAll</a>
+                            </li>
+                            <li>
+                                <a href="#selectedAllRemoveList" >selectedAllRemoveList</a>
+                            </li>
+                            <li>
+                                <a href="#selection" >selection</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkboxData" >checkboxData</a>
+                            </li>
+                            <li>
+                                <a href="#checkboxHeader" >checkboxHeader</a>
+                            </li>
+                            <li>
+                                <a href="#multiCheckbox" >multiCheckbox</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectedData" >selectedData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="checkboxData"></a>
+                        <b>checkboxData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DataType.html" target="_self" >DataType[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Array of checkbox items, each implementing <code>DataType</code> (label, value, etc.).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="checkboxHeader"></a>
+                        <b>checkboxHeader</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:47</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Optional header text displayed above the list.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="multiCheckbox"></a>
+                        <b>multiCheckbox</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:54</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Selection mode:</p>
+<ul>
+<li><code>true</code> → only one checkbox can be selected at a time</li>
+<li><code>false</code> → multiple checkboxes can be selected</li>
+</ul>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedData"></a>
+                        <b>selectedData</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:57</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the list of selected values whenever the selection changes.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emitSelectedData"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>emitSelectedData</b></span>
+                        <a href="#emitSelectedData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>emitSelectedData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits the current selection through the <code>selectedData</code> output.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reverse"></a>
+                    <span class="name">
+                        <span ><b>reverse</b></span>
+                        <a href="#reverse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>reverse()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Reverses the current selection (selected → unselected, unselected → selected).</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedAll"></a>
+                    <span class="name">
+                        <span ><b>selectedAll</b></span>
+                        <a href="#selectedAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectedAll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Selects all items in the list.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedAllRemoveList"></a>
+                    <span class="name">
+                        <span ><b>selectedAllRemoveList</b></span>
+                        <a href="#selectedAllRemoveList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectedAllRemoveList()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Clears the entire selection.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selection"></a>
+                    <span class="name">
+                        <span ><b>selection</b></span>
+                        <a href="#selection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selection(e: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles a single checkbox click.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The selected item’s numeric value</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedAllChecked"></a>
+                    <span class="name">
+                        <span ><b>selectedAllChecked</b></span>
+                        <a href="#selectedAllChecked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether &quot;Select All&quot; is currently active.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedList"></a>
+                    <span class="name">
+                        <span ><b>selectedList</b></span>
+                        <a href="#selectedList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/components/checkboxList/checkboxList.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Internally tracked list of selected item values.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnInit, Output } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { CheckboxComponent } from &#x27;../checkbox/checkbox.component&#x27;;
+import { ButtonComponent } from &#x27;../button/button.component&#x27;;
+import { DataType } from &#x27;src/app/Interfaces/DataType&#x27;;
+
+/**
+ * CheckboxList – A reusable list component that renders multiple checkboxes
+ * and provides selection utilities (select all, clear all, reverse selection).
+ *
+ * *Features*
+ * - Renders checkboxes from an array of &#x60;DataType&#x60; objects
+ * - Supports single or multiple selection mode
+ * - Emits the currently selected values as an array of numbers
+ * - Provides helper actions: select all, clear all, reverse selection
+ *
+ * @example
+ * &lt;!-- Basic usage --&gt;
+ * &lt;app-checkboxlist
+ *   [checkboxData]&#x3D;&quot;options&quot;
+ *   checkboxHeader&#x3D;&quot;Select items&quot;
+ *   [multiCheckbox]&#x3D;&quot;false&quot;
+ *   (selectedData)&#x3D;&quot;onSelected($event)&quot;&gt;
+ * &lt;/app-checkboxlist&gt;
+ *
+ * @example
+ * &lt;!-- Multi-select with header --&gt;
+ * &lt;app-checkboxlist
+ *   [checkboxData]&#x3D;&quot;categories&quot;
+ *   checkboxHeader&#x3D;&quot;Categories&quot;
+ *   [multiCheckbox]&#x3D;&quot;true&quot;
+ *   (selectedData)&#x3D;&quot;onCategoriesChanged($event)&quot;&gt;
+ * &lt;/app-checkboxlist&gt;
+ */
+@Component({
+  selector: &#x27;app-checkboxlist&#x27;,
+  templateUrl: &#x27;./checkboxList.component.html&#x27;,
+  styleUrls: [&#x27;./checkboxList.component.scss&#x27;],
+  standalone: true,
+  imports: [CommonModule, ButtonComponent, CheckboxComponent]
+})
+export class CheckboxListComponent implements OnInit {
+  /** Array of checkbox items, each implementing &#x60;DataType&#x60; (label, value, etc.). */
+  @Input() checkboxData: DataType[] &#x3D; [];
+
+  /** Optional header text displayed above the list. */
+  @Input() checkboxHeader &#x3D; &#x27;&#x27;;
+
+  /**
+   * Selection mode:
+   * - &#x60;true&#x60; → only one checkbox can be selected at a time
+   * - &#x60;false&#x60; → multiple checkboxes can be selected
+   */
+  @Input() multiCheckbox &#x3D; false;
+
+  /** Emits the list of selected values whenever the selection changes. */
+  @Output() selectedData &#x3D; new EventEmitter&lt;number[]&gt;();
+
+  /** Internally tracked list of selected item values. */
+  selectedList: number[] &#x3D; [];
+
+  /** Whether &quot;Select All&quot; is currently active. */
+  selectedAllChecked &#x3D; false;
+
+  ngOnInit(): void {}
+
+  /**
+   * Handles a single checkbox click.
+   * @param e The selected item’s numeric value
+   */
+  selection(e: number): void {
+    if (this.multiCheckbox) {
+      // Single-select mode → keep only the clicked item
+      this.selectedList &#x3D; [e];
+    } else {
+      // Multi-select mode → toggle the clicked item
+      const index &#x3D; this.selectedList.indexOf(e);
+      if (index &#x3D;&#x3D;&#x3D; -1) {
+        this.selectedList.push(e);
+      } else {
+        this.selectedList.splice(index, 1);
+      }
+    }
+    this.emitSelectedData();
+  }
+
+  /** Selects all items in the list. */
+  selectedAll(): void {
+    this.selectedList &#x3D; this.checkboxData.map((m) &#x3D;&gt; m.value);
+    this.selectedAllChecked &#x3D; true;
+    this.emitSelectedData();
+  }
+
+  /** Clears the entire selection. */
+  selectedAllRemoveList(): void {
+    this.selectedList &#x3D; [];
+    this.selectedAllChecked &#x3D; false;
+    this.emitSelectedData();
+  }
+
+  /** Reverses the current selection (selected → unselected, unselected → selected). */
+  reverse(): void {
+    const selectedValues &#x3D; [...this.selectedList];
+    this.selectedList &#x3D; this.checkboxData
+      .filter((m) &#x3D;&gt; !selectedValues.includes(m.value))
+      .map((m) &#x3D;&gt; m.value);
+    this.emitSelectedData();
+  }
+
+  /** Emits the current selection through the &#x60;selectedData&#x60; output. */
+  private emitSelectedData(): void {
+    this.selectedData.emit(this.selectedList);
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;checkboxListContainer&quot;&gt;
+  &lt;div class&#x3D;&quot;checkboxHeader&quot;&gt;
+    &lt;h4&gt;{{ checkboxHeader }}&lt;/h4&gt;
+
+    &lt;div class&#x3D;&quot;actions&quot;&gt;
+      &lt;!-- Select All --&gt;
+      &lt;app-button
+        *ngIf&#x3D;&quot;!multiCheckbox &amp;&amp; !selectedAllChecked&quot;
+        (btnClick)&#x3D;&quot;selectedAll()&quot;
+        cssClass&#x3D;&quot;iconButton&quot;
+        icon&#x3D;&quot;fa-solid fa-check&quot;&gt;
+      &lt;/app-button&gt;
+
+      &lt;!-- Clear All --&gt;
+      &lt;app-button
+        *ngIf&#x3D;&quot;!multiCheckbox &amp;&amp; selectedAllChecked&quot;
+        (btnClick)&#x3D;&quot;selectedAllRemoveList()&quot;
+        cssClass&#x3D;&quot;iconButton&quot;
+        icon&#x3D;&quot;fa-solid fa-xmark&quot;&gt;
+      &lt;/app-button&gt;
+
+      &lt;!-- Reverse Selection --&gt;
+      &lt;app-button
+        *ngIf&#x3D;&quot;!multiCheckbox&quot;
+        (btnClick)&#x3D;&quot;reverse()&quot;
+        cssClass&#x3D;&quot;iconButton&quot;
+        [isDisabled]&#x3D;&quot;selectedList.length &#x3D;&#x3D;&#x3D; 0&quot;
+        icon&#x3D;&quot;fa-solid fa-arrows-rotate&quot;&gt;
+      &lt;/app-button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;grid&quot;&gt;
+    &lt;div *ngFor&#x3D;&quot;let item of checkboxData&quot; class&#x3D;&quot;col-6 col-sm-5 col-md-4 col-lg-2&quot;&gt;
+      &lt;app-checkbox
+        placeholder&#x3D;&quot;{{ item.text }}&quot;
+        (click)&#x3D;&quot;selection(item.value)&quot;
+        [styleInput]&#x3D;&quot;&#x27;margin-top: 2%&#x27;&quot;
+        [checked]&#x3D;&quot;selectedList.includes(item.value)&quot;&gt;
+      &lt;/app-checkbox&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./checkboxList.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+   checkboxList.component.scss
+   shadcn/ui-like checkbox list (header + actions + grid)
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+.checkboxListContainer {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: .5rem;                     /* rounded-lg */
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  padding: 0.75rem;                         /* p-3 */
+}
+
+/* Header row */
+.checkboxHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .25rem .25rem .5rem .25rem;
+  border-bottom: 1px solid var(--border);
+
+  h4 {
+    margin: 0;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .actions {
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
+
+    app-button.iconButton {
+      padding: .25rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: .375rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--muted);
+
+      &amp;:hover {
+        background: var(--hover);
+        color: var(--text);
+      }
+
+      &amp;:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+      }
+
+      i {
+        font-size: .9rem;
+      }
+    }
+  }
+}
+
+/* Grid area */
+.grid {
+  padding: .75rem .25rem .25rem;
+}
+
+/* Each checkbox item looks like a subtle card row */
+.grid .col-6,
+.grid .col-sm-5,
+.grid .col-md-4,
+.grid .col-lg-2 {
+  padding: .25rem;
+}
+
+app-checkbox {
+  display: block;
+  width: 100%;
+  padding: .5rem .625rem;                  /* py-2 px-2.5 */
+  border: 1px solid var(--border);
+  border-radius: .375rem;                  /* rounded-md */
+  background: var(--bg);
+  transition: background-color .12s ease, border-color .12s ease, box-shadow .12s ease;
+
+  /* hover like shadcn command item */
+  &amp;:hover { background: var(--hover); }
+
+  /* when checked (using :has if destekli; yoksa Angular class ekleyebilirsin) */
+  &amp;:has(input.checkboxInput:checked) {
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 0 2px var(--bg),
+      0 0 0 4px var(--ring);
+  }
+}
+
+/* Fallback: checked’e class ile vurmak istersen (opsiyonel)
+.checked-item {
+  border-color: var(--color-primary) !important;
+  box-shadow:
+    0 0 0 2px var(--bg),
+    0 0 0 4px var(--ring) !important;
+}
+*/</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="checkboxListContainer">  <div class="checkboxHeader">    <h4>{{ checkboxHeader }}</h4>    <div class="actions">      <!-- Select All -->      <app-button        *ngIf="!multiCheckbox && !selectedAllChecked"        (btnClick)="selectedAll()"        cssClass="iconButton"        icon="fa-solid fa-check">      </app-button>      <!-- Clear All -->      <app-button        *ngIf="!multiCheckbox && selectedAllChecked"        (btnClick)="selectedAllRemoveList()"        cssClass="iconButton"        icon="fa-solid fa-xmark">      </app-button>      <!-- Reverse Selection -->      <app-button        *ngIf="!multiCheckbox"        (btnClick)="reverse()"        cssClass="iconButton"        [isDisabled]="selectedList.length === 0"        icon="fa-solid fa-arrows-rotate">      </app-button>    </div>  </div>  <div class="grid">    <div *ngFor="let item of checkboxData" class="col-6 col-sm-5 col-md-4 col-lg-2">      <app-checkbox        placeholder="{{ item.text }}"        (click)="selection(item.value)"        [styleInput]="\'margin-top: 2%\'"        [checked]="selectedList.includes(item.value)">      </app-checkbox>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'app-accordion'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalenderComponent', 'selector': 'app-calender'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CheckboxComponent', 'selector': 'app-checkbox'},{'name': 'CheckboxListComponent', 'selector': 'app-checkboxlist'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'DropdownComponent', 'selector': 'app-dropdown'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'InputnumberComponent', 'selector': 'app-inputnumber'},{'name': 'InputpasswordComponent', 'selector': 'app-inputpassword'},{'name': 'ListboxComponent', 'selector': 'app-listbox'},{'name': 'ProgesbarComponent', 'selector': 'app-progesbar'},{'name': 'ShowcaseComponent', 'selector': 'app-showcase'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'SwitchComponent', 'selector': 'app-switch'},{'name': 'TabComponent', 'selector': 'app-tab'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'TabviewComponent', 'selector': 'app-tabview'},{'name': 'TextareaComponent', 'selector': 'app-textarea'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [{'name': 'InputMaskDateDirective', 'selector': '[formControlName][appInputMask]'},{'name': 'PhoneDirective', 'selector': '[phoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'CheckboxListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CheckboxListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

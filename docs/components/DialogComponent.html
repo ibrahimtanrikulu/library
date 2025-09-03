@@ -1,0 +1,707 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">library documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DialogComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/dialog/dialog.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Dialog – A simple modal dialog container.</p>
+<p><em>Features</em></p>
+<ul>
+<li>Displays a header and projected content</li>
+<li>Configurable width and height</li>
+<li>Can be toggled open/closed via the <code>show</code> input</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Basic dialog --&gt;
+&lt;app-dialog
+  header=&quot;Confirm Action&quot;
+  [show]=&quot;isOpen&quot;
+  width=&quot;400px&quot;
+  height=&quot;200px&quot;&gt;
+  &lt;p&gt;Are you sure you want to continue?&lt;/p&gt;
+&lt;/app-dialog&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Fullscreen dialog --&gt;
+&lt;app-dialog
+  header=&quot;Image Viewer&quot;
+  [show]=&quot;true&quot;
+  width=&quot;100%&quot;
+  height=&quot;100%&quot;&gt;
+  &lt;img src=&quot;photo.jpg&quot; alt=&quot;Preview&quot; /&gt;
+&lt;/app-dialog&gt;</code></pre></div>
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dialog</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./dialog.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dialog.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#header" >header</a>
+                            </li>
+                            <li>
+                                <a href="#height" >height</a>
+                            </li>
+                            <li>
+                                <a href="#show" >show</a>
+                            </li>
+                            <li>
+                                <a href="#width" >width</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="header"></a>
+                        <b>header</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/dialog/dialog.component.ts:41</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Text displayed in the dialog header.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="height"></a>
+                        <b>height</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auto&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/dialog/dialog.component.ts:50</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Height of the dialog (e.g. &#39;300px&#39;, &#39;80%&#39;, &#39;auto&#39;).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="show"></a>
+                        <b>show</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/dialog/dialog.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Whether the dialog is visible (true) or hidden (false).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="width"></a>
+                        <b>width</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;auto&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/dialog/dialog.component.ts:47</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Width of the dialog (e.g. &#39;400px&#39;, &#39;50%&#39;, &#39;auto&#39;).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Component, Input } from &#x27;@angular/core&#x27;;
+
+/**
+ * Dialog – A simple modal dialog container.
+ *
+ * *Features*
+ * - Displays a header and projected content
+ * - Configurable width and height
+ * - Can be toggled open/closed via the &#x60;show&#x60; input
+ *
+ * @example
+ * &lt;!-- Basic dialog --&gt;
+ * &lt;app-dialog
+ *   header&#x3D;&quot;Confirm Action&quot;
+ *   [show]&#x3D;&quot;isOpen&quot;
+ *   width&#x3D;&quot;400px&quot;
+ *   height&#x3D;&quot;200px&quot;&gt;
+ *   &lt;p&gt;Are you sure you want to continue?&lt;/p&gt;
+ * &lt;/app-dialog&gt;
+ *
+ * @example
+ * &lt;!-- Fullscreen dialog --&gt;
+ * &lt;app-dialog
+ *   header&#x3D;&quot;Image Viewer&quot;
+ *   [show]&#x3D;&quot;true&quot;
+ *   width&#x3D;&quot;100%&quot;
+ *   height&#x3D;&quot;100%&quot;&gt;
+ *   &lt;img src&#x3D;&quot;photo.jpg&quot; alt&#x3D;&quot;Preview&quot; /&gt;
+ * &lt;/app-dialog&gt;
+ */
+@Component({
+  selector: &#x27;app-dialog&#x27;,
+  templateUrl: &#x27;./dialog.component.html&#x27;,
+  styleUrls: [&#x27;./dialog.component.scss&#x27;],
+  standalone: true,
+  imports: [CommonModule],
+})
+export class DialogComponent {
+  /** Text displayed in the dialog header. */
+  @Input() header: string &#x3D; &#x27;&#x27;;
+
+  /** Whether the dialog is visible (true) or hidden (false). */
+  @Input() show: boolean &#x3D; false;
+
+  /** Width of the dialog (e.g. &#x27;400px&#x27;, &#x27;50%&#x27;, &#x27;auto&#x27;). */
+  @Input() width: string &#x3D; &#x27;auto&#x27;;
+
+  /** Height of the dialog (e.g. &#x27;300px&#x27;, &#x27;80%&#x27;, &#x27;auto&#x27;). */
+  @Input() height: string &#x3D; &#x27;auto&#x27;;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;show&quot; class&#x3D;&quot;background&quot;&gt;
+  &lt;div class&#x3D;&quot;modal dialog--sm&quot; [ngStyle]&#x3D;&quot;{ width, height }&quot;&gt;
+    &lt;div class&#x3D;&quot;header&quot;&gt;
+      &lt;h3&gt;{{ header }}&lt;/h3&gt;
+      &lt;i class&#x3D;&quot;fa-solid fa-xmark&quot; (click)&#x3D;&quot;show &#x3D; false&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div class&#x3D;&quot;content&quot;&gt;
+      &lt;ng-content&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./dialog.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+   Dialog (shadcn-like) — uses global design tokens
+   Requires in :root:
+     --bg --text --muted --border --hover --ring
+     --color-primary --color-primary-hover
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+/* Backdrop */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  /* shadcn overlay */
+  background: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+  backdrop-filter: saturate(100%) blur(2px);
+
+  /* fade-in */
+  animation: dlg-fade-in .15s ease-out both;
+
+  /* Center the modal */
+  display: grid;
+  place-items: center;
+  padding: 1rem; /* safe space on small screens */
+}
+
+/* Panel */
+.modal {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;                    /* rounded-xl */
+  box-shadow:
+    0 24px 48px rgba(2, 6, 23, 0.18),        /* deep */
+    0 8px 16px rgba(2, 6, 23, 0.12);
+  overflow: hidden;
+
+  /* default responsive sizing (overridable by [ngStyle]) */
+  width: min(560px, 92vw);
+  max-height: 85vh;
+
+  /* scale-in (shadcn presence) */
+  animation: dlg-scale-in .18s cubic-bezier(.16,1,.3,1) both;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header (like shadcn CardHeader) */
+.modal .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: 1rem 1.25rem;                     /* p-4 px-5 */
+  border-bottom: 1px solid var(--border);
+
+  h3 {
+    margin: 0;
+    font-weight: 600;                        /* semibold */
+    font-size: 1.125rem;                     /* text-lg */
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  /* Close button */
+  i {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    padding: .375rem;                        /* 6px hit area */
+    border-radius: .5rem;
+    transition: background-color .15s, color .15s, transform .05s;
+
+    &amp;:hover {
+      background: var(--hover);
+      color: var(--text);
+    }
+    &amp;:active { transform: translateY(.5px); }
+    &amp;:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+  }
+}
+
+/* Content */
+.modal .content {
+  padding: 1rem 1.25rem;                     /* p-4 px-5 */
+  overflow: auto;                             /* scroll long content */
+}
+
+/* Divider */
+.modal &gt; hr {
+  margin: 0;
+  border: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ---------- Size helpers (optional) ---------- */
+/* Add class&#x3D;&quot;dialog--sm&quot; or &quot;dialog--lg&quot; on .modal if you prefer presets */
+.modal.dialog--sm { width: min(440px, 92vw); }
+.modal.dialog--lg { width: min(720px, 92vw); }
+
+/* ---------- Animations ---------- */
+@keyframes dlg-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes dlg-scale-in {
+  from { opacity: 0; transform: translateY(4px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Dark-mode friendly (optional) ----------
+   If you later add a dark theme, these will adapt nicely.
+   .dark .modal { background: #0b1220; color: #e5e7eb; border-color: #1f2937; }
+   .dark .modal .header i:hover { background: rgba(255,255,255,.06); }
+*/</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="show" class="background">  <div class="modal dialog--sm" [ngStyle]="{ width, height }">    <div class="header">      <h3>{{ header }}</h3>      <i class="fa-solid fa-xmark" (click)="show = false"></i>    </div>    <hr>    <div class="content">      <ng-content></ng-content>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'app-accordion'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalenderComponent', 'selector': 'app-calender'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CheckboxComponent', 'selector': 'app-checkbox'},{'name': 'CheckboxListComponent', 'selector': 'app-checkboxlist'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'DropdownComponent', 'selector': 'app-dropdown'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'InputnumberComponent', 'selector': 'app-inputnumber'},{'name': 'InputpasswordComponent', 'selector': 'app-inputpassword'},{'name': 'ListboxComponent', 'selector': 'app-listbox'},{'name': 'ProgesbarComponent', 'selector': 'app-progesbar'},{'name': 'ShowcaseComponent', 'selector': 'app-showcase'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'SwitchComponent', 'selector': 'app-switch'},{'name': 'TabComponent', 'selector': 'app-tab'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'TabviewComponent', 'selector': 'app-tabview'},{'name': 'TextareaComponent', 'selector': 'app-textarea'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [{'name': 'InputMaskDateDirective', 'selector': '[formControlName][appInputMask]'},{'name': 'PhoneDirective', 'selector': '[phoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'DialogComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DialogComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

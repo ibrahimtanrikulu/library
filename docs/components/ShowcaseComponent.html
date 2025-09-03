@@ -1,0 +1,1449 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">library documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ShowcaseComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/showcase/showcase.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-showcase</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                                <code><a href="../components/ButtonComponent.html" target="_self" >ButtonComponent</a></code>
+                                <code><a href="../components/InputComponent.html" target="_self" >InputComponent</a></code>
+                                <code><a href="../components/InputpasswordComponent.html" target="_self" >InputpasswordComponent</a></code>
+                                <code><a href="../components/InputnumberComponent.html" target="_self" >InputnumberComponent</a></code>
+                                <code><a href="../components/TextareaComponent.html" target="_self" >TextareaComponent</a></code>
+                                <code><a href="../components/DropdownComponent.html" target="_self" >DropdownComponent</a></code>
+                                <code><a href="../components/CheckboxComponent.html" target="_self" >CheckboxComponent</a></code>
+                                <code><a href="../components/SwitchComponent.html" target="_self" >SwitchComponent</a></code>
+                                <code><a href="../components/CardComponent.html" target="_self" >CardComponent</a></code>
+                                <code><a href="../components/TabviewComponent.html" target="_self" >TabviewComponent</a></code>
+                                <code><a href="../components/TabComponent.html" target="_self" >TabComponent</a></code>
+                                <code><a href="../components/TableComponent.html" target="_self" >TableComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./showcase.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./showcase.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#code" >code</a>
+                            </li>
+                            <li>
+                                <a href="#countries" >countries</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#open" >open</a>
+                            </li>
+                            <li>
+                                <a href="#selectedCountries" >selectedCountries</a>
+                            </li>
+                            <li>
+                                <a href="#tableCols" >tableCols</a>
+                            </li>
+                            <li>
+                                <a href="#tableData" >tableData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onDropdownChange" >onDropdownChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/app/showcase/showcase.component.ts:156</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDropdownChange"></a>
+                    <span class="name">
+                        <span ><b>onDropdownChange</b></span>
+                        <a href="#onDropdownChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDropdownChange(list: any[])</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/showcase/showcase.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>list</td>
+                                            <td>
+                                                        <code>any[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="code"></a>
+                    <span class="name">
+                        <span ><b>code</b></span>
+                        <a href="#code"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    button: &#x60;
+&lt;!-- Variants &amp; icon --&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--default&quot; label&#x3D;&quot;Save&quot;&gt;&lt;/app-button&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--destructive&quot; label&#x3D;&quot;Delete&quot;&gt;&lt;/app-button&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--outline&quot; label&#x3D;&quot;Outline&quot;&gt;&lt;/app-button&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--icon button--default&quot; icon&#x3D;&quot;fa-solid fa-pen&quot;&gt;&lt;/app-button&gt;
+&lt;!-- Disabled --&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--default&quot; [isDisabled]&#x3D;&quot;true&quot; label&#x3D;&quot;Disabled&quot;&gt;&lt;/app-button&gt;
+    &#x60;.trim(),
+
+    input: &#x60;
+&lt;!-- Text / Number / Password with floating labels --&gt;
+&lt;app-input placeholder&#x3D;&quot;Full Name&quot; [(ngModel)]&#x3D;&quot;fullName&quot;&gt;&lt;/app-input&gt;
+&lt;app-inputnumber placeholder&#x3D;&quot;Age&quot; [Min]&#x3D;&quot;0&quot; [Max]&#x3D;&quot;120&quot; [(ngModel)]&#x3D;&quot;age&quot;&gt;&lt;/app-inputnumber&gt;
+&lt;app-inputpassword placeholder&#x3D;&quot;Password&quot; [(ngModel)]&#x3D;&quot;password&quot;&gt;&lt;/app-inputpassword&gt;
+    &#x60;.trim(),
+
+    textarea: &#x60;
+&lt;!-- Shadcn-like textarea (same token palette as inputs) --&gt;
+&lt;app-textarea placeholder&#x3D;&quot;Bio&quot; [Rows]&#x3D;&quot;5&quot; [(ngModel)]&#x3D;&quot;bio&quot;&gt;&lt;/app-textarea&gt;
+    &#x60;.trim(),
+
+    dropdown: &#x60;
+&lt;!-- Single-select with search --&gt;
+&lt;app-dropdown
+  [data]&#x3D;&quot;countries&quot;
+  [multiStatus]&#x3D;&quot;false&quot;
+  [searchStatus]&#x3D;&quot;true&quot;
+  placeholder&#x3D;&quot;Country&quot;
+  (selectedList)&#x3D;&quot;onDropdownChange($event)&quot;&gt;
+&lt;/app-dropdown&gt;
+
+&lt;!-- Multi-select --&gt;
+&lt;app-dropdown
+  [data]&#x3D;&quot;countries&quot;
+  [multiStatus]&#x3D;&quot;true&quot;
+  [searchStatus]&#x3D;&quot;true&quot;
+  placeholder&#x3D;&quot;Countries&quot;
+  (selectedList)&#x3D;&quot;onDropdownChange($event)&quot;&gt;
+&lt;/app-dropdown&gt;
+    &#x60;.trim(),
+
+    checkbox: &#x60;
+&lt;!-- Accessible checkbox with label --&gt;
+&lt;app-checkbox [(ngModel)]&#x3D;&quot;agree&quot; placeholder&#x3D;&quot;I agree to terms&quot;&gt;&lt;/app-checkbox&gt;
+    &#x60;.trim(),
+
+    sw: &#x60;
+&lt;!-- iOS-like switch --&gt;
+&lt;app-switch [(ngModel)]&#x3D;&quot;news&quot; placeholder&#x3D;&quot;Subscribe to newsletter&quot;&gt;&lt;/app-switch&gt;
+    &#x60;.trim(),
+
+    card: &#x60;
+&lt;!-- Header is optional; if not provided, header area is hidden --&gt;
+&lt;app-card header&#x3D;&quot;Profile&quot;&gt;
+  &lt;p&gt;Card body content…&lt;/p&gt;
+&lt;/app-card&gt;
+
+&lt;app-card&gt;
+  &lt;p&gt;Header omitted — simple container card.&lt;/p&gt;
+&lt;/app-card&gt;
+    &#x60;.trim(),
+
+    tabs: &#x60;
+&lt;!-- Tabs with shadcn-like segmented control style --&gt;
+&lt;app-tabview&gt;
+  &lt;app-tab tabTitle&#x3D;&quot;Account&quot; [active]&#x3D;&quot;true&quot;&gt;
+    &lt;p&gt;Account content…&lt;/p&gt;
+  &lt;/app-tab&gt;
+  &lt;app-tab tabTitle&#x3D;&quot;Password&quot;&gt;
+    &lt;p&gt;Password content…&lt;/p&gt;
+  &lt;/app-tab&gt;
+&lt;/app-tabview&gt;
+    &#x60;.trim(),
+
+    table: &#x60;
+&lt;!-- Table with header tools, inline actions, pagination --&gt;
+&lt;app-table
+  [header]&#x3D;&quot;&#x27;Users&#x27;&quot;
+  [data]&#x3D;&quot;tableData&quot;
+  [column]&#x3D;&quot;tableCols&quot;
+  [globalSearchStatus]&#x3D;&quot;true&quot;
+  [paginationStatus]&#x3D;&quot;true&quot;
+  [scrollWidthStatus]&#x3D;&quot;true&quot;&gt;
+&lt;/app-table&gt;
+    &#x60;.trim(),
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/showcase/showcase.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countries"></a>
+                    <span class="name">
+                        <span ><b>countries</b></span>
+                        <a href="#countries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { text: &#x27;Germany&#x27;, value: 1 },
+    { text: &#x27;Türkiye&#x27;, value: 2 },
+    { text: &#x27;USA&#x27;, value: 3 }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/showcase/showcase.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/showcase/showcase.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="open"></a>
+                    <span class="name">
+                        <span ><b>open</b></span>
+                        <a href="#open"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    button: false,
+    input: false,
+    textarea: false,
+    dropdown: false,
+    checkbox: false,
+    switch: false,
+    card: false,
+    tabs: false,
+    table: false,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/showcase/showcase.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedCountries"></a>
+                    <span class="name">
+                        <span ><b>selectedCountries</b></span>
+                        <a href="#selectedCountries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/showcase/showcase.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tableCols"></a>
+                    <span class="name">
+                        <span ><b>tableCols</b></span>
+                        <a href="#tableCols"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { header: &#x27;ID&#x27;, field: &#x27;id&#x27;, width: &#x27;80px&#x27;, inputStatus: false },
+    { header: &#x27;Name&#x27;, field: &#x27;name&#x27;, inputStatus: false },
+    { header: &#x27;Role&#x27;, field: &#x27;role&#x27;, inputStatus: false },
+    { header: &#x27;Edit&#x27;, field: &#x27;edit&#x27;, inputStatus: false, click: (row:any)&#x3D;&gt;alert(&#x27;Edit &#x27;+row.name) },
+    { header: &#x27;Delete&#x27;, field: &#x27;delete&#x27;, inputStatus: false, click: (row:any)&#x3D;&gt;alert(&#x27;Delete &#x27;+row.name) },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/showcase/showcase.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tableData"></a>
+                    <span class="name">
+                        <span ><b>tableData</b></span>
+                        <a href="#tableData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { id: 1, name: &#x27;Jane&#x27;, role: &#x27;Admin&#x27; },
+    { id: 2, name: &#x27;John&#x27;, role: &#x27;User&#x27;  },
+    { id: 3, name: &#x27;Ava&#x27;,  role: &#x27;User&#x27;  },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/showcase/showcase.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+
+// Your standalone components
+import { ButtonComponent } from &#x27;../components/button/button.component&#x27;;
+import { InputComponent } from &#x27;../components/input/input.component&#x27;;
+import { InputpasswordComponent } from &#x27;../components/inputpassword/inputpassword.component&#x27;;
+import { InputnumberComponent } from &#x27;../components/inputnumber/inputnumber.component&#x27;;
+import { TextareaComponent } from &#x27;../components/textarea/textarea.component&#x27;;
+import { DropdownComponent } from &#x27;../components/dropdown/dropdown.component&#x27;;
+import { CheckboxComponent } from &#x27;../components/checkbox/checkbox.component&#x27;;
+import { SwitchComponent } from &#x27;../components/switch/switch.component&#x27;;
+import { CardComponent } from &#x27;../components/card/card.component&#x27;;
+import { TabviewComponent } from &#x27;../components/tabview/tabview.component&#x27;;
+import { TabComponent } from &#x27;../components/tabview/tab/tab.component&#x27;;
+import { TableComponent } from &#x27;../components/table/table.component&#x27;;
+
+@Component({
+  selector: &#x27;app-showcase&#x27;,
+  standalone: true,
+  imports: [
+    FormsModule, ReactiveFormsModule,
+    ButtonComponent, InputComponent, InputpasswordComponent, InputnumberComponent,
+    TextareaComponent, DropdownComponent, CheckboxComponent, SwitchComponent,
+    CardComponent, TabviewComponent, TabComponent, TableComponent
+  ],
+  templateUrl: &#x27;./showcase.component.html&#x27;,
+  styleUrls: [&#x27;./showcase.component.scss&#x27;]
+})
+export class ShowcaseComponent {
+  form: FormGroup;
+
+  // dropdown
+  countries &#x3D; [
+    { text: &#x27;Germany&#x27;, value: 1 },
+    { text: &#x27;Türkiye&#x27;, value: 2 },
+    { text: &#x27;USA&#x27;, value: 3 }
+  ];
+  selectedCountries: any[] &#x3D; [];
+
+  // table
+  tableData &#x3D; [
+    { id: 1, name: &#x27;Jane&#x27;, role: &#x27;Admin&#x27; },
+    { id: 2, name: &#x27;John&#x27;, role: &#x27;User&#x27;  },
+    { id: 3, name: &#x27;Ava&#x27;,  role: &#x27;User&#x27;  },
+  ];
+  tableCols &#x3D; [
+    { header: &#x27;ID&#x27;, field: &#x27;id&#x27;, width: &#x27;80px&#x27;, inputStatus: false },
+    { header: &#x27;Name&#x27;, field: &#x27;name&#x27;, inputStatus: false },
+    { header: &#x27;Role&#x27;, field: &#x27;role&#x27;, inputStatus: false },
+    { header: &#x27;Edit&#x27;, field: &#x27;edit&#x27;, inputStatus: false, click: (row:any)&#x3D;&gt;alert(&#x27;Edit &#x27;+row.name) },
+    { header: &#x27;Delete&#x27;, field: &#x27;delete&#x27;, inputStatus: false, click: (row:any)&#x3D;&gt;alert(&#x27;Delete &#x27;+row.name) },
+  ];
+
+  // code toggles
+  open &#x3D; {
+    button: false,
+    input: false,
+    textarea: false,
+    dropdown: false,
+    checkbox: false,
+    switch: false,
+    card: false,
+    tabs: false,
+    table: false,
+  };
+
+  // snippets (EN)
+  code &#x3D; {
+    button: &#x60;
+&lt;!-- Variants &amp; icon --&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--default&quot; label&#x3D;&quot;Save&quot;&gt;&lt;/app-button&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--destructive&quot; label&#x3D;&quot;Delete&quot;&gt;&lt;/app-button&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--outline&quot; label&#x3D;&quot;Outline&quot;&gt;&lt;/app-button&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--icon button--default&quot; icon&#x3D;&quot;fa-solid fa-pen&quot;&gt;&lt;/app-button&gt;
+&lt;!-- Disabled --&gt;
+&lt;app-button cssClass&#x3D;&quot;button button--default&quot; [isDisabled]&#x3D;&quot;true&quot; label&#x3D;&quot;Disabled&quot;&gt;&lt;/app-button&gt;
+    &#x60;.trim(),
+
+    input: &#x60;
+&lt;!-- Text / Number / Password with floating labels --&gt;
+&lt;app-input placeholder&#x3D;&quot;Full Name&quot; [(ngModel)]&#x3D;&quot;fullName&quot;&gt;&lt;/app-input&gt;
+&lt;app-inputnumber placeholder&#x3D;&quot;Age&quot; [Min]&#x3D;&quot;0&quot; [Max]&#x3D;&quot;120&quot; [(ngModel)]&#x3D;&quot;age&quot;&gt;&lt;/app-inputnumber&gt;
+&lt;app-inputpassword placeholder&#x3D;&quot;Password&quot; [(ngModel)]&#x3D;&quot;password&quot;&gt;&lt;/app-inputpassword&gt;
+    &#x60;.trim(),
+
+    textarea: &#x60;
+&lt;!-- Shadcn-like textarea (same token palette as inputs) --&gt;
+&lt;app-textarea placeholder&#x3D;&quot;Bio&quot; [Rows]&#x3D;&quot;5&quot; [(ngModel)]&#x3D;&quot;bio&quot;&gt;&lt;/app-textarea&gt;
+    &#x60;.trim(),
+
+    dropdown: &#x60;
+&lt;!-- Single-select with search --&gt;
+&lt;app-dropdown
+  [data]&#x3D;&quot;countries&quot;
+  [multiStatus]&#x3D;&quot;false&quot;
+  [searchStatus]&#x3D;&quot;true&quot;
+  placeholder&#x3D;&quot;Country&quot;
+  (selectedList)&#x3D;&quot;onDropdownChange($event)&quot;&gt;
+&lt;/app-dropdown&gt;
+
+&lt;!-- Multi-select --&gt;
+&lt;app-dropdown
+  [data]&#x3D;&quot;countries&quot;
+  [multiStatus]&#x3D;&quot;true&quot;
+  [searchStatus]&#x3D;&quot;true&quot;
+  placeholder&#x3D;&quot;Countries&quot;
+  (selectedList)&#x3D;&quot;onDropdownChange($event)&quot;&gt;
+&lt;/app-dropdown&gt;
+    &#x60;.trim(),
+
+    checkbox: &#x60;
+&lt;!-- Accessible checkbox with label --&gt;
+&lt;app-checkbox [(ngModel)]&#x3D;&quot;agree&quot; placeholder&#x3D;&quot;I agree to terms&quot;&gt;&lt;/app-checkbox&gt;
+    &#x60;.trim(),
+
+    sw: &#x60;
+&lt;!-- iOS-like switch --&gt;
+&lt;app-switch [(ngModel)]&#x3D;&quot;news&quot; placeholder&#x3D;&quot;Subscribe to newsletter&quot;&gt;&lt;/app-switch&gt;
+    &#x60;.trim(),
+
+    card: &#x60;
+&lt;!-- Header is optional; if not provided, header area is hidden --&gt;
+&lt;app-card header&#x3D;&quot;Profile&quot;&gt;
+  &lt;p&gt;Card body content…&lt;/p&gt;
+&lt;/app-card&gt;
+
+&lt;app-card&gt;
+  &lt;p&gt;Header omitted — simple container card.&lt;/p&gt;
+&lt;/app-card&gt;
+    &#x60;.trim(),
+
+    tabs: &#x60;
+&lt;!-- Tabs with shadcn-like segmented control style --&gt;
+&lt;app-tabview&gt;
+  &lt;app-tab tabTitle&#x3D;&quot;Account&quot; [active]&#x3D;&quot;true&quot;&gt;
+    &lt;p&gt;Account content…&lt;/p&gt;
+  &lt;/app-tab&gt;
+  &lt;app-tab tabTitle&#x3D;&quot;Password&quot;&gt;
+    &lt;p&gt;Password content…&lt;/p&gt;
+  &lt;/app-tab&gt;
+&lt;/app-tabview&gt;
+    &#x60;.trim(),
+
+    table: &#x60;
+&lt;!-- Table with header tools, inline actions, pagination --&gt;
+&lt;app-table
+  [header]&#x3D;&quot;&#x27;Users&#x27;&quot;
+  [data]&#x3D;&quot;tableData&quot;
+  [column]&#x3D;&quot;tableCols&quot;
+  [globalSearchStatus]&#x3D;&quot;true&quot;
+  [paginationStatus]&#x3D;&quot;true&quot;
+  [scrollWidthStatus]&#x3D;&quot;true&quot;&gt;
+&lt;/app-table&gt;
+    &#x60;.trim(),
+  };
+
+  constructor(fb: FormBuilder) {
+    this.form &#x3D; fb.group({
+      fullName: [&#x27;&#x27;],
+      age: [25],
+      password: [&#x27;&#x27;],
+      bio: [&#x27;&#x27;],
+      agree: [false],
+      news: [true]
+    });
+  }
+
+  onDropdownChange(list: any[]) {
+    this.selectedCountries &#x3D; list;
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;docs&quot;&gt;
+  &lt;!-- Sidebar --&gt;
+  &lt;aside class&#x3D;&quot;docs__nav&quot;&gt;
+    &lt;h1&gt;UI Library&lt;/h1&gt;
+    &lt;p class&#x3D;&quot;muted&quot;&gt;A lightweight Angular component kit styled like shadcn/ui.&lt;/p&gt;
+    &lt;nav&gt;
+      &lt;a href&#x3D;&quot;#button&quot;&gt;Button&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#input&quot;&gt;Input / Number / Password&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#textarea&quot;&gt;Textarea&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#dropdown&quot;&gt;Dropdown&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#checkbox&quot;&gt;Checkbox&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#switch&quot;&gt;Switch&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#card&quot;&gt;Card&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#tabs&quot;&gt;Tabs&lt;/a&gt;
+      &lt;a href&#x3D;&quot;#table&quot;&gt;Table&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+
+  &lt;!-- Content --&gt;
+  &lt;main class&#x3D;&quot;docs__content&quot;&gt;
+
+    &lt;!-- BUTTON --&gt;
+    &lt;section id&#x3D;&quot;button&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Button&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Interactive&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;
+        Buttons trigger an action. Variants follow shadcn/ui semantics (default, outline, destructive, ghost, link).
+        Use &lt;code&gt;button--icon&lt;/code&gt; for icon-only buttons and pass a Font Awesome class via &lt;code&gt;icon&lt;/code&gt;.
+      &lt;/p&gt;
+
+      &lt;ul class&#x3D;&quot;bullets&quot;&gt;
+        &lt;li&gt;&lt;strong&gt;When to use:&lt;/strong&gt; Primary actions, form submit, icon-only actions.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Features:&lt;/strong&gt; Keyboard focus ring, disabled state, size presets (sm, lg), icon spacing.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Accessibility:&lt;/strong&gt; Real &lt;code&gt;&amp;lt;button&amp;gt;&lt;/code&gt; elements; labels are required for non-icon usage.&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-button cssClass&#x3D;&quot;button button--default&quot; label&#x3D;&quot;Save&quot;&gt;&lt;/app-button&gt;
+        &lt;app-button cssClass&#x3D;&quot;button button--destructive&quot; label&#x3D;&quot;Delete&quot;&gt;&lt;/app-button&gt;
+        &lt;app-button cssClass&#x3D;&quot;button button--outline&quot; label&#x3D;&quot;Outline&quot;&gt;&lt;/app-button&gt;
+        &lt;app-button cssClass&#x3D;&quot;button button--icon button--default&quot; icon&#x3D;&quot;fa-solid fa-pen&quot;&gt;&lt;/app-button&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.button &#x3D; !open.button&quot;
+              [innerText]&#x3D;&quot;open.button ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.button&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.button&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- INPUTS --&gt;
+    &lt;section id&#x3D;&quot;input&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Input • Number • Password&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Forms&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;
+        Floating-label inputs styled with the same token palette. Keep labels short and meaningful.
+        Numbers enforce min/max; password input hides the value.
+      &lt;/p&gt;
+
+      &lt;ul class&#x3D;&quot;bullets&quot;&gt;
+        &lt;li&gt;&lt;strong&gt;Features:&lt;/strong&gt; Floating label, focus ring, disabled state, consistent spacing.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Accessibility:&lt;/strong&gt; Labels are linked via &lt;code&gt;for&lt;/code&gt;/&lt;code&gt;id&lt;/code&gt;; placeholder is not the label.&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;div class&#x3D;&quot;demo demo--grid3&quot;&gt;
+        &lt;app-input [(ngModel)]&#x3D;&quot;form.value.fullName&quot; placeholder&#x3D;&quot;Full Name&quot;&gt;&lt;/app-input&gt;
+        &lt;app-inputnumber [(ngModel)]&#x3D;&quot;form.value.age&quot; placeholder&#x3D;&quot;Age&quot; [Min]&#x3D;&quot;0&quot; [Max]&#x3D;&quot;120&quot;&gt;&lt;/app-inputnumber&gt;
+        &lt;app-inputpassword [(ngModel)]&#x3D;&quot;form.value.password&quot; placeholder&#x3D;&quot;Password&quot;&gt;&lt;/app-inputpassword&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.input &#x3D; !open.input&quot;
+              [innerText]&#x3D;&quot;open.input ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.input&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.input&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- TEXTAREA --&gt;
+    &lt;section id&#x3D;&quot;textarea&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Textarea&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Forms&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;Multi-line text input with floating label and matching focus treatment.&lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-textarea placeholder&#x3D;&quot;Bio&quot; [Rows]&#x3D;&quot;5&quot; [(ngModel)]&#x3D;&quot;form.value.bio&quot;&gt;&lt;/app-textarea&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.textarea &#x3D; !open.textarea&quot;
+              [innerText]&#x3D;&quot;open.textarea ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.textarea&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.textarea&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- DROPDOWN --&gt;
+    &lt;section id&#x3D;&quot;dropdown&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Dropdown&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Selection&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;
+        Headless dropdown supporting single or multiple selection and optional search.
+        Provide &lt;code&gt;[data]&lt;/code&gt; items; listen to &lt;code&gt;(selectedList)&lt;/code&gt;.
+      &lt;/p&gt;
+
+      &lt;ul class&#x3D;&quot;bullets&quot;&gt;
+        &lt;li&gt;&lt;strong&gt;Single vs Multi:&lt;/strong&gt; Set &lt;code&gt;[multiStatus]&lt;/code&gt; to true for multi-select.&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;Filtering:&lt;/strong&gt; Enable inline search with &lt;code&gt;[searchStatus]&#x3D;&quot;true&quot;&lt;/code&gt;.&lt;/li&gt;
+      &lt;/ul&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-dropdown
+          [data]&#x3D;&quot;countries&quot;
+          [multiStatus]&#x3D;&quot;false&quot;
+          [searchStatus]&#x3D;&quot;true&quot;
+          placeholder&#x3D;&quot;Country&quot;
+          (selectedList)&#x3D;&quot;onDropdownChange($event)&quot;&gt;
+        &lt;/app-dropdown&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.dropdown &#x3D; !open.dropdown&quot;
+              [innerText]&#x3D;&quot;open.dropdown ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.dropdown&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.dropdown&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- CHECKBOX --&gt;
+    &lt;section id&#x3D;&quot;checkbox&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Checkbox&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Forms&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;Accessible checkbox with label and consistent sizing across the library.&lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-checkbox [(ngModel)]&#x3D;&quot;form.value.agree&quot; placeholder&#x3D;&quot;I agree to terms&quot;&gt;&lt;/app-checkbox&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.checkbox &#x3D; !open.checkbox&quot;
+              [innerText]&#x3D;&quot;open.checkbox ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.checkbox&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.checkbox&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- SWITCH --&gt;
+    &lt;section id&#x3D;&quot;switch&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Switch&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Forms&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;Toggle a boolean preference. Visually distinct from checkbox, better for on/off settings.&lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-switch [(ngModel)]&#x3D;&quot;form.value.news&quot; placeholder&#x3D;&quot;Subscribe to newsletter&quot;&gt;&lt;/app-switch&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.switch &#x3D; !open.switch&quot;
+              [innerText]&#x3D;&quot;open.switch ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.switch&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.sw&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- CARD --&gt;
+    &lt;section id&#x3D;&quot;card&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Card&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Layout&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;Structured container with optional header. Matches shadcn card spacing, border and radius.&lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-card header&#x3D;&quot;Profile&quot;&gt;
+          &lt;p&gt;Card body content…&lt;/p&gt;
+        &lt;/app-card&gt;
+        &lt;app-card&gt;
+          &lt;p&gt;Header omitted — simple container card.&lt;/p&gt;
+        &lt;/app-card&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.card &#x3D; !open.card&quot;
+              [innerText]&#x3D;&quot;open.card ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.card&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.card&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- TABS --&gt;
+    &lt;section id&#x3D;&quot;tabs&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Tabs&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Navigation&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;Segmented control style tabs, keyboard-friendly, uses your Tab/Tabview components.&lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-tabview&gt;
+          &lt;app-tab tabTitle&#x3D;&quot;Account&quot; [active]&#x3D;&quot;true&quot;&gt;
+            &lt;p&gt;Account content…&lt;/p&gt;
+          &lt;/app-tab&gt;
+          &lt;app-tab tabTitle&#x3D;&quot;Password&quot;&gt;
+            &lt;p&gt;Password content…&lt;/p&gt;
+          &lt;/app-tab&gt;
+        &lt;/app-tabview&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.tabs &#x3D; !open.tabs&quot;
+              [innerText]&#x3D;&quot;open.tabs ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.tabs&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.tabs&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+    &lt;!-- TABLE --&gt;
+    &lt;section id&#x3D;&quot;table&quot; class&#x3D;&quot;section&quot;&gt;
+      &lt;header class&#x3D;&quot;section__header&quot;&gt;
+        &lt;h2&gt;Table&lt;/h2&gt;
+        &lt;span class&#x3D;&quot;badge&quot;&gt;Data display&lt;/span&gt;
+      &lt;/header&gt;
+      &lt;p class&#x3D;&quot;desc&quot;&gt;
+        Data table with header tools (search/filter), inline actions (edit/delete), column settings and pagination.
+        For large data sets, enable scrolling and server-side pagination in your app.
+      &lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;demo&quot;&gt;
+        &lt;app-table
+          [header]&#x3D;&quot;&#x27;Users&#x27;&quot;
+          [data]&#x3D;&quot;tableData&quot;
+          [column]&#x3D;&quot;tableCols&quot;
+          [globalSearchStatus]&#x3D;&quot;true&quot;
+          [paginationStatus]&#x3D;&quot;true&quot;
+          [scrollWidthStatus]&#x3D;&quot;true&quot;&gt;
+        &lt;/app-table&gt;
+      &lt;/div&gt;
+
+      &lt;button class&#x3D;&quot;code-toggle&quot;
+              (click)&#x3D;&quot;open.table &#x3D; !open.table&quot;
+              [innerText]&#x3D;&quot;open.table ? &#x27;Hide code&#x27; : &#x27;Show code&#x27;&quot;&gt;
+      &lt;/button&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;open.table&quot;&gt;
+        &lt;pre&gt;&lt;code [textContent]&#x3D;&quot;code.table&quot;&gt;&lt;/code&gt;&lt;/pre&gt;
+      &lt;/ng-container&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./showcase.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Uses your global tokens from :root (style.scss) */
+:root{
+  --color-primary: #4F46E5;
+  --color-primary-hover: #4338CA;
+  --color-secondary: #64748B;
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #334155;
+  --border: #e2e8f0;
+  --hover: #f8fafc;
+  --ring: #93c5fd;
+}
+
+/* Layout wrapper */
+.docs {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.25rem;
+  min-height: 100vh;
+  background: #f6f7fb;
+  padding: 1rem;
+}
+
+/* Sidebar */
+.docs__nav {
+  position: sticky;
+  top: 1rem;
+  align-self: start;
+  padding: 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  box-shadow: 0 10px 15px -6px rgba(2,6,23,.06);
+}
+.docs__nav h1 {
+  margin: 0 0 .25rem;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+.docs__nav .muted {
+  color: var(--muted);
+  font-size: .875rem;
+  margin: 0 0 .75rem;
+}
+.docs__nav nav {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.docs__nav a {
+  display: block;
+  padding: .5rem .75rem;
+  color: var(--muted);
+  border-radius: .5rem;
+  text-decoration: none;
+  transition: background-color .15s ease, color .15s ease;
+}
+.docs__nav a:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+
+/* Content column */
+.docs__content { padding: .25rem; }
+
+/* Section block */
+.section {
+  background: #fbfbfd;
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 20px -12px rgba(2,6,23,.08);
+}
+.section__header {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .25rem;
+}
+.section h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--text);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: .125rem .5rem;
+  font-size: .75rem;
+  border-radius: .5rem;
+  background: #eef2ff;
+  color: #3730a3;
+  border: 1px solid #c7d2fe;
+}
+.desc {
+  margin: .25rem 0 .5rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+/* Feature bullets */
+.bullets {
+  margin: 0 0 .75rem 1.1rem;
+  color: var(--muted);
+}
+.bullets li { margin: .15rem 0; }
+
+/* Demos */
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  padding: .75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: .6rem;
+}
+.demo--grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: .75rem;
+  padding: .75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: .6rem;
+}
+
+/* Code toggle + block */
+.code-toggle {
+  margin-top: .6rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  padding: .35rem .65rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.code-toggle:hover { background: var(--hover); }
+
+pre {
+  margin-top: .5rem;
+  padding: .9rem 1rem;
+  background: #0b1020;
+  color: #e6edf3;
+  border-radius: .6rem;
+  overflow: auto;
+  font-size: .85rem;
+  line-height: 1.45;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .docs { grid-template-columns: 1fr; }
+  .docs__nav { position: static; }
+  .demo--grid3 { grid-template-columns: 1fr; }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="docs">  <!-- Sidebar -->  <aside class="docs__nav">    <h1>UI Library</h1>    <p class="muted">A lightweight Angular component kit styled like shadcn/ui.</p>    <nav>      <a href="#button">Button</a>      <a href="#input">Input / Number / Password</a>      <a href="#textarea">Textarea</a>      <a href="#dropdown">Dropdown</a>      <a href="#checkbox">Checkbox</a>      <a href="#switch">Switch</a>      <a href="#card">Card</a>      <a href="#tabs">Tabs</a>      <a href="#table">Table</a>    </nav>  </aside>  <!-- Content -->  <main class="docs__content">    <!-- BUTTON -->    <section id="button" class="section">      <header class="section__header">        <h2>Button</h2>        <span class="badge">Interactive</span>      </header>      <p class="desc">        Buttons trigger an action. Variants follow shadcn/ui semantics (default, outline, destructive, ghost, link).        Use <code>button--icon</code> for icon-only buttons and pass a Font Awesome class via <code>icon</code>.      </p>      <ul class="bullets">        <li><strong>When to use:</strong> Primary actions, form submit, icon-only actions.</li>        <li><strong>Features:</strong> Keyboard focus ring, disabled state, size presets (sm, lg), icon spacing.</li>        <li><strong>Accessibility:</strong> Real <code>&lt;button&gt;</code> elements; labels are required for non-icon usage.</li>      </ul>      <div class="demo">        <app-button cssClass="button button--default" label="Save"></app-button>        <app-button cssClass="button button--destructive" label="Delete"></app-button>        <app-button cssClass="button button--outline" label="Outline"></app-button>        <app-button cssClass="button button--icon button--default" icon="fa-solid fa-pen"></app-button>      </div>      <button class="code-toggle"              (click)="open.button = !open.button"              [innerText]="open.button ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.button">        <pre><code [textContent]="code.button"></code></pre>      </ng-container>    </section>    <!-- INPUTS -->    <section id="input" class="section">      <header class="section__header">        <h2>Input • Number • Password</h2>        <span class="badge">Forms</span>      </header>      <p class="desc">        Floating-label inputs styled with the same token palette. Keep labels short and meaningful.        Numbers enforce min/max; password input hides the value.      </p>      <ul class="bullets">        <li><strong>Features:</strong> Floating label, focus ring, disabled state, consistent spacing.</li>        <li><strong>Accessibility:</strong> Labels are linked via <code>for</code>/<code>id</code>; placeholder is not the label.</li>      </ul>      <div class="demo demo--grid3">        <app-input [(ngModel)]="form.value.fullName" placeholder="Full Name"></app-input>        <app-inputnumber [(ngModel)]="form.value.age" placeholder="Age" [Min]="0" [Max]="120"></app-inputnumber>        <app-inputpassword [(ngModel)]="form.value.password" placeholder="Password"></app-inputpassword>      </div>      <button class="code-toggle"              (click)="open.input = !open.input"              [innerText]="open.input ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.input">        <pre><code [textContent]="code.input"></code></pre>      </ng-container>    </section>    <!-- TEXTAREA -->    <section id="textarea" class="section">      <header class="section__header">        <h2>Textarea</h2>        <span class="badge">Forms</span>      </header>      <p class="desc">Multi-line text input with floating label and matching focus treatment.</p>      <div class="demo">        <app-textarea placeholder="Bio" [Rows]="5" [(ngModel)]="form.value.bio"></app-textarea>      </div>      <button class="code-toggle"              (click)="open.textarea = !open.textarea"              [innerText]="open.textarea ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.textarea">        <pre><code [textContent]="code.textarea"></code></pre>      </ng-container>    </section>    <!-- DROPDOWN -->    <section id="dropdown" class="section">      <header class="section__header">        <h2>Dropdown</h2>        <span class="badge">Selection</span>      </header>      <p class="desc">        Headless dropdown supporting single or multiple selection and optional search.        Provide <code>[data]</code> items; listen to <code>(selectedList)</code>.      </p>      <ul class="bullets">        <li><strong>Single vs Multi:</strong> Set <code>[multiStatus]</code> to true for multi-select.</li>        <li><strong>Filtering:</strong> Enable inline search with <code>[searchStatus]="true"</code>.</li>      </ul>      <div class="demo">        <app-dropdown          [data]="countries"          [multiStatus]="false"          [searchStatus]="true"          placeholder="Country"          (selectedList)="onDropdownChange($event)">        </app-dropdown>      </div>      <button class="code-toggle"              (click)="open.dropdown = !open.dropdown"              [innerText]="open.dropdown ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.dropdown">        <pre><code [textContent]="code.dropdown"></code></pre>      </ng-container>    </section>    <!-- CHECKBOX -->    <section id="checkbox" class="section">      <header class="section__header">        <h2>Checkbox</h2>        <span class="badge">Forms</span>      </header>      <p class="desc">Accessible checkbox with label and consistent sizing across the library.</p>      <div class="demo">        <app-checkbox [(ngModel)]="form.value.agree" placeholder="I agree to terms"></app-checkbox>      </div>      <button class="code-toggle"              (click)="open.checkbox = !open.checkbox"              [innerText]="open.checkbox ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.checkbox">        <pre><code [textContent]="code.checkbox"></code></pre>      </ng-container>    </section>    <!-- SWITCH -->    <section id="switch" class="section">      <header class="section__header">        <h2>Switch</h2>        <span class="badge">Forms</span>      </header>      <p class="desc">Toggle a boolean preference. Visually distinct from checkbox, better for on/off settings.</p>      <div class="demo">        <app-switch [(ngModel)]="form.value.news" placeholder="Subscribe to newsletter"></app-switch>      </div>      <button class="code-toggle"              (click)="open.switch = !open.switch"              [innerText]="open.switch ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.switch">        <pre><code [textContent]="code.sw"></code></pre>      </ng-container>    </section>    <!-- CARD -->    <section id="card" class="section">      <header class="section__header">        <h2>Card</h2>        <span class="badge">Layout</span>      </header>      <p class="desc">Structured container with optional header. Matches shadcn card spacing, border and radius.</p>      <div class="demo">        <app-card header="Profile">          <p>Card body content…</p>        </app-card>        <app-card>          <p>Header omitted — simple container card.</p>        </app-card>      </div>      <button class="code-toggle"              (click)="open.card = !open.card"              [innerText]="open.card ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.card">        <pre><code [textContent]="code.card"></code></pre>      </ng-container>    </section>    <!-- TABS -->    <section id="tabs" class="section">      <header class="section__header">        <h2>Tabs</h2>        <span class="badge">Navigation</span>      </header>      <p class="desc">Segmented control style tabs, keyboard-friendly, uses your Tab/Tabview components.</p>      <div class="demo">        <app-tabview>          <app-tab tabTitle="Account" [active]="true">            <p>Account content…</p>          </app-tab>          <app-tab tabTitle="Password">            <p>Password content…</p>          </app-tab>        </app-tabview>      </div>      <button class="code-toggle"              (click)="open.tabs = !open.tabs"              [innerText]="open.tabs ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.tabs">        <pre><code [textContent]="code.tabs"></code></pre>      </ng-container>    </section>    <!-- TABLE -->    <section id="table" class="section">      <header class="section__header">        <h2>Table</h2>        <span class="badge">Data display</span>      </header>      <p class="desc">        Data table with header tools (search/filter), inline actions (edit/delete), column settings and pagination.        For large data sets, enable scrolling and server-side pagination in your app.      </p>      <div class="demo">        <app-table          [header]="\'Users\'"          [data]="tableData"          [column]="tableCols"          [globalSearchStatus]="true"          [paginationStatus]="true"          [scrollWidthStatus]="true">        </app-table>      </div>      <button class="code-toggle"              (click)="open.table = !open.table"              [innerText]="open.table ? \'Hide code\' : \'Show code\'">      </button>      <ng-container *ngIf="open.table">        <pre><code [textContent]="code.table"></code></pre>      </ng-container>    </section>  </main></div></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'app-accordion'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalenderComponent', 'selector': 'app-calender'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CheckboxComponent', 'selector': 'app-checkbox'},{'name': 'CheckboxListComponent', 'selector': 'app-checkboxlist'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'DropdownComponent', 'selector': 'app-dropdown'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'InputnumberComponent', 'selector': 'app-inputnumber'},{'name': 'InputpasswordComponent', 'selector': 'app-inputpassword'},{'name': 'ListboxComponent', 'selector': 'app-listbox'},{'name': 'ProgesbarComponent', 'selector': 'app-progesbar'},{'name': 'ShowcaseComponent', 'selector': 'app-showcase'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'SwitchComponent', 'selector': 'app-switch'},{'name': 'TabComponent', 'selector': 'app-tab'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'TabviewComponent', 'selector': 'app-tabview'},{'name': 'TextareaComponent', 'selector': 'app-textarea'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [{'name': 'InputMaskDateDirective', 'selector': '[formControlName][appInputMask]'},{'name': 'PhoneDirective', 'selector': '[phoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'ShowcaseComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ShowcaseComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

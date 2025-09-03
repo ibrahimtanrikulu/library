@@ -1,0 +1,1519 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">library documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DropdownComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/dropdown/dropdown.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Dropdown – A customizable dropdown/select component with single or multiple selection.</p>
+<p><em>Features</em></p>
+<ul>
+<li>Renders options from an array of <code>DataType</code> objects</li>
+<li>Supports single-select or multi-select mode</li>
+<li>Optional search box for filtering items</li>
+<li>Emits the currently selected list of values</li>
+<li>Can be disabled programmatically</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Single select --&gt;
+&lt;app-dropdown
+  [data]=&quot;countries&quot;
+  placeholder=&quot;Select a country&quot;
+  (selectedList)=&quot;onCountrySelected($event)&quot;&gt;
+&lt;/app-dropdown&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Multi-select with search --&gt;
+&lt;app-dropdown
+  [data]=&quot;tags&quot;
+  [multiStatus]=&quot;true&quot;
+  [searchStatus]=&quot;true&quot;
+  placeholder=&quot;Select tags&quot;
+  (selectedList)=&quot;onTagsChanged($event)&quot;&gt;
+&lt;/app-dropdown&gt;</code></pre></div>
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dropdown</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>SearchFilterPipe</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./dropdown.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dropdown.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#dropdownStatus" >dropdownStatus</a>
+                            </li>
+                            <li>
+                                <a href="#filterText" >filterText</a>
+                            </li>
+                            <li>
+                                <a href="#list" >list</a>
+                            </li>
+                            <li>
+                                <a href="#localData" >localData</a>
+                            </li>
+                            <li>
+                                <a href="#text" >text</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#change" >change</a>
+                            </li>
+                            <li>
+                                <a href="#clear" >clear</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#closeOnOutsideClick" >closeOnOutsideClick</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggle" >toggle</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                <a href="#disabled" >disabled</a>
+                            </li>
+                            <li>
+                                <a href="#DropdownScrollHeight" >DropdownScrollHeight</a>
+                            </li>
+                            <li>
+                                <a href="#multiStatus" >multiStatus</a>
+                            </li>
+                            <li>
+                                <a href="#placeholder" >placeholder</a>
+                            </li>
+                            <li>
+                                <a href="#searchStatus" >searchStatus</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectedList" >selectedList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#document:click" >document:click</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <b>data</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DataType.html" target="_self" >DataType[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:44</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Array of dropdown items, each implementing <code>DataType</code> (text, value, etc.).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:59</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Disables the dropdown when true.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="DropdownScrollHeight"></a>
+                        <b>DropdownScrollHeight</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:53</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Maximum height of the dropdown list (CSS string, e.g. &#39;200px&#39;).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="multiStatus"></a>
+                        <b>multiStatus</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:47</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Enables multi-select mode when true.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="placeholder"></a>
+                        <b>placeholder</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:56</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Placeholder text shown when no value is selected.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchStatus"></a>
+                        <b>searchStatus</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:50</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Shows a search box to filter options when true.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedList"></a>
+                        <b>selectedList</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:62</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emits the list of selected items whenever the selection changes.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-methods">
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document:click"></a>
+                    <span class="name">
+                        <span ><b>document:click</b></span>
+                        <a href="#document:click"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>document:click()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Closes the dropdown when clicking outside.</p>
+</div>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="change"></a>
+                    <span class="name">
+                        <span ><b>change</b></span>
+                        <a href="#change"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>change(value: <a href="../interfaces/DataType.html" target="_self">DataType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles selection of an option.</p>
+<ul>
+<li>In multi-select mode, toggles the item in/out of the list.</li>
+<li>In single-select mode, replaces the current value and closes the dropdown.</li>
+</ul>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="../interfaces/DataType.html" target="_self" >DataType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The selected <code>DataType</code> option</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clear"></a>
+                    <span class="name">
+                        <span ><b>clear</b></span>
+                        <a href="#clear"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clear()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Clears all selections and resets the displayed text.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeOnOutsideClick"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>closeOnOutsideClick</b></span>
+                        <a href="#closeOnOutsideClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>closeOnOutsideClick()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@HostListener(&#x27;document:click&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Closes the dropdown when clicking outside.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggle"></a>
+                    <span class="name">
+                        <span ><b>toggle</b></span>
+                        <a href="#toggle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggle()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Toggles the dropdown open/close state (ignored if disabled).</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dropdownStatus"></a>
+                    <span class="name">
+                        <span ><b>dropdownStatus</b></span>
+                        <a href="#dropdownStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Whether the dropdown is currently open.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filterText"></a>
+                    <span class="name">
+                        <span ><b>filterText</b></span>
+                        <a href="#filterText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Search filter text (bound to search input).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="list"></a>
+                    <span class="name">
+                        <span ><b>list</b></span>
+                        <a href="#list"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DataType.html" target="_self" >DataType[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Internal list of selected items.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="localData"></a>
+                    <span class="name">
+                        <span ><b>localData</b></span>
+                        <a href="#localData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DataType.html" target="_self" >DataType[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Local copy of data (used for filtering).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="text"></a>
+                    <span class="name">
+                        <span ><b>text</b></span>
+                        <a href="#text"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/components/dropdown/dropdown.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Current text displayed in the dropdown input.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, HostListener, Input, OnInit, Output } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;; 
+import { SearchFilterPipe } from &#x27;src/app/Pipe/search.pipe&#x27;; 
+import { DataType } from &#x27;src/app/Interfaces/DataType&#x27;;
+
+/**
+ * Dropdown – A customizable dropdown/select component with single or multiple selection.
+ *
+ * *Features*
+ * - Renders options from an array of &#x60;DataType&#x60; objects
+ * - Supports single-select or multi-select mode
+ * - Optional search box for filtering items
+ * - Emits the currently selected list of values
+ * - Can be disabled programmatically
+ *
+ * @example
+ * &lt;!-- Single select --&gt;
+ * &lt;app-dropdown
+ *   [data]&#x3D;&quot;countries&quot;
+ *   placeholder&#x3D;&quot;Select a country&quot;
+ *   (selectedList)&#x3D;&quot;onCountrySelected($event)&quot;&gt;
+ * &lt;/app-dropdown&gt;
+ *
+ * @example
+ * &lt;!-- Multi-select with search --&gt;
+ * &lt;app-dropdown
+ *   [data]&#x3D;&quot;tags&quot;
+ *   [multiStatus]&#x3D;&quot;true&quot;
+ *   [searchStatus]&#x3D;&quot;true&quot;
+ *   placeholder&#x3D;&quot;Select tags&quot;
+ *   (selectedList)&#x3D;&quot;onTagsChanged($event)&quot;&gt;
+ * &lt;/app-dropdown&gt;
+ */
+@Component({
+  selector: &#x27;app-dropdown&#x27;,
+  templateUrl: &#x27;./dropdown.component.html&#x27;,
+  styleUrls: [&#x27;./dropdown.component.scss&#x27;],
+  standalone: true,
+  imports: [CommonModule, FormsModule, SearchFilterPipe]
+})
+export class DropdownComponent implements OnInit {
+  /** Array of dropdown items, each implementing &#x60;DataType&#x60; (text, value, etc.). */
+  @Input() data: DataType[] &#x3D; [];
+
+  /** Enables multi-select mode when true. */
+  @Input() multiStatus &#x3D; false;
+
+  /** Shows a search box to filter options when true. */
+  @Input() searchStatus &#x3D; false;
+
+  /** Maximum height of the dropdown list (CSS string, e.g. &#x27;200px&#x27;). */
+  @Input() DropdownScrollHeight &#x3D; &#x27;&#x27;;
+
+  /** Placeholder text shown when no value is selected. */
+  @Input() placeholder &#x3D; &#x27;&#x27;;
+
+  /** Disables the dropdown when true. */
+  @Input() disabled &#x3D; false;
+
+  /** Emits the list of selected items whenever the selection changes. */
+  @Output() selectedList &#x3D; new EventEmitter&lt;DataType[]&gt;();
+
+  /** Internal list of selected items. */
+  list: DataType[] &#x3D; [];
+
+  /** Whether the dropdown is currently open. */
+  dropdownStatus &#x3D; false;
+
+  /** Local copy of data (used for filtering). */
+  localData: DataType[] &#x3D; [];
+
+  /** Current text displayed in the dropdown input. */
+  text &#x3D; &#x27;&#x27;;
+
+  /** Search filter text (bound to search input). */
+  filterText &#x3D; &#x27;&#x27;;
+
+  ngOnInit() {
+    this.localData &#x3D; this.data;
+  }
+
+  /** Toggles the dropdown open/close state (ignored if disabled). */
+  toggle() {
+    if (this.disabled) return;
+    this.dropdownStatus &#x3D; !this.dropdownStatus;
+  }
+
+  /**
+   * Handles selection of an option.
+   * - In multi-select mode, toggles the item in/out of the list.
+   * - In single-select mode, replaces the current value and closes the dropdown.
+   * @param value The selected &#x60;DataType&#x60; option
+   */
+  change(value: DataType) {
+    if (this.multiStatus) {
+      const index &#x3D; this.list.indexOf(value);
+      index &#x3D;&#x3D;&#x3D; -1 ? this.list.push(value) : this.list.splice(index, 1);
+      this.text &#x3D; this.list.map(m &#x3D;&gt; m.text).join(&#x27;, &#x27;);
+    } else {
+      this.list &#x3D; [value];
+      this.text &#x3D; value?.text ?? &#x27;&#x27;;
+      this.dropdownStatus &#x3D; false;
+    }
+    this.selectedList.emit(this.list);
+    this.localData &#x3D; this.data;
+  }
+
+  /** Clears all selections and resets the displayed text. */
+  clear() {
+    this.list &#x3D; [];
+    this.localData &#x3D; this.data;
+    this.text &#x3D; &#x27;&#x27;;
+    this.selectedList.emit(this.list);
+  } 
+
+  /** Closes the dropdown when clicking outside. */
+  @HostListener(&#x27;document:click&#x27;)
+  closeOnOutsideClick() {
+    if (this.dropdownStatus) this.dropdownStatus &#x3D; false;
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;dropdown-container&quot; (click)&#x3D;&quot;$event.stopPropagation()&quot;&gt;
+  &lt;div class&#x3D;&quot;headerContainer&quot; role&#x3D;&quot;button&quot; tabindex&#x3D;&quot;0&quot;
+       (click)&#x3D;&quot;toggle()&quot; (keydown.enter)&#x3D;&quot;toggle()&quot; (keydown.space)&#x3D;&quot;toggle()&quot;&gt;
+    &lt;input
+      [disabled]&#x3D;&quot;disabled&quot;
+      class&#x3D;&quot;globalInput&quot;
+      [id]&#x3D;&quot;placeholder&quot;
+      [placeholder]&#x3D;&quot;placeholder&quot;
+      type&#x3D;&quot;text&quot;
+      readonly
+      [value]&#x3D;&quot;multiStatus ? text : (list[0]?.text || &#x27;&#x27;)&quot;  
+      style&#x3D;&quot;cursor: pointer;&quot;
+    /&gt;
+    &lt;div class&#x3D;&quot;iconContainer&quot;
+         [ngStyle]&#x3D;&quot;{ &#x27;transform&#x27;: dropdownStatus ? &#x27;rotate(180deg)&#x27; : &#x27;&#x27; }&quot;
+         (click)&#x3D;&quot;toggle()&quot;&gt;
+      &lt;i class&#x3D;&quot;fa-solid fa-arrow-down&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;dropdownStatus&quot;
+       class&#x3D;&quot;dropdownContainer&quot;
+       [style.height]&#x3D;&quot;DropdownScrollHeight&quot;
+       [ngStyle]&#x3D;&quot;{ &#x27;overflow-x&#x27;: DropdownScrollHeight ? &#x27;auto&#x27; : &#x27;hidden&#x27; }&quot;&gt;
+    &lt;ng-container *ngIf&#x3D;&quot;searchStatus&quot;&gt;
+      &lt;div class&#x3D;&quot;searchContainer&quot;&gt;
+        &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;globalInput&quot; [(ngModel)]&#x3D;&quot;filterText&quot; /&gt;
+        &lt;div&gt;&lt;i class&#x3D;&quot;fas fa-search&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/ng-container&gt;
+
+    &lt;div class&#x3D;&quot;listContainer&quot;
+         *ngFor&#x3D;&quot;let item of localData | searchFilter: filterText&quot;
+         (click)&#x3D;&quot;change(item)&quot;
+         [class.selected]&#x3D;&quot;list.includes(item)&quot;&gt;
+      &lt;input class&#x3D;&quot;checkboxInput&quot; type&#x3D;&quot;checkbox&quot; *ngIf&#x3D;&quot;multiStatus&quot; [checked]&#x3D;&quot;list.includes(item)&quot; /&gt;
+      &lt;li&gt;{{ item.text }}&lt;/li&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./dropdown.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+   dropdown.component.scss
+   shadcn/ui Select – look &amp; feel (uses global tokens)
+   Requires :root tokens in styles.scss:
+     --bg --text --muted --border --hover --ring
+     --color-primary --color-primary-hover --color-secondary
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+/* Root */
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Trigger (input + caret) &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+.headerContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .globalInput {
+    width: 100%;
+    height: 2.25rem;            /* h-9 */
+    padding: 0.25rem 2rem 0.25rem 0.75rem; /* room for icon at right */
+    border-radius: 0.375rem;     /* rounded-md */
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.875rem;         /* text-sm */
+    line-height: 1.25rem;
+    transition: box-shadow .15s, border-color .15s, background-color .15s;
+
+    &amp;:hover { background: #fcfdff; }
+    &amp;:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+    &amp;:disabled {
+      background: #f8fafc;       /* slate-50 */
+      color: #94a3b8;            /* slate-400 */
+      cursor: not-allowed;
+    }
+  }
+
+  .iconContainer {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);  /* 🔥 dikey tam ortalama */
+  transform-origin: center;     /* 🔥 rotate pivot ortada */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  transition: transform .2s ease;
+
+  i {
+    font-size: .9rem;
+    line-height: 1;
+    pointer-events: none; /* tıklama input/header’a gitsin */
+  }
+}
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Popover / Panel &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+.dropdownContainer {
+  position: absolute;
+  z-index: 1000;
+  margin-top: .25rem; /* 🔥 yukarıdan küçük boşluk (4px) */
+  min-width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,0.1),
+    0 4px 6px -4px rgba(0,0,0,0.1);
+  animation: dd-scale-in .18s cubic-bezier(.16,1,.3,1);
+}
+
+
+/* Search (optional) */
+.searchContainer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .5rem .25rem .5rem;
+  border-bottom: 1px solid var(--border);
+
+  .globalInput {
+    height: 2rem;                 /* a bit smaller than trigger */
+    padding: .25rem .5rem;
+    border-radius: .375rem;
+    border: 1px solid var(--border);
+    font-size: .875rem;
+    &amp;:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+  }
+
+  i { color: var(--color-secondary); }
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; List / Items &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+.listContainer {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .75rem;          /* py-2 px-3 */
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .12s, color .12s;
+
+  /* each row */
+  &amp;:hover { background: var(--hover); }
+
+  /* optional selected state (see note below) */
+  &amp;.selected,
+  .checkboxInput:checked + li {
+    background: color-mix(in oklab, var(--color-primary) 12%, transparent);
+  }
+
+  /* checkbox (multi-select only) */
+  .checkboxInput {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1rem; height: 1rem; border-radius: .25rem;
+    border: 2px solid var(--border);
+    background: var(--bg);
+    display: grid; place-items: center;
+    transition: background-color .12s, border-color .12s, box-shadow .12s;
+
+    &amp;:hover { background: var(--hover); }
+
+    &amp;:checked {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+    &amp;:checked::before {
+      content: &quot;&quot;;
+      width: .6rem; height: .6rem;
+      background: #fff;
+      -webkit-mask: url(&quot;data:image/svg+xml;utf8,\
+&lt;svg xmlns&#x3D;&#x27;http://www.w3.org/2000/svg&#x27; viewBox&#x3D;&#x27;0 0 20 20&#x27; fill&#x3D;&#x27;none&#x27;&gt;\
+  &lt;path d&#x3D;&#x27;M5 10.5l3 3 7-7&#x27; stroke&#x3D;&#x27;black&#x27; stroke-width&#x3D;&#x27;2.2&#x27; stroke-linecap&#x3D;&#x27;round&#x27; stroke-linejoin&#x3D;&#x27;round&#x27;/&gt;\
+&lt;/svg&gt;&quot;) center / contain no-repeat;
+              mask: url(&quot;data:image/svg+xml;utf8,\
+&lt;svg xmlns&#x3D;&#x27;http://www.w3.org/2000/svg&#x27; viewBox&#x3D;&#x27;0 0 20 20&#x27; fill&#x3D;&#x27;none&#x27;&gt;\
+  &lt;path d&#x3D;&#x27;M5 10.5l3 3 7-7&#x27; stroke&#x3D;&#x27;black&#x27; stroke-width&#x3D;&#x27;2.2&#x27; stroke-linecap&#x3D;&#x27;round&#x27; stroke-linejoin&#x3D;&#x27;round&#x27;/&gt;\
+&lt;/svg&gt;&quot;) center / contain no-repeat;
+    }
+  }
+
+  /* text */
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    font-size: .875rem;          /* text-sm */
+  }
+}
+
+/* Smooth list scroll when many items */
+.dropdownContainer {
+  /* inner scrolling: apply on container when height is set */
+  overflow-y: auto;
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Animations &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+@keyframes dd-scale-in {
+  from { opacity: 0; transform: translateY(4px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="dropdown-container" (click)="$event.stopPropagation()">  <div class="headerContainer" role="button" tabindex="0"       (click)="toggle()" (keydown.enter)="toggle()" (keydown.space)="toggle()">    <input      [disabled]="disabled"      class="globalInput"      [id]="placeholder"      [placeholder]="placeholder"      type="text"      readonly      [value]="multiStatus ? text : (list[0]?.text || \'\')"        style="cursor: pointer;"    />    <div class="iconContainer"         [ngStyle]="{ \'transform\': dropdownStatus ? \'rotate(180deg)\' : \'\' }"         (click)="toggle()">      <i class="fa-solid fa-arrow-down"></i>    </div>  </div>  <div *ngIf="dropdownStatus"       class="dropdownContainer"       [style.height]="DropdownScrollHeight"       [ngStyle]="{ \'overflow-x\': DropdownScrollHeight ? \'auto\' : \'hidden\' }">    <ng-container *ngIf="searchStatus">      <div class="searchContainer">        <input type="text" class="globalInput" [(ngModel)]="filterText" />        <div><i class="fas fa-search"></i></div>      </div>    </ng-container>    <div class="listContainer"         *ngFor="let item of localData | searchFilter: filterText"         (click)="change(item)"         [class.selected]="list.includes(item)">      <input class="checkboxInput" type="checkbox" *ngIf="multiStatus" [checked]="list.includes(item)" />      <li>{{ item.text }}</li>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'app-accordion'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalenderComponent', 'selector': 'app-calender'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CheckboxComponent', 'selector': 'app-checkbox'},{'name': 'CheckboxListComponent', 'selector': 'app-checkboxlist'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'DropdownComponent', 'selector': 'app-dropdown'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'InputnumberComponent', 'selector': 'app-inputnumber'},{'name': 'InputpasswordComponent', 'selector': 'app-inputpassword'},{'name': 'ListboxComponent', 'selector': 'app-listbox'},{'name': 'ProgesbarComponent', 'selector': 'app-progesbar'},{'name': 'ShowcaseComponent', 'selector': 'app-showcase'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'SwitchComponent', 'selector': 'app-switch'},{'name': 'TabComponent', 'selector': 'app-tab'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'TabviewComponent', 'selector': 'app-tabview'},{'name': 'TextareaComponent', 'selector': 'app-textarea'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [{'name': 'InputMaskDateDirective', 'selector': '[formControlName][appInputMask]'},{'name': 'PhoneDirective', 'selector': '[phoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'DropdownComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DropdownComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1126 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">library documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  FormComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/form/form.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Form – A dynamic, grid-based form renderer.</p>
+<p><em>Features</em></p>
+<ul>
+<li>Renders inputs from a schema (<code>forms: IForm[]</code>) and binds them to an external <code>FormGroup</code></li>
+<li>Responsive grid with configurable columns/gap/max width</li>
+<li>Optional mobile collapse behavior (stack fields on small screens)</li>
+<li>Composes your library controls (Input, Number, Dropdown, Checkbox, Switch, Textarea, Password, CheckboxList, Button)</li>
+</ul>
+<p><em>Layout</em></p>
+<ul>
+<li>Uses CSS custom properties on the host element:<ul>
+<li><code>--form-columns</code>  → grid column count</li>
+<li><code>--form-gap</code>      → row/column gap</li>
+<li><code>--form-max</code>      → max width container</li>
+</ul>
+</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Reactive Forms + dynamic schema --&gt;
+&lt;app-form
+  [formGroup]=&quot;profileForm&quot;
+  [forms]=&quot;profileSchema&quot;
+  [columns]=&quot;2&quot;
+  gap=&quot;1rem&quot;
+  maxWidth=&quot;920px&quot;
+  [collapseOnMobile]=&quot;true&quot;&gt;
+&lt;/app-form&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-html">// component.ts
+profileForm = this.fb.group({
+  firstName: [&#39;&#39;],
+  age: [null],
+  email: [&#39;&#39;],
+  agree: [false],
+});</code></pre></div><p>profileSchema: IForm[] = [
+  { type: &#39;input&#39;, name: &#39;firstName&#39;, label: &#39;First name&#39;, placeholder: &#39;John&#39; },
+  { type: &#39;inputnumber&#39;, name: &#39;age&#39;, label: &#39;Age&#39;, min: 0, max: 120 },
+  { type: &#39;inputpassword&#39;, name: &#39;email&#39;, label: &#39;Email&#39;, placeholder: &#39;<a href="mailto:john@ex.com">john@ex.com</a>&#39; },
+  { type: &#39;checkbox&#39;, name: &#39;agree&#39;, label: &#39;Accept terms&#39; },
+];</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-form</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                                <code><a href="../components/DropdownComponent.html" target="_self" >DropdownComponent</a></code>
+                                <code><a href="../components/CheckboxListComponent.html" target="_self" >CheckboxListComponent</a></code>
+                                <code><a href="../components/ButtonComponent.html" target="_self" >ButtonComponent</a></code>
+                                <code><a href="../components/InputComponent.html" target="_self" >InputComponent</a></code>
+                                <code><a href="../components/InputnumberComponent.html" target="_self" >InputnumberComponent</a></code>
+                                <code><a href="../components/CheckboxComponent.html" target="_self" >CheckboxComponent</a></code>
+                                <code><a href="../components/SwitchComponent.html" target="_self" >SwitchComponent</a></code>
+                                <code><a href="../components/TextareaComponent.html" target="_self" >TextareaComponent</a></code>
+                                <code><a href="../components/InputpasswordComponent.html" target="_self" >InputpasswordComponent</a></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./form.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./form.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#collapseOnMobile" >collapseOnMobile</a>
+                            </li>
+                            <li>
+                                <a href="#columns" >columns</a>
+                            </li>
+                            <li>
+                                <a href="#formGroup" >formGroup</a>
+                            </li>
+                            <li>
+                                <a href="#forms" >forms</a>
+                            </li>
+                            <li>
+                                <a href="#gap" >gap</a>
+                            </li>
+                            <li>
+                                <a href="#maxWidth" >maxWidth</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostBindings</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#class.form--no-collapse" >class.form--no-collapse</a>
+                            </li>
+                            <li>
+                                <a href="#style.--form-columns" >style.--form-columns</a>
+                            </li>
+                            <li>
+                                <a href="#style.--form-gap" >style.--form-gap</a>
+                            </li>
+                            <li>
+                                <a href="#style.--form-max" >style.--form-max</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#_cols" >_cols</a>
+                                </li>
+                                <li>
+                                    <a href="#_gap" >_gap</a>
+                                </li>
+                                <li>
+                                    <a href="#_max" >_max</a>
+                                </li>
+                                <li>
+                                    <a href="#_noCollapse" >_noCollapse</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="collapseOnMobile"></a>
+                        <b>collapseOnMobile</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/components/form/form.component.ts:94</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>If true, fields stack on small screens (collapsible layout).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="columns"></a>
+                        <b>columns</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>2</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/components/form/form.component.ts:85</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Number of grid columns (≥1).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formGroup"></a>
+                        <b>formGroup</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/components/form/form.component.ts:79</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>External reactive form instance that this component binds to.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="forms"></a>
+                        <b>forms</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IForm.html" target="_self" >IForm[]</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/components/form/form.component.ts:82</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Dynamic field schema describing which controls to render.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="gap"></a>
+                        <b>gap</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;1rem&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/components/form/form.component.ts:88</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Grid gap value (CSS length, e.g., &#39;1rem&#39;, &#39;12px&#39;).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="maxWidth"></a>
+                        <b>maxWidth</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;920px&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/components/form/form.component.ts:91</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Max width of the form container (e.g., &#39;920px&#39;, &#39;100%&#39;).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-properties">
+    <h3>HostBindings</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="class.form--no-collapse"></a>
+                    <span class="name">
+                        <span ><b>class.form--no-collapse</b></span>
+                        <a href="#class.form--no-collapse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/components/form/form.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host class to disable mobile collapse when <code>collapseOnMobile</code> is false.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="style.--form-columns"></a>
+                    <span class="name">
+                        <span ><b>style.--form-columns</b></span>
+                        <a href="#style.--form-columns"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/components/form/form.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host CSS var: number of columns.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="style.--form-gap"></a>
+                    <span class="name">
+                        <span ><b>style.--form-gap</b></span>
+                        <a href="#style.--form-gap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/components/form/form.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host CSS var: grid gap.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="style.--form-max"></a>
+                    <span class="name">
+                        <span ><b>style.--form-max</b></span>
+                        <a href="#style.--form-max"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/components/form/form.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Host CSS var: max width.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_cols"></a>
+                        <span class="name"><b>_cols</b><a href="#_cols"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>_cols()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/components/form/form.component.ts:97</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host CSS var: number of columns.</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_gap"></a>
+                        <span class="name"><b>_gap</b><a href="#_gap"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>_gap()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/components/form/form.component.ts:100</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host CSS var: grid gap.</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_max"></a>
+                        <span class="name"><b>_max</b><a href="#_max"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>_max()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/components/form/form.component.ts:103</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host CSS var: max width.</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="_noCollapse"></a>
+                        <span class="name"><b>_noCollapse</b><a href="#_noCollapse"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>_noCollapse()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/components/form/form.component.ts:106</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Host class to disable mobile collapse when <code>collapseOnMobile</code> is false.</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Component, Input, HostBinding } from &#x27;@angular/core&#x27;;
+import { FormGroup, FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;; 
+import { DropdownComponent } from &#x27;../dropdown/dropdown.component&#x27;;
+import { ButtonComponent } from &#x27;../button/button.component&#x27;;
+import { CheckboxListComponent } from &#x27;../checkboxList/checkboxList.component&#x27;;
+import { InputComponent } from &#x27;../input/input.component&#x27;;
+import { InputnumberComponent } from &#x27;../inputnumber/inputnumber.component&#x27;;
+import { CheckboxComponent } from &#x27;../checkbox/checkbox.component&#x27;;
+import { SwitchComponent } from &#x27;../switch/switch.component&#x27;;
+import { TextareaComponent } from &#x27;../textarea/textarea.component&#x27;;
+import { InputpasswordComponent } from &#x27;../inputpassword/inputpassword.component&#x27;;
+import { IForm } from &#x27;src/app/Interfaces/Form&#x27;;
+
+/**
+ * Form – A dynamic, grid-based form renderer.
+ *
+ * *Features*
+ * - Renders inputs from a schema (&#x60;forms: IForm[]&#x60;) and binds them to an external &#x60;FormGroup&#x60;
+ * - Responsive grid with configurable columns/gap/max width
+ * - Optional mobile collapse behavior (stack fields on small screens)
+ * - Composes your library controls (Input, Number, Dropdown, Checkbox, Switch, Textarea, Password, CheckboxList, Button)
+ *
+ * *Layout*
+ * - Uses CSS custom properties on the host element:
+ *   - &#x60;--form-columns&#x60;  → grid column count
+ *   - &#x60;--form-gap&#x60;      → row/column gap
+ *   - &#x60;--form-max&#x60;      → max width container
+ *
+ * @example
+ * &lt;!-- Reactive Forms + dynamic schema --&gt;
+ * &lt;app-form
+ *   [formGroup]&#x3D;&quot;profileForm&quot;
+ *   [forms]&#x3D;&quot;profileSchema&quot;
+ *   [columns]&#x3D;&quot;2&quot;
+ *   gap&#x3D;&quot;1rem&quot;
+ *   maxWidth&#x3D;&quot;920px&quot;
+ *   [collapseOnMobile]&#x3D;&quot;true&quot;&gt;
+ * &lt;/app-form&gt;
+ *
+ * @example
+ * // component.ts
+ * profileForm &#x3D; this.fb.group({
+ *   firstName: [&#x27;&#x27;],
+ *   age: [null],
+ *   email: [&#x27;&#x27;],
+ *   agree: [false],
+ * });
+ *
+ * profileSchema: IForm[] &#x3D; [
+ *   { type: &#x27;input&#x27;, name: &#x27;firstName&#x27;, label: &#x27;First name&#x27;, placeholder: &#x27;John&#x27; },
+ *   { type: &#x27;inputnumber&#x27;, name: &#x27;age&#x27;, label: &#x27;Age&#x27;, min: 0, max: 120 },
+ *   { type: &#x27;inputpassword&#x27;, name: &#x27;email&#x27;, label: &#x27;Email&#x27;, placeholder: &#x27;john@ex.com&#x27; },
+ *   { type: &#x27;checkbox&#x27;, name: &#x27;agree&#x27;, label: &#x27;Accept terms&#x27; },
+ * ];
+ */
+@Component({
+  selector: &#x27;app-form&#x27;,
+  templateUrl: &#x27;./form.component.html&#x27;,
+  styleUrls: [&#x27;./form.component.scss&#x27;],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DropdownComponent,
+    CheckboxListComponent,
+    ButtonComponent,
+    InputComponent,
+    InputnumberComponent,
+    CheckboxComponent,
+    SwitchComponent,
+    TextareaComponent,
+    InputpasswordComponent
+  ],
+})
+export class FormComponent {
+  /** External reactive form instance that this component binds to. */
+  @Input() formGroup!: FormGroup;
+
+  /** Dynamic field schema describing which controls to render. */
+  @Input() forms!: IForm[];
+
+  /** Number of grid columns (≥1). */
+  @Input() columns: number &#x3D; 2;
+
+  /** Grid gap value (CSS length, e.g., &#x27;1rem&#x27;, &#x27;12px&#x27;). */
+  @Input() gap: string &#x3D; &#x27;1rem&#x27;;
+
+  /** Max width of the form container (e.g., &#x27;920px&#x27;, &#x27;100%&#x27;). */
+  @Input() maxWidth: string &#x3D; &#x27;920px&#x27;;
+
+  /** If true, fields stack on small screens (collapsible layout). */
+  @Input() collapseOnMobile: boolean &#x3D; true;
+
+  /** Host CSS var: number of columns. */
+  @HostBinding(&#x27;style.--form-columns&#x27;) get _cols() { return String(this.columns); }
+
+  /** Host CSS var: grid gap. */
+  @HostBinding(&#x27;style.--form-gap&#x27;) get _gap() { return this.gap; }
+
+  /** Host CSS var: max width. */
+  @HostBinding(&#x27;style.--form-max&#x27;) get _max() { return this.maxWidth; }
+
+  /** Host class to disable mobile collapse when &#x60;collapseOnMobile&#x60; is false. */
+  @HostBinding(&#x27;class.form--no-collapse&#x27;) get _noCollapse() { return !this.collapseOnMobile; }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+  &lt;form [formGroup]&#x3D;&quot;formGroup&quot;&gt;
+    &lt;div class&#x3D;&quot;grid&quot;&gt;
+      &lt;ng-container *ngFor&#x3D;&quot;let item of forms&quot;&gt;
+        &lt;div [class]&#x3D;&quot;item.class ? item.class : &#x27;col-12&#x27;&quot; style&#x3D;&quot;padding: 0.4% 1%&quot;&gt;
+          &lt;ng-container [ngSwitch]&#x3D;&quot;item.type&quot;&gt;
+            &lt;app-input *ngSwitchCase&#x3D;&quot;&#x27;text&#x27;&quot; formControlName&#x3D;&quot;{{ item.controlname }}&quot;
+              placeholder&#x3D;&quot;{{item.header}}&quot;&gt;&lt;/app-input&gt;
+            &lt;app-inputnumber *ngSwitchCase&#x3D;&quot;&#x27;number&#x27;&quot; formControlName&#x3D;&quot;{{ item.controlname }}&quot;
+              placeholder&#x3D;&quot;{{item.header}}&quot; [Max]&#x3D;&quot;item.max || 99999&quot; [Min]&#x3D;&quot;item.min || 0&quot;&gt;&lt;/app-inputnumber&gt;
+            &lt;app-inputpassword *ngSwitchCase&#x3D;&quot;&#x27;password&#x27;&quot; formControlName&#x3D;&quot;{{ item.controlname }}&quot;
+              placeholder&#x3D;&quot;{{item.header}}&quot;&gt;&lt;/app-inputpassword&gt;
+            &lt;app-textarea *ngSwitchCase&#x3D;&quot;&#x27;textarea&#x27;&quot; formControlName&#x3D;&quot;{{ item.controlname }}&quot;
+              placeholder&#x3D;&quot;{{item.header}}&quot; [Rows]&#x3D;&quot;item.rows&quot;&gt;&lt;/app-textarea&gt;
+            &lt;app-checkbox *ngSwitchCase&#x3D;&quot;&#x27;checkbox&#x27;&quot; formControlName&#x3D;&quot;{{ item.controlname }}&quot;
+              placeholder&#x3D;&quot;{{item.header}}&quot;&gt;&lt;/app-checkbox&gt;
+            &lt;app-switch *ngSwitchCase&#x3D;&quot;&#x27;switch&#x27;&quot; formControlName&#x3D;&quot;{{ item.controlname }}&quot;
+              placeholder&#x3D;&quot;{{item.header}}&quot;&gt;&lt;/app-switch&gt;
+            &lt;app-dropdown *ngSwitchCase&#x3D;&quot;&#x27;dropdown&#x27;&quot; [data]&#x3D;&quot;item.data || []&quot; [multiStatus]&#x3D;&quot;item.isMultiType || false&quot;
+              [searchStatus]&#x3D;&quot;item.search || false&quot; (selectedList)&#x3D;&quot;item.onChange &amp;&amp; item.onChange($event)&quot;
+              placeholder&#x3D;&quot;{{item.header}}&quot; [disabled]&#x3D;&quot;item.disabled || false&quot;&gt;&lt;/app-dropdown&gt;
+            &lt;app-checkboxlist *ngSwitchCase&#x3D;&quot;&#x27;checkboxList&#x27;&quot; [checkboxData]&#x3D;&quot;item.data || []&quot;
+              checkboxHeader&#x3D;&quot;{{item.header}}&quot; [multiCheckbox]&#x3D;&quot;item.isMultiType || false&quot;
+              (selectedData)&#x3D;&quot;item.onChange &amp;&amp; item.onChange($event)&quot;&gt;&lt;/app-checkboxlist&gt;
+            &lt;app-button *ngSwitchCase&#x3D;&quot;&#x27;button&#x27;&quot; (btnClick)&#x3D;&quot;item.click &amp;&amp; item.click()&quot; label&#x3D;&quot;{{item.header}}&quot;
+              [isDisabled]&#x3D;&quot;formGroup.invalid&quot;&gt;&lt;/app-button&gt;
+          &lt;/ng-container&gt;
+        &lt;/div&gt;
+      &lt;/ng-container&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./form.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+   form.component.scss — Adjustable, consistent form grid
+   - CSS vars: --form-columns, --form-gap, --form-max
+   - Helpers: .span-1, .span-2, .span-full
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+/* Sayfa ortasında form kartı */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;                   /* dış boşluk */
+  box-sizing: border-box;
+}
+
+/* Kart gövdesi */
+.container &gt; form[formGroup] {
+  width: 100%;
+  max-width: var(--form-max, 920px);
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: .5rem;            /* rounded-lg */
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,.06),
+    0 4px 6px -4px rgba(0,0,0,.04);
+  padding: 1rem;                   /* p-4 */
+}
+
+/* Grid: kolon sayısı ve boşluklar tamamen değişken */
+.container &gt; form[formGroup] .grid {
+  display: grid;
+  grid-template-columns: repeat(var(--form-columns, 2), minmax(0, 1fr));
+  gap: var(--form-gap, 1rem);
+  margin: 0;                       /* eski gutters yok */
+}
+
+/* Inline style padding’i nötrle (tutarlı boşluk gridden gelsin) */
+.container &gt; form[formGroup] .grid &gt; div {
+  padding: 0 !important;
+}
+
+/* Tüm alanlar full-width render */
+.container app-input .form__group,
+.container app-inputnumber .form__group,
+.container app-inputpassword .form__group,
+.container app-textarea .form__group,
+.container app-dropdown .dropdown-container,
+.container app-checkboxlist .checkboxListContainer,
+.container app-switch .container {
+  width: 100%;
+}
+
+/* Submit buton satırı: tüm satırı kapla ve sağa hizala */
+.container app-button {
+  grid-column: 1 / -1;             /* full row */
+  display: flex;
+  justify-content: flex-end;
+}
+.container app-button button {
+  width: auto;                      /* buton kendi boyu */
+  height: 2.5rem;                   /* h-10 */
+  padding: 0 .875rem;
+  border-radius: .5rem;
+}
+
+/* --------- Helpers: span sınıfları (forms[].class ile kullan) --------- */
+.span-1 { grid-column: span 1; }
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
+.span-4 { grid-column: span 4; }
+.span-full { grid-column: 1 / -1; }   /* tüm satırı kapla */
+
+/* --------- Responsive: mobilde 1 kolon (isteğe bağlı) ---------
+   collapseOnMobile&#x3D;true ise (default) bu kural aktif.
+   form--no-collapse class&#x27;ı varsa mobilde de kolon sayısı korunur.
+*/
+@media (max-width: 768px) {
+  :host:not(.form--no-collapse) .container &gt; form[formGroup] .grid {
+    grid-template-columns: 1fr !important;
+  }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">  <form [formGroup]="formGroup">    <div class="grid">      <ng-container *ngFor="let item of forms">        <div [class]="item.class ? item.class : \'col-12\'" style="padding: 0.4% 1%">          <ng-container [ngSwitch]="item.type">            <app-input *ngSwitchCase="\'text\'" formControlName="{{ item.controlname }}"              placeholder="{{item.header}}"></app-input>            <app-inputnumber *ngSwitchCase="\'number\'" formControlName="{{ item.controlname }}"              placeholder="{{item.header}}" [Max]="item.max || 99999" [Min]="item.min || 0"></app-inputnumber>            <app-inputpassword *ngSwitchCase="\'password\'" formControlName="{{ item.controlname }}"              placeholder="{{item.header}}"></app-inputpassword>            <app-textarea *ngSwitchCase="\'textarea\'" formControlName="{{ item.controlname }}"              placeholder="{{item.header}}" [Rows]="item.rows"></app-textarea>            <app-checkbox *ngSwitchCase="\'checkbox\'" formControlName="{{ item.controlname }}"              placeholder="{{item.header}}"></app-checkbox>            <app-switch *ngSwitchCase="\'switch\'" formControlName="{{ item.controlname }}"              placeholder="{{item.header}}"></app-switch>            <app-dropdown *ngSwitchCase="\'dropdown\'" [data]="item.data || []" [multiStatus]="item.isMultiType || false"              [searchStatus]="item.search || false" (selectedList)="item.onChange && item.onChange($event)"              placeholder="{{item.header}}" [disabled]="item.disabled || false"></app-dropdown>            <app-checkboxlist *ngSwitchCase="\'checkboxList\'" [checkboxData]="item.data || []"              checkboxHeader="{{item.header}}" [multiCheckbox]="item.isMultiType || false"              (selectedData)="item.onChange && item.onChange($event)"></app-checkboxlist>            <app-button *ngSwitchCase="\'button\'" (btnClick)="item.click && item.click()" label="{{item.header}}"              [isDisabled]="formGroup.invalid"></app-button>          </ng-container>        </div>      </ng-container>    </div>  </form></div></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'app-accordion'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalenderComponent', 'selector': 'app-calender'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CheckboxComponent', 'selector': 'app-checkbox'},{'name': 'CheckboxListComponent', 'selector': 'app-checkboxlist'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'DropdownComponent', 'selector': 'app-dropdown'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'InputnumberComponent', 'selector': 'app-inputnumber'},{'name': 'InputpasswordComponent', 'selector': 'app-inputpassword'},{'name': 'ListboxComponent', 'selector': 'app-listbox'},{'name': 'ProgesbarComponent', 'selector': 'app-progesbar'},{'name': 'ShowcaseComponent', 'selector': 'app-showcase'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'SwitchComponent', 'selector': 'app-switch'},{'name': 'TabComponent', 'selector': 'app-tab'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'TabviewComponent', 'selector': 'app-tabview'},{'name': 'TextareaComponent', 'selector': 'app-textarea'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [{'name': 'InputMaskDateDirective', 'selector': '[formControlName][appInputMask]'},{'name': 'PhoneDirective', 'selector': '[phoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'FormComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'FormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

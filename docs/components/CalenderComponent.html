@@ -1,0 +1,2009 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>library documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">library documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CalenderComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/calender/calender.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Calender – A lightweight date picker component that implements <code>ControlValueAccessor</code>.</p>
+<p><em>Features</em></p>
+<ul>
+<li>Month navigation (previous / next / jump to current)</li>
+<li>6x7 calendar grid (42 cells) starting from Monday</li>
+<li>Works with Template-Driven and Reactive Forms (<code>ngModel</code>, <code>formControl</code>, <code>formControlName</code>)</li>
+<li>Emits value through CVA (<code>writeValue</code>, <code>registerOnChange</code>, <code>registerOnTouched</code>)</li>
+</ul>
+<p><em>Accessibility</em></p>
+<ul>
+<li>Uses a popup panel (<code>show</code>) to toggle the calendar UI. You may add <code>aria-</code> attributes in the template if needed.</li>
+</ul>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Template-Driven Forms --&gt;
+&lt;app-calender name=&quot;date&quot; [(ngModel)]=&quot;model.date&quot;&gt;&lt;/app-calender&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Reactive Forms --&gt;
+&lt;form [formGroup]=&quot;form&quot;&gt;
+  &lt;app-calender formControlName=&quot;date&quot;&gt;&lt;/app-calender&gt;
+&lt;/form&gt;</code></pre></div><b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;!-- Readonly / Disabled --&gt;
+&lt;app-calender [disabled]=&quot;true&quot;&gt;&lt;/app-calender&gt;</code></pre></div>
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>ControlValueAccessor</code>
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-calender</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>ChunkPipe</code>
+                            <code>FormsModule</code>
+                            <code>ReactiveFormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./calender.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./calender.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#calendar" >calendar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#displayMonth" >displayMonth</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#displayYears" >displayYears</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#monthIndex" >monthIndex</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#monthNames" >monthNames</a>
+                            </li>
+                            <li>
+                                <a href="#show" >show</a>
+                            </li>
+                            <li>
+                                <a href="#value" >value</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#decreaseMonth" >decreaseMonth</a>
+                            </li>
+                            <li>
+                                <a href="#generateCalendarDays" >generateCalendarDays</a>
+                            </li>
+                            <li>
+                                <a href="#getStartDateForCalendar" >getStartDateForCalendar</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#increaseMonth" >increaseMonth</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onChange" >onChange</a>
+                            </li>
+                            <li>
+                                <a href="#onTouched" >onTouched</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnChange" >registerOnChange</a>
+                            </li>
+                            <li>
+                                <a href="#registerOnTouched" >registerOnTouched</a>
+                            </li>
+                            <li>
+                                <a href="#selectedDate" >selectedDate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setCurrentMonth" >setCurrentMonth</a>
+                            </li>
+                            <li>
+                                <a href="#setDisabledState" >setDisabledState</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue" >writeValue</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#disabled" >disabled</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(ngControl: NgControl)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/calender/calender.component.ts:71</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Injects the current <code>NgControl</code> so this component can register itself
+as the value accessor for Angular forms.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>ngControl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgControl</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/calender/calender.component.ts:47</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Disables the control and prevents user interaction.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="decreaseMonth"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>decreaseMonth</b></span>
+                        <a href="#decreaseMonth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>decreaseMonth()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:135</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves to the previous month.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateCalendarDays"></a>
+                    <span class="name">
+                        <span ><b>generateCalendarDays</b></span>
+                        <a href="#generateCalendarDays"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateCalendarDays(monthIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:92</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Rebuilds the 42-cell calendar for the provided month offset.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>monthIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Offset from current month (e.g., -1 previous, +1 next)</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getStartDateForCalendar"></a>
+                    <span class="name">
+                        <span ><b>getStartDateForCalendar</b></span>
+                        <a href="#getStartDateForCalendar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getStartDateForCalendar(selectedDate: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Calculates the first visible date of the grid:
+the Monday of the week that contains the last day of the previous month.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selectedDate</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="increaseMonth"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>increaseMonth</b></span>
+                        <a href="#increaseMonth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>increaseMonth()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Moves to the next month.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Initializes the calendar grid for the initial month.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onChange"></a>
+                    <span class="name">
+                        <span ><b>onChange</b></span>
+                        <a href="#onChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onChange(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:180</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Emits value changes to Angular Forms (assigned via <code>registerOnChange</code>).</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onTouched"></a>
+                    <span class="name">
+                        <span ><b>onTouched</b></span>
+                        <a href="#onTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onTouched()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="183"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:183</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Marks control as touched (assigned via <code>registerOnTouched</code>).</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnChange"></a>
+                    <span class="name">
+                        <span ><b>registerOnChange</b></span>
+                        <a href="#registerOnChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnChange(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="170"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:170</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Registers a callback to emit value changes.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>fn</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="registerOnTouched"></a>
+                    <span class="name">
+                        <span ><b>registerOnTouched</b></span>
+                        <a href="#registerOnTouched"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>registerOnTouched(fn: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:175</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Registers a callback for the touched state.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>fn</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedDate"></a>
+                    <span class="name">
+                        <span ><b>selectedDate</b></span>
+                        <a href="#selectedDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectedDate(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles day selection from the grid.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>An object containing the selected <code>date</code> (from <code>CalendarDay</code>)</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setCurrentMonth"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>setCurrentMonth</b></span>
+                        <a href="#setCurrentMonth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setCurrentMonth()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Jumps back to the current month.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDisabledState"></a>
+                    <span class="name">
+                        <span ><b>setDisabledState</b></span>
+                        <a href="#setDisabledState"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDisabledState(isDisabled: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="165"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:165</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates disabled state from the parent form.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>isDisabled</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <span ><b>writeValue</b></span>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/app/components/calender/calender.component.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Writes an external value into the component.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calendar"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>calendar</b></span>
+                        <a href="#calendar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/CalendarDay.html" target="_self" >CalendarDay[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/components/calender/calender.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flat list of 42 cells representing the visible month grid.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayMonth"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>displayMonth</b></span>
+                        <a href="#displayMonth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/components/calender/calender.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Displayed month label (e.g., &quot;March&quot;).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayYears"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>displayYears</b></span>
+                        <a href="#displayYears"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/components/calender/calender.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Displayed year (e.g., 2025).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="monthIndex"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>monthIndex</b></span>
+                        <a href="#monthIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/components/calender/calender.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Month offset relative to the current month (0 = current).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="monthNames"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>monthNames</b></span>
+                        <a href="#monthNames"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;January&#x27;,&#x27;February&#x27;,&#x27;March&#x27;,&#x27;April&#x27;,&#x27;May&#x27;,&#x27;June&#x27;,
+    &#x27;July&#x27;,&#x27;August&#x27;,&#x27;September&#x27;,&#x27;October&#x27;,&#x27;November&#x27;,&#x27;December&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/calender/calender.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Month names used in the header.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="show"></a>
+                    <span class="name">
+                        <span ><b>show</b></span>
+                        <a href="#show"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/calender/calender.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controls calendar popup visibility.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="value"></a>
+                    <span class="name">
+                        <span ><b>value</b></span>
+                        <a href="#value"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/calender/calender.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Current value of the control (selected <code>Date</code>).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { Component, Input, OnInit, Optional, Self } from &#x27;@angular/core&#x27;;
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NgControl,
+  ReactiveFormsModule,
+} from &#x27;@angular/forms&#x27;;
+import { ChunkPipe } from &#x27;src/app/Pipe/chunk.pipe&#x27;;
+import { CalendarDay } from &#x27;src/app/Class/CalendarDay&#x27;;
+
+/**
+ * Calender – A lightweight date picker component that implements &#x60;ControlValueAccessor&#x60;.
+ *
+ * *Features*
+ * - Month navigation (previous / next / jump to current)
+ * - 6x7 calendar grid (42 cells) starting from Monday
+ * - Works with Template-Driven and Reactive Forms (&#x60;ngModel&#x60;, &#x60;formControl&#x60;, &#x60;formControlName&#x60;)
+ * - Emits value through CVA (&#x60;writeValue&#x60;, &#x60;registerOnChange&#x60;, &#x60;registerOnTouched&#x60;)
+ *
+ * *Accessibility*
+ * - Uses a popup panel (&#x60;show&#x60;) to toggle the calendar UI. You may add &#x60;aria-&#x60; attributes in the template if needed.
+ *
+ * @example
+ * &lt;!-- Template-Driven Forms --&gt;
+ * &lt;app-calender name&#x3D;&quot;date&quot; [(ngModel)]&#x3D;&quot;model.date&quot;&gt;&lt;/app-calender&gt;
+ *
+ * @example
+ * &lt;!-- Reactive Forms --&gt;
+ * &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+ *   &lt;app-calender formControlName&#x3D;&quot;date&quot;&gt;&lt;/app-calender&gt;
+ * &lt;/form&gt;
+ *
+ * @example
+ * &lt;!-- Readonly / Disabled --&gt;
+ * &lt;app-calender [disabled]&#x3D;&quot;true&quot;&gt;&lt;/app-calender&gt;
+ */
+@Component({
+  selector: &#x27;app-calender&#x27;,
+  templateUrl: &#x27;./calender.component.html&#x27;,
+  styleUrls: [&#x27;./calender.component.scss&#x27;],
+  standalone: true,
+  imports: [CommonModule, ChunkPipe, FormsModule, ReactiveFormsModule],
+})
+export class CalenderComponent implements ControlValueAccessor, OnInit {
+  /** Disables the control and prevents user interaction. */
+  @Input() disabled: boolean &#x3D; false;
+
+  /** Controls calendar popup visibility. */
+  show &#x3D; false;
+
+  /** Current value of the control (selected &#x60;Date&#x60;). */
+  value: any;
+
+  /** Flat list of 42 cells representing the visible month grid. */
+  public calendar: CalendarDay[] &#x3D; [];
+
+  /** Month names used in the header. */
+  public monthNames &#x3D; [
+    &#x27;January&#x27;,&#x27;February&#x27;,&#x27;March&#x27;,&#x27;April&#x27;,&#x27;May&#x27;,&#x27;June&#x27;,
+    &#x27;July&#x27;,&#x27;August&#x27;,&#x27;September&#x27;,&#x27;October&#x27;,&#x27;November&#x27;,&#x27;December&#x27;,
+  ];
+
+  /** Displayed month label (e.g., &quot;March&quot;). */
+  public displayMonth: string &#x3D; &#x27;&#x27;;
+
+  /** Displayed year (e.g., 2025). */
+  public displayYears: any;
+
+  /** Month offset relative to the current month (0 &#x3D; current). */
+  private monthIndex: number &#x3D; 0;
+
+  /**
+   * Injects the current &#x60;NgControl&#x60; so this component can register itself
+   * as the value accessor for Angular forms.
+   */
+  constructor(@Self() @Optional() private ngControl: NgControl) {
+    if (this.ngControl) {
+      this.ngControl.valueAccessor &#x3D; this;
+    }
+  }
+
+  /** Initializes the calendar grid for the initial month. */
+  ngOnInit(): void {
+    this.generateCalendarDays(this.monthIndex);
+  }
+
+  /**
+   * Rebuilds the 42-cell calendar for the provided month offset.
+   * @param monthIndex Offset from current month (e.g., -1 previous, +1 next)
+   */
+  generateCalendarDays(monthIndex: number): void {
+    this.calendar &#x3D; [];
+
+    let day: Date &#x3D; new Date(
+      new Date().setMonth(new Date().getMonth() + monthIndex)
+    );
+
+    this.displayMonth &#x3D; this.monthNames[day.getMonth()];
+    this.displayYears &#x3D; day.getFullYear();
+
+    let startingDateOfCalendar &#x3D; this.getStartDateForCalendar(day);
+    let dateToAdd &#x3D; startingDateOfCalendar;
+
+    for (let i &#x3D; 0; i &lt; 42; i++) {
+      this.calendar.push(new CalendarDay(new Date(dateToAdd)));
+      dateToAdd &#x3D; new Date(dateToAdd.setDate(dateToAdd.getDate() + 1));
+    }
+  }
+
+  /**
+   * Calculates the first visible date of the grid:
+   * the Monday of the week that contains the last day of the previous month.
+   */
+  getStartDateForCalendar(selectedDate: Date) {
+    let lastDayOfPreviousMonth &#x3D; new Date(selectedDate.setDate(0));
+    let startingDateOfCalendar: Date &#x3D; lastDayOfPreviousMonth;
+    if (startingDateOfCalendar.getDay() !&#x3D; 1) {
+      do {
+        startingDateOfCalendar &#x3D; new Date(
+          startingDateOfCalendar.setDate(startingDateOfCalendar.getDate() - 1)
+        );
+      } while (startingDateOfCalendar.getDay() !&#x3D; 1);
+    }
+    return startingDateOfCalendar;
+  }
+
+  /** Moves to the next month. */
+  public increaseMonth() {
+    this.monthIndex++;
+    this.generateCalendarDays(this.monthIndex);
+  }
+
+  /** Moves to the previous month. */
+  public decreaseMonth() {
+    this.monthIndex--;
+    this.generateCalendarDays(this.monthIndex);
+  }
+
+  /** Jumps back to the current month. */
+  public setCurrentMonth() {
+    this.monthIndex &#x3D; 0;
+    this.generateCalendarDays(this.monthIndex);
+  }
+
+  /**
+   * Handles day selection from the grid.
+   * @param e An object containing the selected &#x60;date&#x60; (from &#x60;CalendarDay&#x60;)
+   */
+  selectedDate(e: any) {
+    this.value &#x3D; e.date;
+    this.onChange?.(this.value);
+    this.onTouched?.();
+    this.show &#x3D; false;
+  }
+
+  // ---- ControlValueAccessor ----
+
+  /** Writes an external value into the component. */
+  writeValue(value: any): void {
+    this.value &#x3D; value;
+  }
+
+  /** Updates disabled state from the parent form. */
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled &#x3D; isDisabled;
+  }
+
+  /** Registers a callback to emit value changes. */
+  registerOnChange(fn: any): void {
+    this.onChange &#x3D; fn;
+  }
+
+  /** Registers a callback for the touched state. */
+  registerOnTouched(fn: any): void {
+    this.onTouched &#x3D; fn;
+  }
+
+  /** Emits value changes to Angular Forms (assigned via &#x60;registerOnChange&#x60;). */
+  onChange(e: any) {}
+
+  /** Marks control as touched (assigned via &#x60;registerOnTouched&#x60;). */
+  onTouched() {}
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;headerContainer&quot;&gt;
+  &lt;input
+    class&#x3D;&quot;globalInput&quot;
+    style&#x3D;&quot;cursor: pointer&quot;
+    type&#x3D;&quot;text&quot;
+    [value]&#x3D;&quot;value | date : &#x27;dd/MM/yy&#x27;&quot;
+    [disabled]&#x3D;&quot;disabled&quot;
+    (click)&#x3D;&quot;show ? (show &#x3D; false) : (show &#x3D; true)&quot;
+    (input)&#x3D;&quot;onChange($any($event.target).value)&quot;
+    (blur)&#x3D;&quot;onTouched()&quot;
+  /&gt;
+
+  &lt;div class&#x3D;&quot;iconContainer&quot;&gt;
+    &lt;i class&#x3D;&quot;fa-regular fa-calendar-days&quot;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;modal&quot; *ngIf&#x3D;&quot;show&quot;&gt;
+  &lt;div class&#x3D;&quot;header&quot;&gt;
+    &lt;i class&#x3D;&quot;fa-solid fa-angle-left&quot; (click)&#x3D;&quot;decreaseMonth()&quot;&gt;&lt;/i&gt;
+    &lt;p&gt;{{ displayMonth }} {{ displayYears }}&lt;/p&gt;
+    &lt;!-- &lt;p style&#x3D;&quot;cursor: pointer&quot; (click)&#x3D;&quot;setCurrentMonth()&quot;&gt;Now&lt;/p&gt; --&gt;
+    &lt;i class&#x3D;&quot;fa-solid fa-angle-right&quot; (click)&#x3D;&quot;increaseMonth()&quot;&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;hr /&gt;
+
+  &lt;table class&#x3D;&quot;calendar-table&quot; *ngIf&#x3D;&quot;calendar&quot;&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Mon&lt;/th&gt;
+        &lt;th&gt;Tue&lt;/th&gt;
+        &lt;th&gt;Wed&lt;/th&gt;
+        &lt;th&gt;Thu&lt;/th&gt;
+        &lt;th&gt;Fri&lt;/th&gt;
+        &lt;th&gt;Sat&lt;/th&gt;
+        &lt;th&gt;Sun&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr *ngFor&#x3D;&quot;let row of calendar | chunk : 7; let i &#x3D; index&quot;&gt;
+        &lt;td
+          class&#x3D;&quot;calendar-day&quot;
+          [ngClass]&#x3D;&quot;{ &#x27;past-date&#x27;: c.isPastDate, today: c.isToday }&quot;
+          *ngFor&#x3D;&quot;let c of row; let j &#x3D; index&quot;
+          (click)&#x3D;&quot;selectedDate(c)&quot;
+        &gt;
+          &lt;div
+            class&#x3D;&quot;calendar-day-header&quot;
+            [ngClass]&#x3D;&quot;{ &#x27;blue-date&#x27;: c.isToday }&quot;
+          &gt;
+            &lt;p&gt;{{ c.date.getDate() }}&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./calender.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
+   Calendar Component (shadcn-like, compact sizing)
+   Uses global tokens: --color-primary, --border, --hover, etc.
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Header (input + icon) &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+.headerContainer {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .globalInput {
+    width: 100%;
+    height: 2.25rem; /* h-9 (~36px) */
+    padding: 0.25rem 2rem 0.25rem 0.75rem; /* space for icon on right */
+    border-radius: 0.375rem; /* rounded-md */
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.875rem; /* text-sm */
+    line-height: 1.25rem;
+    transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease;
+
+    &amp;:hover { background: #fcfdff; }
+
+    &amp;:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow:
+        0 0 0 2px var(--bg),
+        0 0 0 4px var(--ring);
+    }
+
+    &amp;:disabled {
+      background: #f8fafc;
+      color: #94a3b8;
+      cursor: not-allowed;
+    }
+  }
+
+  .iconContainer {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--color-secondary);
+
+    i {
+      font-size: 0.9rem;
+      color: var(--color-secondary);
+      cursor: pointer;
+
+      &amp;:hover { color: var(--color-primary); }
+    }
+  }
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Popover / Modal &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+.modal {
+  position: absolute;
+  z-index: 100;
+  margin-top: 0.25rem;
+  width: 280px;                 /* shadcn default width */
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;        /* rounded-lg */
+  box-shadow:
+    0 10px 15px -3px rgba(0,0,0,0.1),
+    0 4px 6px -4px rgba(0,0,0,0.1);
+  animation: dp-scale-in .2s ease-out;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .25rem .5rem;
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      user-select: none;
+    }
+
+    i {
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text);
+      padding: 0.25rem;
+      border-radius: 0.375rem;
+      transition: background-color .15s ease, color .15s ease;
+
+      &amp;:hover {
+        background: var(--hover);
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Calendar table &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+  .calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+
+    thead th {
+      height: 2rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--color-secondary);
+      user-select: none;
+    }
+
+    tbody td {
+      padding: 0;
+      height: 2.25rem; /* row height ~36px */
+    }
+
+    .calendar-day {
+      cursor: pointer;
+      position: relative;
+
+      &amp;:hover { background: var(--hover); }
+
+      .calendar-day-header {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+
+        p {
+          width: 1.75rem;
+          height: 1.75rem;
+          display: grid;
+          place-items: center;
+          border-radius: 0.375rem;
+          font-size: 0.75rem; /* text-xs */
+          color: var(--text);
+          transition: background-color .12s ease, color .12s ease;
+        }
+      }
+
+      /* today */
+      &amp;.today .calendar-day-header p {
+        color: var(--color-primary);
+        box-shadow: inset 0 0 0 1.5px var(--color-primary);
+      }
+      &amp;.today:hover .calendar-day-header p {
+        background: var(--color-primary);
+        color: #fff;
+      }
+
+      /* past dates */
+      &amp;.past-date .calendar-day-header p {
+        color: #94a3b8;
+      }
+    }
+  }
+}
+
+/* &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Animations &#x3D;&#x3D;&#x3D;&#x3D;&#x3D; */
+@keyframes dp-scale-in {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: scale(1); }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="headerContainer">  <input    class="globalInput"    style="cursor: pointer"    type="text"    [value]="value | date : \'dd/MM/yy\'"    [disabled]="disabled"    (click)="show ? (show = false) : (show = true)"    (input)="onChange($any($event.target).value)"    (blur)="onTouched()"  />  <div class="iconContainer">    <i class="fa-regular fa-calendar-days"></i>  </div></div><div class="modal" *ngIf="show">  <div class="header">    <i class="fa-solid fa-angle-left" (click)="decreaseMonth()"></i>    <p>{{ displayMonth }} {{ displayYears }}</p>    <!-- <p style="cursor: pointer" (click)="setCurrentMonth()">Now</p> -->    <i class="fa-solid fa-angle-right" (click)="increaseMonth()"></i>  </div>  <hr />  <table class="calendar-table" *ngIf="calendar">    <thead>      <tr>        <th>Mon</th>        <th>Tue</th>        <th>Wed</th>        <th>Thu</th>        <th>Fri</th>        <th>Sat</th>        <th>Sun</th>      </tr>    </thead>    <tbody>      <tr *ngFor="let row of calendar | chunk : 7; let i = index">        <td          class="calendar-day"          [ngClass]="{ \'past-date\': c.isPastDate, today: c.isToday }"          *ngFor="let c of row; let j = index"          (click)="selectedDate(c)"        >          <div            class="calendar-day-header"            [ngClass]="{ \'blue-date\': c.isToday }"          >            <p>{{ c.date.getDate() }}</p>          </div>        </td>      </tr>    </tbody>  </table></div></div>'
+    var COMPONENTS = [{'name': 'AccordionComponent', 'selector': 'app-accordion'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ButtonComponent', 'selector': 'app-button'},{'name': 'CalenderComponent', 'selector': 'app-calender'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CheckboxComponent', 'selector': 'app-checkbox'},{'name': 'CheckboxListComponent', 'selector': 'app-checkboxlist'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'DropdownComponent', 'selector': 'app-dropdown'},{'name': 'FormComponent', 'selector': 'app-form'},{'name': 'InputComponent', 'selector': 'app-input'},{'name': 'InputnumberComponent', 'selector': 'app-inputnumber'},{'name': 'InputpasswordComponent', 'selector': 'app-inputpassword'},{'name': 'ListboxComponent', 'selector': 'app-listbox'},{'name': 'ProgesbarComponent', 'selector': 'app-progesbar'},{'name': 'ShowcaseComponent', 'selector': 'app-showcase'},{'name': 'SpinnerComponent', 'selector': 'app-spinner'},{'name': 'SwitchComponent', 'selector': 'app-switch'},{'name': 'TabComponent', 'selector': 'app-tab'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'TabviewComponent', 'selector': 'app-tabview'},{'name': 'TextareaComponent', 'selector': 'app-textarea'},{'name': 'ToastComponent', 'selector': 'app-toast'}];
+    var DIRECTIVES = [{'name': 'InputMaskDateDirective', 'selector': '[formControlName][appInputMask]'},{'name': 'PhoneDirective', 'selector': '[phoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'CalenderComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CalenderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
