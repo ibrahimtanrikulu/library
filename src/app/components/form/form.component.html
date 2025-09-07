@@ -1,8 +1,8 @@
 <div class="container">
-  <form [formGroup]="formGroup">
-    <div class="grid">
+  <form [formGroup]="formGroup" [style.--form-columns]="columns" [style.--form-gap]="gap" [style.--form-max]="maxWidth">
+    <div class="form-grid">
       <ng-container *ngFor="let item of forms">
-        <div [class]="item.class ? item.class : 'col-12'" style="padding: 0.4% 1%">
+        <div [class]="item.class || ''">
           <ng-container [ngSwitch]="item.type">
             <app-input *ngSwitchCase="'text'" formControlName="{{ item.controlname }}"
               placeholder="{{item.header}}"></app-input>

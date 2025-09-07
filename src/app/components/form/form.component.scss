@@ -14,7 +14,7 @@
 }
 
 /* Kart gövdesi */
-.container > form[formGroup] {
+.container > form {
   width: 100%;
   max-width: var(--form-max, 920px);
   background: var(--bg);
@@ -28,7 +28,7 @@
 }
 
 /* Grid: kolon sayısı ve boşluklar tamamen değişken */
-.container > form[formGroup] .grid {
+.container > form .form-grid {
   display: grid;
   grid-template-columns: repeat(var(--form-columns, 2), minmax(0, 1fr));
   gap: var(--form-gap, 1rem);
@@ -36,7 +36,7 @@
 }
 
 /* Inline style padding’i nötrle (tutarlı boşluk gridden gelsin) */
-.container > form[formGroup] .grid > div {
+.container > form .form-grid > div {
   padding: 0 !important;
 }
 
@@ -76,7 +76,7 @@
    form--no-collapse class'ı varsa mobilde de kolon sayısı korunur.
 */
 @media (max-width: 768px) {
-  :host:not(.form--no-collapse) .container > form[formGroup] .grid {
+  :host:not(.form--no-collapse) .container > form .form-grid {
     grid-template-columns: 1fr !important;
   }
 }

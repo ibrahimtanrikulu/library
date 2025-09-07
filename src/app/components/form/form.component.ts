@@ -88,7 +88,7 @@ export class FormComponent {
   @Input() gap: string = '1rem';
 
   /** Max width of the form container (e.g., '920px', '100%'). */
-  @Input() maxWidth: string = '920px';
+  @Input() maxWidth: string = '100%';
 
   /** If true, fields stack on small screens (collapsible layout). */
   @Input() collapseOnMobile: boolean = true;

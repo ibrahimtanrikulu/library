@@ -8,7 +8,7 @@
       [placeholder]="placeholder"
       type="text"
       readonly
-      [value]="multiStatus ? text : (list[0]?.text || '')"  
+      [value]="multiStatus ? text : (list.length > 0 ? list[0].text : '')"
       style="cursor: pointer;"
     />
     <div class="iconContainer"

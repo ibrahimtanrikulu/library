@@ -1,107 +1,56 @@
 <div class="docs">
-  <!-- Sidebar -->
-  <aside class="docs__nav">
-    <h1>UI Library</h1>
-    <p class="muted">A lightweight Angular component kit styled like shadcn/ui.</p>
-    <nav>
-      <a href="#button">Button</a>
-      <a href="#input">Input / Number / Password</a>
-      <a href="#textarea">Textarea</a>
-      <a href="#dropdown">Dropdown</a>
-      <a href="#checkbox">Checkbox</a>
-      <a href="#switch">Switch</a>
-      <a href="#card">Card</a>
-      <a href="#tabs">Tabs</a>
-      <a href="#table">Table</a>
-    </nav>
-  </aside>
+  
 
   <!-- Content -->
   <main class="docs__content">
-
-    <!-- BUTTON -->
-    <section id="button" class="section">
+    
+    <!-- TABLE -->
+    <section id="table" class="section">
       <header class="section__header">
-        <h2>Button</h2>
-        <span class="badge">Interactive</span>
+        <h2>Table</h2>
+        <span class="badge">Data display</span>
       </header>
       <p class="desc">
-        Buttons trigger an action. Variants follow shadcn/ui semantics (default, outline, destructive, ghost, link).
-        Use <code>button--icon</code> for icon-only buttons and pass a Font Awesome class via <code>icon</code>.
+        Data table with header tools (search/filter), inline actions (edit/delete), column settings and pagination.
+        For large data sets, enable scrolling and server-side pagination in your app.
       </p>
 
-      <ul class="bullets">
-        <li><strong>When to use:</strong> Primary actions, form submit, icon-only actions.</li>
-        <li><strong>Features:</strong> Keyboard focus ring, disabled state, size presets (sm, lg), icon spacing.</li>
-        <li><strong>Accessibility:</strong> Real <code>&lt;button&gt;</code> elements; labels are required for non-icon usage.</li>
-      </ul>
-
-      <div class="demo">
-        <app-button cssClass="button button--default" label="Save"></app-button>
-        <app-button cssClass="button button--destructive" label="Delete"></app-button>
-        <app-button cssClass="button button--outline" label="Outline"></app-button>
-        <app-button cssClass="button button--icon button--default" icon="fa-solid fa-pen"></app-button>
+      <div class="demo demo--fill">
+        <app-table
+          class="table--zebra table--cozy"
+          [header]="'Users'"
+          [data]="tableData"
+          [column]="tableCols"
+          [globalSearchStatus]="true"
+          [filterFormStatus]="true"
+          [paginationStatus]="true"
+          [scrollWidthStatus]="true">
+        </app-table>
       </div>
 
       <button class="code-toggle"
-              (click)="open.button = !open.button"
-              [innerText]="open.button ? 'Hide code' : 'Show code'">
+              (click)="open.table = !open.table"
+              [innerText]="open.table ? 'Hide code' : 'Show code'">
       </button>
-      <ng-container *ngIf="open.button">
-        <pre><code [textContent]="code.button"></code></pre>
-      </ng-container>
+      @if (open.table) {
+        <pre><code [textContent]="code.table"></code></pre>
+      }
     </section>
 
-    <!-- INPUTS -->
-    <section id="input" class="section">
+    <!-- FORM -->
+    <section id="form" class="section">
       <header class="section__header">
-        <h2>Input • Number • Password</h2>
-        <span class="badge">Forms</span>
+        <h2>Form</h2>
+        <span class="badge">Builder</span>
       </header>
-      <p class="desc">
-        Floating-label inputs styled with the same token palette. Keep labels short and meaningful.
-        Numbers enforce min/max; password input hides the value.
-      </p>
-
-      <ul class="bullets">
-        <li><strong>Features:</strong> Floating label, focus ring, disabled state, consistent spacing.</li>
-        <li><strong>Accessibility:</strong> Labels are linked via <code>for</code>/<code>id</code>; placeholder is not the label.</li>
-      </ul>
-
-      <div class="demo demo--grid3">
-        <app-input [(ngModel)]="form.value.fullName" placeholder="Full Name"></app-input>
-        <app-inputnumber [(ngModel)]="form.value.age" placeholder="Age" [Min]="0" [Max]="120"></app-inputnumber>
-        <app-inputpassword [(ngModel)]="form.value.password" placeholder="Password"></app-inputpassword>
+      <p class="desc">Dynamic form renderer. Define a schema and bind a form group.</p>
+      <div   style="flex-direction:column; gap:.75rem; width:100%">
+        <app-form [formGroup]="demoForm" [forms]="formSchema" [columns]="2" gap="1rem" maxWidth="100%"></app-form>
       </div>
-
-      <button class="code-toggle"
-              (click)="open.input = !open.input"
-              [innerText]="open.input ? 'Hide code' : 'Show code'">
-      </button>
-      <ng-container *ngIf="open.input">
-        <pre><code [textContent]="code.input"></code></pre>
-      </ng-container>
-    </section>
-
-    <!-- TEXTAREA -->
-    <section id="textarea" class="section">
-      <header class="section__header">
-        <h2>Textarea</h2>
-        <span class="badge">Forms</span>
-      </header>
-      <p class="desc">Multi-line text input with floating label and matching focus treatment.</p>
-
-      <div class="demo">
-        <app-textarea placeholder="Bio" [Rows]="5" [(ngModel)]="form.value.bio"></app-textarea>
-      </div>
-
-      <button class="code-toggle"
-              (click)="open.textarea = !open.textarea"
-              [innerText]="open.textarea ? 'Hide code' : 'Show code'">
-      </button>
-      <ng-container *ngIf="open.textarea">
-        <pre><code [textContent]="code.textarea"></code></pre>
-      </ng-container>
+      <button class="code-toggle" (click)="open.form = !open.form" [innerText]="open.form ? 'Hide code' : 'Show code'"></button>
+      @if (open.form) {
+        <pre><code [textContent]="code.form"></code></pre>
+      }
     </section>
 
     <!-- DROPDOWN -->
@@ -120,10 +69,10 @@
         <li><strong>Filtering:</strong> Enable inline search with <code>[searchStatus]="true"</code>.</li>
       </ul>
 
-      <div class="demo">
+      <div class="demo demo--fill">
         <app-dropdown
           [data]="countries"
-          [multiStatus]="false"
+          [multiStatus]="true"
           [searchStatus]="true"
           placeholder="Country"
           (selectedList)="onDropdownChange($event)">
@@ -134,77 +83,34 @@
               (click)="open.dropdown = !open.dropdown"
               [innerText]="open.dropdown ? 'Hide code' : 'Show code'">
       </button>
-      <ng-container *ngIf="open.dropdown">
+      @if (open.dropdown) {
         <pre><code [textContent]="code.dropdown"></code></pre>
-      </ng-container>
+      }
     </section>
 
-    <!-- CHECKBOX -->
-    <section id="checkbox" class="section">
+    <!-- DIALOG -->
+    <section id="dialog" class="section">
       <header class="section__header">
-        <h2>Checkbox</h2>
-        <span class="badge">Forms</span>
+        <h2>Dialog</h2>
+        <span class="badge">Overlay</span>
       </header>
-      <p class="desc">Accessible checkbox with label and consistent sizing across the library.</p>
-
-      <div class="demo">
-        <app-checkbox [(ngModel)]="form.value.agree" placeholder="I agree to terms"></app-checkbox>
+      <p class="desc">Modal dialog with header and slotted content.</p>
+      <div class="demo" style="flex-direction:column; gap:.75rem">
+        <div style="display:flex; gap:.5rem">
+          <app-button cssClass="button button--default" label="Open Dialog" (btnClick)="dialogOpen = true"></app-button>
+        </div>
+        <app-dialog header="Confirm" [show]="dialogOpen" width="420px">
+          <p>Are you sure you want to continue?</p>
+          <div style="display:flex; gap:.5rem; margin-top:1rem;">
+            <app-button cssClass="button button--default" label="Yes" (btnClick)="dialogOpen=false"></app-button>
+            <app-button cssClass="button button--outline" label="Cancel" (btnClick)="dialogOpen=false"></app-button>
+          </div>
+        </app-dialog>
       </div>
-
-      <button class="code-toggle"
-              (click)="open.checkbox = !open.checkbox"
-              [innerText]="open.checkbox ? 'Hide code' : 'Show code'">
-      </button>
-      <ng-container *ngIf="open.checkbox">
-        <pre><code [textContent]="code.checkbox"></code></pre>
-      </ng-container>
-    </section>
-
-    <!-- SWITCH -->
-    <section id="switch" class="section">
-      <header class="section__header">
-        <h2>Switch</h2>
-        <span class="badge">Forms</span>
-      </header>
-      <p class="desc">Toggle a boolean preference. Visually distinct from checkbox, better for on/off settings.</p>
-
-      <div class="demo">
-        <app-switch [(ngModel)]="form.value.news" placeholder="Subscribe to newsletter"></app-switch>
-      </div>
-
-      <button class="code-toggle"
-              (click)="open.switch = !open.switch"
-              [innerText]="open.switch ? 'Hide code' : 'Show code'">
-      </button>
-      <ng-container *ngIf="open.switch">
-        <pre><code [textContent]="code.sw"></code></pre>
-      </ng-container>
-    </section>
-
-    <!-- CARD -->
-    <section id="card" class="section">
-      <header class="section__header">
-        <h2>Card</h2>
-        <span class="badge">Layout</span>
-      </header>
-      <p class="desc">Structured container with optional header. Matches shadcn card spacing, border and radius.</p>
-
-      <div class="demo">
-        <app-card header="Profile">
-          <p>Card body content…</p>
-        </app-card>
-        <app-card>
-          <p>Header omitted — simple container card.</p>
-        </app-card>
-      </div>
-
-      <button class="code-toggle"
-              (click)="open.card = !open.card"
-              [innerText]="open.card ? 'Hide code' : 'Show code'">
-      </button>
-      <ng-container *ngIf="open.card">
-        <pre><code [textContent]="code.card"></code></pre>
-      </ng-container>
+      <button class="code-toggle" (click)="open.dialog = !open.dialog" [innerText]="open.dialog ? 'Hide code' : 'Show code'"></button>
+      @if (open.dialog) {
+        <pre><code [textContent]="code.dialog"></code></pre>
+      }
     </section>
 
     <!-- TABS -->
@@ -230,41 +136,78 @@
               (click)="open.tabs = !open.tabs"
               [innerText]="open.tabs ? 'Hide code' : 'Show code'">
       </button>
-      <ng-container *ngIf="open.tabs">
+      @if (open.tabs) {
         <pre><code [textContent]="code.tabs"></code></pre>
-      </ng-container>
-    </section>
+      }
+    </section> 
 
-    <!-- TABLE -->
-    <section id="table" class="section">
+    <!-- CALENDAR -->
+    <section id="calendar" class="section">
       <header class="section__header">
-        <h2>Table</h2>
-        <span class="badge">Data display</span>
+        <h2>Calendar</h2>
+        <span class="badge">Date input</span>
       </header>
-      <p class="desc">
-        Data table with header tools (search/filter), inline actions (edit/delete), column settings and pagination.
-        For large data sets, enable scrolling and server-side pagination in your app.
-      </p>
-
-      <div class="demo">
-        <app-table
-          [header]="'Users'"
-          [data]="tableData"
-          [column]="tableCols"
-          [globalSearchStatus]="true"
-          [paginationStatus]="true"
-          [scrollWidthStatus]="true">
-        </app-table>
+      <p class="desc">Lightweight date picker implementing ControlValueAccessor for forms.</p>
+      <div class="demo demo--fill">
+        <app-calender name="date" [(ngModel)]="date"></app-calender>
       </div>
-
-      <button class="code-toggle"
-              (click)="open.table = !open.table"
-              [innerText]="open.table ? 'Hide code' : 'Show code'">
-      </button>
-      <ng-container *ngIf="open.table">
-        <pre><code [textContent]="code.table"></code></pre>
-      </ng-container>
+      <button class="code-toggle" (click)="open.calendar = !open.calendar" [innerText]="open.calendar ? 'Hide code' : 'Show code'"></button>
+      @if (open.calendar) {
+        <pre><code [textContent]="code.calendar"></code></pre>
+      }
     </section>
 
+    <!-- ACCORDION -->
+    <section id="accordion" class="section">
+      <header class="section__header">
+        <h2>Accordion</h2>
+        <span class="badge">Disclosure</span>
+      </header>
+      <p class="desc">Collapsible content sections. Great for FAQs or details.</p>
+      <div class="demo demo--fill" style="flex-direction:column">
+        <app-accordion header="What is this?">
+          This UI library demo shows how the components look and feel.
+        </app-accordion>
+        <app-accordion header="Shipping details">
+          Delivered worldwide within 3–7 days depending on location.
+        </app-accordion> 
+      </div>
+      <button class="code-toggle" (click)="open.accordion = !open.accordion" [innerText]="open.accordion ? 'Hide code' : 'Show code'"></button>
+      @if (open.accordion) {
+        <pre><code [textContent]="code.accordion"></code></pre>
+      }
+    </section>
+
+    <!-- PROGRESS -->
+    <section id="progress" class="section">
+      <header class="section__header">
+        <h2>Progress</h2>
+        <span class="badge">Feedback</span>
+      </header>
+      <p class="desc">Shows operation progress. Bind 0–100 value.</p>
+      <div   style="align-items:center; gap:1rem; width:100%">
+        <app-progesbar [value]="progress"></app-progesbar> 
+      </div>
+      <button class="code-toggle" (click)="open.progress = !open.progress" [innerText]="open.progress ? 'Hide code' : 'Show code'"></button>
+      @if (open.progress) {
+        <pre><code [textContent]="code.progress"></code></pre>
+      }
+    </section>  
+
+    <!-- LISTBOX -->
+    <section id="listbox" class="section">
+      <header class="section__header">
+        <h2>Listbox</h2>
+        <span class="badge">Selection</span>
+      </header>
+      <p class="desc">Multi-select list with optional search and drag-and-drop.</p>
+      <div class="demo demo--fill">
+        <app-listbox [data]="fruits" [searchStatus]="true" [dragStatus]="true" (selectedList)="selectedListbox = $event"></app-listbox>
+      </div>
+      <button class="code-toggle" (click)="open.listbox = !open.listbox" [innerText]="open.listbox ? 'Hide code' : 'Show code'"></button>
+      @if (open.listbox) {
+        <pre><code [textContent]="code.listbox"></code></pre>
+      }
+    </section> 
   </main>
 </div>
